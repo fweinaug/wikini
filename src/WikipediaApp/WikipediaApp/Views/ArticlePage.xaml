@@ -1,0 +1,148 @@
+﻿<Page
+    x:Class="WikipediaApp.ArticlePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WikipediaApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="HistoryTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Uid="ArticleHistoryPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+
+                <ListView Grid.Row="1" ItemsSource="{Binding History}" Style="{StaticResource SplitViewPaneListViewStyle}"
+                          local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Article">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ContentsTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Uid="ArticleContentsPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+
+                <ListView Grid.Row="1" ItemsSource="{Binding Sections}" Style="{StaticResource SplitViewPaneListViewStyle}"
+                          IsItemClickEnabled="True" ItemClick="ContentsListViewItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:ArticleSection">
+                            <UserControl>
+                                <Grid>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup>
+                                            <VisualState>
+                                                <VisualState.StateTriggers>
+                                                    <StateTrigger IsActive="{Binding IsRoot}" />
+                                                </VisualState.StateTriggers>
+
+                                                <VisualState.Setters>
+                                                    <Setter Target="NumberTextBlock.FontWeight" Value="SemiBold" />
+                                                    <Setter Target="HeadlineTextBlock.FontWeight" Value="Normal" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Name="NumberTextBlock" Text="{x:Bind Number}" Padding="0,0,5,0" FontWeight="SemiLight" />
+                                        <TextBlock Name="HeadlineTextBlock" Text="{x:Bind Headline}" FontWeight="Light" />
+                                    </StackPanel>
+                                </Grid>
+                            </UserControl>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="LanguagesTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Uid="ArticleLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+
+                <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
+                          local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:ArticleLanguage">
+                            <TextBlock Text="{x:Bind Name}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <SplitView x:Name="SplitView" Grid.Row="0" PaneClosed="SplitViewPaneClosed">
+            <SplitView.Pane>
+                <ContentPresenter x:Name="PaneContentPresenter" />
+            </SplitView.Pane>
+            
+            <SplitView.Content>
+                <WebView x:Name="WebView"
+                         local:WebViewExtensions.Content="{Binding Article.Content}"
+                         local:WebViewExtensions.NavigatingCommand="{Binding NavigateCommand}"
+                         local:WebViewExtensions.NavigatedCommand="{Binding LoadedCommand}" />
+            </SplitView.Content>
+        </SplitView>
+
+        <ProgressBar Grid.Row="0" IsIndeterminate="True" VerticalAlignment="Bottom"
+                      Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <CommandBar Grid.Row="1">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="ArticleTopAppBarButton" Click="TopButtonClick" />
+                <AppBarButton x:Uid="ArticleRefreshAppBarButton" Command="{Binding RefreshCommand}" />
+                <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}" />
+            </CommandBar.SecondaryCommands>
+
+            <AppBarButton x:Uid="ArticleHistoryAppBarButton" Click="HistoryButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE81C;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarSeparator />
+
+            <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE7BC;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Icon="World" Click="LangaugesButtonClick" />
+        </CommandBar>
+    </Grid>
+</Page>

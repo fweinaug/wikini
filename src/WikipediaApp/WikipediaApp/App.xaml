@@ -1,0 +1,21 @@
+﻿<Application
+    x:Class="WikipediaApp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WikipediaApp">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/SplitView.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Color x:Key="SystemAccentColor">#0063B1</Color>
+
+            <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <local:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />
+
+            <local:Settings x:Key="Settings" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
