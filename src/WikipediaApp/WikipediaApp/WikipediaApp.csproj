@@ -167,11 +167,8 @@
     <PRIResource Include="Strings\en\Resources.resw" />
     <PRIResource Include="Strings\de\ManifestStrings.resw" />
     <PRIResource Include="Strings\en\ManifestStrings.resw" />
-    <None Include="WikipediaApp_StoreKey.pfx" />
-    <None Include="WikipediaApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
