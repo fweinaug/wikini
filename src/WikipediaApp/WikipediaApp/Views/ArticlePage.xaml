@@ -21,7 +21,7 @@
                           local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:Article">
-                            <Grid>
+                            <Grid ToolTipService.ToolTip="{x:Bind Title}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
@@ -50,7 +50,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:ArticleSection">
                             <UserControl>
-                                <Grid>
+                                <Grid ToolTipService.ToolTip="{x:Bind Headline}">
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
                                             <VisualState>
@@ -109,7 +109,7 @@
             <SplitView.Pane>
                 <ContentPresenter x:Name="PaneContentPresenter" />
             </SplitView.Pane>
-            
+
             <SplitView.Content>
                 <WebView x:Name="WebView"
                          local:WebViewExtensions.Content="{Binding Article.Content}"
