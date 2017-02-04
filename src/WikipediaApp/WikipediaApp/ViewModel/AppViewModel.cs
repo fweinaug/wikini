@@ -11,6 +11,7 @@ namespace WikipediaApp
     private readonly NavigationService navigationService = new NavigationService();
     private readonly DialogService dialogService = new DialogService();
     private readonly DeviceService deviceService = new DeviceService();
+    private readonly object thisLock = new object();
 
     private bool isBusy = false;
 
@@ -149,7 +150,33 @@ namespace WikipediaApp
       if (string.IsNullOrEmpty(searchTerm))
         SearchResults = null;
       else
-        SearchResults = await wikipediaService.Search(searchTerm, language.Code);
+      {
+        var results = await wikipediaService.Search(searchTerm, language.Code);
+
+        lock (thisLock)
+        {
+          if (ContainsNewArticles(searchResults, results))
+            SearchResults = results;
+        }
+      }
+    }
+
+
+    private static bool ContainsNewArticles(IList<ArticleHead> currentArticles, IList<ArticleHead> foundArticles)
+    {
+      if (currentArticles == null || foundArticles == null)
+        return !Equals(currentArticles, foundArticles);
+
+      if (currentArticles.Count != foundArticles.Count)
+        return true;
+
+      for (var i = 0; i < currentArticles.Count; ++i)
+      {
+        if (currentArticles[i].Uri != foundArticles[i].Uri)
+          return true;
+      }
+
+      return false;
     }
 
     private bool CanSearch()

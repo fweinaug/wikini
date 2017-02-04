@@ -48,7 +48,7 @@ namespace WikipediaApp
       return list;
     }
 
-    public async Task<Article> GetArticle(Uri uri, bool sectionsCollapsed)
+    public async Task<Article> GetArticle(Uri uri, bool darkMode, bool sectionsCollapsed)
     {
       string title, language;
       if (!ParseUri(uri, out title, out language))
@@ -60,12 +60,12 @@ namespace WikipediaApp
         if (header == null)
           return null;
 
-        return await GetArticle(header, sectionsCollapsed);
+        return await GetArticle(header, darkMode, sectionsCollapsed);
       }
 
       try
       {
-        return await parseApi.FetchArticle(language, sectionsCollapsed, uri, title: title);
+        return await parseApi.FetchArticle(language, darkMode, sectionsCollapsed, uri, title: title);
       }
       catch (Exception ex)
       {
@@ -125,11 +125,11 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<Article> GetArticle(ArticleHead article, bool sectionsCollapsed)
+    public async Task<Article> GetArticle(ArticleHead article, bool darkMode, bool sectionsCollapsed)
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, sectionsCollapsed, article.Uri, title: article.Title, pageId: article.Id);
+        return await parseApi.FetchArticle(article.Language, darkMode, sectionsCollapsed, article.Uri, title: article.Title, pageId: article.Id);
       }
       catch (Exception ex)
       {
@@ -139,11 +139,11 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<Article> RefreshArticle(Article article, bool sectionsCollapsed)
+    public async Task<Article> RefreshArticle(Article article, bool darkMode, bool sectionsCollapsed)
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, sectionsCollapsed, article.Uri, article.PageId, article: article);
+        return await parseApi.FetchArticle(article.Language, darkMode, sectionsCollapsed, article.Uri, article.PageId, article: article);
       }
       catch (Exception ex)
       {

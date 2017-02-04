@@ -9,6 +9,7 @@ namespace WikipediaApp
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
     private readonly DialogService dialogService = new DialogService();
+    private readonly ThemeService themeService = new ThemeService();
 
     private bool isBusy = false;
 
@@ -114,9 +115,11 @@ namespace WikipediaApp
 
       IsBusy = true;
 
+      var darkMode = themeService.IsDarkMode();
+
       var updated = article != null
-        ? await wikipediaService.RefreshArticle(article, Settings.Current.SectionsCollapsed)
-        : await wikipediaService.GetArticle(initialArticle, Settings.Current.SectionsCollapsed);
+        ? await wikipediaService.RefreshArticle(article, darkMode, Settings.Current.SectionsCollapsed)
+        : await wikipediaService.GetArticle(initialArticle, darkMode, Settings.Current.SectionsCollapsed);
 
       if (updated != null)
       {
@@ -150,7 +153,9 @@ namespace WikipediaApp
 
       if (wikipediaService.IsWikipediaUri(uri))
       {
-        var article = await wikipediaService.GetArticle(uri, Settings.Current.SectionsCollapsed);
+        var darkMode = themeService.IsDarkMode();
+
+        var article = await wikipediaService.GetArticle(uri, darkMode, Settings.Current.SectionsCollapsed);
 
         if (article != null)
         {
@@ -189,7 +194,9 @@ namespace WikipediaApp
     {
       IsBusy = true;
 
-      var article = await wikipediaService.GetArticle(initialArticle, Settings.Current.SectionsCollapsed);
+      var darkMode = themeService.IsDarkMode();
+
+      var article = await wikipediaService.GetArticle(initialArticle, darkMode, Settings.Current.SectionsCollapsed);
 
       if (article != null)
         Article = article;

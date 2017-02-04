@@ -111,7 +111,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <WebView x:Name="WebView"
+                <WebView x:Name="WebView" DefaultBackgroundColor="Transparent"
                          local:WebViewExtensions.Content="{Binding Article.Content}"
                          local:WebViewExtensions.NavigatingCommand="{Binding NavigateCommand}"
                          local:WebViewExtensions.NavigatedCommand="{Binding LoadedCommand}" />

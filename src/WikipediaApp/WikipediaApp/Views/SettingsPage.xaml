@@ -8,21 +8,33 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Style x:Key="Separator" TargetType="Rectangle">
-            <Setter Property="Height" Value="1" />
-            <Setter Property="Fill" Value="Gainsboro" />
-            <Setter Property="Margin" Value="0,5,0,15" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="SaparatorBrush">#DCDCDC</SolidColorBrush>
+                </ResourceDictionary>
 
-        <Style TargetType="ToggleSwitch">
-            <Setter Property="HeaderTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}" TextWrapping="WrapWholeWords" />
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="SaparatorBrush">#343434</SolidColorBrush>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <Style TargetType="ToggleSwitch">
+                <Setter Property="HeaderTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="WrapWholeWords" />
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Separator" TargetType="Rectangle">
+                <Setter Property="Height" Value="1" />
+                <Setter Property="Fill" Value="{ThemeResource SaparatorBrush}" />
+                <Setter Property="Margin" Value="0,5,0,15" />
+            </Style>
+        </ResourceDictionary>
     </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -43,6 +55,13 @@
                 <StackPanel Margin="0,10">
                     <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsSectionsCollapsedToggleSwitch" IsOn="{Binding SectionsCollapsed, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel x:Name="ThemePanel" Margin="0,10">
+                    <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <RadioButton x:Uid="SettingsDesignLightRadioButton" Tag="1" Checked="RadioButtonThemeChecked" />
+                    <RadioButton x:Uid="SettingsDesignDarkRadioButton" Tag="2" Checked="RadioButtonThemeChecked" />
+                    <RadioButton x:Uid="SettingsDesignSystemRadioButton" Tag="0" Checked="RadioButtonThemeChecked" />
                 </StackPanel>
 
                 <Rectangle Style="{StaticResource Separator}" />
@@ -103,7 +122,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <ContentDialog x:Uid="SettingsDonateContentDialog" x:Name="DonateContentDialog" Grid.Row="0" Grid.RowSpan="2">
+        <ContentDialog x:Uid="SettingsDonateContentDialog" x:Name="DonateContentDialog" x:DeferLoadStrategy="Lazy" Grid.Row="0" Grid.RowSpan="2">
             <StackPanel>
                 <TextBlock x:Uid="SettingsDonateDescriptionTextBlock" TextWrapping="WrapWholeWords" Margin="0,10" />
 
@@ -113,7 +132,7 @@
             </StackPanel>
         </ContentDialog>
 
-        <ContentDialog x:Uid="SettingsDisclaimerContentDialog" x:Name="DisclaimerContentDialog" Grid.Row="0" Grid.RowSpan="2">
+        <ContentDialog x:Uid="SettingsDisclaimerContentDialog" x:Name="DisclaimerContentDialog" x:DeferLoadStrategy="Lazy" Grid.Row="0" Grid.RowSpan="2">
             <RichTextBlock IsTextSelectionEnabled="False">
                 <Paragraph Margin="0,10">
                     Text on Wikipedia® is available under the 

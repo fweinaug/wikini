@@ -94,7 +94,6 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\Logo2.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
@@ -125,7 +124,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DeviceService.cs" />
+    <Compile Include="Services\ThemeService.cs" />
     <Compile Include="Services\WikipediaApi.cs" />
+    <Compile Include="Services\WikipediaHtmlBuilder.cs" />
     <Compile Include="ViewModel\ArticleHistory.cs" />
     <Compile Include="Views\AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>

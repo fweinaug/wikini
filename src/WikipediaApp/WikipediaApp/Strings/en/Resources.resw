@@ -171,6 +171,18 @@
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
     <value>About this app</value>
   </data>
+  <data name="SettingsDesignDarkRadioButton.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="SettingsDesignLightRadioButton.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="SettingsDesignSystemRadioButton.Content" xml:space="preserve">
+    <value>Use system setting</value>
+  </data>
+  <data name="SettingsDesignTextBlock.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
   <data name="SettingsDisclaimerButton.Content" xml:space="preserve">
     <value>Disclaimer</value>
   </data>

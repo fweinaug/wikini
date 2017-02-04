@@ -8,6 +8,7 @@ namespace WikipediaApp
   {
     public event PropertyChangedEventHandler PropertyChanged;
 
+    public const int DefaultAppTheme = 0;
     public const string DefaultSearchLanguage = "en";
     public const bool DefaultSectionsCollapsed = false;
     public const bool DefaultSearchRestricted = false;
@@ -15,6 +16,12 @@ namespace WikipediaApp
     public static Settings Current { get; private set; }
 
     private readonly ApplicationDataContainer container;
+
+    public int AppTheme
+    {
+      get { return GetValue(DefaultAppTheme); }
+      set { SetValue(value); }
+    }
 
     public string SearchLanguage
     {
@@ -45,9 +52,6 @@ namespace WikipediaApp
       Current = this;
 
       container = ApplicationData.Current.RoamingSettings;
-
-      // TODO: Am Ende entfernen
-      //ShowThanks = false;
     }
 
     private T GetValue<T>(T defaultValue, [CallerMemberName]string name = null)

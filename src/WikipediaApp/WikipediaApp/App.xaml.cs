@@ -1,6 +1,5 @@
 ﻿using System;
 using Windows.ApplicationModel.Activation;
-using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.HockeyApp;
@@ -40,9 +39,6 @@ namespace WikipediaApp
 
       if (shell == null)
       {
-        // TODO: Am Ende entfernen
-        ApplicationLanguages.PrimaryLanguageOverride = "en-US";
-
         shell = new AppShell();
         shell.AppFrame.NavigationFailed += OnNavigationFailed;
 

@@ -171,6 +171,18 @@
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
     <value>Info zu dieser App</value>
   </data>
+  <data name="SettingsDesignDarkRadioButton.Content" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="SettingsDesignLightRadioButton.Content" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="SettingsDesignSystemRadioButton.Content" xml:space="preserve">
+    <value>Systemeinstellung verwenden</value>
+  </data>
+  <data name="SettingsDesignTextBlock.Text" xml:space="preserve">
+    <value>Design</value>
+  </data>
   <data name="SettingsDisclaimerButton.Content" xml:space="preserve">
     <value>Rechtliche Hinweise</value>
   </data>

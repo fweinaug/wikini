@@ -23,12 +23,28 @@ namespace WikipediaApp
       var version = package.Id.Version;
 
       AppNameTextBlock.Text = package.DisplayName;
-      AppVersionTextBlock.Text = string.Format("Version {0}.{1}", version.Major, version.Minor);
+      AppVersionTextBlock.Text = string.Format("Version {0}.{1}.{2}", version.Major, version.Minor, version.Build);
       DevNameTextBlock.Text = package.PublisherDisplayName;
+
+      var theme = Settings.Current.AppTheme.ToString();
+
+      foreach (var uiElement in ThemePanel.Children)
+      {
+        var radioButton = uiElement as RadioButton;
+        if (radioButton != null)
+          radioButton.IsChecked = Equals(radioButton.Tag, theme);
+      }
 
 #if DEBUG
       await InAppPurchases.ConfigureSimulator();
 #endif
+    }
+
+    private void RadioButtonThemeChecked(object sender, RoutedEventArgs e)
+    {
+      var radioButton = (RadioButton)sender;
+
+      Settings.Current.AppTheme = Convert.ToInt32(radioButton.Tag);
     }
 
     private async void ReviewClick(object sender, RoutedEventArgs e)
@@ -45,7 +61,9 @@ namespace WikipediaApp
 
     private async void DonateClick(object sender, RoutedEventArgs e)
     {
-      await DonateContentDialog.ShowAsync();
+      var dialog = (ContentDialog)FindName("DonateContentDialog");
+      if (dialog != null)
+        await dialog.ShowAsync();
     }
 
     private void DonateOneButtonClick(object sender, RoutedEventArgs e)
@@ -76,7 +94,9 @@ namespace WikipediaApp
 
     private async void DisclaimerClick(object sender, RoutedEventArgs e)
     {
-      await DisclaimerContentDialog.ShowAsync();
+      var dialog = (ContentDialog)FindName("DisclaimerContentDialog");
+      if (dialog != null)
+        await dialog.ShowAsync();
     }
   }
 }

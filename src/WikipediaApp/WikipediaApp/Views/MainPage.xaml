@@ -7,6 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <x:Double x:Key="WatermarkImageOpacity">0.1</x:Double>
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Dark">
+                    <x:Double x:Key="WatermarkImageOpacity">0.17</x:Double>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -63,7 +77,7 @@
                         </Button>
                     </Grid>
 
-                    <Image Grid.Row="1" Source="/Assets/Logo2.png" Width="150" Height="150"
+                    <Image Grid.Row="1" Source="/Assets/Logo.png" Width="120" Height="120" Opacity="{ThemeResource WatermarkImageOpacity}"
                            Visibility="{Binding SearchResults, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}" />
 
                     <ListView Grid.Row="1" ItemsSource="{Binding SearchResults}" SelectionMode="None"

@@ -26,7 +26,13 @@ namespace WikipediaApp
       if (string.IsNullOrEmpty(content))
         return;
 
-      await WebView.ClearTemporaryWebDataAsync();
+      try
+      {
+        await WebView.ClearTemporaryWebDataAsync();
+      }
+      catch (Exception)
+      {
+      }
 
       var webView = (WebView)d;
       webView.NavigateToString(content);
