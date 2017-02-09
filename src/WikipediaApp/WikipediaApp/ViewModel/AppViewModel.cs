@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace WikipediaApp
 {
-  public class AppViewModel : ViewModelBase
+  public partial class AppViewModel : ViewModelBase
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
     private readonly DialogService dialogService = new DialogService();
     private readonly DeviceService deviceService = new DeviceService();
-    private readonly object thisLock = new object();
 
     private bool isBusy = false;
 
@@ -23,10 +21,6 @@ namespace WikipediaApp
     private IList<Language> languages = null;
     private Language language = null;
     private Command<Language> changeLanguageCommand = null;
-
-    private string searchTerm = null;
-    private Command searchCommand = null;
-    private IList<ArticleHead> searchResults = null;
 
     public bool IsBusy
     {
@@ -71,32 +65,6 @@ namespace WikipediaApp
       get { return changeLanguageCommand ?? (changeLanguageCommand = new Command<Language>(ChangeLanguage)); }
     }
 
-    public string SearchTerm
-    {
-      get { return searchTerm; }
-      set
-      {
-        if (SetProperty(ref searchTerm, value))
-        {
-          searchCommand?.RaiseCanExecuteChanged();
-
-          if (Settings.Current.SearchRestricted || deviceService.IsInternetConnectionUnrestricted())
-            Search();
-        }
-      }
-    }
-
-    public ICommand SearchCommand
-    {
-      get { return searchCommand ?? (searchCommand = new Command(Search, CanSearch)); }
-    }
-
-    public IList<ArticleHead> SearchResults
-    {
-      get { return searchResults; }
-      private set { SetProperty(ref searchResults, value); }
-    }
-
     private void ShowSettings()
     {
       navigationService.ShowSettings();
@@ -137,51 +105,13 @@ namespace WikipediaApp
 
     private void ChangeLanguage(Language language)
     {
+      if (Language == language)
+        return;
+
       Settings.Current.SearchLanguage = language.Code;
 
       Language = language;
-      SearchResults = null;
-    }
-
-    private async void Search()
-    {
-      await Task.Delay(100);
-
-      if (string.IsNullOrEmpty(searchTerm))
-        SearchResults = null;
-      else
-      {
-        var results = await wikipediaService.Search(searchTerm, language.Code);
-
-        lock (thisLock)
-        {
-          if (ContainsNewArticles(searchResults, results))
-            SearchResults = results;
-        }
-      }
-    }
-
-
-    private static bool ContainsNewArticles(IList<ArticleHead> currentArticles, IList<ArticleHead> foundArticles)
-    {
-      if (currentArticles == null || foundArticles == null)
-        return !Equals(currentArticles, foundArticles);
-
-      if (currentArticles.Count != foundArticles.Count)
-        return true;
-
-      for (var i = 0; i < currentArticles.Count; ++i)
-      {
-        if (currentArticles[i].Uri != foundArticles[i].Uri)
-          return true;
-      }
-
-      return false;
-    }
-
-    private bool CanSearch()
-    {
-      return !string.IsNullOrEmpty(searchTerm);
+      Search();
     }
 
     public override async void Initialize()

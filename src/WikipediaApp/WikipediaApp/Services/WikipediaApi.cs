@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Web.Http;
 using Microsoft.HockeyApp;
@@ -209,12 +210,12 @@ namespace WikipediaApp
 
   public class WikipediaSearchApi : WikipediaApi
   {
-    public async Task<IList<ArticleHead>> Search(string searchTerm, string language)
+    public async Task<IList<ArticleHead>> Search(string searchTerm, string language, CancellationToken? cancellationToken)
     {
       var list = new List<ArticleHead>();
 
       var query = "action=opensearch&search=" + searchTerm + "&namespace=0&redirects=resolve&limit=10";
-      var response = await SendRequest(language, query);
+      var response = await SendRequest(language, query, cancellationToken);
       if (string.IsNullOrEmpty(response))
         return list;
 
@@ -249,12 +250,14 @@ namespace WikipediaApp
       return result;
     }
 
-    protected async Task<string> SendRequest(string language, string query)
+    protected async Task<string> SendRequest(string language, string query, CancellationToken? cancellationToken = null)
     {
-      var client = new HttpClient();
-
       var requestUri = new Uri("https://" + language + ".wikipedia.org/w/api.php?format=json&formatversion=2&" + query);
-      var response = await client.GetStringAsync(requestUri);
+
+      var client = new HttpClient();
+      var operation = client.GetStringAsync(requestUri);
+
+      var response = cancellationToken != null ? await operation.AsTask(cancellationToken.Value) : await operation;
 
       return response;
     }

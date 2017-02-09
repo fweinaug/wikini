@@ -68,7 +68,8 @@
                             </Button.Content>
                         </Button>
                         
-                        <TextBox Grid.Column="1" Margin="5,0" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Grid.Column="1" Margin="5,0" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 local:TextBoxExtensions.EnterCommand="{Binding SearchCommand}" />
                         
                         <Button Grid.Column="2" Command="{Binding SearchCommand}">
                             <Button.Content>
@@ -79,6 +80,10 @@
 
                     <Image Grid.Row="1" Source="/Assets/Logo.png" Width="120" Height="120" Opacity="{ThemeResource WatermarkImageOpacity}"
                            Visibility="{Binding SearchResults, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}" />
+
+                    <TextBlock x:Uid="MainNoSearchResultsTextBlock" Grid.Row="1" Margin="0,30" FontWeight="SemiLight" Foreground="Gray"
+                               HorizontalAlignment="Center" VerticalAlignment="Top"
+                               Visibility="{Binding NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
                     <ListView Grid.Row="1" ItemsSource="{Binding SearchResults}" SelectionMode="None"
                               Visibility="{Binding SearchResults, Converter={StaticResource CollectionToVisibilityConverter}}"

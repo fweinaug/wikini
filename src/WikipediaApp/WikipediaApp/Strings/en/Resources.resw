@@ -124,7 +124,7 @@
     <value>Close</value>
   </data>
   <data name="AppArticleLoadingFailedContentDialog.Title" xml:space="preserve">
-    <value>Problem :(</value>
+    <value>Sorry :(</value>
   </data>
   <data name="ArticleBrowserAppBarButton.Label" xml:space="preserve">
     <value>Open in Browser</value>
@@ -161,6 +161,9 @@
   </data>
   <data name="MainLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Languages</value>
+  </data>
+  <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
+    <value>No articles found</value>
   </data>
   <data name="MainRandomAppBarButton.Label" xml:space="preserve">
     <value>Random</value>

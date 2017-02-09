@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Storage;
@@ -153,17 +154,21 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<IList<ArticleHead>> Search(string searchTerm, string language)
+    public async Task<IList<ArticleHead>> Search(string searchTerm, string language, CancellationToken? cancellationToken)
     {
       try
       {
-        return await searchApi.Search(searchTerm, language);
+        return await searchApi.Search(searchTerm, language, cancellationToken);
+      }
+      catch (TaskCanceledException)
+      {
+        return null;
       }
       catch (Exception ex)
       {
         HockeyClient.Current.TrackException(ex);
 
-        return new List<ArticleHead>();
+        return null;
       }
     }
   }
