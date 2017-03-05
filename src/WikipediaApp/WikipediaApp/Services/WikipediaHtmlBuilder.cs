@@ -2,10 +2,14 @@ namespace WikipediaApp
 {
   public static class WikipediaHtmlBuilder
   {
-    public static string BuildArticle(string title, string content, string language, bool darkMode, bool sectionsCollapsed)
+    public static string BuildArticle(string title, string content, string language)
     {
+      var app = App.Current;
+
+      var darkMode = app.InDarkMode();
       var styles = GetArticleStyles(darkMode);
-      var sectionsCollapsedString = sectionsCollapsed ? "true" : "false";
+
+      var sectionsCollapsedString = app.Settings.SectionsCollapsed ? "true" : "false";
 
       var html = $@"
         <!DOCTYPE html>

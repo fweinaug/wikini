@@ -112,23 +112,18 @@ namespace WikipediaApp
 
   public class WikipediaParseApi : WikipediaApi
   {
-    public async Task<Article> FetchArticle(string language, bool darkMode, bool sectionsCollapsed, Uri uri, int? pageId = null, string title = null, Article article = null)
+    public async Task<Article> FetchArticle(string language, Uri uri, int? pageId = null, string title = null, Article article = null)
     {
       var query = "action=parse&prop=text|sections|langlinks|headhtml&disableeditsection=&disabletoc=&mobileformat=&";
       if (pageId != null)
         query += "pageid=" + pageId;
       else
-        query += "page=" + title;
+        query += "page=" + title + "&redirects=";
 
       var rootObject = await QueryAndParse<ParseRoot>(language, query);
       var parseResult = rootObject?.parse;
       if (parseResult == null)
         return null;
-
-      var parseTitle = parseResult.title;
-      var parseContent = parseResult.text;
-
-      var content = WikipediaHtmlBuilder.BuildArticle(parseTitle, parseContent, language, darkMode, sectionsCollapsed);
 
       var sections = new List<ArticleSection>();
       if (parseResult.sections != null && parseResult.sections.Count > 0)
@@ -163,8 +158,8 @@ namespace WikipediaApp
 
       article.Language = language;
       article.PageId = parseResult.pageid;
-      article.Title = parseTitle;
-      article.Content = content;
+      article.Title = parseResult.title;
+      article.Content = parseResult.text;
       article.Uri = uri;
       article.Sections = sections;
       article.Languages = languages;

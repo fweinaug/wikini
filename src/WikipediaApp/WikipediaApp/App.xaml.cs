@@ -33,6 +33,15 @@ namespace WikipediaApp
       InitializeComponent();
     }
 
+    public bool InDarkMode()
+    {
+      var appTheme = settings.AppTheme;
+      var darkMode = appTheme == 2 ||
+                     appTheme == 0 && RequestedTheme == ApplicationTheme.Dark;
+
+      return darkMode;
+    }
+
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
       var shell = Window.Current.Content as AppShell;

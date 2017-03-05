@@ -1,4 +1,4 @@
-﻿using Windows.UI.Core;
+﻿using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -24,7 +24,24 @@ namespace WikipediaApp
     {
       base.OnNavigatedTo(e);
 
+      DataTransferManager.GetForCurrentView().DataRequested += ArticlePageDataRequested;
+
       DataContext = e.Parameter;
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    {
+      DataTransferManager.GetForCurrentView().DataRequested -= ArticlePageDataRequested;
+    }
+
+    private void ArticlePageDataRequested(DataTransferManager sender, DataRequestedEventArgs e)
+    {
+      var article = ArticleView.Article;
+      if (article == null)
+        return;
+
+      e.Request.Data.Properties.Title = article.Title;
+      e.Request.Data.SetWebLink(article.Uri);
     }
 
     private void HistoryButtonClick(object sender, RoutedEventArgs e)
@@ -54,9 +71,7 @@ namespace WikipediaApp
 
       SplitView.IsPaneOpen = false;
 
-      var anchor = section.Anchor;
-
-      WebView.ScrollToElement(anchor);
+      ArticleView.ScrollToSection(section);
     }
 
     private void LangaugesButtonClick(object sender, RoutedEventArgs e)
@@ -78,7 +93,22 @@ namespace WikipediaApp
 
     private void TopButtonClick(object sender, RoutedEventArgs e)
     {
-      WebView.ScrollToTop();
+      ArticleView.ScrollToTop();
+    }
+
+    private void BackButtonClick(object sender, RoutedEventArgs e)
+    {
+      ArticleView.GoBack();
+    }
+
+    private void ForwardButtonClick(object sender, RoutedEventArgs e)
+    {
+      ArticleView.GoForward();
+    }
+
+    private void ShareButtonClick(object sender, RoutedEventArgs e)
+    {
+      DataTransferManager.ShowShareUI();
     }
   }
 }

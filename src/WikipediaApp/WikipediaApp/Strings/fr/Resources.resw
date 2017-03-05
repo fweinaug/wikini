@@ -118,159 +118,159 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppArticleLoadingFailedContentDialog.Content" xml:space="preserve">
-    <value>Der Artikel konnte leider nicht geladen werden. Bitte überprüfen Sie Ihre Internetverbindung und versuchen es erneut.</value>
+    <value>L'articles ne peut pas être chargé. Veuillez vérifier votre connexion internet et réessayer.</value>
   </data>
   <data name="AppArticleLoadingFailedContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Fermer</value>
   </data>
   <data name="AppArticleLoadingFailedContentDialog.Title" xml:space="preserve">
-    <value>Entschuldigung :(</value>
+    <value>Désolé :(</value>
   </data>
   <data name="ArticleBackAppBarButton.Label" xml:space="preserve">
-    <value>Zurück</value>
+    <value>Retour</value>
   </data>
   <data name="ArticleBrowserAppBarButton.Label" xml:space="preserve">
-    <value>Im Browser öffnen</value>
+    <value>Ouvrir dans le navigateur</value>
   </data>
   <data name="ArticleContentsAppBarButton.Label" xml:space="preserve">
-    <value>Inhalt</value>
+    <value>Contenu</value>
   </data>
   <data name="ArticleContentsPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Inhaltsverzeichnis</value>
+    <value>Table des matières</value>
   </data>
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
-    <value>Vorwärts</value>
+    <value>Vers l'avant</value>
   </data>
   <data name="ArticleHistoryAppBarButton.Label" xml:space="preserve">
-    <value>Verlauf</value>
+    <value>Historique</value>
   </data>
   <data name="ArticleHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Verlauf</value>
+    <value>Historique</value>
   </data>
   <data name="ArticleLanguagesAppBarButton.Label" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Langues</value>
   </data>
   <data name="ArticleLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Langues</value>
   </data>
   <data name="ArticleRefreshAppBarButton.Label" xml:space="preserve">
-    <value>Aktualisieren</value>
+    <value>Rafraîchir</value>
   </data>
   <data name="ArticleSettingsAppBarButton.Label" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Paramètres</value>
   </data>
   <data name="ArticleShareAppBarButton.Label" xml:space="preserve">
-    <value>Teilen</value>
+    <value>Partager</value>
   </data>
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
-    <value>Zum Anfang</value>
+    <value>Aller au début</value>
   </data>
   <data name="MainHomepageAppBarButton.Label" xml:space="preserve">
-    <value>Startseite</value>
+    <value>Page d'accueil</value>
   </data>
   <data name="MainLanguagesAppBarButton.Label" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Langues</value>
   </data>
   <data name="MainLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Langues</value>
   </data>
   <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
-    <value>Keine Artikel gefunden</value>
+    <value>Aucun article trouvé</value>
   </data>
   <data name="MainRandomAppBarButton.Label" xml:space="preserve">
-    <value>Zufall</value>
+    <value>Aléatoire</value>
   </data>
   <data name="MainSettingsAppBarButton.Label" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Paramètres</value>
   </data>
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
-    <value>Info zu dieser App</value>
+    <value>À propos de cette application</value>
   </data>
   <data name="SettingsChangelogButton.Content" xml:space="preserve">
-    <value>Neuerungen</value>
+    <value>Quoi de neuf</value>
   </data>
   <data name="SettingsChangelogContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Fermer</value>
   </data>
   <data name="SettingsChangelogContentDialog.Title" xml:space="preserve">
-    <value>Neuerungen</value>
+    <value>Quoi de neuf</value>
   </data>
   <data name="SettingsDesignDarkRadioButton.Content" xml:space="preserve">
-    <value>Dunkel</value>
+    <value>Foncé</value>
   </data>
   <data name="SettingsDesignLightRadioButton.Content" xml:space="preserve">
-    <value>Hell</value>
+    <value>Clair</value>
   </data>
   <data name="SettingsDesignSystemRadioButton.Content" xml:space="preserve">
-    <value>Systemeinstellung verwenden</value>
+    <value>Utiliser les réglages système</value>
   </data>
   <data name="SettingsDesignTextBlock.Text" xml:space="preserve">
     <value>Design</value>
   </data>
   <data name="SettingsDisclaimerButton.Content" xml:space="preserve">
-    <value>Rechtliche Hinweise</value>
+    <value>Avertissement</value>
   </data>
   <data name="SettingsDisclaimerContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Fermer</value>
   </data>
   <data name="SettingsDisclaimerContentDialog.Title" xml:space="preserve">
-    <value>Rechtliche Hinweise</value>
+    <value>Avertissement</value>
   </data>
   <data name="SettingsDonateButton.Content" xml:space="preserve">
-    <value>Spenden</value>
+    <value>Don</value>
   </data>
   <data name="SettingsDonateContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Fermer</value>
   </data>
   <data name="SettingsDonateContentDialog.Title" xml:space="preserve">
-    <value>Für Wikini spenden</value>
+    <value>Don pour Wikini</value>
   </data>
   <data name="SettingsDonateDescriptionTextBlock.Text" xml:space="preserve">
-    <value>Wenn dir die App gefällt, kannst du mich gerne mit einer kleinen Spende unterstützen.</value>
+    <value>Si vous aimez l'application, pensez à faire un petit don.</value>
   </data>
   <data name="SettingsDonateOneButton.Content" xml:space="preserve">
-    <value>0,99 Euro spenden</value>
+    <value>Don 0,99 Euros</value>
   </data>
   <data name="SettingsDonateThreeButton.Content" xml:space="preserve">
-    <value>4,99 Euro spenden</value>
+    <value>Don 4,99 Euros</value>
   </data>
   <data name="SettingsDonateTwoButton.Content" xml:space="preserve">
-    <value>2,99 Euro spenden</value>
+    <value>Don 2,99 Euros</value>
   </data>
   <data name="SettingsFeedbackButton.Content" xml:space="preserve">
-    <value>Feedback</value>
+    <value>Commentaire</value>
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Paramètres</value>
   </data>
   <data name="SettingsReviewButton.Content" xml:space="preserve">
-    <value>Im Store bewerten</value>
+    <value>Évaluer dans le Store</value>
   </data>
   <data name="SettingsSearchRestrictedTextBlock.Text" xml:space="preserve">
-    <value>Live-Suche</value>
+    <value>Recherche</value>
   </data>
   <data name="SettingsSearchRestrictedToggleSwitch.Header" xml:space="preserve">
-    <value>Suchergebnisse auch bei einer getakteten Verbindung bereits während der Eingabe anzeigen</value>
+    <value>Afficher les résultats quand connecté au réseau</value>
   </data>
   <data name="SettingsSearchRestrictedToggleSwitch.OffContent" xml:space="preserve">
-    <value>Aus</value>
+    <value>Désactivé</value>
   </data>
   <data name="SettingsSearchRestrictedToggleSwitch.OnContent" xml:space="preserve">
-    <value>Ein</value>
+    <value>Activé</value>
   </data>
   <data name="SettingsSectionsCollapsedTextBlock.Text" xml:space="preserve">
-    <value>Abschnitte</value>
+    <value>Parties</value>
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.Header" xml:space="preserve">
-    <value>Beim Aufruf eines Artikels alle Abschnitte einklappen und im Inhaltsverzeichnis nur die Hauptkapitel anzeigen</value>
+    <value>Réduire les parties quand les articles s'ouvrent et montrer les principaux chapitres dans la table des matières</value>
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.OffContent" xml:space="preserve">
-    <value>Aus</value>
+    <value>Désactivé</value>
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.OnContent" xml:space="preserve">
-    <value>Ein</value>
+    <value>Activé</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
-    <value>Vielen Dank!</value>
+    <value>Merci !</value>
   </data>
 </root>

@@ -1,0 +1,40 @@
+﻿[
+    [
+        "Bugfix"
+    ],
+    [
+        "Back/forward in article view to switch between recently opened articles (After the article finished loading the app will restore the previous scroll position.)",
+        "Share articles, e.g. per e-mail or messenger apps",
+        "Resolve redirects to a different article",
+        "Open settings from the article view",
+        "Overview of all released updates and their respective changelog",
+        "French translation (Thanks to Rémi!)"
+    ],
+    [
+        "Changing the language triggers search"
+    ],
+    [
+        "Improved live search",
+        "Enter triggers the search",
+        "Notice 'no articles found'"
+    ],
+    [
+        "Dark Mode"
+    ],
+    [
+        "Tooltips for listview items",
+        "Bugfixes"
+    ],
+    [
+        "Search for articles in selected language",
+        "Live search",
+        "Table of contents of the article",
+        "Change language of the article",
+        "Open article in browser",
+        "History of viewed articles",
+        "Open a random article",
+        "Open homepage of Wikipedia",
+        "Setting whether live search should be executed when connected to a metered network",
+        "Setting whether all sections should be collapsed when opening articles"
+    ]
+]

@@ -98,5 +98,15 @@ namespace WikipediaApp
       if (dialog != null)
         await dialog.ShowAsync();
     }
+
+    private async void ChangelogClick(object sender, RoutedEventArgs e)
+    {
+      var dialog = (ContentDialog)FindName("ChangelogContentDialog");
+      if (dialog != null)
+      {
+        await ChangelogView.LoadAndShowChangelog();
+        await dialog.ShowAsync();
+      }
+    }
   }
 }

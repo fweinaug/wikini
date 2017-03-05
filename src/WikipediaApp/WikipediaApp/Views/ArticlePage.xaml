@@ -111,10 +111,8 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <WebView x:Name="WebView" DefaultBackgroundColor="Transparent"
-                         local:WebViewExtensions.Content="{Binding Article.Content}"
-                         local:WebViewExtensions.NavigatingCommand="{Binding NavigateCommand}"
-                         local:WebViewExtensions.NavigatedCommand="{Binding LoadedCommand}" />
+                <local:ArticleView x:Name="ArticleView" Article="{Binding Article}" ShowArticleCommand="{Binding ShowArticleCommand}"
+                                   NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}" />
             </SplitView.Content>
         </SplitView>
 
@@ -123,10 +121,19 @@
 
         <CommandBar Grid.Row="1">
             <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="ArticleForwardAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoForward}" Click="ForwardButtonClick" />
                 <AppBarButton x:Uid="ArticleTopAppBarButton" Click="TopButtonClick" />
                 <AppBarButton x:Uid="ArticleRefreshAppBarButton" Command="{Binding RefreshCommand}" />
+                <AppBarButton x:Uid="ArticleShareAppBarButton" Click="ShareButtonClick" />
                 <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}" />
+                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Command="{Binding ShowSettingsCommand}" />
             </CommandBar.SecondaryCommands>
+
+            <AppBarButton x:Uid="ArticleBackAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoBack}" Click="BackButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE76B;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
 
             <AppBarButton x:Uid="ArticleHistoryAppBarButton" Click="HistoryButtonClick">
                 <AppBarButton.Icon>

@@ -1,0 +1,40 @@
+﻿[
+    [
+        "Fehlerbehebung"
+    ],
+    [
+        "Zurück/Vorwärts in Artikelansicht, um zwischen zuletzt aufgerufenen Artikeln zu wechseln (Nach dem Laden wird die vorherige Scroll-Position innerhalb des Artikels wiederhergestellt.)",
+        "Artikel teilen, z. B. per E-Mail oder Messenger-Apps",
+        "Weiterleitungen auf einen anderen Artikel auflösen",
+        "Einstellungen aus Artikelansicht aufrufen",
+        "Übersicht der bisher veröffentlichten Versionen und die darin enthaltenen Neuerungen",
+        "Französische Übersetzung (Danke an Rémi!)"
+    ],
+    [
+        "Sprache wechseln löst Suche aus"
+    ],
+    [
+        "Verbesserte Live-Suche",
+        "Enter löst Suche aus",
+        "Hinweis \"Keine Artikel gefunden\""
+    ],
+    [
+        "Dunkles Design"
+    ],
+    [
+        "Tooltips für Listeneinträge",
+        "Fehlerbehebungen"
+    ],
+    [
+        "Suche nach Artikeln in gewünschter Sprache",
+        "Live-Suche",
+        "Inhaltsverzeichnis des Artikels anzeigen und zu Abschnitt springen",
+        "Sprache des Artikels wechseln",
+        "Artikel im Browser öffnen",
+        "Verlauf der aufgerufenen Artikel",
+        "Zufälligen Artikel anzeigen",
+        "Wikipedia-Startseite anzeigen",
+        "Einstellung ob Live-Suche bei getakteten Verbindungen ausgeführt werden soll",
+        "Einstellung ob beim Aufruf eines Artikels alle Abschnitte eingeklappt sein sollen"
+    ]
+]

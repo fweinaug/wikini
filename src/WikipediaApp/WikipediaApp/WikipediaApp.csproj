@@ -117,14 +117,24 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Data\in-app-purchases.xml" />
     <Content Include="Data\languages.json" />
+    <Content Include="Data\versions.json" />
+    <Content Include="Data\de\changelog.json" />
+    <Content Include="Data\en\changelog.json" />
     <None Include="project.json" />
+    <PRIResource Include="Strings\fr\Resources.resw" />
+    <PRIResource Include="Strings\fr\ManifestStrings.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChangelogView.xaml.cs">
+      <DependentUpon>ChangelogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ArticleView.xaml.cs">
+      <DependentUpon>ArticleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\DeviceService.cs" />
-    <Compile Include="Services\ThemeService.cs" />
     <Compile Include="Services\WikipediaApi.cs" />
     <Compile Include="Services\WikipediaHtmlBuilder.cs" />
     <Compile Include="ViewModel\AppViewModel.Search.cs" />
@@ -183,6 +193,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ChangelogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ArticleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\SplitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

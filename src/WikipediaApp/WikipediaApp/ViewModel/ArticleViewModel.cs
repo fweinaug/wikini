@@ -9,9 +9,10 @@ namespace WikipediaApp
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
     private readonly DialogService dialogService = new DialogService();
-    private readonly ThemeService themeService = new ThemeService();
 
     private bool isBusy = false;
+
+    private Command showSettingsCommand = null;
 
     private readonly ArticleHead initialArticle;
 
@@ -31,6 +32,11 @@ namespace WikipediaApp
     {
       get { return isBusy; }
       set { SetProperty(ref isBusy, value); }
+    }
+
+    public ICommand ShowSettingsCommand
+    {
+      get { return showSettingsCommand ?? (showSettingsCommand = new Command(ShowSettings)); }
     }
 
     public IList<Article> History
@@ -108,6 +114,11 @@ namespace WikipediaApp
       this.initialArticle = initialArticle;
     }
 
+    private void ShowSettings()
+    {
+      navigationService.ShowSettings();
+    }
+
     private async void Refresh()
     {
       if (article == null && initialArticle == null)
@@ -115,11 +126,9 @@ namespace WikipediaApp
 
       IsBusy = true;
 
-      var darkMode = themeService.IsDarkMode();
-
       var updated = article != null
-        ? await wikipediaService.RefreshArticle(article, darkMode, Settings.Current.SectionsCollapsed)
-        : await wikipediaService.GetArticle(initialArticle, darkMode, Settings.Current.SectionsCollapsed);
+        ? await wikipediaService.RefreshArticle(article)
+        : await wikipediaService.GetArticle(initialArticle);
 
       if (updated != null)
       {
@@ -153,9 +162,7 @@ namespace WikipediaApp
 
       if (wikipediaService.IsWikipediaUri(uri))
       {
-        var darkMode = themeService.IsDarkMode();
-
-        var article = await wikipediaService.GetArticle(uri, darkMode, Settings.Current.SectionsCollapsed);
+        var article = await wikipediaService.GetArticle(uri);
 
         if (article != null)
         {
@@ -192,11 +199,12 @@ namespace WikipediaApp
 
     public override async void Initialize()
     {
+      if (Article != null)
+        return;
+
       IsBusy = true;
 
-      var darkMode = themeService.IsDarkMode();
-
-      var article = await wikipediaService.GetArticle(initialArticle, darkMode, Settings.Current.SectionsCollapsed);
+      var article = await wikipediaService.GetArticle(initialArticle);
 
       if (article != null)
         Article = article;
