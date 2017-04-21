@@ -41,6 +41,12 @@ namespace WikipediaApp
       set { SetValue(value); }
     }
 
+    public int FontSize
+    {
+      get { return GetValue(15); }
+      set { SetValue(value); }
+    }
+
     public bool ShowThanks
     {
       get { return GetValue(false); }

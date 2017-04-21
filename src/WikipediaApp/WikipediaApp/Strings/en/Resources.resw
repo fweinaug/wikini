@@ -240,6 +240,15 @@
   <data name="SettingsFeedbackButton.Content" xml:space="preserve">
     <value>Feedback</value>
   </data>
+  <data name="SettingsFontSizePreviewTextBlock.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="SettingsFontSizeSlider.Header" xml:space="preserve">
+    <value>Show articles in selected font size</value>
+  </data>
+  <data name="SettingsFontSizeTextBlock.Text" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Settings</value>
   </data>

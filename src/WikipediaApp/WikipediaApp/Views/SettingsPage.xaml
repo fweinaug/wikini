@@ -12,10 +12,14 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="SaparatorBrush">#DCDCDC</SolidColorBrush>
+                    <SolidColorBrush x:Key="FontSizePreviewBackgroundBrush">#F7F7F7</SolidColorBrush>
+                    <SolidColorBrush x:Key="FontSizePreviewBorderBrush">#DCDCDC</SolidColorBrush>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="SaparatorBrush">#343434</SolidColorBrush>
+                    <SolidColorBrush x:Key="FontSizePreviewBackgroundBrush">#191919</SolidColorBrush>
+                    <SolidColorBrush x:Key="FontSizePreviewBorderBrush">#343434</SolidColorBrush>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -34,6 +38,12 @@
                 <Setter Property="Fill" Value="{ThemeResource SaparatorBrush}" />
                 <Setter Property="Margin" Value="0,5,0,15" />
             </Style>
+
+            <ControlTemplate x:Key="FontSizePreview">
+                <Border BorderBrush="{ThemeResource FontSizePreviewBorderBrush}" BorderThickness="1" Background="{ThemeResource FontSizePreviewBackgroundBrush}" Height="35">
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
         </ResourceDictionary>
     </Page.Resources>
     
@@ -55,6 +65,14 @@
                 <StackPanel Margin="0,10">
                     <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsSectionsCollapsedToggleSwitch" IsOn="{Binding SectionsCollapsed, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <TextBlock x:Uid="SettingsFontSizeTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <Slider x:Uid="SettingsFontSizeSlider" Name="FontSizeSlider" Value="{Binding FontSize, Mode=TwoWay}" Minimum="10" Maximum="25" />
+                    <ContentControl Template="{StaticResource FontSizePreview}">
+                        <TextBlock x:Uid="SettingsFontSizePreviewTextBlock" FontSize="{Binding ElementName=FontSizeSlider, Path=Value}" />
+                    </ContentControl>
                 </StackPanel>
 
                 <StackPanel x:Name="ThemePanel" Margin="0,10">

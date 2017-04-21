@@ -5,11 +5,13 @@ namespace WikipediaApp
     public static string BuildArticle(string title, string content, string language)
     {
       var app = App.Current;
+      var settings = app.Settings;
 
       var darkMode = app.InDarkMode();
-      var styles = GetArticleStyles(darkMode);
+      var fontSize = settings.FontSize;
+      var styles = GetArticleStyles(darkMode, fontSize);
 
-      var sectionsCollapsedString = app.Settings.SectionsCollapsed ? "true" : "false";
+      var sectionsCollapsedString = settings.SectionsCollapsed ? "true" : "false";
 
       var html = $@"
         <!DOCTYPE html>
@@ -48,9 +50,11 @@ namespace WikipediaApp
       return html;
     }
 
-    private static string GetArticleStyles(bool darkMode)
+    private static string GetArticleStyles(bool darkMode, int fontSize)
     {
       var styles = @"
+body { font-size: " + fontSize + @"px; }
+
         a, a:visited {color:#0063B1;}";
 
       if (darkMode)
