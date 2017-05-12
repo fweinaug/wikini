@@ -3,10 +3,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WikipediaApp">
 
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="SplitViewPaneBackgroundBrush" Color="#FAF2F2F2" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="SplitViewPaneBackgroundBrush" Color="#FA171717" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
     <Style TargetType="SplitView">
         <Setter Property="DisplayMode" Value="Overlay" />
         <Setter Property="OpenPaneLength" Value="300" />
         <Setter Property="PanePlacement" Value="Right" />
+        <Setter Property="PaneBackground" Value="{ThemeResource SplitViewPaneBackgroundBrush}" />
     </Style>
 
     <Style x:Key="SplitViewPaneHeaderTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">

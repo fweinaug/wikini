@@ -18,7 +18,9 @@ namespace WikipediaApp
 
     private Article article = null;
     private IList<ArticleSection> sections = null;
+    private bool hasSections = false;
     private IList<ArticleLanguage> languages = null;
+    private bool hasLanguages = false;
 
     private Command refreshCommand;
     private Command<ArticleLanguage> changeLanguageCommand;
@@ -70,13 +72,33 @@ namespace WikipediaApp
     public IList<ArticleSection> Sections
     {
       get { return sections; }
-      private set { SetProperty(ref sections, value); }
+      private set
+      {
+        if (SetProperty(ref sections, value))
+          HasSections = sections?.Count > 0;
+      }
+    }
+
+    public bool HasSections
+    {
+      get { return hasSections; }
+      private set { SetProperty(ref hasSections, value); }
     }
 
     public IList<ArticleLanguage> Languages
     {
       get { return languages; }
-      private set { SetProperty(ref languages, value); }
+      private set
+      {
+        if (SetProperty(ref languages, value))
+          HasLanguages = languages?.Count > 0;
+      }
+    }
+
+    public bool HasLanguages
+    {
+      get { return hasLanguages; }
+      private set { SetProperty(ref hasLanguages, value); }
     }
 
     public ICommand RefreshCommand

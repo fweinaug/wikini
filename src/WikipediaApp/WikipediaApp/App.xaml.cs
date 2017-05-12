@@ -1,5 +1,8 @@
 ﻿using System;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.HockeyApp;
@@ -44,6 +47,19 @@ namespace WikipediaApp
 
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
+      var applicationView = ApplicationView.GetForCurrentView();
+
+      applicationView.SetPreferredMinSize(new Size(320, 320));
+
+      var titleBar = applicationView.TitleBar;
+      if (titleBar != null)
+      {
+        var titleBarColor = (Color)Current.Resources["SystemAccentColor"];
+
+        titleBar.BackgroundColor = titleBarColor;
+        titleBar.ButtonBackgroundColor = titleBarColor;
+      }
+
       var shell = Window.Current.Content as AppShell;
 
       if (shell == null)

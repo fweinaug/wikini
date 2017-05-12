@@ -143,13 +143,13 @@
 
             <AppBarSeparator />
 
-            <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick">
+            <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick" IsEnabled="{Binding HasSections}">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE7BC;" />
                 </AppBarButton.Icon>
             </AppBarButton>
 
-            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Icon="World" Click="LangaugesButtonClick" />
+            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Icon="World" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}" />
         </CommandBar>
     </Grid>
 </Page>
