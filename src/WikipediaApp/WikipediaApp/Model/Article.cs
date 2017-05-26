@@ -15,6 +15,8 @@ namespace WikipediaApp
     public List<ArticleSection> Sections { get; set; }
     public List<ArticleLanguage> Languages { get; set; }
 
+    public string Anchor { get; set; }
+
     public List<ArticleSection> GetRootSections()
     {
       if (Sections == null || Sections.Count == 0)

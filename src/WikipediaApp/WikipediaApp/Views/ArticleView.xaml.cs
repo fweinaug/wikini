@@ -155,18 +155,35 @@ namespace WikipediaApp
       if (e.Uri == null)
         return;
 
-      var command = NavigateCommand;
-
-      if (command != null && command.CanExecute(e.Uri))
+      if (e.Uri.AbsolutePath == "/" && e.Uri.Fragment.StartsWith("#"))
       {
         e.Cancel = true;
 
-        command.Execute(e.Uri);
+        var id = e.Uri.Fragment.Substring(1);
+
+        WebView.ScrollToElement(id);
+      }
+      else
+      {
+        var command = NavigateCommand;
+
+        if (command != null && command.CanExecute(e.Uri))
+        {
+          e.Cancel = true;
+
+          command.Execute(e.Uri);
+        }
       }
     }
 
     private void WebViewNavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs e)
     {
+      if (e.IsSuccess)
+      {
+        if (!string.IsNullOrEmpty(Article?.Anchor))
+          WebView.ScrollToElement(Article.Anchor);
+      }
+
       var command = LoadedCommand;
 
       if (command != null && command.CanExecute(e.Uri))

@@ -51,8 +51,8 @@ namespace WikipediaApp
 
     public async Task<Article> GetArticle(Uri uri)
     {
-      string title, language;
-      if (!ParseUri(uri, out title, out language))
+      string title, language, anchor;
+      if (!ParseUri(uri, out title, out language, out anchor))
         return null;
 
       if (string.IsNullOrEmpty(title))
@@ -66,7 +66,7 @@ namespace WikipediaApp
 
       try
       {
-        return await parseApi.FetchArticle(language, uri, title: title);
+        return await parseApi.FetchArticle(language, uri, title: title, anchor: anchor);
       }
       catch (Exception ex)
       {
@@ -76,10 +76,11 @@ namespace WikipediaApp
       }
     }
 
-    private bool ParseUri(Uri uri, out string title, out string language)
+    private bool ParseUri(Uri uri, out string title, out string language, out string anchor)
     {
       title = null;
       language = null;
+      anchor = null;
 
       if (!IsWikipediaUri(uri))
         return false;
@@ -89,6 +90,9 @@ namespace WikipediaApp
 
       title = uri.AbsolutePath.Substring(6);
       language = uri.Host.Substring(0, uri.Host.IndexOf('.'));
+
+      if (uri.Fragment.StartsWith("#"))
+        anchor = uri.Fragment.Substring(1);
 
       return true;
     }
@@ -144,7 +148,7 @@ namespace WikipediaApp
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, article.Uri, article.PageId, article: article);
+        return await parseApi.FetchArticle(article.Language, article.Uri, article.PageId, anchor: article.Anchor, article: article);
       }
       catch (Exception ex)
       {

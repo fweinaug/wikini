@@ -10,8 +10,9 @@ namespace WikipediaApp
 
     public const int DefaultAppTheme = 0;
     public const string DefaultSearchLanguage = "en";
-    public const bool DefaultSectionsCollapsed = false;
     public const bool DefaultSearchRestricted = false;
+    public const bool DefaultSectionsCollapsed = false;
+    public const int DefaultFontSize = 15;
 
     public static Settings Current { get; private set; }
 
@@ -43,7 +44,7 @@ namespace WikipediaApp
 
     public int FontSize
     {
-      get { return GetValue(15); }
+      get { return GetValue(DefaultFontSize); }
       set { SetValue(value); }
     }
 

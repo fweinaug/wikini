@@ -1,5 +1,10 @@
 ﻿[
     [
+        "Display footnotes as a popup",
+        "Anchors in the article view work now",
+        "Use anchor of links to other articles"
+    ],
+    [
         "Wikini is now also available on the desktop!",
         "History, table of contents and language selection with light transparency",
         "Disable table of contents and language selection if there are no entries"

@@ -98,10 +98,10 @@ namespace WikipediaApp
 
     private class RandomQuery
     {
-      public List<Page> pages { get; set; }
+      public List<RandomPage> pages { get; set; }
     }
 
-    private class Page
+    private class RandomPage
     {
       public int pageid { get; set; }
       public int ns { get; set; }
@@ -112,13 +112,13 @@ namespace WikipediaApp
 
   public class WikipediaParseApi : WikipediaApi
   {
-    public async Task<Article> FetchArticle(string language, Uri uri, int? pageId = null, string title = null, Article article = null)
+    public async Task<Article> FetchArticle(string language, Uri uri, int? pageId = null, string title = null, string anchor = null, Article article = null)
     {
-      var query = "action=parse&prop=text|sections|langlinks|headhtml&disableeditsection=&disabletoc=&mobileformat=&";
+      var query = "action=parse&prop=text|sections|langlinks&disableeditsection=&disabletoc=&mobileformat=";
       if (pageId != null)
-        query += "pageid=" + pageId;
+        query += "&pageid=" + pageId;
       else
-        query += "page=" + title + "&redirects=";
+        query += "&page=" + title + "&redirects=";
 
       var rootObject = await QueryAndParse<ParseRoot>(language, query);
       var parseResult = rootObject?.parse;
@@ -163,6 +163,7 @@ namespace WikipediaApp
       article.Uri = uri;
       article.Sections = sections;
       article.Languages = languages;
+      article.Anchor = anchor;
 
       return article;
     }
@@ -177,7 +178,6 @@ namespace WikipediaApp
       public string title { get; set; }
       public int pageid { get; set; }
       public string text { get; set; }
-      public string headhtml { get; set; }
       public List<ParseSection> sections { get; set; }
       public List<ParseLanglink> langlinks { get; set; }
     }
