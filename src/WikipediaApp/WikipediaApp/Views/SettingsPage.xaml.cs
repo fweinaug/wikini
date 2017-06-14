@@ -10,6 +10,9 @@ namespace WikipediaApp
 {
   public sealed partial class SettingsPage : Page
   {
+    private const string LongVersionFormat  = "Version {0}.{1}.{2}";
+    private const string ShortVersionFormat = "Version {0}.{1}";
+
     public SettingsPage()
     {
       InitializeComponent();
@@ -23,7 +26,7 @@ namespace WikipediaApp
       var version = package.Id.Version;
 
       AppNameTextBlock.Text = package.DisplayName;
-      AppVersionTextBlock.Text = string.Format("Version {0}.{1}.{2}", version.Major, version.Minor, version.Build);
+      AppVersionTextBlock.Text = string.Format(version.Build > 0 ? LongVersionFormat : ShortVersionFormat, version.Major, version.Minor, version.Build);
       DevNameTextBlock.Text = package.PublisherDisplayName;
 
       var theme = Settings.Current.AppTheme.ToString();

@@ -1,5 +1,9 @@
 ﻿[
     [
+        "Pin articles to Start",
+        "Setting whether images are loaded"
+    ],
+    [
         "Display footnotes as a popup",
         "Anchors in the article view work now",
         "Use anchor of links to other articles"

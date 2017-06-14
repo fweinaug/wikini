@@ -1,5 +1,9 @@
 ﻿[
     [
+        "Artikel an Start anheften",
+        "Einstellung ob Bilder geladen werden"
+    ],
+    [
         "Anzeige von Fußnoten als Popup",
         "Sprungmarken in Artikelansicht funktionieren",
         "Sprungmarke von Artikel-Verlinkungen beachten"

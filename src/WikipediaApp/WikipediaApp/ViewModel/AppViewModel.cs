@@ -98,7 +98,7 @@ namespace WikipediaApp
       IsBusy = false;
     }
 
-    private void ShowArticle(ArticleHead article)
+    public void ShowArticle(ArticleHead article)
     {
       navigationService.ShowArticle(article);
     }

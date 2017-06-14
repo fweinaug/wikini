@@ -11,6 +11,8 @@ namespace WikipediaApp
   {
     private readonly AppViewModel viewModel;
 
+    private ArticleHead initialArticle = null;
+
     public Frame AppFrame
     {
       get { return Frame; }
@@ -50,11 +52,31 @@ namespace WikipediaApp
     private void PageLoaded(object sender, RoutedEventArgs e)
     {
       viewModel.Initialize();
+
+      if (initialArticle != null)
+        viewModel.ShowArticle(initialArticle);
     }
 
     public async Task ShowLoadingError()
     {
       await ArticleLoadingFailedContentDialog.ShowAsync();
+    }
+
+    public void ShowArticle(ArticleHead article)
+    {
+      if (Frame.Content != null)
+      {
+        while (Frame.CanGoBack)
+        {
+          Frame.GoBack();
+        }
+
+        viewModel.ShowArticle(article);
+      }
+      else if (initialArticle == null)
+      {
+        initialArticle = article;
+      }
     }
   }
 }

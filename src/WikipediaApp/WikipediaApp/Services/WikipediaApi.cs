@@ -66,6 +66,39 @@ namespace WikipediaApp
       }
     }
 
+    public async Task<ArticleThumbnail> GetArticleThumbnail(string language, int? pageId, string title)
+    {
+      try
+      {
+        var query = "action=query&prop=pageimages&pilicense=any&pilimit=1&pithumbsize=300";
+        if (pageId != null)
+          query += "&pageids=" + pageId;
+        else
+          query += "&titles=" + title + "&redirects=";
+
+        var result = await QueryAndParse<PageimagesRoot>(language, query);
+
+        var pages = result?.query?.pages;
+        if (pages == null || pages.Count == 0)
+          return null;
+
+        var page = pages.First();
+
+        return new ArticleThumbnail
+        {
+          PageId = page.pageid,
+          Title = page.title,
+          ImageUri = page.thumbnail?.source
+        };
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+
+        return null;
+      }
+    }
+
     private class SiteinfoRoot
     {
       public bool batchcomplete { get; set; }
@@ -108,17 +141,47 @@ namespace WikipediaApp
       public string title { get; set; }
       public string fullurl { get; set; }
     }
+
+    private class PageimagesRoot
+    {
+      public bool batchcomplete { get; set; }
+      public PageimagesQuery query { get; set; }
+    }
+
+    private class PageimagesQuery
+    {
+      public List<PageimagesPage> pages { get; set; }
+    }
+
+    private class PageimagesPage
+    {
+      public int pageid { get; set; }
+      public int ns { get; set; }
+      public string title { get; set; }
+      public Thumbnail thumbnail { get; set; }
+      public string pageimage { get; set; }
+    }
+
+    private class Thumbnail
+    {
+      public Uri source { get; set; }
+      public int width { get; set; }
+      public int height { get; set; }
+    }
   }
 
   public class WikipediaParseApi : WikipediaApi
   {
-    public async Task<Article> FetchArticle(string language, Uri uri, int? pageId = null, string title = null, string anchor = null, Article article = null)
+    public async Task<Article> FetchArticle(string language, Uri uri, bool disableImages, int? pageId = null, string title = null, string anchor = null, Article article = null)
     {
       var query = "action=parse&prop=text|sections|langlinks&disableeditsection=&disabletoc=&mobileformat=";
       if (pageId != null)
         query += "&pageid=" + pageId;
       else
         query += "&page=" + title + "&redirects=";
+
+      if (disableImages)
+        query += "&noimages=";
 
       var rootObject = await QueryAndParse<ParseRoot>(language, query);
       var parseResult = rootObject?.parse;

@@ -25,6 +25,7 @@ namespace WikipediaApp
     private Command refreshCommand;
     private Command<ArticleLanguage> changeLanguageCommand;
     private Command openInBrowserCommand;
+    private Command pinCommand;
 
     private Command<Uri> navigateCommand;
     private Command<Uri> loadedCommand;
@@ -116,6 +117,11 @@ namespace WikipediaApp
       get { return openInBrowserCommand ?? (openInBrowserCommand = new Command(OpenInBrowser)); }
     }
 
+    public ICommand PinCommand
+    {
+      get { return pinCommand ?? (pinCommand = new Command(Pin)); }
+    }
+
     public ICommand NavigateCommand
     {
       get { return navigateCommand ?? (navigateCommand = new Command<Uri>(Navigate)); }
@@ -149,8 +155,8 @@ namespace WikipediaApp
       IsBusy = true;
 
       var updated = article != null
-        ? await wikipediaService.RefreshArticle(article)
-        : await wikipediaService.GetArticle(initialArticle);
+        ? await wikipediaService.RefreshArticle(article, Settings.Current.ImagesDisabled)
+        : await wikipediaService.GetArticle(initialArticle, Settings.Current.ImagesDisabled);
 
       if (updated != null)
       {
@@ -178,13 +184,26 @@ namespace WikipediaApp
         navigationService.OpenInBrowser(uri);
     }
 
+    private async void Pin()
+    {
+      if (article != null)
+      {
+        await wikipediaService.PinArticle(article.Language, article.PageId, article.Title, article.Uri);
+      }
+      else if (initialArticle != null)
+      {
+        await wikipediaService.PinArticle(initialArticle.Language, initialArticle.Id, initialArticle.Title, initialArticle.Uri);
+      }
+
+    }
+
     private async void Navigate(Uri uri)
     {
       IsBusy = true;
 
       if (wikipediaService.IsWikipediaUri(uri))
       {
-        var article = await wikipediaService.GetArticle(uri);
+        var article = await wikipediaService.GetArticle(uri, Settings.Current.ImagesDisabled);
 
         if (article != null)
         {
@@ -226,7 +245,7 @@ namespace WikipediaApp
 
       IsBusy = true;
 
-      var article = await wikipediaService.GetArticle(initialArticle);
+      var article = await wikipediaService.GetArticle(initialArticle, Settings.Current.ImagesDisabled);
 
       if (article != null)
         Article = article;

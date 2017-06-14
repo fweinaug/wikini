@@ -140,6 +140,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ArticleThumbnail.cs" />
+    <Compile Include="Services\TileManager.cs" />
     <Compile Include="Views\ChangelogView.xaml.cs">
       <DependentUpon>ChangelogView.xaml</DependentUpon>
     </Compile>

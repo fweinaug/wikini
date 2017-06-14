@@ -125,6 +125,7 @@
                 <AppBarButton x:Uid="ArticleTopAppBarButton" Click="TopButtonClick" />
                 <AppBarButton x:Uid="ArticleRefreshAppBarButton" Command="{Binding RefreshCommand}" />
                 <AppBarButton x:Uid="ArticleShareAppBarButton" Click="ShareButtonClick" />
+                <AppBarButton x:Uid="ArticlePinAppBarButton" Command="{Binding PinCommand}" />
                 <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}" />
                 <AppBarButton x:Uid="ArticleSettingsAppBarButton" Command="{Binding ShowSettingsCommand}" />
             </CommandBar.SecondaryCommands>

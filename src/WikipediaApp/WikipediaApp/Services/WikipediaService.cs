@@ -8,7 +8,7 @@ using Microsoft.HockeyApp;
 
 namespace WikipediaApp
 {
-  public class WikipediaService
+  public partial class WikipediaService
   {
     private readonly WikipediaSearchApi searchApi = new WikipediaSearchApi();
     private readonly WikipediaQueryApi queryApi = new WikipediaQueryApi();
@@ -49,7 +49,7 @@ namespace WikipediaApp
       return list;
     }
 
-    public async Task<Article> GetArticle(Uri uri)
+    public async Task<Article> GetArticle(Uri uri, bool disableImages)
     {
       string title, language, anchor;
       if (!ParseUri(uri, out title, out language, out anchor))
@@ -61,12 +61,12 @@ namespace WikipediaApp
         if (header == null)
           return null;
 
-        return await GetArticle(header);
+        return await GetArticle(header, disableImages);
       }
 
       try
       {
-        return await parseApi.FetchArticle(language, uri, title: title, anchor: anchor);
+        return await parseApi.FetchArticle(language, uri, disableImages, title: title, anchor: anchor);
       }
       catch (Exception ex)
       {
@@ -130,11 +130,11 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<Article> GetArticle(ArticleHead article)
+    public async Task<Article> GetArticle(ArticleHead article, bool disableImages)
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, article.Uri, title: article.Title, pageId: article.Id);
+        return await parseApi.FetchArticle(article.Language, article.Uri, disableImages, title: article.Title, pageId: article.Id);
       }
       catch (Exception ex)
       {
@@ -144,11 +144,11 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<Article> RefreshArticle(Article article)
+    public async Task<Article> RefreshArticle(Article article, bool disableImages)
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, article.Uri, article.PageId, anchor: article.Anchor, article: article);
+        return await parseApi.FetchArticle(article.Language, article.Uri, disableImages, article.PageId, anchor: article.Anchor, article: article);
       }
       catch (Exception ex)
       {
@@ -173,6 +173,25 @@ namespace WikipediaApp
         HockeyClient.Current.TrackException(ex);
 
         return null;
+      }
+    }
+
+    public async Task<bool> PinArticle(string language, int? pageId, string title, Uri uri)
+    {
+      try
+      {
+        var thumbnail = await queryApi.GetArticleThumbnail(language, pageId, title);
+
+        if (thumbnail != null)
+          return await TileManager.PinArticle(language, thumbnail.PageId, thumbnail.Title, uri, thumbnail.ImageUri);
+
+        return false;
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+
+        return false;
       }
     }
   }

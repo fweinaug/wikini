@@ -153,6 +153,9 @@
   <data name="ArticleLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Langues</value>
   </data>
+  <data name="ArticlePinAppBarButton.Label" xml:space="preserve">
+    <value>Épingler à l'écran de démarrage</value>
+  </data>
   <data name="ArticleRefreshAppBarButton.Label" xml:space="preserve">
     <value>Rafraîchir</value>
   </data>
@@ -251,6 +254,12 @@
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Paramètres</value>
+  </data>
+  <data name="SettingsImagesDisabledTextBlock.Text" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="SettingsImagesDisabledToggleSwitch.Header" xml:space="preserve">
+    <value>Voir les articles sans images pour enregistrer le volume des données ou en cas de connexion Internet lente</value>
   </data>
   <data name="SettingsReviewButton.Content" xml:space="preserve">
     <value>Évaluer dans le Store</value>

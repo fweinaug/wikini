@@ -63,6 +63,11 @@
                 </StackPanel>
 
                 <StackPanel Margin="0,10">
+                    <TextBlock x:Uid="SettingsImagesDisabledTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <ToggleSwitch x:Uid="SettingsImagesDisabledToggleSwitch" IsOn="{Binding ImagesDisabled, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
                     <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsSectionsCollapsedToggleSwitch" IsOn="{Binding SectionsCollapsed, Mode=TwoWay}" />
                 </StackPanel>

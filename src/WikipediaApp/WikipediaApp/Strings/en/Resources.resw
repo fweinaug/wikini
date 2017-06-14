@@ -153,6 +153,9 @@
   <data name="ArticleLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Languages</value>
   </data>
+  <data name="ArticlePinAppBarButton.Label" xml:space="preserve">
+    <value>Pin to Start</value>
+  </data>
   <data name="ArticleRefreshAppBarButton.Label" xml:space="preserve">
     <value>Refresh</value>
   </data>
@@ -251,6 +254,12 @@
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SettingsImagesDisabledTextBlock.Text" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="SettingsImagesDisabledToggleSwitch.Header" xml:space="preserve">
+    <value>View articles without images to save data volume or in case of a slow Internet connection</value>
   </data>
   <data name="SettingsReviewButton.Content" xml:space="preserve">
     <value>Review in Store</value>

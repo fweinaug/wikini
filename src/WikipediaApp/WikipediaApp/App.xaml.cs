@@ -73,12 +73,19 @@ namespace WikipediaApp
         this.settings = (Settings)Resources["Settings"];
       }
 
+      if (e.TileId != "App")
+      {
+        var article = TileManager.ParseArguments(e.Arguments);
+
+        shell.ShowArticle(article);
+      }
+
       if (!e.PrelaunchActivated)
       {
         if (shell.AppFrame.Content == null)
         {
           // Navigate to the first page
-          shell.AppFrame.Navigate(typeof(MainPage), e.Arguments);
+          shell.AppFrame.Navigate(typeof(MainPage), null);
         }
 
         Window.Current.Activate();

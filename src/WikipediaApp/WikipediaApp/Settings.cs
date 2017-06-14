@@ -12,6 +12,7 @@ namespace WikipediaApp
     public const string DefaultSearchLanguage = "en";
     public const bool DefaultSearchRestricted = false;
     public const bool DefaultSectionsCollapsed = false;
+    public const bool DefaultImagesDisabled = false;
     public const int DefaultFontSize = 15;
 
     public static Settings Current { get; private set; }
@@ -30,15 +31,21 @@ namespace WikipediaApp
       set { SetValue(value); }
     }
 
+    public bool SearchRestricted
+    {
+      get { return GetValue(DefaultSearchRestricted); }
+      set { SetValue(value); }
+    }
+
     public bool SectionsCollapsed
     {
       get { return GetValue(DefaultSectionsCollapsed); }
       set { SetValue(value); }
     }
 
-    public bool SearchRestricted
+    public bool ImagesDisabled
     {
-      get { return GetValue(DefaultSearchRestricted); }
+      get { return GetValue(DefaultImagesDisabled); }
       set { SetValue(value); }
     }
 
