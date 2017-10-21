@@ -6,7 +6,9 @@ Thumbs.db
 *.suo
 *.pfx
 *.appx
+*.nuget.*
 project.lock.json
+.vs/
 [Oo]bj/
 [Bb]in/
 [Bb]ld/

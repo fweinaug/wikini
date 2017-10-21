@@ -76,7 +76,8 @@
                     <TextBlock x:Uid="SettingsFontSizeTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
                     <Slider x:Uid="SettingsFontSizeSlider" Name="FontSizeSlider" Value="{Binding FontSize, Mode=TwoWay}" Minimum="10" Maximum="25" />
                     <ContentControl Template="{StaticResource FontSizePreview}">
-                        <TextBlock x:Uid="SettingsFontSizePreviewTextBlock" FontSize="{Binding ElementName=FontSizeSlider, Path=Value}" />
+                        <TextBlock x:Uid="SettingsFontSizePreviewTextBlock" FontSize="{Binding ElementName=FontSizeSlider, Path=Value}"
+                                   IsTextScaleFactorEnabled="False" />
                     </ContentControl>
                 </StackPanel>
 

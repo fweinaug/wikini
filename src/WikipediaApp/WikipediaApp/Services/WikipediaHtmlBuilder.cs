@@ -29,11 +29,7 @@ namespace WikipediaApp
         <link rel=""stylesheet"" href=""/w/load.php?debug=false&amp;lang={language}&amp;modules=mediawiki.page.gallery.styles%7Cmediawiki.ui.button%2Cicon%7Cskins.minerva.base.reset%2Cstyles%7Cskins.minerva.content.styles%7Cskins.minerva.footerV2.styles%7Cskins.minerva.icons.images%7Cskins.minerva.tablet.styles&amp;only=styles&amp;skin=minerva""/>
         <script async="""" src=""/w/load.php?debug=false&amp;lang={language}&amp;modules=startup&amp;only=scripts&amp;skin=minerva&amp;target=mobile""></script>
         <meta name=""ResourceLoaderDynamicStyles"" content=""""/>
-        <meta name=""generator"" content=""MediaWiki 1.29.0-wmf.6""/>
-        <meta name=""referrer"" content=""origin-when-cross-origin""/>
-        <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0, width=device-width""/>
-        <link rel=""manifest"" href=""/w/api.php?action=webapp-manifest""/>
-        <link rel=""copyright"" href=""//creativecommons.org/licenses/by-sa/3.0/""/>
+        <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
         <body class=""mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"">
@@ -78,6 +74,8 @@ body { font-size: " + fontSize + @"px; }
 
           table > * > tr.hintergrundfarbe2 > th, table > * > tr > th.hintergrundfarbe2, table.hintergrundfarbe2, .hintergrundfarbe2 {background-color:#000 !important;}
           table > * > tr.hintergrundfarbe5 > th, table > * > tr > th.hintergrundfarbe5, table.hintergrundfarbe5, .hintergrundfarbe5 {background-color:#1a1a1a !important;}
+
+          .mwe-math-fallback-image-inline {filter:invert(0.6);}
 
           .mw-ui-icon-arrow.indicator::before {
               background-image: linear-gradient(transparent, transparent), url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%20-407%2024%2024%22%3E%3Cg%20fill%3D%22%23BBB%22%3E%3Cg%20xmlns%3Adefault%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20id%3D%22g4%22%3E%3Cpath%20d%3D%22M21.348-401.268q.94%200%201.61.668l.92.922-11.858%2011.86L.198-399.66l.922-.94q.65-.686%201.59-.686.94%200%201.61.668l7.718%207.7%207.7-7.682q.67-.668%201.61-.668z%22%20id%3D%22path6%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A');
