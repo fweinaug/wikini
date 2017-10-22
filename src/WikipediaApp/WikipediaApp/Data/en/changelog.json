@@ -1,5 +1,8 @@
 ﻿[
     [
+        "Improved display of transparent images in Dark Mode"
+    ],
+    [
         "Show mathematical formulas in Dark Mode",
         "Bugfixes"
     ],

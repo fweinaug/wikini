@@ -67,6 +67,7 @@ body { font-size: " + fontSize + @"px; }
           .content table.infobox th, .content table.infobox td {border-color:#333 !important;}
 
           li.gallerybox div.thumb, .mbox-small {background-color:#1a1a1a !important;border-color:#333 !important;}
+          img.thumbimage {background:#333;padding:5px;}
 
           .content table.wikitable {border-color:#333 !important;}
           .content table.wikitable > tr > th, .content table.wikitable > * > tr > th {background-color:#333 !important;}
