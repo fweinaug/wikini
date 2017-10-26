@@ -97,9 +97,43 @@ namespace WikipediaApp
       return true;
     }
 
+    public async Task<IList<ArticleImage>> GetArticleImages(Article article)
+    {
+      try
+      {
+        return await queryApi.GetArticleImages(article);
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+
+        return null;
+      }
+    }
+
     public bool IsWikipediaUri(Uri uri)
     {
       return uri != null && uri.Host.EndsWith(".wikipedia.org");
+    }
+
+    public bool IsLinkToWikipediaImage(Uri uri, out string filename)
+    {
+      if (uri.Scheme == "about" && uri.AbsolutePath == "blank")
+      {
+        var fragment = Uri.UnescapeDataString(uri.Fragment).Trim('#');
+        if (fragment.StartsWith("/media/"))
+        {
+          var index = fragment.IndexOf(':');
+          if (index > 0)
+          {
+            filename = fragment.Substring(index + 1);
+            return true;
+          }
+        }
+      }
+
+      filename = null;
+      return false;
     }
 
     public async Task<ArticleHead> GetMainPage(string language)

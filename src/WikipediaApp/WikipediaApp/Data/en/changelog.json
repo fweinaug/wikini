@@ -1,5 +1,8 @@
 ﻿[
     [
+        "Show and click through pictures of articles"
+    ],
+    [
         "Improved display of transparent images in Dark Mode"
     ],
     [
@@ -24,9 +27,6 @@
         "Setting for font size in article view"
     ],
     [
-        "Bugfix"
-    ],
-    [
         "Back/forward in article view to switch between recently opened articles (After the article finished loading the app will restore the previous scroll position.)",
         "Share articles, e.g. per e-mail or messenger apps",
         "Resolve redirects to a different article",
@@ -35,10 +35,8 @@
         "French translation (Thanks to Rémi!)"
     ],
     [
-        "Changing the language triggers search"
-    ],
-    [
         "Improved live search",
+        "Changing the language triggers search",
         "Enter triggers the search",
         "Notice 'no articles found'"
     ],

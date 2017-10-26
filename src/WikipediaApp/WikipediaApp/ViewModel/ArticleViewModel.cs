@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace WikipediaApp
 {
-  public class ArticleViewModel : ViewModelBase
+  public partial class ArticleViewModel : ViewModelBase
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
@@ -199,6 +199,10 @@ namespace WikipediaApp
 
     private async void Navigate(Uri uri)
     {
+      var image = await NavigateToImage(uri);
+      if (image)
+        return;
+
       IsBusy = true;
 
       if (wikipediaService.IsWikipediaUri(uri))
@@ -208,6 +212,8 @@ namespace WikipediaApp
         if (article != null)
         {
           Article = article;
+          Images = null;
+          SelectedImage = null;
         }
         else
         {
@@ -236,6 +242,8 @@ namespace WikipediaApp
 
       IsBusy = true;
       Article = article;
+      Images = null;
+      SelectedImage = null;
     }
 
     public override async void Initialize()
@@ -248,7 +256,11 @@ namespace WikipediaApp
       var article = await wikipediaService.GetArticle(initialArticle, Settings.Current.ImagesDisabled);
 
       if (article != null)
+      {
         Article = article;
+        Images = null;
+        SelectedImage = null;
+      }
       else
       {
         IsBusy = false;

@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="WikipediaApp.ArticleImagesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WikipediaApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Name="root">
+
+    <Grid Background="{ThemeResource SplitViewPaneBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <CommandBar Grid.Row="0" Background="Transparent" OverflowButtonVisibility="Collapsed">
+            <AppBarButton Icon="Cancel" Click="CloseButtonClick" />
+        </CommandBar>
+
+        <TextBlock x:Name="PositionTextBlock" Grid.Row="0"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   FontSize="13" FontWeight="SemiBold"
+                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                   Margin="10,0" />
+
+        <FlipView x:Name="FlipView" Grid.Row="1" Background="Transparent"
+                  ItemsSource="{Binding ElementName=root, Path=Images, Mode=OneWay}"
+                  SelectedItem="{Binding ElementName=root, Path=SelectedImage, Mode=TwoWay}"
+                  IsSynchronizedWithCurrentItem="False" SelectionChanged="FlipViewSelectionChanged">
+            <FlipView.ItemTemplate>
+                <DataTemplate x:DataType="local:ArticleImage">
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <local:ImageControl Grid.Row="0" Uri="{Binding ThumbnailUri}" />
+                        <TextBlock Grid.Row="1"
+                                   Text="{Binding Description}"
+                                   FontSize="13" FontWeight="Light"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   TextWrapping="WrapWholeWords" TextAlignment="Center"
+                                   Margin="0,5,0,0"
+                                   Visibility="{Binding HasDescription, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </Grid>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+
+            <FlipView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </FlipView.ItemsPanel>
+        </FlipView>
+
+        <TextBlock x:Uid="ArticleImagesEmptyTextBlock" Grid.Row="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                   FontSize="15" FontWeight="Light"
+                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                   TextWrapping="WrapWholeWords" TextAlignment="Center"
+                   Margin="5"
+                   Visibility="{Binding ElementName=FlipView, Path=ItemsSource, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}" />
+    </Grid>
+</UserControl>

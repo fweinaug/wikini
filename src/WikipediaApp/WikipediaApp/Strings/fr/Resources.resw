@@ -147,6 +147,12 @@
   <data name="ArticleHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Historique</value>
   </data>
+  <data name="ArticleImagesAppBarButton.Label" xml:space="preserve">
+    <value>Voir les photos</value>
+  </data>
+  <data name="ArticleImagesEmptyTextBlock.Text" xml:space="preserve">
+    <value>Cet article ne contient pas de photos.</value>
+  </data>
   <data name="ArticleLanguagesAppBarButton.Label" xml:space="preserve">
     <value>Langues</value>
   </data>

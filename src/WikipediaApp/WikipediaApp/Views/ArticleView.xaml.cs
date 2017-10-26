@@ -118,6 +118,7 @@ namespace WikipediaApp
           Uri = currentArticle.Uri,
           Sections = currentArticle.Sections,
           Languages = currentArticle.Languages,
+          Images = currentArticle.Images,
           Position = position
         };
       }

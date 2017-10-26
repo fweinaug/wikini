@@ -1,5 +1,8 @@
 ﻿[
     [
+        "Bilder von Artikeln anzeigen und durchklicken"
+    ],
+    [
         "Darstellung von transparenten Bildern im Dunklen Design verbessert"
     ],
     [
@@ -24,9 +27,6 @@
         "Einstellung für Schriftgröße in Artikelansicht"
     ],
     [
-        "Fehlerbehebung"
-    ],
-    [
         "Zurück/Vorwärts in Artikelansicht, um zwischen zuletzt aufgerufenen Artikeln zu wechseln (Nach dem Laden wird die vorherige Scroll-Position innerhalb des Artikels wiederhergestellt.)",
         "Artikel teilen, z. B. per E-Mail oder Messenger-Apps",
         "Weiterleitungen auf einen anderen Artikel auflösen",
@@ -35,10 +35,8 @@
         "Französische Übersetzung (Danke an Rémi!)"
     ],
     [
-        "Sprache wechseln löst Suche aus"
-    ],
-    [
         "Verbesserte Live-Suche",
+        "Sprache wechseln löst Suche aus",
         "Enter löst Suche aus",
         "Hinweis \"Keine Artikel gefunden\""
     ],

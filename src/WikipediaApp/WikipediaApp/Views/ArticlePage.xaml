@@ -100,6 +100,20 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding ImagesVisible}" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="ImagesView.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -125,6 +139,7 @@
                 <AppBarButton x:Uid="ArticleTopAppBarButton" Click="TopButtonClick" />
                 <AppBarButton x:Uid="ArticleRefreshAppBarButton" Command="{Binding RefreshCommand}" />
                 <AppBarButton x:Uid="ArticleShareAppBarButton" Click="ShareButtonClick" />
+                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}" />
                 <AppBarButton x:Uid="ArticlePinAppBarButton" Command="{Binding PinCommand}" />
                 <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}" />
                 <AppBarButton x:Uid="ArticleSettingsAppBarButton" Command="{Binding ShowSettingsCommand}" />
@@ -152,5 +167,11 @@
 
             <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Icon="World" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}" />
         </CommandBar>
+
+        <local:ArticleImagesView x:Name="ImagesView" Grid.Row="0" Grid.RowSpan="2" x:DeferLoadStrategy="Lazy"
+                                 Images="{Binding Images}"
+                                 SelectedImage="{Binding SelectedImage, Mode=TwoWay}"
+                                 CloseCommand="{Binding HideImagesCommand}"
+                                 Visibility="Collapsed" />
     </Grid>
 </Page>

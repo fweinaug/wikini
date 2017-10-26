@@ -14,6 +14,7 @@ namespace WikipediaApp
 
     public List<ArticleSection> Sections { get; set; }
     public List<ArticleLanguage> Languages { get; set; }
+    public List<string> Images { get; set; }
 
     public string Anchor { get; set; }
 
