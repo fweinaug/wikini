@@ -132,6 +132,16 @@ namespace WikipediaApp
         }
       }
 
+      if (uri.Host.EndsWith(".wikipedia.org") && uri.AbsolutePath.StartsWith("/wiki/"))
+      {
+        var index = uri.AbsolutePath.IndexOf(':', 6);
+        if (index > 0)
+        {
+          filename = uri.AbsolutePath.Substring(index + 1);
+          return true;
+        }
+      }
+
       filename = null;
       return false;
     }

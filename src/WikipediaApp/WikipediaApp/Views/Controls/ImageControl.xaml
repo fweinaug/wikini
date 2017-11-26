@@ -10,8 +10,15 @@
     <Grid>
         <ProgressRing x:Name="ProgressRing" Width="50" Height="50"
                       IsActive="False" Visibility="Collapsed" />
-        
-        <Image x:Name="Image" HorizontalAlignment="Center" VerticalAlignment="Center"
-               ImageOpened="ImageOpened" ImageFailed="ImageFailed"  />
+
+        <ScrollViewer x:Name="ScrollViewer"
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                      ZoomMode="Enabled" MinZoomFactor="1" MaxZoomFactor="5">
+            <Image x:Name="Image" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   ImageOpened="ImageOpened" ImageFailed="ImageFailed"
+                   MaxWidth="{Binding Path=ViewportWidth, ElementName=ScrollViewer}"
+                   MaxHeight="{Binding Path=ViewportHeight, ElementName=ScrollViewer}"
+                   />
+        </ScrollViewer>
     </Grid>
 </UserControl>

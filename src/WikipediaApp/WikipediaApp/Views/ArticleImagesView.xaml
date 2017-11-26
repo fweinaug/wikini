@@ -29,7 +29,7 @@
                   IsSynchronizedWithCurrentItem="False" SelectionChanged="FlipViewSelectionChanged">
             <FlipView.ItemTemplate>
                 <DataTemplate x:DataType="local:ArticleImage">
-                    <Grid Padding="10">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
@@ -41,7 +41,7 @@
                                    FontSize="13" FontWeight="Light"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    TextWrapping="WrapWholeWords" TextAlignment="Center"
-                                   Margin="0,5,0,0"
+                                   Margin="0,5,0,10"
                                    Visibility="{Binding HasDescription, Converter={StaticResource BooleanToVisibilityConverter}}" />
                     </Grid>
                 </DataTemplate>
