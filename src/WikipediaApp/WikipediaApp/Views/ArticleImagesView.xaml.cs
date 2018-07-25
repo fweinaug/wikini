@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace WikipediaApp
 {
@@ -39,7 +40,24 @@ namespace WikipediaApp
       InitializeComponent();
     }
 
+    protected override void OnKeyDown(KeyRoutedEventArgs e)
+    {
+      if (e.Key == Windows.System.VirtualKey.Escape)
+      {
+        Close();
+
+        e.Handled = true;
+      }
+
+      base.OnKeyDown(e);
+    }
+
     private void CloseButtonClick(object sender, RoutedEventArgs e)
+    {
+      Close();
+    }
+
+    private void Close()
     {
       if (CloseCommand != null && CloseCommand.CanExecute(null))
         CloseCommand.Execute(null);

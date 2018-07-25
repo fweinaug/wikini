@@ -1,5 +1,12 @@
 ﻿[
     [
+        "Fluent Design",
+        "Show article description in search results",
+        "Show additional buttons in article view",
+        "Close the image view with escape",
+        "Show additional captions in image view"
+    ],
+    [
         "Zoom pictures of articles"
     ],
     [

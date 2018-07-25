@@ -1,5 +1,12 @@
 ﻿[
     [
+        "Fluent Design",
+        "Anzeige der Artikelbeschreibung in Suchergebnissen",
+        "Anzeige weiterer Buttons in Artikelansicht",
+        "Schließen der Bildansicht mit Escape",
+        "Anzeige weiterer Bildunterschriften"
+    ],
+    [
         "Bilder von Artikeln vergrößern"
     ],
     [

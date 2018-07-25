@@ -5,6 +5,7 @@
     xmlns:local="using:WikipediaApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -18,16 +19,51 @@
                     <x:Double x:Key="WatermarkImageOpacity">0.17</x:Double>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
+
+            <DataTemplate x:Key="DefaultListViewItemTemplate" x:DataType="local:ArticleHead">
+                <StackPanel Orientation="Vertical" Padding="0,5">
+                    <TextBlock Text="{x:Bind Title}" FontWeight="SemiBold" />
+                    <TextBlock Text="{x:Bind Description}" FontWeight="Light" FontSize="14" TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="NarrowListViewItemTemplate" x:DataType="local:ArticleHead">
+                <TextBlock Text="{x:Bind Title}" FontWeight="SemiLight" />
+            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveStates">
+                <VisualState x:Name="DefaultState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="ListView.ItemTemplate" Value="{StaticResource DefaultListViewItemTemplate}" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="ListView.ItemTemplate" Value="{StaticResource NarrowListViewItemTemplate}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <SplitView x:Name="SplitView" Grid.Row="0">
+        <SplitView x:Name="SplitView" Grid.Row="0" contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -85,14 +121,10 @@
                                HorizontalAlignment="Center" VerticalAlignment="Top"
                                Visibility="{Binding NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-                    <ListView Grid.Row="1" ItemsSource="{Binding SearchResults}" SelectionMode="None"
+                    <ListView Name="ListView" Grid.Row="1" ItemsSource="{Binding SearchResults}" SelectionMode="None"
                               Visibility="{Binding SearchResults, Converter={StaticResource CollectionToVisibilityConverter}}"
                               local:ListViewExtensions.Command="{Binding ShowArticleCommand}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ArticleHead">
-                                <TextBlock Text="{x:Bind Title}" FontWeight="SemiLight" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
+
                     </ListView>
                 </Grid>
             </SplitView.Content>
@@ -101,7 +133,7 @@
         <ProgressBar Grid.Row="0" IsIndeterminate="True" VerticalAlignment="Bottom"
                                   Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-        <CommandBar Grid.Row="1">
+        <CommandBar Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="MainSettingsAppBarButton" Command="{Binding ShowSettingsCommand}" />
             </CommandBar.SecondaryCommands>

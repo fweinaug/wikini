@@ -225,27 +225,6 @@
   <data name="SettingsDisclaimerContentDialog.Title" xml:space="preserve">
     <value>Rechtliche Hinweise</value>
   </data>
-  <data name="SettingsDonateButton.Content" xml:space="preserve">
-    <value>Spenden</value>
-  </data>
-  <data name="SettingsDonateContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
-  </data>
-  <data name="SettingsDonateContentDialog.Title" xml:space="preserve">
-    <value>Für Wikini spenden</value>
-  </data>
-  <data name="SettingsDonateDescriptionTextBlock.Text" xml:space="preserve">
-    <value>Wenn dir die App gefällt, kannst du mich gerne mit einer kleinen Spende unterstützen.</value>
-  </data>
-  <data name="SettingsDonateOneButton.Content" xml:space="preserve">
-    <value>0,99 Euro spenden</value>
-  </data>
-  <data name="SettingsDonateThreeButton.Content" xml:space="preserve">
-    <value>4,99 Euro spenden</value>
-  </data>
-  <data name="SettingsDonateTwoButton.Content" xml:space="preserve">
-    <value>2,99 Euro spenden</value>
-  </data>
   <data name="SettingsFeedbackButton.Content" xml:space="preserve">
     <value>Feedback</value>
   </data>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -37,10 +36,6 @@ namespace WikipediaApp
         if (radioButton != null)
           radioButton.IsChecked = Equals(radioButton.Tag, theme);
       }
-
-#if DEBUG
-      await InAppPurchases.ConfigureSimulator();
-#endif
     }
 
     private void RadioButtonThemeChecked(object sender, RoutedEventArgs e)
@@ -61,40 +56,7 @@ namespace WikipediaApp
       var uri = new Uri("mailto:wikiniapp@outlook.com");
       await Launcher.LaunchUriAsync(uri);
     }
-
-    private async void DonateClick(object sender, RoutedEventArgs e)
-    {
-      var dialog = (ContentDialog)FindName("DonateContentDialog");
-      if (dialog != null)
-        await dialog.ShowAsync();
-    }
-
-    private void DonateOneButtonClick(object sender, RoutedEventArgs e)
-    {
-      Donate(InAppPurchases.Donation1);
-    }
-
-    private void DonateTwoButtonClick(object sender, RoutedEventArgs e)
-    {
-      Donate(InAppPurchases.Donation2);
-    }
-
-    private void DonateThreeButtonClick(object sender, RoutedEventArgs e)
-    {
-      Donate(InAppPurchases.Donation3);
-    }
-
-    private async void Donate(Func<Task<bool>> donateFunc)
-    {
-      var success = await donateFunc();
-      if (success)
-      {
-        Settings.Current.ShowThanks = true;
-
-        DonateContentDialog.Hide();
-      }
-    }
-
+    
     private async void DisclaimerClick(object sender, RoutedEventArgs e)
     {
       var dialog = (ContentDialog)FindName("DisclaimerContentDialog");

@@ -110,5 +110,11 @@ namespace WikipediaApp
     {
       DataTransferManager.ShowShareUI();
     }
+
+    private void ImageStatesCurrentStateChanged(object sender, VisualStateChangedEventArgs e)
+    {
+      if (ImagesView.Visibility == Visibility.Visible)
+        ImagesView.Focus(FocusState.Programmatic);
+    }
   }
 }

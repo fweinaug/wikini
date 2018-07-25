@@ -263,7 +263,7 @@ namespace WikipediaApp
 
     private static string ExtractImageDescriptionFromNode(HtmlNode node)
     {
-      var removeNodes = node.ChildNodes.Where(x => x.Name == "div" || x.Name == "sup").ToArray();
+      var removeNodes = node.ChildNodes.Where(x => (x.Name == "div" && x.HasClass("magnify")) || x.Name == "sup").ToArray();
       foreach (var removeNode in removeNodes)
       {
         node.RemoveChild(removeNode);
@@ -497,6 +497,7 @@ namespace WikipediaApp
       var array = JArray.Parse(response);
 
       var titles = array[1].Value<JArray>();
+      var descriptions = array[2].Value<JArray>();
       var urls = array[3].Value<JArray>();
 
       for (var i = 0; i < titles.Count; ++i)
@@ -504,6 +505,7 @@ namespace WikipediaApp
         var article = new ArticleHead
         {
           Title = titles[i].Value<string>(),
+          Description = descriptions[i].Value<string>(),
           Language = language,
           Uri = new Uri(urls[i].Value<string>())
         };
