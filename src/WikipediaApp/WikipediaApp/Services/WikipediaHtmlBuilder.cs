@@ -26,7 +26,7 @@ namespace WikipediaApp
         mw.user.tokens.set({{""editToken"":""+\\"",""patrolToken"":""+\\"",""watchToken"":""+\\"",""csrfToken"":""+\\""}});/*@nomin*/;
 
         }});mw.loader.load([""mediawiki.toc"",""mediawiki.page.startup"",""mediawiki.user"",""mediawiki.hidpi"",""skins.minerva.scripts.top"",""skins.minerva.scripts"",""skins.minerva.watchstar"",""skins.minerva.editor"",""skins.minerva.toggling"",""mobile.site"",""ext.gadget.switcher"",""ext.centralauth.centralautologin"",""ext.visualEditor.targetLoader"",""ext.eventLogging.subscriber"",""ext.navigationTiming"",""ext.quicksurveys.init"",""ext.centralNotice.geoIP"",""ext.centralNotice.startUp""]);}});</script>
-        <link rel=""stylesheet"" href=""/w/load.php?debug=false&amp;lang={language}&amp;modules=mediawiki.page.gallery.styles%7Cmediawiki.ui.button%2Cicon%7Cskins.minerva.base.reset%2Cstyles%7Cskins.minerva.content.styles%7Cskins.minerva.footerV2.styles%7Cskins.minerva.icons.images%7Cskins.minerva.tablet.styles&amp;only=styles&amp;skin=minerva""/>
+        <link rel=""stylesheet"" href=""/w/load.php?debug=false&amp;lang={language}&amp;modules=mediawiki.page.gallery.styles%7Cmediawiki.ui.button%2Cicon%7Cskins.minerva.base.reset%2Cstyles%7Cskins.minerva.content.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.footerV2.styles%7Cskins.minerva.icons.images%7Cskins.minerva.tablet.styles&amp;only=styles&amp;skin=minerva""/>
         <script async="""" src=""/w/load.php?debug=false&amp;lang={language}&amp;modules=startup&amp;only=scripts&amp;skin=minerva&amp;target=mobile""></script>
         <meta name=""ResourceLoaderDynamicStyles"" content=""""/>
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
@@ -61,6 +61,8 @@ body { font-size: " + fontSize + @"px; }
 
           body {color:#999 !important;}
 
+          a, a:visited {color:#2372AF !important;}
+
           .content .section-heading {border-bottom-color:#333 !important;}
           .content table.infobox {background-color:#1a1a1a !important;}
           .content table.infobox th[colspan=""2""] {background-color:#333 !important;}
@@ -73,12 +75,15 @@ body { font-size: " + fontSize + @"px; }
           .content table.wikitable > tr > th, .content table.wikitable > * > tr > th {background-color:#333 !important;}
           .content table.wikitable > tr > th, .content table.wikitable > tr > td, .content table.wikitable > * > tr > th, .content table.wikitable > * > tr > td {border-color:#333 !important;}
 
+          .hatnote {background:#1a1a1a !important;}
+          .mw-graph {background:#333 !important;}
+
           table > * > tr.hintergrundfarbe2 > th, table > * > tr > th.hintergrundfarbe2, table.hintergrundfarbe2, .hintergrundfarbe2 {background-color:#000 !important;}
           table > * > tr.hintergrundfarbe5 > th, table > * > tr > th.hintergrundfarbe5, table.hintergrundfarbe5, .hintergrundfarbe5 {background-color:#1a1a1a !important;}
 
           .mwe-math-fallback-image-inline {filter:invert(0.6);}
 
-          .mw-ui-icon-arrow.indicator::before {
+          .mw-ui-icon-arrow.indicator::before, .mw-ui-icon-mf-arrow:before {
               background-image: linear-gradient(transparent, transparent), url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%20-407%2024%2024%22%3E%3Cg%20fill%3D%22%23BBB%22%3E%3Cg%20xmlns%3Adefault%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20id%3D%22g4%22%3E%3Cpath%20d%3D%22M21.348-401.268q.94%200%201.61.668l.92.922-11.858%2011.86L.198-399.66l.922-.94q.65-.686%201.59-.686.94%200%201.61.668l7.718%207.7%207.7-7.682q.67-.668%201.61-.668z%22%20id%3D%22path6%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A');
           }";
       }

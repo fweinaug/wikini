@@ -5,6 +5,7 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.HockeyApp;
 
 namespace WikipediaApp
@@ -34,6 +35,11 @@ namespace WikipediaApp
       HockeyClient.Current.Configure("4fa03478a9044a33980678a0ebca5859");
 
       InitializeComponent();
+
+      using (var database = new WikipediaContext())
+      {
+        database.Database.Migrate();
+      }
     }
 
     public bool InDarkMode()

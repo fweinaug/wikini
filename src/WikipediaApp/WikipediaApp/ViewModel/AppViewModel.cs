@@ -48,6 +48,16 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new Command<ArticleHead>(ShowArticle)); }
     }
 
+    public IList<ArticleHead> History
+    {
+      get { return ArticleHistory.All; }
+    }
+
+    public IList<ArticleHead> Favorites
+    {
+      get { return ArticleFavorites.All; }
+    }
+
     public IList<Language> Languages
     {
       get { return languages; }
@@ -120,6 +130,9 @@ namespace WikipediaApp
 
       Languages = await wikipediaService.GetLanguages();
       Language = Languages.FirstOrDefault(x => x.Code == language) ?? Languages.First(x => x.Code == Settings.DefaultSearchLanguage);
+
+      await ArticleHistory.Initialize();
+      await ArticleFavorites.Initialize();
     }
   }
 }

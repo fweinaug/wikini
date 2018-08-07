@@ -30,6 +30,82 @@
             <DataTemplate x:Key="NarrowListViewItemTemplate" x:DataType="local:ArticleHead">
                 <TextBlock Text="{x:Bind Title}" FontWeight="SemiLight" />
             </DataTemplate>
+
+            <DataTemplate x:Key="HistoryTemplate">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Uid="MainHistoryPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+
+                    <ListView Grid.Row="1" ItemsSource="{Binding History}" Style="{StaticResource SplitViewPaneListViewStyle}"
+                              local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ArticleHead">
+                                <Grid ToolTipService.ToolTip="{x:Bind Title}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="FavoritesTemplate">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Uid="MainFavoritesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+
+                    <ListView Grid.Row="1" ItemsSource="{Binding Favorites}" Style="{StaticResource SplitViewPaneListViewStyle}"
+                              local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="FavoritesListViewItemClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ArticleHead">
+                                <Grid ToolTipService.ToolTip="{x:Bind Title}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="LanguagesTemplate">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Uid="MainLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+
+                    <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
+                              local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -65,23 +141,7 @@
 
         <SplitView x:Name="SplitView" Grid.Row="0" contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <SplitView.Pane>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Uid="MainLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
-
-                    <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
-                              local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <ContentPresenter x:Name="PaneContentPresenter" />
             </SplitView.Pane>
 
             <SplitView.Content>
@@ -98,7 +158,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Background="Transparent" Click="SelectedLanguageButtonClick">
+                        <Button Background="Transparent" Click="LanguagesButtonClick">
                             <Button.Content>
                                 <TextBlock Text="{Binding Language.Code}" Typography.Capitals="AllSmallCaps" FontSize="15" FontWeight="Bold" />
                             </Button.Content>
@@ -135,13 +195,25 @@
 
         <CommandBar Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="MainSettingsAppBarButton" Command="{Binding ShowSettingsCommand}" />
+                <AppBarButton x:Uid="MainSettingsAppBarButton" Icon="Setting" Command="{Binding ShowSettingsCommand}" />
             </CommandBar.SecondaryCommands>
 
             <AppBarButton x:Uid="MainHomepageAppBarButton" Icon="Home" Command="{Binding ShowHomePageCommand}" />
             <AppBarButton x:Uid="MainRandomAppBarButton" Icon="Shuffle" Command="{Binding ShowRandomArticleCommand}" />
 
             <AppBarSeparator />
+
+            <AppBarButton x:Uid="MainHistoryAppBarButton" Click="HistoryButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE81C;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarButton x:Uid="MainFavoritesAppBarButton" Click="FavoritesButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE728;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
 
             <AppBarButton x:Uid="MainLanguagesAppBarButton" Icon="World" Click="LanguagesButtonClick" />
         </CommandBar>

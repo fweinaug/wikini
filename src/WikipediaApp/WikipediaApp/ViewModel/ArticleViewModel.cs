@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace WikipediaApp
@@ -21,15 +22,18 @@ namespace WikipediaApp
     private bool hasSections = false;
     private IList<ArticleLanguage> languages = null;
     private bool hasLanguages = false;
+    private bool isFavorite = false;
 
     private Command refreshCommand;
     private Command<ArticleLanguage> changeLanguageCommand;
     private Command openInBrowserCommand;
     private Command pinCommand;
+    private Command addToFavoritesCommand;
+    private Command removeFromFavoritesCommand;
 
     private Command<Uri> navigateCommand;
     private Command<Uri> loadedCommand;
-    private Command<Article> showArticleCommand;
+    private Command<ArticleHead> showArticleCommand;
 
     public bool IsBusy
     {
@@ -42,9 +46,9 @@ namespace WikipediaApp
       get { return showSettingsCommand ?? (showSettingsCommand = new Command(ShowSettings)); }
     }
 
-    public IList<Article> History
+    public IList<ArticleHead> History
     {
-      get { return ArticleHistory.Session; }
+      get { return ArticleHistory.All; }
     }
 
     public Article Article
@@ -58,6 +62,7 @@ namespace WikipediaApp
           {
             Languages = article.Languages;
             Sections = Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections;
+            IsFavorite = ArticleFavorites.IsFavorite(article);
 
             ArticleHistory.AddArticle(article);
           }
@@ -65,6 +70,7 @@ namespace WikipediaApp
           {
             Languages = null;
             Sections = null;
+            IsFavorite = false;
           }
         }
       }
@@ -102,6 +108,12 @@ namespace WikipediaApp
       private set { SetProperty(ref hasLanguages, value); }
     }
 
+    public bool IsFavorite
+    {
+      get { return isFavorite; }
+      private set { SetProperty(ref isFavorite, value); }
+    }
+
     public ICommand RefreshCommand
     {
       get { return refreshCommand ?? (refreshCommand = new Command(Refresh)); }
@@ -122,6 +134,16 @@ namespace WikipediaApp
       get { return pinCommand ?? (pinCommand = new Command(Pin)); }
     }
 
+    public ICommand AddToFavoritesCommand
+    {
+      get { return addToFavoritesCommand ?? (addToFavoritesCommand = new Command(AddToFavorites)); }
+    }
+
+    public ICommand RemoveFromFavoritesCommand
+    {
+      get { return removeFromFavoritesCommand ?? (removeFromFavoritesCommand = new Command(RemoveFromFavorites)); }
+    }
+
     public ICommand NavigateCommand
     {
       get { return navigateCommand ?? (navigateCommand = new Command<Uri>(Navigate)); }
@@ -134,7 +156,7 @@ namespace WikipediaApp
 
     public ICommand ShowArticleCommand
     {
-      get { return showArticleCommand ?? (showArticleCommand = new Command<Article>(ShowArticle)); }
+      get { return showArticleCommand ?? (showArticleCommand = new Command<ArticleHead>(ShowArticle)); }
     }
 
     public ArticleViewModel(ArticleHead initialArticle)
@@ -155,8 +177,8 @@ namespace WikipediaApp
       IsBusy = true;
 
       var updated = article != null
-        ? await wikipediaService.RefreshArticle(article, Settings.Current.ImagesDisabled)
-        : await wikipediaService.GetArticle(initialArticle, Settings.Current.ImagesDisabled);
+        ? await RefreshArticle(article)
+        : await GetArticle(initialArticle);
 
       if (updated != null)
       {
@@ -192,9 +214,28 @@ namespace WikipediaApp
       }
       else if (initialArticle != null)
       {
-        await wikipediaService.PinArticle(initialArticle.Language, initialArticle.Id, initialArticle.Title, initialArticle.Uri);
+        await wikipediaService.PinArticle(initialArticle.Language, initialArticle.PageId, initialArticle.Title, initialArticle.Uri);
       }
+    }
 
+    private void AddToFavorites()
+    {
+      if (article != null)
+      {
+        ArticleFavorites.AddArticle(article);
+
+        IsFavorite = true;
+      }
+    }
+
+    private void RemoveFromFavorites()
+    {
+      if (article != null)
+      {
+        ArticleFavorites.RemoveArticle(article);
+
+        IsFavorite = false;
+      }
     }
 
     private async void Navigate(Uri uri)
@@ -207,7 +248,7 @@ namespace WikipediaApp
 
       if (wikipediaService.IsWikipediaUri(uri))
       {
-        var article = await wikipediaService.GetArticle(uri, Settings.Current.ImagesDisabled);
+        var article = await GetArticle(uri);
 
         if (article != null)
         {
@@ -235,25 +276,16 @@ namespace WikipediaApp
       IsBusy = false;
     }
 
-    private void ShowArticle(Article article)
+    private async void ShowArticle(ArticleHead articleHead)
     {
-      if (this.article != null && (this.article == article || this.article.Uri == article.Uri))
-        return;
-
-      IsBusy = true;
-      Article = article;
-      Images = null;
-      SelectedImage = null;
-    }
-
-    public override async void Initialize()
-    {
-      if (Article != null)
+      if (this.article != null && ((this.article.Language == articleHead.Language && this.article.PageId == articleHead.PageId)
+                                   || this.article.Uri == articleHead.Uri))
         return;
 
       IsBusy = true;
 
-      var article = await wikipediaService.GetArticle(initialArticle, Settings.Current.ImagesDisabled);
+      var article = articleHead as Article
+                    ?? await GetArticle(articleHead);
 
       if (article != null)
       {
@@ -267,6 +299,60 @@ namespace WikipediaApp
 
         dialogService.ShowLoadingError();
       }
+    }
+
+    public override async void Initialize()
+    {
+      if (Article != null)
+        return;
+
+      IsBusy = true;
+
+      var article = await GetArticle(initialArticle);
+
+      if (article != null)
+      {
+        Article = article;
+        Images = null;
+        SelectedImage = null;
+      }
+      else
+      {
+        IsBusy = false;
+
+        dialogService.ShowLoadingError();
+      }
+    }
+
+    private async Task<Article> GetArticle(Uri uri)
+    {
+      var article = ArticleCache.GetArticle(uri);
+      if (article != null)
+        return article;
+
+      article = await wikipediaService.GetArticle(uri, Settings.Current.ImagesDisabled);
+      if (article != null)
+        ArticleCache.AddArticle(article);
+
+      return article;
+    }
+
+    private async Task<Article> GetArticle(ArticleHead articleHead)
+    {
+      var article = ArticleCache.GetArticle(articleHead.Uri, articleHead.Language, articleHead.PageId);
+      if (article != null)
+        return article;
+
+      article = await wikipediaService.GetArticle(articleHead, Settings.Current.ImagesDisabled);
+      if (article != null)
+        ArticleCache.AddArticle(article);
+
+      return article;
+    }
+
+    private async Task<Article> RefreshArticle(Article article)
+    {
+      return await wikipediaService.RefreshArticle(article, Settings.Current.ImagesDisabled);
     }
   }
 }

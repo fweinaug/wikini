@@ -45,7 +45,7 @@ namespace WikipediaApp
 
     private static string BuildArguments(string language, int pageId, string title, Uri uri)
     {
-      var article = new ArticleHead { Id = pageId, Title = title, Language = language, Uri = uri };
+      var article = new ArticleHead { PageId = pageId, Title = title, Language = language, Uri = uri };
 
       return JsonConvert.SerializeObject(article);
     }

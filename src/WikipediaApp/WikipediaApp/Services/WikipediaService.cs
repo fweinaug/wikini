@@ -178,7 +178,7 @@ namespace WikipediaApp
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, article.Uri, disableImages, title: article.Title, pageId: article.Id);
+        return await parseApi.FetchArticle(article.Language, article.Uri, disableImages, title: article.Title, pageId: article.PageId);
       }
       catch (Exception ex)
       {

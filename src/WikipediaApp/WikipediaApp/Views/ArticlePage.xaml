@@ -21,7 +21,7 @@
                 <ListView Grid.Row="1" ItemsSource="{Binding History}" Style="{StaticResource SplitViewPaneListViewStyle}"
                           local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:Article">
+                        <DataTemplate x:DataType="local:ArticleHead">
                             <Grid ToolTipService.ToolTip="{x:Bind Title}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -159,11 +159,31 @@
         <CommandBar Name="DefaultCommandBar" Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                     x:DeferLoadStrategy="Lazy" Visibility="Collapsed">
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="ArticleTopAppBarButton" Click="TopButtonClick" />
-                <AppBarButton x:Uid="ArticleRefreshAppBarButton" Command="{Binding RefreshCommand}" />
-                <AppBarButton x:Uid="ArticlePinAppBarButton" Command="{Binding PinCommand}" />
-                <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}" />
-                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Command="{Binding ShowSettingsCommand}" />
+                <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
+                <AppBarButton x:Uid="ArticleRefreshAppBarButton" Icon="Refresh" Command="{Binding RefreshCommand}" />
+
+                <AppBarButton x:Uid="ArticleAddFavoriteAppBarButton" Command="{Binding AddToFavoritesCommand}"
+                              Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE734;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleRemoveFavoriteAppBarButton" Command="{Binding RemoveFromFavoritesCommand}"
+                              Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE8D9;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                
+                <AppBarButton x:Uid="ArticlePinAppBarButton" Icon="Pin" Command="{Binding PinCommand}" />
+
+                <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xEB41;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Command="{Binding ShowSettingsCommand}" />
             </CommandBar.SecondaryCommands>
 
             <AppBarButton x:Uid="ArticleBackAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoBack}" Click="BackButtonClick">
@@ -208,14 +228,49 @@
         <CommandBar Name="NarrowCommandBar" Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                     x:DeferLoadStrategy="Lazy" Visibility="Collapsed">
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="ArticleForwardAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoForward}" Click="ForwardButtonClick" />
-                <AppBarButton x:Uid="ArticleTopAppBarButton" Click="TopButtonClick" />
-                <AppBarButton x:Uid="ArticleRefreshAppBarButton" Command="{Binding RefreshCommand}" />
-                <AppBarButton x:Uid="ArticleShareAppBarButton" Click="ShareButtonClick" />
-                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}" />
-                <AppBarButton x:Uid="ArticlePinAppBarButton" Command="{Binding PinCommand}" />
-                <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}" />
-                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Command="{Binding ShowSettingsCommand}" />
+                <AppBarButton x:Uid="ArticleForwardAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoForward}" Click="ForwardButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE76C;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
+                <AppBarButton x:Uid="ArticleRefreshAppBarButton" Icon="Refresh" Command="{Binding RefreshCommand}" />
+                <AppBarButton x:Uid="ArticleShareAppBarButton" Click="ShareButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE72D;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE91B;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleAddFavoriteAppBarButton" Command="{Binding AddToFavoritesCommand}"
+                              Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE734;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleRemoveFavoriteAppBarButton" Command="{Binding RemoveFromFavoritesCommand}"
+                              Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE8D9;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticlePinAppBarButton" Icon="Pin" Command="{Binding PinCommand}" />
+
+                <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xEB41;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Command="{Binding ShowSettingsCommand}" />
             </CommandBar.SecondaryCommands>
 
             <AppBarButton x:Uid="ArticleBackAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoBack}" Click="BackButtonClick">

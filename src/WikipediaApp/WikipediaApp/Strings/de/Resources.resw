@@ -126,6 +126,9 @@
   <data name="AppArticleLoadingFailedContentDialog.Title" xml:space="preserve">
     <value>Entschuldigung :(</value>
   </data>
+  <data name="ArticleAddFavoriteAppBarButton.Label" xml:space="preserve">
+    <value>Zu Favoriten hinzufügen</value>
+  </data>
   <data name="ArticleBackAppBarButton.Label" xml:space="preserve">
     <value>Zurück</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="ArticleRefreshAppBarButton.Label" xml:space="preserve">
     <value>Aktualisieren</value>
   </data>
+  <data name="ArticleRemoveFavoriteAppBarButton.Label" xml:space="preserve">
+    <value>Aus Favoriten entfernen</value>
+  </data>
   <data name="ArticleSettingsAppBarButton.Label" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
@@ -173,6 +179,18 @@
   </data>
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
     <value>Zum Anfang</value>
+  </data>
+  <data name="MainFavoritesAppBarButton.Label" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="MainFavoritesPaneHeaderTextBlock.Text" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
+    <value>Verlauf</value>
+  </data>
+  <data name="MainHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
+    <value>Verlauf</value>
   </data>
   <data name="MainHomepageAppBarButton.Label" xml:space="preserve">
     <value>Startseite</value>

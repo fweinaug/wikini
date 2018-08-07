@@ -142,9 +142,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Contexts\WikipediaContext.cs" />
+    <Compile Include="Migrations\20180801161150_InitialMigration.cs" />
+    <Compile Include="Migrations\20180801161150_InitialMigration.designer.cs">
+      <DependentUpon>20180801161150_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\WikipediaContextModelSnapshot.cs" />
     <Compile Include="Model\ArticleImage.cs" />
     <Compile Include="Model\ArticleThumbnail.cs" />
+    <Compile Include="Model\FavoriteArticle.cs" />
+    <Compile Include="Model\ReadArticle.cs" />
     <Compile Include="Services\TileManager.cs" />
+    <Compile Include="ViewModel\ArticleCache.cs" />
+    <Compile Include="ViewModel\ArticleFavorites.cs" />
     <Compile Include="ViewModel\ArticleViewModel.Images.cs" />
     <Compile Include="Views\ArticleImagesView.xaml.cs">
       <DependentUpon>ArticleImagesView.xaml</DependentUpon>
@@ -260,6 +270,12 @@
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.8.5</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
+      <Version>1.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+      <Version>1.1.6</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>

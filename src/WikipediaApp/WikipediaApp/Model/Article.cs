@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace WikipediaApp
 {
-  public class Article
+  public class Article : ArticleHead
   {
-    public string Language { get; set; }
-    public int PageId { get; set; }
-    public string Title { get; set; }
+    public new int PageId { get; set; }
     public string Content { get; set; }
-    public Uri Uri { get; set; }
 
     public List<ArticleSection> Sections { get; set; }
     public List<ArticleLanguage> Languages { get; set; }

@@ -58,7 +58,7 @@ namespace WikipediaApp
         var pageId = page.pageid;
         var uri = new Uri(page.fullurl);
 
-        return new ArticleHead { Language = language, Id = pageId, Uri = uri };
+        return new ArticleHead { Language = language, PageId = pageId, Uri = uri };
       }
       catch (Exception ex)
       {

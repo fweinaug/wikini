@@ -5,18 +5,47 @@ namespace WikipediaApp
 {
   public sealed partial class MainPage : Page
   {
+    private readonly DataTemplate paneHistoryTemplate;
+    private readonly DataTemplate paneFavoritesTemplate;
+    private readonly DataTemplate paneLanguagesTemplate;
+
     public MainPage()
     {
       InitializeComponent();
+
+      paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
+      paneFavoritesTemplate = (DataTemplate)Resources["FavoritesTemplate"];
+      paneLanguagesTemplate = (DataTemplate)Resources["LanguagesTemplate"];
+    }
+
+    private void HistoryButtonClick(object sender, RoutedEventArgs e)
+    {
+      PaneContentPresenter.ContentTemplate = paneHistoryTemplate;
+
+      SplitView.IsPaneOpen = true;
+    }
+
+    private void HistoryListViewItemClick(object sender, ItemClickEventArgs e)
+    {
+      SplitView.IsPaneOpen = false;
+    }
+
+    private void FavoritesButtonClick(object sender, RoutedEventArgs e)
+    {
+      PaneContentPresenter.ContentTemplate = paneFavoritesTemplate;
+
+      SplitView.IsPaneOpen = true;
+    }
+
+    private void FavoritesListViewItemClick(object sender, ItemClickEventArgs e)
+    {
+      SplitView.IsPaneOpen = false;
     }
 
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)
     {
-      SplitView.IsPaneOpen = true;
-    }
+      PaneContentPresenter.ContentTemplate = paneLanguagesTemplate;
 
-    private void SelectedLanguageButtonClick(object sender, RoutedEventArgs e)
-    {
       SplitView.IsPaneOpen = true;
     }
 

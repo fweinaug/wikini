@@ -381,7 +381,7 @@
     "Name": "Esperanto",
     "Code": "eo",
     "Url": "https://eo.wikipedia.org",
-    "Visible": false
+    "Visible": true
   },
   {
     "Name": "español",
