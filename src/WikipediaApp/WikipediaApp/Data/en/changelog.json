@@ -1,5 +1,10 @@
 ﻿[
     [
+        "Improved article view in Dark Mode",
+        "Add article to history only once",
+        "Fixed color of the title bar in Dark Mode"
+    ],
+    [
         "List of favorite articles",
         "History will now be saved",
         "Improved article view",

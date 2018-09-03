@@ -9,9 +9,13 @@ namespace WikipediaApp
   public static class ArticleHistory
   {
     public static IList<ArticleHead> All { get; } = new ObservableCollection<ArticleHead>();
+    public static IList<Article> Session { get; } = new ObservableCollection<Article>();
 
     public static void AddArticle(Article article)
     {
+      if (Session.Any(x => x.Language == article.Language && x.PageId == article.PageId))
+        return;
+
       var read = new ReadArticle
       {
         Date = DateTime.Now,
@@ -29,6 +33,7 @@ namespace WikipediaApp
       }
 
       All.Insert(0, read);
+      Session.Add(article);
     }
 
     public static async Task Initialize()
