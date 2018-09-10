@@ -1,4 +1,5 @@
-﻿using Windows.UI;
+﻿using Windows.Foundation.Metadata;
+using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
@@ -8,19 +9,26 @@ namespace WikipediaApp
   {
     public void CustomizeTitleBar(ApplicationView applicationView)
     {
-      UpdateTitleBar(applicationView);
+      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
+      {
+        UpdateTitleBarAdvanced(applicationView);
 
-      ActualThemeChanged += OnActualThemeChanged;
+        ActualThemeChanged += OnActualThemeChanged;
+      }
+      else
+      {
+        UpdateTitleBarDefault(applicationView);
+      }
     }
 
     private void OnActualThemeChanged(FrameworkElement sender, object args)
     {
       var applicationView = ApplicationView.GetForCurrentView();
 
-      UpdateTitleBar(applicationView);
+      UpdateTitleBarAdvanced(applicationView);
     }
 
-    private void UpdateTitleBar(ApplicationView applicationView)
+    private void UpdateTitleBarAdvanced(ApplicationView applicationView)
     {
       var titleBar = applicationView.TitleBar;
       if (titleBar != null)
@@ -34,6 +42,19 @@ namespace WikipediaApp
 
         titleBar.InactiveBackgroundColor = themeColor;
         titleBar.ButtonInactiveBackgroundColor = themeColor;
+      }
+    }
+
+    private void UpdateTitleBarDefault(ApplicationView applicationView)
+    {
+      var titleBar = applicationView.TitleBar;
+      if (titleBar != null)
+      {
+        var titleBarColor = (Color)Resources["SystemAccentColor"];
+
+        titleBar.BackgroundColor = titleBarColor;
+        titleBar.ButtonBackgroundColor = titleBarColor;
+        titleBar.ButtonForegroundColor = Colors.White;
       }
     }
   }
