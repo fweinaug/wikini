@@ -13,6 +13,7 @@ namespace WikipediaApp
     public const bool DefaultSearchRestricted = false;
     public const bool DefaultSectionsCollapsed = false;
     public const bool DefaultImagesDisabled = false;
+    public const bool DefaultHistorySession = false;
     public const int DefaultFontSize = 15;
 
     public static Settings Current { get; private set; }
@@ -46,6 +47,12 @@ namespace WikipediaApp
     public bool ImagesDisabled
     {
       get { return GetValue(DefaultImagesDisabled); }
+      set { SetValue(value); }
+    }
+
+    public bool HistorySession
+    {
+      get { return GetValue(DefaultHistorySession); }
       set { SetValue(value); }
     }
 

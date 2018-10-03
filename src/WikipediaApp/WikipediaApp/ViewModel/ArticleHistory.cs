@@ -8,12 +8,19 @@ namespace WikipediaApp
 {
   public static class ArticleHistory
   {
-    public static IList<ArticleHead> All { get; } = new ObservableCollection<ArticleHead>();
-    public static IList<Article> Session { get; } = new ObservableCollection<Article>();
+    public static IList<ArticleHead> All { get; private set; }
+
+    public static bool IsEmpty
+    {
+      get { return !(session.Count > 0 || database.Count > 0); }
+    }
+
+    private static readonly ObservableCollection<ArticleHead> session = new ObservableCollection<ArticleHead>();
+    private static readonly ObservableCollection<ArticleHead> database = new ObservableCollection<ArticleHead>();
 
     public static void AddArticle(Article article)
     {
-      if (Session.Any(x => x.Language == article.Language && x.PageId == article.PageId))
+      if (session.Any(x => x.Language == article.Language && x.PageId == article.PageId))
         return;
 
       var read = new ReadArticle
@@ -32,21 +39,51 @@ namespace WikipediaApp
         context.SaveChanges();
       }
 
-      All.Insert(0, read);
-      Session.Add(article);
+      database.Insert(0, article);
+      session.Insert(0, article);
     }
 
     public static async Task Initialize()
     {
+      InitializeSource();
+
       await Task.Run(() =>
       {
         using (var context = new WikipediaContext())
         {
           var history = context.History.OrderByDescending(x => x.Date).ToList();
 
-          history.ForEach(All.Add);
+          history.ForEach(database.Add);
         }
       });
+    }
+
+    private static void InitializeSource()
+    {
+      void UpdateSource() { All = Settings.Current.HistorySession ? session : database; }
+
+      UpdateSource();
+
+      Settings.Current.PropertyChanged += (sender, e) =>
+      {
+        if (e.PropertyName == nameof(Settings.HistorySession))
+          UpdateSource();
+      };
+    }
+
+    public static async Task Clear()
+    {
+      await Task.Run(() =>
+      {
+        using (var context = new WikipediaContext())
+        {
+          context.RemoveRange(context.History);
+          context.SaveChanges();
+        }
+      });
+
+      database.Clear();
+      session.Clear();
     }
   }
 }

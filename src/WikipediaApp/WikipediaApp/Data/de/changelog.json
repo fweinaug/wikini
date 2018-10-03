@@ -1,5 +1,9 @@
 ﻿[
     [
+        "Einstellung ob nur Artikel aus der aktuellen Sitzung im Verlauf angezeigt werden",
+        "Verlauf leeren"
+    ],
+    [
         "Verbesserte Artikelansicht im Dunklen Design",
         "Artikel nur einmal zur Historie hinzufügen",
         "Farbe der Titelleiste im Dunklen Design korrigiert"
@@ -8,7 +12,7 @@
         "Favoritenliste für Artikel",
         "Historie wird nun gespeichert",
         "Verbesserte Artikelansicht",
-        "Zusätzliche Icons für Befehlsleisten"  
+        "Zusätzliche Icons für Befehlsleisten"
     ],
     [
         "Fluent Design",

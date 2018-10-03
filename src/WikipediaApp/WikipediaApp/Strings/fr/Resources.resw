@@ -258,6 +258,21 @@
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Paramètres</value>
   </data>
+  <data name="SettingsHistoryClearButton.Content" xml:space="preserve">
+    <value>Effacer l'historique</value>
+  </data>
+  <data name="SettingsHistorySessionToggleSwitch.Header" xml:space="preserve">
+    <value>Afficher uniquement les articles consultés au cours de cette session dans l'historique</value>
+  </data>
+  <data name="SettingsHistorySessionToggleSwitch.OffContent" xml:space="preserve">
+    <value>Désactivé</value>
+  </data>
+  <data name="SettingsHistorySessionToggleSwitch.OnContent" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="SettingsHistoryTextBlock.Text" xml:space="preserve">
+    <value>Historique</value>
+  </data>
   <data name="SettingsImagesDisabledTextBlock.Text" xml:space="preserve">
     <value>Images</value>
   </data>

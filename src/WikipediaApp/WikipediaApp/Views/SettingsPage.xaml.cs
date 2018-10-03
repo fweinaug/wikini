@@ -28,6 +28,8 @@ namespace WikipediaApp
       AppVersionTextBlock.Text = string.Format(version.Build > 0 ? LongVersionFormat : ShortVersionFormat, version.Major, version.Minor, version.Build);
       DevNameTextBlock.Text = package.PublisherDisplayName;
 
+      ClearHistoryButton.IsEnabled = !ArticleHistory.IsEmpty;
+
       var theme = Settings.Current.AppTheme.ToString();
 
       foreach (var uiElement in ThemePanel.Children)
@@ -43,6 +45,13 @@ namespace WikipediaApp
       var radioButton = (RadioButton)sender;
 
       Settings.Current.AppTheme = Convert.ToInt32(radioButton.Tag);
+    }
+
+    private async void ClearHistoryClick(object sender, RoutedEventArgs e)
+    {
+      await ArticleHistory.Clear();
+
+      ClearHistoryButton.IsEnabled = false;
     }
 
     private async void ReviewClick(object sender, RoutedEventArgs e)

@@ -1,5 +1,9 @@
 ﻿[
     [
+        "Setting whether only articles from the current session are displayed in the history",
+        "Clear history"
+    ],
+    [
         "Improved article view in Dark Mode",
         "Add article to history only once",
         "Fixed color of the title bar in Dark Mode"

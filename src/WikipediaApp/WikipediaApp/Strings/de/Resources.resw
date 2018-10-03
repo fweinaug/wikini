@@ -258,6 +258,21 @@
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="SettingsHistoryClearButton.Content" xml:space="preserve">
+    <value>Verlauf leeren</value>
+  </data>
+  <data name="SettingsHistorySessionToggleSwitch.Header" xml:space="preserve">
+    <value>Nur die während dieser Sitzung aufgerufenen Artikel im Verlauf anzeigen</value>
+  </data>
+  <data name="SettingsHistorySessionToggleSwitch.OffContent" xml:space="preserve">
+    <value>Aus</value>
+  </data>
+  <data name="SettingsHistorySessionToggleSwitch.OnContent" xml:space="preserve">
+    <value>Ein</value>
+  </data>
+  <data name="SettingsHistoryTextBlock.Text" xml:space="preserve">
+    <value>Verlauf</value>
+  </data>
   <data name="SettingsImagesDisabledTextBlock.Text" xml:space="preserve">
     <value>Bilder</value>
   </data>

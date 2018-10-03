@@ -81,6 +81,12 @@
                     </ContentControl>
                 </StackPanel>
 
+                <StackPanel Margin="0,10">
+                    <TextBlock x:Uid="SettingsHistoryTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <ToggleSwitch x:Uid="SettingsHistorySessionToggleSwitch" IsOn="{Binding HistorySession, Mode=TwoWay}" />
+                    <Button x:Uid="SettingsHistoryClearButton" x:Name="ClearHistoryButton" Click="ClearHistoryClick" Margin="0,5,0,5" />
+                </StackPanel>
+
                 <StackPanel x:Name="ThemePanel" Margin="0,10">
                     <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
                     <RadioButton x:Uid="SettingsDesignLightRadioButton" Tag="1" Checked="RadioButtonThemeChecked" />
