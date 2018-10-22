@@ -66,11 +66,6 @@ namespace WikipediaApp
     {
       if (Frame.Content != null)
       {
-        while (Frame.CanGoBack)
-        {
-          Frame.GoBack();
-        }
-
         viewModel.ShowArticle(article);
       }
       else if (initialArticle == null)

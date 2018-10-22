@@ -18,9 +18,29 @@ namespace WikipediaApp
 
     public void ShowArticle(ArticleHead article)
     {
+      if (ShowArticleInCurrentArticlePage(article))
+        return;
+
+      while (Frame.CanGoBack)
+      {
+        Frame.GoBack();
+      }
+
       var viewModel = new ArticleViewModel(article);
 
       Frame.Navigate(typeof(ArticlePage), viewModel);
+    }
+
+    private bool ShowArticleInCurrentArticlePage(ArticleHead article)
+    {
+      var currentPage = Frame.Content as ArticlePage;
+
+      var currentViewModel = currentPage?.DataContext as ArticleViewModel;
+      if (currentViewModel == null)
+        return false;
+
+      currentViewModel.ShowArticle(article);
+      return true;
     }
 
     public void ShowSettings()

@@ -144,7 +144,11 @@
 
         <SplitView x:Name="SplitView" Grid.Row="0" contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}" PaneClosed="SplitViewPaneClosed">
             <SplitView.Pane>
-                <ContentPresenter x:Name="PaneContentPresenter" />
+                <Grid>
+                    <ContentPresenter x:Name="PaneContentPresenter" />
+                    <local:SpeechView x:Name="PaneSpeechView" Article="{Binding Article}"
+                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                </Grid>
             </SplitView.Pane>
 
             <SplitView.Content>
@@ -177,6 +181,12 @@
                 </AppBarButton>
                 
                 <AppBarButton x:Uid="ArticlePinAppBarButton" Icon="Pin" Command="{Binding PinCommand}" />
+
+                <AppBarButton x:Uid="ArticleSpeechAppBarButton" Click="SpeechButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE7F6;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
 
                 <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
                     <AppBarButton.Icon>
@@ -263,6 +273,12 @@
                 </AppBarButton>
 
                 <AppBarButton x:Uid="ArticlePinAppBarButton" Icon="Pin" Command="{Binding PinCommand}" />
+
+                <AppBarButton x:Uid="ArticleSpeechAppBarButton" Click="SpeechButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE7F6;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
 
                 <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
                     <AppBarButton.Icon>

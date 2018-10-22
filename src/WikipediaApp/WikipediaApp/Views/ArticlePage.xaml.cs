@@ -89,6 +89,10 @@ namespace WikipediaApp
     private void SplitViewPaneClosed(SplitView sender, object e)
     {
       PaneContentPresenter.ContentTemplate = null;
+      PaneContentPresenter.Visibility = Visibility.Visible;
+
+      if (PaneSpeechView != null)
+        PaneSpeechView.Visibility = Visibility.Collapsed;
     }
 
     private void TopButtonClick(object sender, RoutedEventArgs e)
@@ -109,6 +113,16 @@ namespace WikipediaApp
     private void ShareButtonClick(object sender, RoutedEventArgs e)
     {
       DataTransferManager.ShowShareUI();
+    }
+
+    private void SpeechButtonClick(object sender, RoutedEventArgs e)
+    {
+      FindName("PaneSpeechView");
+
+      PaneContentPresenter.Visibility = Visibility.Collapsed;
+      PaneSpeechView.Visibility = Visibility.Visible;
+
+      SplitView.IsPaneOpen = true;
     }
 
     private void ImageStatesCurrentStateChanged(object sender, VisualStateChangedEventArgs e)

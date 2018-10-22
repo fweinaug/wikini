@@ -1,5 +1,12 @@
 ﻿[
     [
+        "Anzeige der aufgerufenen Artikel in Windows Timeline",
+        "Vorlesefunktion für Artikel",
+        "Verbesserte Textskalierung (nur Desktop, für Mobil gibt es leider keine Lösung für die riesige Schrift)",
+        "Einstellung ob aufgerufene Artikel in Windows Timeline angezeigt werden",
+        "Fehlerbehebungen und Optimierungen"
+    ],
+    [
         "Einstellung ob nur Artikel aus der aktuellen Sitzung im Verlauf angezeigt werden",
         "Verlauf leeren"
     ],

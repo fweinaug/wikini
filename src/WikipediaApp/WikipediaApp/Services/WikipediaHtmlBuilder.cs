@@ -1,7 +1,12 @@
+using System;
+using Windows.UI.ViewManagement;
+
 namespace WikipediaApp
 {
   public static class WikipediaHtmlBuilder
   {
+    private static readonly UISettings UiSettings = new UISettings();
+
     public static string BuildArticle(string title, string content, string language)
     {
       var app = App.Current;
@@ -48,8 +53,10 @@ namespace WikipediaApp
 
     private static string GetArticleStyles(bool darkMode, int fontSize)
     {
+      var scaledFontSize = GetScaledFontSize(fontSize);
+
       var styles = @"
-body { font-size: " + fontSize + @"px; }
+        body {font-size: " + scaledFontSize + @"px;}
 
         a, a:visited {color:#0063B1;}";
 
@@ -89,6 +96,17 @@ body { font-size: " + fontSize + @"px; }
       }
 
       return styles;
+    }
+
+    private static int GetScaledFontSize(int fontSize)
+    {
+      const int baseFontSize = 14;
+
+      var scaleFactor = UiSettings.TextScaleFactor * 100;
+      var fontFactor = fontSize * 100 / baseFontSize;
+
+      var scaledFontSize = Math.Floor(baseFontSize * (fontFactor / scaleFactor));
+      return Convert.ToInt32(scaledFontSize);
     }
   }
 }

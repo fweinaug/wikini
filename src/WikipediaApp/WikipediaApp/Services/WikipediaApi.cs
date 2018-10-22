@@ -539,7 +539,7 @@ namespace WikipediaApp
       return response;
     }
 
-    protected static string RemoveHtml(string text)
+    public static string RemoveHtml(string text)
     {
       if (text.Contains("<"))
         text = Regex.Replace(text, "<[^>]*>", string.Empty);
@@ -549,6 +549,11 @@ namespace WikipediaApp
       text = text.Replace("\n", string.Empty);
 
       return text;
+    }
+
+    public static string DecodeHtml(string text)
+    {
+      return WebUtility.HtmlDecode(text);
     }
   }
 }

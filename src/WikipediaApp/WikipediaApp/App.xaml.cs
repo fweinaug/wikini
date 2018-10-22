@@ -1,7 +1,6 @@
 ﻿using System;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
-using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
@@ -51,7 +50,33 @@ namespace WikipediaApp
       return darkMode;
     }
 
+    protected override void OnActivated(IActivatedEventArgs e)
+    {
+      ArticleHead article = null;
+
+      if (e.Kind == ActivationKind.Protocol)
+      {
+        var args = (IProtocolActivatedEventArgs)e;
+
+        article = TimelineManager.ParseArticle(args.Uri);
+      }
+
+      InitApp(article);
+    }
+
     protected override void OnLaunched(LaunchActivatedEventArgs e)
+    {
+      ArticleHead article = null;
+
+      if (e.TileId != "App")
+      {
+        article = TileManager.ParseArguments(e.Arguments);
+      }
+
+      InitApp(article, e.PrelaunchActivated);
+    }
+
+    private void InitApp(ArticleHead article, bool prelaunchActivated = false)
     {
       var applicationView = ApplicationView.GetForCurrentView();
 
@@ -72,14 +97,10 @@ namespace WikipediaApp
         this.settings = (Settings)Resources["Settings"];
       }
 
-      if (e.TileId != "App")
-      {
-        var article = TileManager.ParseArguments(e.Arguments);
-
+      if (article != null)
         shell.ShowArticle(article);
-      }
 
-      if (!e.PrelaunchActivated)
+      if (!prelaunchActivated)
       {
         if (shell.AppFrame.Content == null)
         {

@@ -64,7 +64,7 @@ namespace WikipediaApp
             Sections = Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections;
             IsFavorite = ArticleFavorites.IsFavorite(article);
 
-            ArticleHistory.AddArticle(article);
+            AddArticleToHistory();
           }
           else
           {
@@ -193,6 +193,16 @@ namespace WikipediaApp
       }
     }
 
+    private async void AddArticleToHistory()
+    {
+      ArticleHistory.AddArticle(article);
+
+      if (Settings.Current.HistoryTimeline)
+      {
+        await wikipediaService.AddArticleToTimeline(article.Language, article.PageId, article.Title, article.Uri);
+      }
+    }
+
     private void ChangeLanguage(ArticleLanguage language)
     {
       Navigate(language.Uri);
@@ -276,10 +286,10 @@ namespace WikipediaApp
       IsBusy = false;
     }
 
-    private async void ShowArticle(ArticleHead articleHead)
+    public async void ShowArticle(ArticleHead articleHead)
     {
       if (this.article != null && ((this.article.Language == articleHead.Language && this.article.PageId == articleHead.PageId)
-                                   || this.article.Uri == articleHead.Uri))
+                                   || (this.article.Uri != null && this.article.Uri == articleHead.Uri)))
         return;
 
       IsBusy = true;

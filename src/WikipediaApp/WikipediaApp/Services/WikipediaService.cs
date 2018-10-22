@@ -238,5 +238,24 @@ namespace WikipediaApp
         return false;
       }
     }
+
+    public async Task<bool> AddArticleToTimeline(string language, int? pageId, string title, Uri uri)
+    {
+      try
+      {
+        var thumbnail = await queryApi.GetArticleThumbnail(language, pageId, title);
+
+        if (thumbnail != null)
+          return await TimelineManager.AddArticle(language, thumbnail.PageId, thumbnail.Title, uri, thumbnail.ImageUri);
+
+        return false;
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+
+        return false;
+      }
+    }
   }
 }

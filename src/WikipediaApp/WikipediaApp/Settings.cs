@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.Foundation.Metadata;
 using Windows.Storage;
 
 namespace WikipediaApp
@@ -17,6 +18,9 @@ namespace WikipediaApp
     public const int DefaultFontSize = 15;
 
     public static Settings Current { get; private set; }
+
+    private static readonly bool IsTimelineAvailable =
+      ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5);
 
     private readonly ApplicationDataContainer container;
 
@@ -53,6 +57,12 @@ namespace WikipediaApp
     public bool HistorySession
     {
       get { return GetValue(DefaultHistorySession); }
+      set { SetValue(value); }
+    }
+
+    public bool HistoryTimeline
+    {
+      get { return GetValue(IsTimelineAvailable); }
       set { SetValue(value); }
     }
 

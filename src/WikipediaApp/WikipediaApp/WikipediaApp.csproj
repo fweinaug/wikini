@@ -153,6 +153,12 @@
     <Compile Include="Model\FavoriteArticle.cs" />
     <Compile Include="Model\ReadArticle.cs" />
     <Compile Include="Services\TileManager.cs" />
+    <Compile Include="Services\TimelineManager.cs" />
+    <Compile Include="ViewModel\ArticleChapter.cs" />
+    <Compile Include="ViewModel\ArticleChapterCollection.cs" />
+    <Compile Include="Views\SpeechView.xaml.cs">
+      <DependentUpon>SpeechView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ArticleCache.cs" />
     <Compile Include="ViewModel\ArticleFavorites.cs" />
     <Compile Include="ViewModel\ArticleViewModel.Images.cs" />
@@ -229,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\SpeechView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ArticleImagesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -272,7 +282,7 @@
       <Version>4.1.6</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.8.7</Version>
+      <Version>1.8.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>1.1.6</Version>

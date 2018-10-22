@@ -1,5 +1,12 @@
 ﻿[
     [
+        "Display opened articles in Windows Timeline",
+        "Read aloud function for articles",
+        "Improved text scaling (desktop only, for mobile there is unfortunately no solution for the gigantic font)",
+        "Setting whether called articles are displayed in Windows Timeline",
+        "Bug fixes and optimizations"
+    ],
+    [
         "Setting whether only articles from the current session are displayed in the history",
         "Clear history"
     ],

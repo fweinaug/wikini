@@ -177,6 +177,12 @@
   <data name="ArticleShareAppBarButton.Label" xml:space="preserve">
     <value>Share</value>
   </data>
+  <data name="ArticleSpeechAppBarButton.Label" xml:space="preserve">
+    <value>Read aloud</value>
+  </data>
+  <data name="ArticleSpeechPaneHeaderTextBlock.Text" xml:space="preserve">
+    <value>Read aloud</value>
+  </data>
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
     <value>Go to beginning</value>
   </data>
@@ -273,6 +279,15 @@
   <data name="SettingsHistoryTextBlock.Text" xml:space="preserve">
     <value>History</value>
   </data>
+  <data name="SettingsHistoryTimelineToggleSwitch.Header" xml:space="preserve">
+    <value>Display viewed articles in the Windows Timeline</value>
+  </data>
+  <data name="SettingsHistoryTimelineToggleSwitch.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="SettingsHistoryTimelineToggleSwitch.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
   <data name="SettingsImagesDisabledTextBlock.Text" xml:space="preserve">
     <value>Images</value>
   </data>
@@ -308,5 +323,8 @@
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Thank you!</value>
+  </data>
+  <data name="SettingsTimelineTextBlock.Text" xml:space="preserve">
+    <value>Timeline</value>
   </data>
 </root>

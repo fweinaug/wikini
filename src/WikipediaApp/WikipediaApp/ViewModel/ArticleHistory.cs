@@ -51,11 +51,14 @@ namespace WikipediaApp
       {
         using (var context = new WikipediaContext())
         {
-          var history = context.History.OrderByDescending(x => x.Date).ToList();
-
-          history.ForEach(database.Add);
+          return context.History.OrderByDescending(x => x.Date).ToList();
         }
-      });
+      }).ContinueWith(task =>
+      {
+        var history = task.Result;
+
+        history.ForEach(database.Add);
+      }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     private static void InitializeSource()
