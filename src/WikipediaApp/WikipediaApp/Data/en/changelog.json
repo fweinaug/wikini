@@ -1,5 +1,9 @@
 ﻿[
     [
+        "Show last opened article again at startup",
+        "Do not lock device when reading an article"
+    ],
+    [
         "Display opened articles in Windows Timeline",
         "Read aloud function for articles",
         "Improved text scaling (desktop only, for mobile there is unfortunately no solution for the gigantic font)",

@@ -153,7 +153,8 @@
 
             <SplitView.Content>
                 <local:ArticleView x:Name="ArticleView" Article="{Binding Article}" ShowArticleCommand="{Binding ShowArticleCommand}"
-                                   NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}" />
+                                   NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}"
+                                   ArticleChanged="ArticleViewArticleChanged" />
             </SplitView.Content>
         </SplitView>
 

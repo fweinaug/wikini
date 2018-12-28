@@ -156,6 +156,7 @@
     <Compile Include="Services\TimelineManager.cs" />
     <Compile Include="ViewModel\ArticleChapter.cs" />
     <Compile Include="ViewModel\ArticleChapterCollection.cs" />
+    <Compile Include="Views\Helpers\DisplayHelper.cs" />
     <Compile Include="Views\SpeechView.xaml.cs">
       <DependentUpon>SpeechView.xaml</DependentUpon>
     </Compile>

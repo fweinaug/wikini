@@ -10,6 +10,8 @@ namespace WikipediaApp
 {
   public sealed partial class ArticleView : UserControl
   {
+    public event EventHandler ArticleChanged;
+
     public static readonly DependencyProperty ArticleProperty = DependencyProperty.RegisterAttached(
       "Article", typeof(Article), typeof(ArticleView), new PropertyMetadata(null, OnArticlePropertyChanged));
 
@@ -100,6 +102,8 @@ namespace WikipediaApp
       var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Content, article.Language);
 
       WebView.NavigateToString(html);
+
+      ArticleChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private async Task UpdateStacks(Article newArticle, Article currentArticle)

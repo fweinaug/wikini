@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.DataTransfer;
+﻿using System;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -25,6 +26,7 @@ namespace WikipediaApp
       base.OnNavigatedTo(e);
 
       DataTransferManager.GetForCurrentView().DataRequested += ArticlePageDataRequested;
+      DisplayHelper.ActivateDisplay();
 
       DataContext = e.Parameter;
     }
@@ -32,6 +34,9 @@ namespace WikipediaApp
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
       DataTransferManager.GetForCurrentView().DataRequested -= ArticlePageDataRequested;
+      DisplayHelper.ReleaseDisplay();
+
+      Settings.WriteLastArticle(null);
     }
 
     private void ArticlePageDataRequested(DataTransferManager sender, DataRequestedEventArgs e)
@@ -42,6 +47,13 @@ namespace WikipediaApp
 
       e.Request.Data.Properties.Title = article.Title;
       e.Request.Data.SetWebLink(article.Uri);
+    }
+
+    private void ArticleViewArticleChanged(object sender, EventArgs e)
+    {
+      var article = ArticleView.Article;
+
+      Settings.WriteLastArticle(article);
     }
 
     private void HistoryButtonClick(object sender, RoutedEventArgs e)

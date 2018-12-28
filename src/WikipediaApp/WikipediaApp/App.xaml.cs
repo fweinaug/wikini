@@ -72,6 +72,10 @@ namespace WikipediaApp
       {
         article = TileManager.ParseArguments(e.Arguments);
       }
+      else
+      {
+        article = Settings.ReadLastArticle();
+      }
 
       InitApp(article, e.PrelaunchActivated);
     }

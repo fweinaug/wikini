@@ -1,5 +1,9 @@
 ﻿[
     [
+        "Zuletzt geöffneten Artikel beim Start erneut anzeigen",
+        "Gerät beim Lesen eines Artikels nicht sperren"
+    ],
+    [
         "Anzeige der aufgerufenen Artikel in Windows Timeline",
         "Vorlesefunktion für Artikel",
         "Verbesserte Textskalierung (nur Desktop, für Mobil gibt es leider keine Lösung für die riesige Schrift)",
