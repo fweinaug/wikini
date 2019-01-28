@@ -5,6 +5,8 @@ using System.Windows.Input;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.HockeyApp;
+using Newtonsoft.Json;
 
 namespace WikipediaApp
 {
@@ -29,6 +31,9 @@ namespace WikipediaApp
 
     public static readonly DependencyProperty CanGoForwardProperty = DependencyProperty.RegisterAttached(
       "CanGoForward", typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
+
+    public static readonly DependencyProperty SearchResultsProperty = DependencyProperty.RegisterAttached(
+      "SearchResults", typeof(int), typeof(ArticleView), new PropertyMetadata(0));
 
     public Article Article
     {
@@ -66,6 +71,12 @@ namespace WikipediaApp
       private set { SetValue(CanGoForwardProperty, value); }
     }
 
+    public int SearchResults
+    {
+      get { return (int)GetValue(SearchResultsProperty); }
+      private set { SetValue(SearchResultsProperty, value); }
+    }
+
     private readonly List<ArticleStackEntry> backStack = new List<ArticleStackEntry>();
     private readonly List<ArticleStackEntry> forwardStack = new List<ArticleStackEntry>();
 
@@ -93,6 +104,8 @@ namespace WikipediaApp
       catch (Exception)
       {
       }
+
+      SearchResults = 0;
 
       if (currentArticle != null && currentArticle.PageId != article.PageId)
       {
@@ -197,6 +210,11 @@ namespace WikipediaApp
       }
     }
 
+    private void WebViewScriptNotify(object sender, NotifyEventArgs e)
+    {
+      SearchResults = Convert.ToInt32(e.Value);
+    }
+
     public void ScrollToTop()
     {
       WebView.ScrollToTop();
@@ -227,6 +245,18 @@ namespace WikipediaApp
       var entry = forwardStack[0];
 
       GoToStackEntry(entry);
+    }
+
+    public async void Search(string query)
+    {
+      try
+      {
+        await WebView.InvokeScriptAsync("search", new[] { query });
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+      }
     }
 
     private void GoToStackEntry(ArticleStackEntry entry)

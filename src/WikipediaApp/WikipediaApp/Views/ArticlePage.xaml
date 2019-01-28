@@ -98,6 +98,16 @@
                 </ListView>
             </Grid>
         </DataTemplate>
+
+        <Storyboard x:Name="ShowSearchBarStoryboard">
+            <DoubleAnimation To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
+            <DoubleAnimation To="1" BeginTime="00:00:0.1" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
+        </Storyboard>
+
+        <Storyboard x:Name="HideSearchBarStoryboard" Completed="HideSearchBarStoryboardCompleted">
+            <DoubleAnimation To="50" Duration="00:00:0.3" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
+            <DoubleAnimation To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
+        </Storyboard>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -152,9 +162,40 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <local:ArticleView x:Name="ArticleView" Article="{Binding Article}" ShowArticleCommand="{Binding ShowArticleCommand}"
-                                   NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}"
-                                   ArticleChanged="ArticleViewArticleChanged" />
+                <Grid>
+                    <local:ArticleView x:Name="ArticleView" Article="{Binding Article}" ShowArticleCommand="{Binding ShowArticleCommand}"
+                                       NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}"
+                                       ArticleChanged="ArticleViewArticleChanged" />
+
+                    <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,16,0"
+                          Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+
+                        <Grid.RenderTransform>
+                            <TranslateTransform x:Name="SearchBarTranslate" Y="0" />
+                        </Grid.RenderTransform>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" x:Uid="ArticleSearchTextBox" x:Name="SearchBarTextBox"
+                                 BorderThickness="1" HorizontalAlignment="Stretch"
+                                 KeyDown="SearchBarTextBoxKeyDown" />
+                        
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding ElementName=ArticleView, Path=SearchResults}"
+                                   TextAlignment="Center" VerticalAlignment="Center" Width="50" FontSize="10" />
+                        
+                        <Button Grid.Column="2"
+                                VerticalAlignment="Stretch" Margin="5" BorderThickness="1" Background="Transparent"
+                                contract5Present:Style="{StaticResource ButtonRevealStyle}"
+                                Click="HideSearchBarButtonClick">
+                            <FontIcon Glyph="&#xE96E;" FontSize="10" />
+                        </Button>
+                    </Grid>
+                </Grid>
             </SplitView.Content>
         </SplitView>
 
@@ -225,6 +266,8 @@
                 </AppBarButton.Icon>
             </AppBarButton>
 
+            <AppBarButton x:Uid="ArticleSearchAppBarButton" Icon="Find" Click="ToggleSearchBarAppBarButtonClick" />
+
             <AppBarSeparator />
 
             <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick" IsEnabled="{Binding HasSections}">
@@ -258,6 +301,8 @@
                         <FontIcon Glyph="&#xE91B;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleSearchAppBarButton" Icon="Find" Click="ToggleSearchBarAppBarButtonClick" />
 
                 <AppBarButton x:Uid="ArticleAddFavoriteAppBarButton" Command="{Binding AddToFavoritesCommand}"
                               Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">

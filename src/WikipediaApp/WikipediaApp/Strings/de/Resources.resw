@@ -171,6 +171,12 @@
   <data name="ArticleRemoveFavoriteAppBarButton.Label" xml:space="preserve">
     <value>Aus Favoriten entfernen</value>
   </data>
+  <data name="ArticleSearchAppBarButton.Label" xml:space="preserve">
+    <value>Im Artikel suchen</value>
+  </data>
+  <data name="ArticleSearchTextBox.PlaceholderText" xml:space="preserve">
+    <value>Im Artikel suchen</value>
+  </data>
   <data name="ArticleSettingsAppBarButton.Label" xml:space="preserve">
     <value>Einstellungen</value>
   </data>

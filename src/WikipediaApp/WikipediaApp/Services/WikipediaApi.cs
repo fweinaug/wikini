@@ -243,7 +243,7 @@ namespace WikipediaApp
       var parentNode = node.Ancestors().SingleOrDefault(x => x.GetAttributeValue("class", null) == "tsingle")
         ?? node.Ancestors().SingleOrDefault(x => x.GetAttributeValue("class", null) == "thumbinner");
 
-      var captionNode = parentNode?.Descendants().SingleOrDefault(x => x.GetAttributeValue("class", null) == "thumbcaption");
+      var captionNode = parentNode?.Descendants().FirstOrDefault(x => x.GetAttributeValue("class", null) == "thumbcaption");
       if (captionNode != null)
         return ExtractImageDescriptionFromNode(captionNode);
 

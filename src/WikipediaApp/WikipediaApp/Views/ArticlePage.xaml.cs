@@ -2,6 +2,7 @@
 using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
 namespace WikipediaApp
@@ -54,6 +55,8 @@ namespace WikipediaApp
       var article = ArticleView.Article;
 
       Settings.WriteLastArticle(article);
+
+      HideSearchBar(resetSearch: false);
     }
 
     private void HistoryButtonClick(object sender, RoutedEventArgs e)
@@ -141,6 +144,59 @@ namespace WikipediaApp
     {
       if (ImagesView.Visibility == Visibility.Visible)
         ImagesView.Focus(FocusState.Programmatic);
+    }
+
+    private void ToggleSearchBarAppBarButtonClick(object sender, RoutedEventArgs e)
+    {
+      if (SearchBarTranslate.Y > 0)
+        ShowSearchBar();
+      else
+        HideSearchBar();
+    }
+
+    private void HideSearchBarButtonClick(object sender, RoutedEventArgs e)
+    {
+      HideSearchBar();
+    }
+
+    private void SearchBarTextBoxKeyDown(object sender, KeyRoutedEventArgs e)
+    {
+      if (e.Key == Windows.System.VirtualKey.Escape)
+      {
+        HideSearchBar();
+      }
+    }
+
+    private void SearchBarTextBoxTextChanged(object sender, TextChangedEventArgs e)
+    {
+      ArticleView.Search(SearchBarTextBox.Text);
+    }
+
+    private void HideSearchBarStoryboardCompleted(object sender, object e)
+    {
+      SearchBarTextBox.IsEnabled = false;
+
+      SearchBarTextBox.TextChanged -= SearchBarTextBoxTextChanged;
+    }
+
+    private void ShowSearchBar()
+    {
+      SearchBarTextBox.IsEnabled = true;
+      SearchBarTextBox.Focus(FocusState.Programmatic);
+
+      SearchBarTextBox.TextChanged += SearchBarTextBoxTextChanged;
+
+      ShowSearchBarStoryboard.Begin();
+    }
+
+    private void HideSearchBar(bool resetSearch = true)
+    {
+      HideSearchBarStoryboard.Begin();
+
+      if (!resetSearch)
+        SearchBarTextBox.TextChanged -= SearchBarTextBoxTextChanged;
+
+      SearchBarTextBox.Text = string.Empty;
     }
   }
 }

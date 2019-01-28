@@ -10,5 +10,6 @@
     d:DesignWidth="400">
 
     <WebView x:Name="WebView" DefaultBackgroundColor="Transparent"
-             NavigationStarting="WebViewNavigationStarting" NavigationCompleted="WebViewNavigationCompleted" />
+             NavigationStarting="WebViewNavigationStarting" NavigationCompleted="WebViewNavigationCompleted"
+             ScriptNotify="WebViewScriptNotify" />
 </UserControl>

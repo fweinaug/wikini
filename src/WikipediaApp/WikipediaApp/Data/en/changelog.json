@@ -1,5 +1,8 @@
 ﻿[
     [
+        "Search in article (highlights hits, more to follow soon)"
+    ],
+    [
         "Show last opened article again at startup",
         "Do not lock device when reading an article"
     ],
