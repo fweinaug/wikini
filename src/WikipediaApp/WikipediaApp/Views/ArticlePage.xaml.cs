@@ -1,5 +1,6 @@
 ﻿using System;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -57,6 +58,38 @@ namespace WikipediaApp
       Settings.WriteLastArticle(article);
 
       HideSearchBar(resetSearch: false);
+    }
+
+    private void DefaultCommandBarOpening(object sender, object e)
+    {
+      var applicationView = ApplicationView.GetForCurrentView();
+
+      if (applicationView.IsFullScreenMode)
+      {
+        DefaultEnterFullScreenButton.Visibility = Visibility.Collapsed;
+        DefaultExitFullScreenButton.Visibility = Visibility.Visible;
+      }
+      else
+      {
+        DefaultEnterFullScreenButton.Visibility = Visibility.Visible;
+        DefaultExitFullScreenButton.Visibility = Visibility.Collapsed;
+      }
+    }
+
+    private void NarrowCommandBarOpening(object sender, object e)
+    {
+      var applicationView = ApplicationView.GetForCurrentView();
+
+      if (applicationView.IsFullScreenMode)
+      {
+        NarrowEnterFullScreenButton.Visibility = Visibility.Collapsed;
+        NarrowExitFullScreenButton.Visibility = Visibility.Visible;
+      }
+      else
+      {
+        NarrowEnterFullScreenButton.Visibility = Visibility.Visible;
+        NarrowExitFullScreenButton.Visibility = Visibility.Collapsed;
+      }
     }
 
     private void HistoryButtonClick(object sender, RoutedEventArgs e)
@@ -181,22 +214,44 @@ namespace WikipediaApp
 
     private void ShowSearchBar()
     {
+      if (SearchBarTranslate.Y < 50)
+        return;
+
       SearchBarTextBox.IsEnabled = true;
       SearchBarTextBox.Focus(FocusState.Programmatic);
 
       SearchBarTextBox.TextChanged += SearchBarTextBoxTextChanged;
 
+      HideSearchBarStoryboard.Stop();
       ShowSearchBarStoryboard.Begin();
     }
 
     private void HideSearchBar(bool resetSearch = true)
     {
+      if (SearchBarTranslate.Y > 0)
+        return;
+
+      ShowSearchBarStoryboard.Stop();
       HideSearchBarStoryboard.Begin();
 
       if (!resetSearch)
         SearchBarTextBox.TextChanged -= SearchBarTextBoxTextChanged;
 
       SearchBarTextBox.Text = string.Empty;
+    }
+
+    private void EnterFullScreenButtonClick(object sender, RoutedEventArgs e)
+    {
+      var applicationView = ApplicationView.GetForCurrentView();
+
+      applicationView.TryEnterFullScreenMode();
+    }
+
+    private void ExitFullScreenButtonClick(object sender, RoutedEventArgs e)
+    {
+      var applicationView = ApplicationView.GetForCurrentView();
+
+      applicationView.ExitFullScreenMode();
     }
   }
 }

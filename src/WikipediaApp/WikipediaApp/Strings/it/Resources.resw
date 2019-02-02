@@ -118,229 +118,229 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppArticleLoadingFailedContentDialog.Content" xml:space="preserve">
-    <value>Der Artikel konnte leider nicht geladen werden. Bitte überprüfen Sie Ihre Internetverbindung und versuchen es erneut.</value>
+    <value>L'articolo non ha potuto essere caricato. Si prega di controllare la connessione internet e riprovare.</value>
   </data>
   <data name="AppArticleLoadingFailedContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Chiudere</value>
   </data>
   <data name="AppArticleLoadingFailedContentDialog.Title" xml:space="preserve">
-    <value>Entschuldigung :(</value>
+    <value>Spiacente :(</value>
   </data>
   <data name="ArticleAddFavoriteAppBarButton.Label" xml:space="preserve">
-    <value>Zu Favoriten hinzufügen</value>
+    <value>Aggiungi ai preferiti</value>
   </data>
   <data name="ArticleBackAppBarButton.Label" xml:space="preserve">
-    <value>Zurück</value>
+    <value>Indietro</value>
   </data>
   <data name="ArticleBrowserAppBarButton.Label" xml:space="preserve">
-    <value>Im Browser öffnen</value>
+    <value>Apri in Browser</value>
   </data>
   <data name="ArticleContentsAppBarButton.Label" xml:space="preserve">
-    <value>Inhalt</value>
+    <value>Indice</value>
   </data>
   <data name="ArticleContentsPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Inhaltsverzeichnis</value>
+    <value>Indice</value>
   </data>
   <data name="ArticleEnterFullScreenButton.Label" xml:space="preserve">
-    <value>Vollbildmodus</value>
+    <value>Schermo intero</value>
   </data>
   <data name="ArticleExitFullScreenButton.Label" xml:space="preserve">
-    <value>Vollbildmodus verlassen</value>
+    <value>Lascia schermo intero</value>
   </data>
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
-    <value>Vorwärts</value>
+    <value>In avanti</value>
   </data>
   <data name="ArticleHistoryAppBarButton.Label" xml:space="preserve">
-    <value>Verlauf</value>
+    <value>Storia</value>
   </data>
   <data name="ArticleHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Verlauf</value>
+    <value>Storia</value>
   </data>
   <data name="ArticleImagesAppBarButton.Label" xml:space="preserve">
-    <value>Bilder anzeigen</value>
+    <value>Mostra immagini</value>
   </data>
   <data name="ArticleImagesEmptyTextBlock.Text" xml:space="preserve">
-    <value>Der Artikel enthält keine Bilder.</value>
+    <value>Questo articolo non contiene immagini.</value>
   </data>
   <data name="ArticleLanguagesAppBarButton.Label" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Lingue</value>
   </data>
   <data name="ArticleLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Lingue</value>
   </data>
   <data name="ArticlePinAppBarButton.Label" xml:space="preserve">
-    <value>An „Start“ anheften</value>
+    <value>Allega per iniziare</value>
   </data>
   <data name="ArticleRefreshAppBarButton.Label" xml:space="preserve">
-    <value>Aktualisieren</value>
+    <value>Aggiorna</value>
   </data>
   <data name="ArticleRemoveFavoriteAppBarButton.Label" xml:space="preserve">
-    <value>Aus Favoriten entfernen</value>
+    <value>Rimuovi dai preferiti</value>
   </data>
   <data name="ArticleSearchAppBarButton.Label" xml:space="preserve">
-    <value>Im Artikel suchen</value>
+    <value>Ricerca nell'articolo</value>
   </data>
   <data name="ArticleSearchTextBox.PlaceholderText" xml:space="preserve">
-    <value>Im Artikel suchen</value>
+    <value>Ricerca nell'articolo</value>
   </data>
   <data name="ArticleSettingsAppBarButton.Label" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Impostazioni</value>
   </data>
   <data name="ArticleShareAppBarButton.Label" xml:space="preserve">
-    <value>Teilen</value>
+    <value>Condividi</value>
   </data>
   <data name="ArticleSpeechAppBarButton.Label" xml:space="preserve">
-    <value>Vorlesen lassen</value>
+    <value>Leggi ad alta voce</value>
   </data>
   <data name="ArticleSpeechPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Vorlesen</value>
+    <value>Leggi ad alta voce</value>
   </data>
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
-    <value>Zum Anfang</value>
+    <value>Vai all'inizio</value>
   </data>
   <data name="MainFavoritesAppBarButton.Label" xml:space="preserve">
-    <value>Favoriten</value>
+    <value>Preferiti</value>
   </data>
   <data name="MainFavoritesPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Favoriten</value>
+    <value>Preferiti</value>
   </data>
   <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
-    <value>Verlauf</value>
+    <value>Storia</value>
   </data>
   <data name="MainHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Verlauf</value>
+    <value>Storia</value>
   </data>
   <data name="MainHomepageAppBarButton.Label" xml:space="preserve">
-    <value>Startseite</value>
+    <value>Homepage</value>
   </data>
   <data name="MainLanguagesAppBarButton.Label" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Lingue</value>
   </data>
   <data name="MainLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
-    <value>Sprachen</value>
+    <value>Lingue</value>
   </data>
   <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
-    <value>Keine Artikel gefunden</value>
+    <value>Nessun articolo trovato</value>
   </data>
   <data name="MainRandomAppBarButton.Label" xml:space="preserve">
-    <value>Zufall</value>
+    <value>Casuale</value>
   </data>
   <data name="MainSettingsAppBarButton.Label" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Impostazioni</value>
   </data>
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
-    <value>Info zu dieser App</value>
+    <value>Su questa applicazione</value>
   </data>
   <data name="SettingsChangelogButton.Content" xml:space="preserve">
-    <value>Neuerungen</value>
+    <value>Cosa c'è di nuovo?</value>
   </data>
   <data name="SettingsChangelogContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Chiudere</value>
   </data>
   <data name="SettingsChangelogContentDialog.Title" xml:space="preserve">
-    <value>Neuerungen</value>
+    <value>Cosa c'è di nuovo?</value>
   </data>
   <data name="SettingsDesignDarkRadioButton.Content" xml:space="preserve">
-    <value>Dunkel</value>
+    <value>Scuro</value>
   </data>
   <data name="SettingsDesignLightRadioButton.Content" xml:space="preserve">
-    <value>Hell</value>
+    <value>Chiaro</value>
   </data>
   <data name="SettingsDesignSystemRadioButton.Content" xml:space="preserve">
-    <value>Systemeinstellung verwenden</value>
+    <value>Usa impostazione di sistema</value>
   </data>
   <data name="SettingsDesignTextBlock.Text" xml:space="preserve">
     <value>Design</value>
   </data>
   <data name="SettingsDisclaimerButton.Content" xml:space="preserve">
-    <value>Rechtliche Hinweise</value>
+    <value>Disclaimer</value>
   </data>
   <data name="SettingsDisclaimerContentDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Chiudere</value>
   </data>
   <data name="SettingsDisclaimerContentDialog.Title" xml:space="preserve">
-    <value>Rechtliche Hinweise</value>
+    <value>Disclaimer</value>
   </data>
   <data name="SettingsFeedbackButton.Content" xml:space="preserve">
     <value>Feedback</value>
   </data>
   <data name="SettingsFontSizePreviewTextBlock.Text" xml:space="preserve">
-    <value>Vorschau</value>
+    <value>Anteprima</value>
   </data>
   <data name="SettingsFontSizeSlider.Header" xml:space="preserve">
-    <value>Artikel in ausgewählter Schriftgröße anzeigen</value>
+    <value>Mostra gli articoli nella dimensione del carattere selezionato</value>
   </data>
   <data name="SettingsFontSizeTextBlock.Text" xml:space="preserve">
-    <value>Schriftgröße</value>
+    <value>Dimensione carattere</value>
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Impostazioni</value>
   </data>
   <data name="SettingsHistoryClearButton.Content" xml:space="preserve">
-    <value>Verlauf leeren</value>
+    <value>Storia chiara</value>
   </data>
   <data name="SettingsHistorySessionToggleSwitch.Header" xml:space="preserve">
-    <value>Nur die während dieser Sitzung aufgerufenen Artikel im Verlauf anzeigen</value>
+    <value>Mostra solo gli articoli visti durante questa sessione nella storia</value>
   </data>
   <data name="SettingsHistorySessionToggleSwitch.OffContent" xml:space="preserve">
-    <value>Aus</value>
+    <value>Disabilitato</value>
   </data>
   <data name="SettingsHistorySessionToggleSwitch.OnContent" xml:space="preserve">
-    <value>Ein</value>
+    <value>Abilitato</value>
   </data>
   <data name="SettingsHistoryTextBlock.Text" xml:space="preserve">
-    <value>Verlauf</value>
+    <value>Storia</value>
   </data>
   <data name="SettingsHistoryTimelineToggleSwitch.Header" xml:space="preserve">
-    <value>Aufgerufene Artikel in der Windows Timeline anzeigen</value>
+    <value>Visualizzare gli articoli visualizzati nella Timeline di Windows</value>
   </data>
   <data name="SettingsHistoryTimelineToggleSwitch.OffContent" xml:space="preserve">
-    <value>Aus</value>
+    <value>Disabilitato</value>
   </data>
   <data name="SettingsHistoryTimelineToggleSwitch.OnContent" xml:space="preserve">
-    <value>Ein</value>
+    <value>Abilitato</value>
   </data>
   <data name="SettingsImagesDisabledTextBlock.Text" xml:space="preserve">
-    <value>Bilder</value>
+    <value>Immagini</value>
   </data>
   <data name="SettingsImagesDisabledToggleSwitch.Header" xml:space="preserve">
-    <value>Artikel ohne Bilder anzeigen um Datenvolumen zu sparen oder bei einer langsamen Internetverbindung</value>
+    <value>Visualizzare gli articoli senza immagini per salvare il volume di dati o in caso di connessione Internet lenta</value>
   </data>
   <data name="SettingsImagesDisabledToggleSwitch.OffContent" xml:space="preserve">
-    <value>Aus</value>
+    <value>Disabilitato</value>
   </data>
   <data name="SettingsImagesDisabledToggleSwitch.OnContent" xml:space="preserve">
-    <value>Ein</value>
+    <value>Abilitato</value>
   </data>
   <data name="SettingsReviewButton.Content" xml:space="preserve">
-    <value>Im Store bewerten</value>
+    <value>Recensione in Store</value>
   </data>
   <data name="SettingsSearchRestrictedTextBlock.Text" xml:space="preserve">
-    <value>Live-Suche</value>
+    <value>Ricerca dal vivo</value>
   </data>
   <data name="SettingsSearchRestrictedToggleSwitch.Header" xml:space="preserve">
-    <value>Suchergebnisse auch bei einer getakteten Verbindung bereits während der Eingabe anzeigen</value>
+    <value>Visualizzare i risultati della ricerca dal vivo quando si è connessi a una rete di misurazione</value>
   </data>
   <data name="SettingsSearchRestrictedToggleSwitch.OffContent" xml:space="preserve">
-    <value>Aus</value>
+    <value>Disabilitato</value>
   </data>
   <data name="SettingsSearchRestrictedToggleSwitch.OnContent" xml:space="preserve">
-    <value>Ein</value>
+    <value>Abilitato</value>
   </data>
   <data name="SettingsSectionsCollapsedTextBlock.Text" xml:space="preserve">
-    <value>Abschnitte</value>
+    <value>Sezioni</value>
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.Header" xml:space="preserve">
-    <value>Beim Aufruf eines Artikels alle Abschnitte einklappen und im Inhaltsverzeichnis nur die Hauptkapitel anzeigen</value>
+    <value>Comprimi le sezioni all'apertura degli articoli e mostra solo i capitoli principali dell'indice</value>
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.OffContent" xml:space="preserve">
-    <value>Aus</value>
+    <value>Disabilitato</value>
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.OnContent" xml:space="preserve">
-    <value>Ein</value>
+    <value>Abilitato</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
-    <value>Vielen Dank!</value>
+    <value>Grazie!</value>
   </data>
   <data name="SettingsTimelineTextBlock.Text" xml:space="preserve">
     <value>Timeline</value>

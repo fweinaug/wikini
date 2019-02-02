@@ -100,13 +100,13 @@
         </DataTemplate>
 
         <Storyboard x:Name="ShowSearchBarStoryboard">
-            <DoubleAnimation To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
-            <DoubleAnimation To="1" BeginTime="00:00:0.1" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
+            <DoubleAnimation From="50" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
+            <DoubleAnimation From="0" To="1" Duration="00:00:0.3" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
         </Storyboard>
 
         <Storyboard x:Name="HideSearchBarStoryboard" Completed="HideSearchBarStoryboardCompleted">
-            <DoubleAnimation To="50" Duration="00:00:0.3" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
-            <DoubleAnimation To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
+            <DoubleAnimation From="0" To="50" Duration="00:00:0.3" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
+            <DoubleAnimation From="1" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
         </Storyboard>
     </Page.Resources>
 
@@ -171,7 +171,7 @@
                           Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
 
                         <Grid.RenderTransform>
-                            <TranslateTransform x:Name="SearchBarTranslate" Y="0" />
+                            <TranslateTransform x:Name="SearchBarTranslate" Y="50" />
                         </Grid.RenderTransform>
 
                         <Grid.ColumnDefinitions>
@@ -203,7 +203,7 @@
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
         <CommandBar Name="DefaultCommandBar" Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                    x:DeferLoadStrategy="Lazy" Visibility="Collapsed">
+                    x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Opening="DefaultCommandBarOpening">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
                 <AppBarButton x:Uid="ArticleRefreshAppBarButton" Icon="Refresh" Command="{Binding RefreshCommand}" />
@@ -230,11 +230,24 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
 
+                <AppBarButton x:Uid="ArticleEnterFullScreenButton" x:Name="DefaultEnterFullScreenButton" Click="EnterFullScreenButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE740;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleExitFullScreenButton" x:Name="DefaultExitFullScreenButton" Click="ExitFullScreenButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE73F;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
                 <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xEB41;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
+
                 <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Command="{Binding ShowSettingsCommand}" />
             </CommandBar.SecondaryCommands>
 
@@ -280,7 +293,7 @@
         </CommandBar>
 
         <CommandBar Name="NarrowCommandBar" Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                    x:DeferLoadStrategy="Lazy" Visibility="Collapsed">
+                    x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Opening="NarrowCommandBarOpening">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="ArticleForwardAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoForward}" Click="ForwardButtonClick">
                     <AppBarButton.Icon>
@@ -323,6 +336,18 @@
                 <AppBarButton x:Uid="ArticleSpeechAppBarButton" Click="SpeechButtonClick">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE7F6;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleEnterFullScreenButton" x:Name="NarrowEnterFullScreenButton" Click="EnterFullScreenButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE740;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="ArticleExitFullScreenButton" x:Name="NarrowExitFullScreenButton" Click="ExitFullScreenButtonClick">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE73F;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
 

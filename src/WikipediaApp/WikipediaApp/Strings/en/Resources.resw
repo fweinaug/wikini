@@ -141,6 +141,12 @@
   <data name="ArticleContentsPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Table of contents</value>
   </data>
+  <data name="ArticleEnterFullScreenButton.Label" xml:space="preserve">
+    <value>Full screen</value>
+  </data>
+  <data name="ArticleExitFullScreenButton.Label" xml:space="preserve">
+    <value>Leave full screen</value>
+  </data>
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
     <value>Forward</value>
   </data>
@@ -299,6 +305,12 @@
   </data>
   <data name="SettingsImagesDisabledToggleSwitch.Header" xml:space="preserve">
     <value>View articles without images to save data volume or in case of a slow Internet connection</value>
+  </data>
+  <data name="SettingsImagesDisabledToggleSwitch.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="SettingsImagesDisabledToggleSwitch.OnContent" xml:space="preserve">
+    <value>On</value>
   </data>
   <data name="SettingsReviewButton.Content" xml:space="preserve">
     <value>Review in Store</value>
