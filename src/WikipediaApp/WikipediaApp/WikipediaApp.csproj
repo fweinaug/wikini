@@ -97,6 +97,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\Article\mark.es6.min.js" />
     <Content Include="Assets\Article\search.js" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
@@ -158,6 +159,7 @@
     <Compile Include="ViewModel\ArticleChapter.cs" />
     <Compile Include="ViewModel\ArticleChapterCollection.cs" />
     <Compile Include="Views\Helpers\DisplayHelper.cs" />
+    <Compile Include="Views\Helpers\DownloadHelper.cs" />
     <Compile Include="Views\SpeechView.xaml.cs">
       <DependentUpon>SpeechView.xaml</DependentUpon>
     </Compile>

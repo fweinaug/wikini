@@ -16,6 +16,10 @@
         </Grid.RowDefinitions>
 
         <CommandBar Grid.Row="0" Background="Transparent" OverflowButtonVisibility="Collapsed">
+            <AppBarButton Icon="Download" Click="DownloadButtonClick" />
+
+            <AppBarSeparator />
+
             <AppBarButton Icon="Cancel" Click="CloseButtonClick" />
         </CommandBar>
 

@@ -1,66 +1,76 @@
-﻿var results = [];
+﻿let results = [];
+let currentIndex = 0;
+
+let markInstance = null;
+let content = null;
 
 function search(query) {
-    _clearSearch();
+  if (!markInstance) {
+    content = document.getElementById("content");
+    markInstance = new Mark(content);
+  }
 
-    if (query.length > 0) {
-        _performSearch(query);
-    }
+  markInstance.unmark({
+    done: function() {
+      markInstance.mark(query, 
+      {
+        separateWordSearch: false,
+        acrossElements: true,
+        done: function() {
+          results = content.getElementsByTagName("mark");
 
-    window.external.notify(results.length.toString());
-}
+          currentIndex = 0;
+          _jumpTo();
 
-function _clearSearch() {
-    for (let i = 0; i < results.length; ++i) {
-        const resultNode = results[i];
-        const parentNode = resultNode.parentNode;
-
-        const textNode = document.createTextNode(resultNode.textContent);
-
-        parentNode.replaceChild(textNode, resultNode);
-        parentNode.normalize();
-    }
-
-    results = [];
-}
-
-function _performSearch(query) {
-    const queue = [document.body];
-    const re = new RegExp(query, 'gi');
-
-    let currentNode;
-
-    while ((currentNode = queue.pop())) {
-        if (currentNode.tagName === "SCRIPT" || !currentNode.textContent.match(re))
-            continue;
-
-        let match;
-
-        for (let i = 0; i < currentNode.childNodes.length; ++i) {
-            const childNode = currentNode.childNodes[i];
-
-            switch (childNode.nodeType) {
-            case Node.TEXT_NODE: // 3
-                while ((match = re.exec(childNode.textContent))) {
-                    const index = match.index;
-
-                    const splitNode = childNode.splitText(index);
-                    splitNode.splitText(query.length);
-
-                    const spanNode = document.createElement("span");
-                    spanNode.className = "highlight";
-
-                    currentNode.replaceChild(spanNode, splitNode);
-                    spanNode.appendChild(splitNode);
-
-                    results.push(spanNode);
-                    ++i;
-                }
-                break;
-            case Node.ELEMENT_NODE: // 1
-                queue.push(childNode);
-                break;
-            }
+          window.external.notify(results.length.toString());
         }
+      });
     }
+  });
+}
+
+function searchForward() {
+  if (results.length) {
+    if (++currentIndex >= results.length) {
+      currentIndex = 0;
+    }
+    _jumpTo();
+  }
+}
+
+function searchBackward() {
+  if (results.length) {
+    if (--currentIndex < 0) {
+      currentIndex = results.length - 1;
+    }
+    _jumpTo();
+  }
+}
+
+function _jumpTo() {
+  const currentClass = "current";
+
+  if (results.length) {
+    for (let i = 0; i < results.length; i++) {
+      results[i].classList.remove(currentClass);
+    }
+
+    const current = results.item(currentIndex);
+    if (current) {
+      current.classList.add(currentClass);
+
+      _scrollIntoView(current);
+    }
+  }
+}
+
+function _scrollIntoView(target) {
+  const rect = target.getBoundingClientRect();
+
+  if (rect.bottom + 50 > window.innerHeight) {
+    window.scrollBy(0, rect.bottom - window.innerHeight + 50);
+  }
+  if (rect.top < 0) {
+    window.scrollBy(0, rect.top - 30);
+  }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.System;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -194,15 +196,36 @@ namespace WikipediaApp
 
     private void SearchBarTextBoxKeyDown(object sender, KeyRoutedEventArgs e)
     {
-      if (e.Key == Windows.System.VirtualKey.Escape)
+      if (e.Key == VirtualKey.Escape)
       {
         HideSearchBar();
+
+        e.Handled = true;
+      }
+      else if (e.Key == VirtualKey.Enter)
+      {
+        if (IsShiftKeyPressed())
+          ArticleView.SearchBackward();
+        else
+          ArticleView.SearchForward();
+
+        e.Handled = true;
       }
     }
 
     private void SearchBarTextBoxTextChanged(object sender, TextChangedEventArgs e)
     {
       ArticleView.Search(SearchBarTextBox.Text);
+    }
+
+    private void SearchForwardButtonClick(object sender, RoutedEventArgs e)
+    {
+      ArticleView.SearchForward();
+    }
+
+    private void SearchBackwardButtonClick(object sender, RoutedEventArgs e)
+    {
+      ArticleView.SearchBackward();
     }
 
     private void HideSearchBarStoryboardCompleted(object sender, object e)
@@ -252,6 +275,13 @@ namespace WikipediaApp
       var applicationView = ApplicationView.GetForCurrentView();
 
       applicationView.ExitFullScreenMode();
+    }
+
+    private static bool IsShiftKeyPressed()
+    {
+      var state = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Shift);
+
+      return (state & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
     }
   }
 }

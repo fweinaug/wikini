@@ -71,5 +71,11 @@ namespace WikipediaApp
 
       PositionTextBlock.Text = position;
     }
+
+    private async void DownloadButtonClick(object sender, RoutedEventArgs e)
+    {
+      if (SelectedImage != null)
+        await DownloadHelper.DownloadImage(SelectedImage);
+    }
   }
 }

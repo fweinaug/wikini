@@ -259,6 +259,30 @@ namespace WikipediaApp
       }
     }
 
+    public async void SearchForward()
+    {
+      try
+      {
+        await WebView.InvokeScriptAsync("searchForward", null);
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+      }
+    }
+
+    public async void SearchBackward()
+    {
+      try
+      {
+        await WebView.InvokeScriptAsync("searchBackward", null);
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+      }
+    }
+
     private void GoToStackEntry(ArticleStackEntry entry)
     {
       var position = entry.Position;
