@@ -1,4 +1,6 @@
-﻿using Windows.UI.Xaml;
+﻿using System.Numerics;
+using Windows.Foundation.Metadata;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace WikipediaApp
@@ -12,6 +14,13 @@ namespace WikipediaApp
     public MainPage()
     {
       InitializeComponent();
+
+      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+      {
+        SharedShadow.Receivers.Add(ContentGrid);
+
+        PaneContentPresenter.Translation += new Vector3(0, 0, 16);
+      }
 
       paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
       paneFavoritesTemplate = (DataTemplate)Resources["FavoritesTemplate"];

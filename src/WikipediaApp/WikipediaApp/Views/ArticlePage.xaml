@@ -6,9 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,8)"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <contract8Present:ThemeShadow x:Name="SharedShadow" />
+
         <DataTemplate x:Key="HistoryTemplate">
             <Grid>
                 <Grid.RowDefinitions>
@@ -152,9 +155,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <SplitView x:Name="SplitView" Grid.Row="0" contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}" PaneClosed="SplitViewPaneClosed">
+        <SplitView x:Name="SplitView" Grid.Row="0"
+                   contract5Present:PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
+                   PaneClosed="SplitViewPaneClosed">
             <SplitView.Pane>
-                <Grid>
+                <Grid x:Name="SplitViewPaneGrid" contract8Present:Shadow="{StaticResource SharedShadow}">
                     <ContentPresenter x:Name="PaneContentPresenter" />
                     <local:SpeechView x:Name="PaneSpeechView" Article="{Binding Article}"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
@@ -168,7 +173,8 @@
                                        ArticleChanged="ArticleViewArticleChanged" />
 
                     <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,16,0"
-                          Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                          Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                          contract8Present:Shadow="{StaticResource SharedShadow}">
 
                         <Grid.RenderTransform>
                             <TranslateTransform x:Name="SearchBarTranslate" Y="50" />

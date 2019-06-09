@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Numerics;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Foundation.Metadata;
 using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
@@ -19,6 +21,14 @@ namespace WikipediaApp
     public ArticlePage()
     {
       InitializeComponent();
+
+      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+      {
+        SharedShadow.Receivers.Add(ArticleView);
+
+        SplitViewPaneGrid.Translation += new Vector3(0, 0, 16);
+        SearchBar.Translation += new Vector3(0, 0, 16);
+      }
 
       paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
       paneContentsTemplate = (DataTemplate)Resources["ContentsTemplate"];
@@ -46,7 +56,7 @@ namespace WikipediaApp
     private void ArticlePageDataRequested(DataTransferManager sender, DataRequestedEventArgs e)
     {
       var article = ArticleView.Article;
-      if (article == null)
+      if (article?.Uri == null)
         return;
 
       e.Request.Data.Properties.Title = article.Title;
