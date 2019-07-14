@@ -5,9 +5,29 @@
     xmlns:local="using:WikipediaApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <MenuFlyout x:Name="LinkMenuFlyout">
+            <MenuFlyoutItem x:Uid="ArticleLinkNavigateMenuFlyoutItem" Icon="Go" DataContext="{Binding ArticleFlyout}" Click="NavigateLinkMenuFlyoutItem" ToolTipService.ToolTip="{Binding Title}" />
+            <MenuFlyoutItem x:Uid="ArticleLinkAddFavoritesMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding AddToFavoritesCommand}" IsEnabled="{Binding IsArticle}"
+                            Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xE734;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Uid="ArticleLinkRemoveFavoritesMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding RemoveFromFavoritesCommand}"
+                            Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xE8D9;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+            <MenuFlyoutItem x:Uid="ArticleLinkPinMenuFlyoutItem" Icon="Pin" DataContext="{Binding ArticleFlyout}" Command="{Binding PinCommand}"
+                            Visibility="{Binding IsArticle, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem x:Uid="ArticleLinkClipboardMenuFlyoutItem" Icon="Copy" DataContext="{Binding ArticleFlyout}" Command="{Binding CopyToClipboardCommand}" />
+        </MenuFlyout>
+    </UserControl.Resources>
 
     <WebView x:Name="WebView" DefaultBackgroundColor="Transparent"
              NavigationStarting="WebViewNavigationStarting" NavigationCompleted="WebViewNavigationCompleted"

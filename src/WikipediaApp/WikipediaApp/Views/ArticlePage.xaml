@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
     xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,8)"
     mc:Ignorable="d">
 
@@ -95,7 +96,15 @@
                           local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:ArticleLanguage">
-                            <TextBlock Text="{x:Bind Name}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+                                <TextBlock Grid.Column="1" Text="{Binding Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -170,10 +179,12 @@
                 <Grid>
                     <local:ArticleView x:Name="ArticleView" Article="{Binding Article}" ShowArticleCommand="{Binding ShowArticleCommand}"
                                        NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}"
+                                       ArticleFlyout="{Binding ArticleFlyout, Mode=TwoWay}"
                                        ArticleChanged="ArticleViewArticleChanged" />
 
                     <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,16,0"
-                          Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                          contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                          contract5NotPresent:Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
                           contract8Present:Shadow="{StaticResource SharedShadow}">
 
                         <Grid.RenderTransform>
@@ -293,11 +304,11 @@
 
             <AppBarSeparator />
 
-            <AppBarButton x:Uid="ArticleShareAppBarButton" Icon="Share" Click="ShareButtonClick" />
+            <AppBarButton x:Uid="ArticleShareAppBarButton" Icon="Share" Command="{Binding ShareCommand}" />
 
             <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
                 <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE91B;" />
+                    <FontIcon Glyph="&#xE8B9;" />
                 </AppBarButton.Icon>
             </AppBarButton>
 
@@ -311,7 +322,11 @@
                 </AppBarButton.Icon>
             </AppBarButton>
 
-            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Icon="World" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}" />
+            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xF2B7;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
         </CommandBar>
 
         <CommandBar Name="NarrowCommandBar" Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
@@ -325,7 +340,7 @@
 
                 <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
                 <AppBarButton x:Uid="ArticleRefreshAppBarButton" Icon="Refresh" Command="{Binding RefreshCommand}" />
-                <AppBarButton x:Uid="ArticleShareAppBarButton" Click="ShareButtonClick">
+                <AppBarButton x:Uid="ArticleShareAppBarButton" Command="{Binding ShareCommand}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE72D;" />
                     </AppBarButton.Icon>
@@ -333,7 +348,7 @@
 
                 <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
                     <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE91B;" />
+                        <FontIcon Glyph="&#xE8B9;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
 
@@ -402,7 +417,11 @@
                 </AppBarButton.Icon>
             </AppBarButton>
 
-            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Icon="World" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}" />
+            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xF2B7;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
         </CommandBar>
 
         <local:ArticleImagesView x:Name="ImagesView" Grid.Row="0" Grid.RowSpan="2" x:DeferLoadStrategy="Lazy"

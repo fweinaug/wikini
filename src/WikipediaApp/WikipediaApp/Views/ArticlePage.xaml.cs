@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Numerics;
-using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation.Metadata;
 using Windows.System;
 using Windows.UI.Core;
@@ -39,7 +38,6 @@ namespace WikipediaApp
     {
       base.OnNavigatedTo(e);
 
-      DataTransferManager.GetForCurrentView().DataRequested += ArticlePageDataRequested;
       DisplayHelper.ActivateDisplay();
 
       DataContext = e.Parameter;
@@ -47,20 +45,9 @@ namespace WikipediaApp
 
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
-      DataTransferManager.GetForCurrentView().DataRequested -= ArticlePageDataRequested;
       DisplayHelper.ReleaseDisplay();
 
       Settings.WriteLastArticle(null);
-    }
-
-    private void ArticlePageDataRequested(DataTransferManager sender, DataRequestedEventArgs e)
-    {
-      var article = ArticleView.Article;
-      if (article?.Uri == null)
-        return;
-
-      e.Request.Data.Properties.Title = article.Title;
-      e.Request.Data.SetWebLink(article.Uri);
     }
 
     private void ArticleViewArticleChanged(object sender, EventArgs e)
@@ -168,11 +155,6 @@ namespace WikipediaApp
     private void ForwardButtonClick(object sender, RoutedEventArgs e)
     {
       ArticleView.GoForward();
-    }
-
-    private void ShareButtonClick(object sender, RoutedEventArgs e)
-    {
-      DataTransferManager.ShowShareUI();
     }
 
     private void SpeechButtonClick(object sender, RoutedEventArgs e)

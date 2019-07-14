@@ -23,6 +23,7 @@ namespace WikipediaApp
     private IList<ArticleLanguage> languages = null;
     private bool hasLanguages = false;
     private bool isFavorite = false;
+    private ArticleFlyout articleFlyout;
 
     private Command refreshCommand;
     private Command<ArticleLanguage> changeLanguageCommand;
@@ -30,6 +31,7 @@ namespace WikipediaApp
     private Command pinCommand;
     private Command addToFavoritesCommand;
     private Command removeFromFavoritesCommand;
+    private Command shareCommand;
 
     private Command<Uri> navigateCommand;
     private Command<Uri> loadedCommand;
@@ -114,6 +116,32 @@ namespace WikipediaApp
       private set { SetProperty(ref isFavorite, value); }
     }
 
+    public ArticleFlyout ArticleFlyout
+    {
+      get { return articleFlyout; }
+      set
+      {
+        if (SetProperty(ref articleFlyout, value)
+            && articleFlyout != null && !articleFlyout.Loaded)
+        {
+          LoadArticleFlyout();
+        }
+      }
+    }
+
+    private async void LoadArticleFlyout()
+    {
+      var article = await wikipediaService.GetArticleInfo(articleFlyout.Uri);
+
+      if (article != null)
+        articleFlyout.Title = article.Title;
+      else if (string.IsNullOrWhiteSpace(articleFlyout.Title))
+        articleFlyout.Title = articleFlyout.Uri.ToString();
+
+      articleFlyout.Article = article;
+      articleFlyout.Loaded = true;
+    }
+
     public ICommand RefreshCommand
     {
       get { return refreshCommand ?? (refreshCommand = new Command(Refresh)); }
@@ -142,6 +170,11 @@ namespace WikipediaApp
     public ICommand RemoveFromFavoritesCommand
     {
       get { return removeFromFavoritesCommand ?? (removeFromFavoritesCommand = new Command(RemoveFromFavorites)); }
+    }
+
+    public ICommand ShareCommand
+    {
+      get { return shareCommand ?? (shareCommand = new Command(Share)); }
     }
 
     public ICommand NavigateCommand
@@ -208,12 +241,21 @@ namespace WikipediaApp
       Navigate(language.Uri);
     }
 
-    private void OpenInBrowser()
+    private async void OpenInBrowser()
     {
-      var uri = article?.Uri ?? initialArticle?.Uri;
+      var openArticle = article ?? initialArticle;
+      if (openArticle == null)
+        return;
 
-      if (uri != null)
-        navigationService.OpenInBrowser(uri);
+      if (openArticle.Uri == null)
+      {
+        openArticle.Uri = await wikipediaService.GetArticleUri(openArticle.Language, openArticle.PageId, openArticle.Title);
+      }
+
+      if (openArticle.Uri != null)
+      {
+        navigationService.OpenInBrowser(openArticle.Uri);
+      }
     }
 
     private async void Pin()
@@ -245,6 +287,23 @@ namespace WikipediaApp
         ArticleFavorites.RemoveArticle(article);
 
         IsFavorite = false;
+      }
+    }
+
+    private async void Share()
+    {
+      var shareArticle = article ?? initialArticle;
+      if (shareArticle == null)
+        return;
+
+      if (shareArticle.Uri == null)
+      {
+        shareArticle.Uri = await wikipediaService.GetArticleUri(shareArticle.Language, shareArticle.PageId, shareArticle.Title);
+      }
+
+      if (shareArticle.Uri != null)
+      {
+        ShareManager.ShareArticle(shareArticle.Title, shareArticle.Uri);
       }
     }
 

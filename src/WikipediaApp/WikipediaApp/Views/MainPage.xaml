@@ -102,8 +102,16 @@
                     <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
                               local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
                         <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}" />
+                            <DataTemplate x:DataType="local:Language">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -218,7 +226,11 @@
                 </AppBarButton.Icon>
             </AppBarButton>
 
-            <AppBarButton x:Uid="MainLanguagesAppBarButton" Icon="World" Click="LanguagesButtonClick" />
+            <AppBarButton x:Uid="MainLanguagesAppBarButton" Click="LanguagesButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xF2B7;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
         </CommandBar>
     </Grid>
 </Page>

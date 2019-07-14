@@ -47,7 +47,7 @@ namespace WikipediaApp
       {
         const string query = "action=query&generator=random&grnnamespace=0&grnlimit=1&grnfilterredir=redirects&redirects&prop=info&inprop=url";
 
-        var result = await QueryAndParse<RandomRoot>(language, query);
+        var result = await QueryAndParse<PagesRoot>(language, query);
 
         var pages = result?.query?.pages;
         if (pages == null || pages.Count == 0)
@@ -59,6 +59,40 @@ namespace WikipediaApp
         var uri = new Uri(page.fullurl);
 
         return new ArticleHead { Language = language, PageId = pageId, Uri = uri };
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+
+        return null;
+      }
+    }
+
+    public async Task<ArticleHead> GetArticleInfo(string language, int? pageId, string title)
+    {
+      try
+      {
+        var query = "action=query&prop=info&inprop=url";
+        if (pageId != null)
+          query += "&pageids=" + pageId;
+        else
+          query += "&titles=" + title + "&redirects=";
+
+        var result = await QueryAndParse<PagesRoot>(language, query);
+
+        var pages = result?.query?.pages;
+        if (pages == null || pages.Count == 0)
+          return null;
+
+        var page = pages.First();
+
+        return new ArticleHead
+        {
+          PageId = page.pageid,
+          Title = page.title,
+          Language = language,
+          Uri = new Uri(page.fullurl)
+        };
       }
       catch (Exception ex)
       {
@@ -103,7 +137,7 @@ namespace WikipediaApp
 
     public async Task<List<ArticleImage>> GetArticleImages(Article article)
     {
-      var imagesByFilenameDictionary = await FetchArticleImagesGroupedByFilename(article.PageId, article.Language);
+      var imagesByFilenameDictionary = await FetchArticleImagesGroupedByFilename(article.PageId.Value, article.Language);
 
       var images = ParseArticleForImages(article, imagesByFilenameDictionary);
       return images;
@@ -289,25 +323,25 @@ namespace WikipediaApp
       public string @base { get; set; }
     }
 
-    private class RandomRoot
+    private class PagesRoot
     {
       public bool batchcomplete { get; set; }
-      public RandomContinue @continue { get; set; }
-      public RandomQuery query { get; set; }
+      public PagesContinue @continue { get; set; }
+      public PagesQuery query { get; set; }
     }
 
-    private class RandomContinue
+    private class PagesContinue
     {
       public string grncontinue { get; set; }
       public string @continue { get; set; }
     }
 
-    private class RandomQuery
+    private class PagesQuery
     {
-      public List<RandomPage> pages { get; set; }
+      public List<PagesPage> pages { get; set; }
     }
 
-    private class RandomPage
+    private class PagesPage
     {
       public int pageid { get; set; }
       public int ns { get; set; }
@@ -419,6 +453,7 @@ namespace WikipediaApp
         {
           languages.Add(new ArticleLanguage
           {
+            Code = langling.lang,
             Name = string.IsNullOrEmpty(langling.autonym) ? langling.langname : langling.autonym,
             Uri = new Uri(langling.url)
           });

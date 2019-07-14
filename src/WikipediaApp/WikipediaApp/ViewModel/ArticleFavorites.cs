@@ -10,7 +10,7 @@ namespace WikipediaApp
   {
     public static IList<ArticleHead> All { get; } = new ObservableCollection<ArticleHead>();
 
-    public static void AddArticle(Article article)
+    public static void AddArticle(ArticleHead article)
     {
       var favorite = new FavoriteArticle
       {
@@ -31,7 +31,7 @@ namespace WikipediaApp
       All.Insert(0, favorite);
     }
 
-    public static void RemoveArticle(Article article)
+    public static void RemoveArticle(ArticleHead article)
     {
       if (All.FirstOrDefault(x => x.Language == article.Language && x.PageId == article.PageId) is FavoriteArticle favorite)
       {
@@ -46,7 +46,7 @@ namespace WikipediaApp
       }
     }
 
-    public static bool IsFavorite(Article article)
+    public static bool IsFavorite(ArticleHead article)
     {
       return All.Any(x => x.Language == article.Language && x.PageId == article.PageId);
     }

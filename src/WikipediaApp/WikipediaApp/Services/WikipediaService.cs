@@ -52,7 +52,7 @@ namespace WikipediaApp
     public async Task<Article> GetArticle(Uri uri, bool disableImages)
     {
       string title, language, anchor;
-      if (!ParseUri(uri, out title, out language, out anchor))
+      if (!WikipediaUriParser.Parse(uri, out title, out language, out anchor))
         return null;
 
       if (string.IsNullOrEmpty(title))
@@ -76,25 +76,30 @@ namespace WikipediaApp
       }
     }
 
-    private bool ParseUri(Uri uri, out string title, out string language, out string anchor)
+    public async Task<Uri> GetArticleUri(string language, int? pageId, string title)
     {
-      title = null;
-      language = null;
-      anchor = null;
+      try
+      {
+        var article = await queryApi.GetArticleInfo(language, pageId, title);
 
-      if (!IsWikipediaUri(uri))
-        return false;
+        return article?.Uri;
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
 
-      if (!uri.AbsolutePath.StartsWith("/wiki/"))
-        return false;
+        return null;
+      }
+    }
 
-      title = uri.AbsolutePath.Substring(6);
-      language = uri.Host.Substring(0, uri.Host.IndexOf('.'));
+    public async Task<ArticleHead> GetArticleInfo(Uri uri)
+    {
+      if (!WikipediaUriParser.Parse(uri, out var title, out var language, out _))
+        return null;
 
-      if (uri.Fragment.StartsWith("#"))
-        anchor = uri.Fragment.Substring(1);
+      var article = await queryApi.GetArticleInfo(language, null, title);
 
-      return true;
+      return article;
     }
 
     public async Task<IList<ArticleImage>> GetArticleImages(Article article)
@@ -113,7 +118,7 @@ namespace WikipediaApp
 
     public bool IsWikipediaUri(Uri uri)
     {
-      return uri != null && uri.Host.EndsWith(".wikipedia.org");
+      return WikipediaUriParser.IsWikipediaUri(uri);
     }
 
     public bool IsLinkToWikipediaImage(Uri uri, out string filename)

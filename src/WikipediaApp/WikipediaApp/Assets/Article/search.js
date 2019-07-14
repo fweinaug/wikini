@@ -22,7 +22,7 @@ function search(query) {
           currentIndex = 0;
           _jumpTo();
 
-          window.external.notify(results.length.toString());
+          window.external.notify(`{ 'Message': 'SearchResults', 'Number': ${results.length.toString()} }`);
         }
       });
     }

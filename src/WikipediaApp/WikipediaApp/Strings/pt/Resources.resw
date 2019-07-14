@@ -168,6 +168,24 @@
   <data name="ArticleLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Línguas</value>
   </data>
+  <data name="ArticleLinkAddFavoritesMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Adicionar aos Favoritos</value>
+  </data>
+  <data name="ArticleLinkClipboardMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Copiar endereço do link</value>
+  </data>
+  <data name="ArticleLinkNavigateMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="ArticleLinkPinMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Pino para a tela inicial</value>
+  </data>
+  <data name="ArticleLinkRemoveFavoritesMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Remover dos Favoritos</value>
+  </data>
+  <data name="ArticleLinkShareMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Link de partilha</value>
+  </data>
   <data name="ArticlePinAppBarButton.Label" xml:space="preserve">
     <value>Pino para a tela inicial</value>
   </data>

@@ -1,7 +1,16 @@
 ﻿[
     [
-        "Improved Fluent Design",
-        "Improved Italian translation (Thanks Matteo!)",
+        "Context menu for links in article view",
+        "Display language abbreviations",
+        "Article sharing improved",
+        "Article view improved",
+        "Some icons replaced",
+        "Bugfixes",
+        "Minimum version of Windows 10 raised to 1809 (October 2018)"
+    ],
+    [
+        "Fluent Design improved",
+        "Italian translation improved (Thanks Matteo!)",
         "Portuguese translation",
         "Bugfixes"
     ],

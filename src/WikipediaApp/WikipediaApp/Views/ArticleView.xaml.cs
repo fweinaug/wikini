@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Microsoft.HockeyApp;
 using Newtonsoft.Json;
 
@@ -25,6 +27,9 @@ namespace WikipediaApp
 
     public static readonly DependencyProperty ShowArticleCommandProperty = DependencyProperty.RegisterAttached(
       "ShowArticleCommand", typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
+
+    public static readonly DependencyProperty ArticleFlyoutProperty = DependencyProperty.RegisterAttached(
+      "ArticleFlyout", typeof(ArticleFlyout), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty CanGoBackProperty = DependencyProperty.RegisterAttached(
       "CanGoBack", typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
@@ -57,6 +62,12 @@ namespace WikipediaApp
     {
       get { return (ICommand)GetValue(ShowArticleCommandProperty); }
       set { SetValue(ShowArticleCommandProperty, value); }
+    }
+
+    public ArticleFlyout ArticleFlyout
+    {
+      get { return (ArticleFlyout)GetValue(ArticleFlyoutProperty); }
+      set { SetValue(ArticleFlyoutProperty, value); }
     }
 
     public bool CanGoBack
@@ -168,29 +179,19 @@ namespace WikipediaApp
       CanGoForward = forwardStack.Count > 0;
     }
 
+    private void NavigateLinkMenuFlyoutItem(object sender, RoutedEventArgs e)
+    {
+      var item = (MenuFlyoutItem)sender;
+      var article = (ArticleFlyout)item.DataContext;
+
+      NavigateToUri(article.Uri);
+    }
+
     private void WebViewNavigationStarting(WebView sender, WebViewNavigationStartingEventArgs e)
     {
-      if (e.Uri == null)
-        return;
-
-      if (e.Uri.AbsolutePath == "/" && e.Uri.Fragment.StartsWith("#"))
+      if (e.Uri != null)
       {
-        e.Cancel = true;
-
-        var id = e.Uri.Fragment.Substring(1);
-
-        WebView.ScrollToElement(id);
-      }
-      else
-      {
-        var command = NavigateCommand;
-
-        if (command != null && command.CanExecute(e.Uri))
-        {
-          e.Cancel = true;
-
-          command.Execute(e.Uri);
-        }
+        e.Cancel = NavigateToUri(e.Uri);
       }
     }
 
@@ -212,7 +213,17 @@ namespace WikipediaApp
 
     private void WebViewScriptNotify(object sender, NotifyEventArgs e)
     {
-      SearchResults = Convert.ToInt32(e.Value);
+      var data = JsonConvert.DeserializeObject<ScriptNotifyData>(e.Value);
+
+      switch (data.Message)
+      {
+        case ScriptNotifyData.SearchResults:
+          SearchResults = Convert.ToInt32(data.Number);
+          break;
+        case ScriptNotifyData.Contextmenu:
+          ShowArticleFlyout(data);
+          break;
+      }
     }
 
     public void ScrollToTop()
@@ -283,6 +294,28 @@ namespace WikipediaApp
       }
     }
 
+    private bool NavigateToUri(Uri uri)
+    {
+      if (uri.AbsolutePath == "/" && uri.Fragment.StartsWith("#"))
+      {
+        var id = uri.Fragment.Substring(1);
+
+        WebView.ScrollToElement(id);
+
+        return true;
+      }
+
+      var command = NavigateCommand;
+      if (command != null && command.CanExecute(uri))
+      {
+        command.Execute(uri);
+
+        return true;
+      }
+
+      return false;
+    }
+
     private void GoToStackEntry(ArticleStackEntry entry)
     {
       var position = entry.Position;
@@ -307,9 +340,49 @@ namespace WikipediaApp
         ShowArticleCommand.Execute(entry);
     }
 
+    private void ShowArticleFlyout(ScriptNotifyData data)
+    {
+      var flyout = new ArticleFlyout
+      {
+        Uri = new Uri(data.Url),
+        Left = data.X,
+        Top = data.Y + data.Height + 5,
+        Title = data.Text
+      };
+
+      void OnArticleFlyoutOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+      {
+        if (e.PropertyName == nameof(ArticleFlyout.Loaded))
+        {
+          flyout.PropertyChanged -= OnArticleFlyoutOnPropertyChanged;
+
+          LinkMenuFlyout.ShowAt(WebView, new FlyoutShowOptions { Position = new Point(flyout.Left, flyout.Top) });
+        }
+      }
+
+      flyout.PropertyChanged += OnArticleFlyoutOnPropertyChanged;
+
+      ArticleFlyout = flyout;
+    }
+
     private class ArticleStackEntry : Article
     {
       public double Position { get; set; }
+    }
+
+    private class ScriptNotifyData
+    {
+      public const string SearchResults = "SearchResults";
+      public const string Contextmenu = "Contextmenu";
+
+      public string Message { get; set; }
+      public double X { get; set; }
+      public double Y { get; set; }
+      public double Width { get; set; }
+      public double Height { get; set; }
+      public string Url { get; set; }
+      public string Text { get; set; }
+      public int Number { get; set; }
     }
   }
 }

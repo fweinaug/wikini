@@ -31,15 +31,17 @@ namespace WikipediaApp
         mw.user.tokens.set({{""editToken"":""+\\"",""patrolToken"":""+\\"",""watchToken"":""+\\"",""csrfToken"":""+\\""}});/*@nomin*/;
 
         }});mw.loader.load([""mediawiki.toc"",""mediawiki.page.startup"",""mediawiki.user"",""mediawiki.hidpi"",""skins.minerva.scripts.top"",""skins.minerva.scripts"",""skins.minerva.watchstar"",""skins.minerva.editor"",""skins.minerva.toggling"",""mobile.site"",""ext.gadget.switcher"",""ext.centralauth.centralautologin"",""ext.visualEditor.targetLoader"",""ext.eventLogging.subscriber"",""ext.navigationTiming"",""ext.quicksurveys.init"",""ext.centralNotice.geoIP"",""ext.centralNotice.startUp""]);}});</script>
-        <link rel=""stylesheet"" href=""/w/load.php?debug=false&amp;lang={language}&amp;modules=mediawiki.page.gallery.styles%7Cmediawiki.ui.button%2Cicon%7Cskins.minerva.base.reset%2Cstyles%7Cskins.minerva.content.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.footerV2.styles%7Cskins.minerva.icons.images%7Cskins.minerva.tablet.styles&amp;only=styles&amp;skin=minerva""/>
+        <link rel=""stylesheet"" href=""/w/load.php?debug=false&amp;lang={language}&amp;modules=mediawiki.hlist%7Cmediawiki.page.gallery.styles%7Cmediawiki.ui.button%2Cicon%7Cskins.minerva.base.styles%7Cskins.minerva.content.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons.images&amp;only=styles&amp;skin=minerva""/>
         <script async="""" src=""/w/load.php?debug=false&amp;lang={language}&amp;modules=startup&amp;only=scripts&amp;skin=minerva&amp;target=mobile""></script>
+        <script src=""ms-appx-web:///Assets/Article/events.js"" type=""text/javascript""></script>
         <script src=""ms-appx-web:///Assets/Article/mark.es6.min.js"" type=""text/javascript""></script>
         <script src=""ms-appx-web:///Assets/Article/search.js"" type=""text/javascript""></script>
         <meta name=""ResourceLoaderDynamicStyles"" content=""""/>
+        <link rel=""stylesheet"" href=""/w/load.php?lang={language}&amp;modules=site.styles&amp;only=styles&amp;skin=minerva""/>
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
-        <body class=""mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"">
+        <body class=""mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"">
         <div id=""mw-mf-viewport"">
 	        <div id=""mw-mf-page-center"">
 		        <div id=""content"" class=""mw-body"">
@@ -67,6 +69,7 @@ namespace WikipediaApp
           background: orange;
         }
 
+        .content .in-block { display:block; }
         .content table.infobox > caption { display: inline; }";
 
       if (darkMode)
@@ -80,7 +83,7 @@ namespace WikipediaApp
           a, a:visited {color:#2372AF !important;}
 
           .content .section-heading {border-bottom-color:#333 !important;}
-          .content table.infobox {background-color:#1a1a1a !important;}
+          .content table.infobox {color:#999 !important;background-color:#1a1a1a !important;}
           .content table.infobox th[colspan=""2""] {background-color:#333 !important;}
           .content table.infobox th, .content table.infobox td {border-color:#333 !important;}
 
