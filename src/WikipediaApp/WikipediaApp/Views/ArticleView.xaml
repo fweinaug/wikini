@@ -25,6 +25,7 @@
             <MenuFlyoutItem x:Uid="ArticleLinkPinMenuFlyoutItem" Icon="Pin" DataContext="{Binding ArticleFlyout}" Command="{Binding PinCommand}"
                             Visibility="{Binding IsArticle, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <MenuFlyoutSeparator />
+            <MenuFlyoutItem x:Uid="ArticleLinkShareMenuFlyoutItem" Icon="Share" DataContext="{Binding ArticleFlyout}" Command="{Binding ShareCommand}" />
             <MenuFlyoutItem x:Uid="ArticleLinkClipboardMenuFlyoutItem" Icon="Copy" DataContext="{Binding ArticleFlyout}" Command="{Binding CopyToClipboardCommand}" />
         </MenuFlyout>
     </UserControl.Resources>
