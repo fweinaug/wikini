@@ -249,6 +249,12 @@
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
     <value>Info over deze app</value>
   </data>
+  <data name="SettingsAppLanguageComboBox.Header" xml:space="preserve">
+    <value>Toon app in de geselecteerde taal bij het volgende opstarten</value>
+  </data>
+  <data name="SettingsAppLanguageTextBlock.Text" xml:space="preserve">
+    <value>Taal</value>
+  </data>
   <data name="SettingsChangelogButton.Content" xml:space="preserve">
     <value>Nieuwigheden</value>
   </data>
@@ -356,6 +362,12 @@
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.OnContent" xml:space="preserve">
     <value>Aan</value>
+  </data>
+  <data name="SettingsSplitViewInlineTextBlock.Text" xml:space="preserve">
+    <value>Zijbalk</value>
+  </data>
+  <data name="SettingsSplitViewInlineToggleSwitch.Header" xml:space="preserve">
+    <value>Favorieten, geschiedenis, instellingen, enz. naast de inhoud tonen in plaats van erboven</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Hartelijk dank!</value>

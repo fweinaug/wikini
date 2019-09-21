@@ -14,31 +14,7 @@
         <contract8Present:ThemeShadow x:Name="SharedShadow" />
 
         <DataTemplate x:Key="HistoryTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <TextBlock x:Uid="ArticleHistoryPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
-
-                <ListView Grid.Row="1" ItemsSource="{Binding History}" Style="{StaticResource SplitViewPaneListViewStyle}"
-                          local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:ArticleHead">
-                            <Grid ToolTipService.ToolTip="{x:Bind Title}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
-                                <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+            <local:HistoryView ArticleClick="HistoryViewArticleClick" />
         </DataTemplate>
 
         <DataTemplate x:Key="ContentsTemplate">
@@ -96,7 +72,7 @@
                           local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:ArticleLanguage">
-                            <Grid>
+                            <Grid ToolTipService.ToolTip="{x:Bind Name}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
@@ -157,6 +133,19 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+
+            <VisualStateGroup x:Name="SplitViewStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding Source={StaticResource Settings}, Path=SplitViewInline}" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="SplitView.DisplayMode" Value="Inline" />
+                        <Setter Target="SplitView.PaneBackground" Value="{ThemeResource SplitViewPaneBackgroundBrush}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
@@ -172,6 +161,13 @@
                     <ContentPresenter x:Name="PaneContentPresenter" />
                     <local:SpeechView x:Name="PaneSpeechView" Article="{Binding Article}"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                    <local:SettingsView x:Name="PaneSettingsView"
+                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"
+                            Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
+                        <FontIcon Glyph="&#xE894;" FontSize="15" />
+                    </Button>
                 </Grid>
             </SplitView.Pane>
 
@@ -281,7 +277,7 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
 
-                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Command="{Binding ShowSettingsCommand}" />
+                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
             </CommandBar.SecondaryCommands>
 
             <AppBarButton x:Uid="ArticleBackAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoBack}" Click="BackButtonClick">
@@ -394,7 +390,7 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
 
-                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Command="{Binding ShowSettingsCommand}" />
+                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
             </CommandBar.SecondaryCommands>
 
             <AppBarButton x:Uid="ArticleBackAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoBack}" Click="BackButtonClick">

@@ -1,5 +1,5 @@
-﻿<Page
-    x:Class="WikipediaApp.SettingsPage"
+﻿<UserControl
+    x:Class="WikipediaApp.SettingsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WikipediaApp"
@@ -8,17 +8,17 @@
     xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
     mc:Ignorable="d">
 
-    <Page.Resources>
+    <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="SaparatorBrush">#DCDCDC</SolidColorBrush>
+                    <SolidColorBrush x:Key="SeparatorBrush">#DCDCDC</SolidColorBrush>
                     <SolidColorBrush x:Key="FontSizePreviewBackgroundBrush">#F7F7F7</SolidColorBrush>
                     <SolidColorBrush x:Key="FontSizePreviewBorderBrush">#DCDCDC</SolidColorBrush>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
-                    <SolidColorBrush x:Key="SaparatorBrush">#343434</SolidColorBrush>
+                    <SolidColorBrush x:Key="SeparatorBrush">#343434</SolidColorBrush>
                     <SolidColorBrush x:Key="FontSizePreviewBackgroundBrush">#191919</SolidColorBrush>
                     <SolidColorBrush x:Key="FontSizePreviewBorderBrush">#343434</SolidColorBrush>
                 </ResourceDictionary>
@@ -34,9 +34,14 @@
                 </Setter>
             </Style>
 
+            <Style TargetType="ComboBox">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Style>
+
             <Style x:Key="Separator" TargetType="Rectangle">
                 <Setter Property="Height" Value="1" />
-                <Setter Property="Fill" Value="{ThemeResource SaparatorBrush}" />
+                <Setter Property="Fill" Value="{ThemeResource SeparatorBrush}" />
                 <Setter Property="Margin" Value="0,5,0,15" />
             </Style>
 
@@ -46,35 +51,55 @@
                 </Border>
             </ControlTemplate>
         </ResourceDictionary>
-    </Page.Resources>
-    
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    </UserControl.Resources>
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock x:Uid="SettingsHeaderTextBlock" Grid.Row="0" Margin="12,8,12,10" Style="{ThemeResource SubheaderTextBlockStyle}" />
+        <TextBlock Grid.Row="0" x:Uid="SettingsHeaderTextBlock" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
         <ScrollViewer Grid.Row="1">
             <StackPanel Padding="12,0" DataContext="{StaticResource Settings}">
                 <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsSearchRestrictedTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock x:Uid="SettingsAppLanguageTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                    <ComboBox x:Uid="SettingsAppLanguageComboBox" x:Name="LanguagesComboBox"
+                              SelectionChanged="LanguagesComboBoxSelectionChanged" SelectedValuePath="LanguageTag">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{Binding NativeName}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Grid.Column="1" Text="{Binding LanguageTag}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <TextBlock x:Uid="SettingsSearchRestrictedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsSearchRestrictedToggleSwitch" IsOn="{Binding SearchRestricted, Mode=TwoWay}" />
                 </StackPanel>
 
                 <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsImagesDisabledTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock x:Uid="SettingsImagesDisabledTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsImagesDisabledToggleSwitch" IsOn="{Binding ImagesDisabled, Mode=TwoWay}" />
                 </StackPanel>
 
                 <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsSectionsCollapsedToggleSwitch" IsOn="{Binding SectionsCollapsed, Mode=TwoWay}" />
                 </StackPanel>
 
                 <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsFontSizeTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock x:Uid="SettingsFontSizeTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <Slider x:Uid="SettingsFontSizeSlider" Name="FontSizeSlider" Value="{Binding FontSize, Mode=TwoWay}" Minimum="10" Maximum="25" />
                     <ContentControl Template="{StaticResource FontSizePreview}">
                         <TextBlock x:Uid="SettingsFontSizePreviewTextBlock" FontSize="{Binding ElementName=FontSizeSlider, Path=Value}"
@@ -83,18 +108,23 @@
                 </StackPanel>
 
                 <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsHistoryTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock x:Uid="SettingsSplitViewInlineTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                    <ToggleSwitch x:Uid="SettingsSplitViewInlineToggleSwitch" IsOn="{Binding SplitViewInline, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <TextBlock x:Uid="SettingsHistoryTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsHistorySessionToggleSwitch" IsOn="{Binding HistorySession, Mode=TwoWay}" />
                     <Button x:Uid="SettingsHistoryClearButton" x:Name="ClearHistoryButton" Click="ClearHistoryClick" Margin="0,5,0,5" />
                 </StackPanel>
 
                 <StackPanel Margin="0,10" contract5NotPresent:Visibility="Collapsed">
-                    <TextBlock x:Uid="SettingsTimelineTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock x:Uid="SettingsTimelineTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsHistoryTimelineToggleSwitch" IsOn="{Binding HistoryTimeline, Mode=TwoWay}" />
                 </StackPanel>
 
                 <StackPanel x:Name="ThemePanel" Margin="0,10">
-                    <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <RadioButton x:Uid="SettingsDesignLightRadioButton" Tag="1" Checked="RadioButtonThemeChecked" />
                     <RadioButton x:Uid="SettingsDesignDarkRadioButton" Tag="2" Checked="RadioButtonThemeChecked" />
                     <RadioButton x:Uid="SettingsDesignSystemRadioButton" Tag="0" Checked="RadioButtonThemeChecked" />
@@ -122,16 +152,14 @@
                         <TextBlock Grid.Column="1" Grid.Row="1" x:Name="DevNameTextBlock" Foreground="Gray" FontWeight="SemiLight" />
                         <TextBlock Grid.Column="1" Grid.Row="2" x:Name="AppVersionTextBlock" Foreground="Gray" FontWeight="SemiLight" />
                     </Grid>
-                    
+
                     <Grid Margin="0,10,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
@@ -143,17 +171,11 @@
 
                         <FontIcon Grid.Column="0" Grid.Row="1" Glyph="&#xE224;" Margin="0,0,8,0" />
                         <HyperlinkButton Grid.Column="1" Grid.Row="1" x:Uid="SettingsReviewButton" Click="ReviewClick" />
-                            
+
                         <FontIcon Grid.Column="0" Grid.Row="2" Glyph="&#xED15;" Margin="0,0,8,0" />
                         <HyperlinkButton Grid.Column="1" Grid.Row="2" x:Uid="SettingsFeedbackButton" Click="FeedbackClick" />
 
-                        <StackPanel Grid.Column="2" Grid.Row="0" Grid.RowSpan="4" Margin="10,0,40,0" VerticalAlignment="Center"
-                                    Visibility="{Binding Source={StaticResource Settings}, Path=ShowThanks, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <FontIcon Glyph="&#xEB52;" Foreground="#960018" FontSize="25" />
-                            <TextBlock x:Uid="SettingsThanksTextBlock" FontSize="13" FontWeight="Thin" Foreground="#960018" />
-                        </StackPanel>
-                        
-                        <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" x:Uid="SettingsDisclaimerButton" Click="DisclaimerClick" Style="{ThemeResource TextBlockButtonStyle}" Margin="0,50,0,0" Padding="0" />
+                        <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" x:Uid="SettingsDisclaimerButton" Click="DisclaimerClick" Style="{ThemeResource TextBlockButtonStyle}" Margin="0,50,0,0" Padding="0" />
                     </Grid>
                 </StackPanel>
             </StackPanel>
@@ -162,13 +184,13 @@
         <ContentDialog x:Uid="SettingsDisclaimerContentDialog" x:Name="DisclaimerContentDialog" x:DeferLoadStrategy="Lazy" Grid.Row="0" Grid.RowSpan="2">
             <RichTextBlock IsTextSelectionEnabled="False">
                 <Paragraph Margin="0,10">
-                    Text on Wikipedia® is available under the 
-                    <Hyperlink NavigateUri="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 License</Hyperlink>;
+                    Text on Wikipedia® is available under the
+                    <Hyperlink NavigateUri="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 License</Hyperlink> ;
                     additional terms may apply.
                 </Paragraph>
                 <Paragraph Margin="0,10">
                     Wikipedia® is a registered trademark of the
-                    <Hyperlink NavigateUri="https://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</Hyperlink>,
+                    <Hyperlink NavigateUri="https://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</Hyperlink> ,
                     a non-profit organization.
                 </Paragraph>
             </RichTextBlock>
@@ -178,4 +200,4 @@
             <local:ChangelogView x:Name="ChangelogView" />
         </ContentDialog>
     </Grid>
-</Page>
+</UserControl>

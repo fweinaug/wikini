@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -19,7 +20,7 @@ namespace WikipediaApp
       {
         SharedShadow.Receivers.Add(ContentGrid);
 
-        PaneContentPresenter.Translation += new Vector3(0, 0, 16);
+        SplitViewPaneGrid.Translation += new Vector3(0, 0, 16);
       }
 
       paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
@@ -29,38 +30,99 @@ namespace WikipediaApp
 
     private void HistoryButtonClick(object sender, RoutedEventArgs e)
     {
-      PaneContentPresenter.ContentTemplate = paneHistoryTemplate;
-
-      SplitView.IsPaneOpen = true;
+      OpenOrCloseSplitView(paneHistoryTemplate);
     }
 
-    private void HistoryListViewItemClick(object sender, ItemClickEventArgs e)
+    private void HistoryViewArticleClick(object sender, EventArgs e)
     {
-      SplitView.IsPaneOpen = false;
+      if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
+        SplitView.IsPaneOpen = false;
     }
 
     private void FavoritesButtonClick(object sender, RoutedEventArgs e)
     {
-      PaneContentPresenter.ContentTemplate = paneFavoritesTemplate;
-
-      SplitView.IsPaneOpen = true;
+      OpenOrCloseSplitView(paneFavoritesTemplate);
     }
 
     private void FavoritesListViewItemClick(object sender, ItemClickEventArgs e)
     {
-      SplitView.IsPaneOpen = false;
+      if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
+        SplitView.IsPaneOpen = false;
     }
 
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)
     {
-      PaneContentPresenter.ContentTemplate = paneLanguagesTemplate;
-
-      SplitView.IsPaneOpen = true;
+      OpenOrCloseSplitView(paneLanguagesTemplate);
     }
 
     private void LanguagesListViewItemClick(object sender, ItemClickEventArgs e)
     {
+      if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
+        SplitView.IsPaneOpen = false;
+    }
+
+    private void SplitViewPaneClosed(SplitView sender, object e)
+    {
+      PaneContentPresenter.ContentTemplate = null;
+      PaneContentPresenter.Visibility = Visibility.Visible;
+
+      if (PaneSettingsView != null)
+      {
+        PaneSettingsView.CloseDialogs();
+
+        PaneSettingsView.Visibility = Visibility.Collapsed;
+      }
+    }
+
+    private void SettingsAppBarButtonClick(object sender, RoutedEventArgs e)
+    {
+      OpenOrCloseSplitView(nameof(PaneSettingsView));
+    }
+
+    private void ClosePaneButtonClick(object sender, RoutedEventArgs e)
+    {
       SplitView.IsPaneOpen = false;
+    }
+
+    private void OpenOrCloseSplitView(string name)
+    {
+      var control = (UIElement)FindName(name);
+
+      if (!SplitView.IsPaneOpen || control.Visibility == Visibility.Collapsed)
+      {
+        if (PaneSettingsView != null)
+          PaneSettingsView.Visibility = Visibility.Collapsed;
+
+        PaneContentPresenter.Visibility = Visibility.Collapsed;
+        PaneContentPresenter.ContentTemplate = null;
+
+        control.Visibility = Visibility.Visible;
+
+        SplitView.IsPaneOpen = true;
+      }
+      else
+      {
+        SplitView.IsPaneOpen = false;
+      }
+    }
+
+    private void OpenOrCloseSplitView(DataTemplate template)
+    {
+      if (!SplitView.IsPaneOpen || PaneContentPresenter.Visibility == Visibility.Collapsed ||
+        PaneContentPresenter.ContentTemplate != template)
+      {
+        if (PaneSettingsView != null)
+          PaneSettingsView.Visibility = Visibility.Collapsed;
+
+        PaneContentPresenter.Visibility = Visibility.Visible;
+        PaneContentPresenter.ContentTemplate = template;
+
+        SplitView.IsPaneOpen = true;
+      }
+      else
+      {
+        SplitView.IsPaneOpen = false;
+      }
     }
   }
 }

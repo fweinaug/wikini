@@ -43,11 +43,6 @@ namespace WikipediaApp
       return true;
     }
 
-    public void ShowSettings()
-    {
-      Frame.Navigate(typeof(SettingsPage), null);
-    }
-
     public async void OpenInBrowser(Uri uri)
     {
       await Launcher.LaunchUriAsync(uri);

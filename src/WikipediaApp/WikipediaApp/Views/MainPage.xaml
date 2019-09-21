@@ -35,31 +35,7 @@
             </DataTemplate>
 
             <DataTemplate x:Key="HistoryTemplate">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Uid="MainHistoryPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
-
-                    <ListView Grid.Row="1" ItemsSource="{Binding History}" Style="{StaticResource SplitViewPaneListViewStyle}"
-                              local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ArticleHead">
-                                <Grid ToolTipService.ToolTip="{x:Bind Title}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
-                                    <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <local:HistoryView ArticleClick="HistoryViewArticleClick" />
             </DataTemplate>
 
             <DataTemplate x:Key="FavoritesTemplate">
@@ -103,14 +79,14 @@
                               local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:Language">
-                                <Grid>
+                                <Grid ToolTipService.ToolTip="{x:Bind Name}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
-                                    <TextBlock Grid.Column="1" Text="{Binding Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -143,6 +119,19 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+
+            <VisualStateGroup x:Name="SplitViewStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding Source={StaticResource Settings}, Path=SplitViewInline}" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="SplitView.DisplayMode" Value="Inline" />
+                        <Setter Target="SplitView.PaneBackground" Value="{ThemeResource SplitViewPaneBackgroundBrush}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
@@ -150,9 +139,20 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <SplitView x:Name="SplitView" Grid.Row="0" contract5Present:PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}">
+        <SplitView x:Name="SplitView" Grid.Row="0"
+                   contract5Present:PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
+                   PaneClosed="SplitViewPaneClosed" DisplayMode="Overlay">
             <SplitView.Pane>
-                <ContentPresenter x:Name="PaneContentPresenter" contract8Present:Shadow="{StaticResource SharedShadow}" />
+                <Grid x:Name="SplitViewPaneGrid" contract8Present:Shadow="{StaticResource SharedShadow}">
+                    <ContentPresenter x:Name="PaneContentPresenter" />
+                    <local:SettingsView x:Name="PaneSettingsView"
+                                        x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"
+                            Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
+                        <FontIcon Glyph="&#xE894;" FontSize="15" />
+                    </Button>
+                </Grid>
             </SplitView.Pane>
 
             <SplitView.Content>
@@ -169,7 +169,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Background="Transparent" Click="LanguagesButtonClick">
+                        <Button Style="{ThemeResource TransparentButtonStyle}" ToolTipService.ToolTip="{Binding Language.Name}"
+                                Click="LanguagesButtonClick">
                             <Button.Content>
                                 <TextBlock Text="{Binding Language.Code}" Typography.Capitals="AllSmallCaps" FontSize="15" FontWeight="Bold" />
                             </Button.Content>
@@ -206,7 +207,7 @@
 
         <CommandBar Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="MainSettingsAppBarButton" Icon="Setting" Command="{Binding ShowSettingsCommand}" />
+                <AppBarButton x:Uid="MainSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
             </CommandBar.SecondaryCommands>
 
             <AppBarButton x:Uid="MainHomepageAppBarButton" Icon="Home" Command="{Binding ShowHomePageCommand}" />

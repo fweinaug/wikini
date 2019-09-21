@@ -249,6 +249,12 @@
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
     <value>Su questa applicazione</value>
   </data>
+  <data name="SettingsAppLanguageComboBox.Header" xml:space="preserve">
+    <value>Mostra l'applicazione nella lingua selezionata all'avvio successivo</value>
+  </data>
+  <data name="SettingsAppLanguageTextBlock.Text" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
   <data name="SettingsChangelogButton.Content" xml:space="preserve">
     <value>Cosa c'è di nuovo?</value>
   </data>
@@ -356,6 +362,12 @@
   </data>
   <data name="SettingsSectionsCollapsedToggleSwitch.OnContent" xml:space="preserve">
     <value>Abilitato</value>
+  </data>
+  <data name="SettingsSplitViewInlineTextBlock.Text" xml:space="preserve">
+    <value>Barra laterale</value>
+  </data>
+  <data name="SettingsSplitViewInlineToggleSwitch.Header" xml:space="preserve">
+    <value>Mostra i preferiti, la cronologia, le impostazioni, ecc. accanto al contenuto invece che sopra di esso</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Grazie!</value>

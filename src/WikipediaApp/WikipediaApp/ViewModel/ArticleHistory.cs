@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,15 +9,19 @@ namespace WikipediaApp
 {
   public static class ArticleHistory
   {
-    public static IList<ArticleHead> All { get; private set; }
+    private static readonly ObservableCollection<ReadArticle> session = new ObservableCollection<ReadArticle>();
+    private static readonly ObservableCollection<ReadArticle> database = new ObservableCollection<ReadArticle>();
+    private static readonly ArticleGroupCollection groupedArticles = new ArticleGroupCollection();
+
+    public static IList<ArticleGroup> All
+    {
+      get { return groupedArticles; }
+    }
 
     public static bool IsEmpty
     {
       get { return !(session.Count > 0 || database.Count > 0); }
     }
-
-    private static readonly ObservableCollection<ArticleHead> session = new ObservableCollection<ArticleHead>();
-    private static readonly ObservableCollection<ArticleHead> database = new ObservableCollection<ArticleHead>();
 
     public static void AddArticle(Article article)
     {
@@ -39,14 +44,12 @@ namespace WikipediaApp
         context.SaveChanges();
       }
 
-      database.Insert(0, article);
-      session.Insert(0, article);
+      database.Insert(0, read);
+      session.Insert(0, read);
     }
 
     public static async Task Initialize()
     {
-      InitializeSource();
-
       await Task.Run(() =>
       {
         using (var context = new WikipediaContext())
@@ -56,14 +59,23 @@ namespace WikipediaApp
       }).ContinueWith(task =>
       {
         var history = task.Result;
-
         history.ForEach(database.Add);
+
+        InitializeSource();
       }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     private static void InitializeSource()
     {
-      void UpdateSource() { All = Settings.Current.HistorySession ? session : database; }
+      session.CollectionChanged += SessionCollectionChanged;
+
+      void UpdateSource()
+      {
+        var articles = Settings.Current.HistorySession ? session : database;
+
+        groupedArticles.Clear();
+        groupedArticles.AddArticles(articles);
+      }
 
       UpdateSource();
 
@@ -72,6 +84,19 @@ namespace WikipediaApp
         if (e.PropertyName == nameof(Settings.HistorySession))
           UpdateSource();
       };
+    }
+
+    private static void SessionCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    {
+      switch (e.Action)
+      {
+        case NotifyCollectionChangedAction.Reset:
+          groupedArticles.Clear();
+          break;
+        case NotifyCollectionChangedAction.Add:
+          groupedArticles.AddArticles(e.NewItems.Cast<ReadArticle>());
+          break;
+      }
     }
 
     public static async Task Clear()

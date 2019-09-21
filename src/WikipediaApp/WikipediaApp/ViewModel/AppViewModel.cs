@@ -13,7 +13,6 @@ namespace WikipediaApp
 
     private bool isBusy = false;
 
-    private Command showSettingsCommand = null;
     private Command showHomePageCommand = null;
     private Command showRandomArticleCommand = null;
     private Command<ArticleHead> showArticleCommand = null;
@@ -26,11 +25,6 @@ namespace WikipediaApp
     {
       get { return isBusy; }
       private set { SetProperty(ref isBusy, value); }
-    }
-
-    public ICommand ShowSettingsCommand
-    {
-      get { return showSettingsCommand ?? (showSettingsCommand = new Command(ShowSettings)); }
     }
 
     public ICommand ShowHomePageCommand
@@ -48,7 +42,7 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new Command<ArticleHead>(ShowArticle)); }
     }
 
-    public IList<ArticleHead> History
+    public IList<ArticleGroup> History
     {
       get { return ArticleHistory.All; }
     }
@@ -73,11 +67,6 @@ namespace WikipediaApp
     public ICommand ChangeLanguageCommand
     {
       get { return changeLanguageCommand ?? (changeLanguageCommand = new Command<Language>(ChangeLanguage)); }
-    }
-
-    private void ShowSettings()
-    {
-      navigationService.ShowSettings();
     }
 
     private async void ShowHomePage()

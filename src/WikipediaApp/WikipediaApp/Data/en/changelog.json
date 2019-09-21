@@ -1,5 +1,12 @@
 ﻿[
     [
+        "Display settings as a sidebar",
+        "Grouping of the history by date",
+        "Setting to select the app language",
+        "Setting whether the sidebar is displayed next to the content",
+        "Explicit close button for the sidebar"
+    ],
+    [
         "Dutch and Polish translation"
     ],
     [

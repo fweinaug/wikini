@@ -55,6 +55,12 @@ namespace WikipediaApp
       set { SetValue(value); }
     }
 
+    public bool SplitViewInline
+    {
+      get { return GetValue(false); }
+      set { SetValue(value); }
+    }
+
     public bool HistorySession
     {
       get { return GetValue(DefaultHistorySession); }

@@ -146,6 +146,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contexts\WikipediaContext.cs" />
+    <Compile Include="Views\HistoryView.xaml.cs">
+      <DependentUpon>HistoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20180801161150_InitialMigration.cs" />
     <Compile Include="Migrations\20180801161150_InitialMigration.designer.cs">
       <DependentUpon>20180801161150_InitialMigration.cs</DependentUpon>
@@ -159,6 +162,11 @@
     <Compile Include="Services\TileManager.cs" />
     <Compile Include="Services\TimelineManager.cs" />
     <Compile Include="Services\WikipediaUriParser.cs" />
+    <Compile Include="ViewModel\ArticleGroup.cs" />
+    <Compile Include="ViewModel\ArticleGroupCollection.cs" />
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ArticleChapter.cs" />
     <Compile Include="ViewModel\ArticleChapterCollection.cs" />
     <Compile Include="ViewModel\ArticleFlyout.cs" />
@@ -213,9 +221,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Views\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\Extensions\WebViewExtensions.cs" />
     <Compile Include="Services\WikipediaService.cs" />
@@ -245,6 +250,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\HistoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SpeechView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -282,17 +299,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HockeySDK.UWP">
       <Version>4.1.6</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.9</Version>
+      <Version>1.11.12</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>2.2.6</Version>
@@ -303,7 +316,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.8</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>

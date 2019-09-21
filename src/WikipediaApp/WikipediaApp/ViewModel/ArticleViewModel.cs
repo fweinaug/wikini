@@ -13,8 +13,6 @@ namespace WikipediaApp
 
     private bool isBusy = false;
 
-    private Command showSettingsCommand = null;
-
     private readonly ArticleHead initialArticle;
 
     private Article article = null;
@@ -43,12 +41,7 @@ namespace WikipediaApp
       set { SetProperty(ref isBusy, value); }
     }
 
-    public ICommand ShowSettingsCommand
-    {
-      get { return showSettingsCommand ?? (showSettingsCommand = new Command(ShowSettings)); }
-    }
-
-    public IList<ArticleHead> History
+    public IList<ArticleGroup> History
     {
       get { return ArticleHistory.All; }
     }
@@ -195,11 +188,6 @@ namespace WikipediaApp
     public ArticleViewModel(ArticleHead initialArticle)
     {
       this.initialArticle = initialArticle;
-    }
-
-    private void ShowSettings()
-    {
-      navigationService.ShowSettings();
     }
 
     private async void Refresh()
