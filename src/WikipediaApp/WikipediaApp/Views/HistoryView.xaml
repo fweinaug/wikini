@@ -47,5 +47,11 @@
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Style="{ThemeResource SplitViewPaneEmptyContainerStyle}"
+                    Visibility="{Binding History, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">
+            <FontIcon Glyph="&#xE81C;" Style="{ThemeResource SplitViewPaneEmptyFontIconStyle}" />
+            <TextBlock x:Uid="MainHistoryPaneEmptyTextBlock" Style="{ThemeResource SplitViewPaneEmptyTextBlockStyle}" />
+        </StackPanel>
     </Grid>
 </UserControl>

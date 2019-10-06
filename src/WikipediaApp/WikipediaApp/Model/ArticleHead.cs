@@ -14,6 +14,12 @@ namespace WikipediaApp
     public string Language { get; set; }
 
     [NotMapped]
+    public bool HasDescription
+    {
+      get { return !string.IsNullOrEmpty(Description); }
+    }
+
+    [NotMapped]
     public Uri Uri
     {
       get

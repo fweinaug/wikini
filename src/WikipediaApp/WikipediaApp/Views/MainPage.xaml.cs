@@ -39,15 +39,15 @@ namespace WikipediaApp
         SplitView.IsPaneOpen = false;
     }
 
-    private void FavoritesButtonClick(object sender, RoutedEventArgs e)
-    {
-      OpenOrCloseSplitView(paneFavoritesTemplate);
-    }
-
-    private void FavoritesListViewItemClick(object sender, ItemClickEventArgs e)
+    private void FavoritesViewArticleClick(object sender, EventArgs e)
     {
       if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
         SplitView.IsPaneOpen = false;
+    }
+
+    private void FavoritesButtonClick(object sender, RoutedEventArgs e)
+    {
+      OpenOrCloseSplitView(paneFavoritesTemplate);
     }
 
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)

@@ -17,6 +17,10 @@
             <local:HistoryView ArticleClick="HistoryViewArticleClick" />
         </DataTemplate>
 
+        <DataTemplate x:Key="FavoritesTemplate">
+            <local:FavoritesView ArticleClick="FavoritesViewArticleClick" />
+        </DataTemplate>
+
         <DataTemplate x:Key="ContentsTemplate">
             <Grid>
                 <Grid.RowDefinitions>
@@ -298,6 +302,12 @@
                 </AppBarButton.Icon>
             </AppBarButton>
 
+            <AppBarButton x:Uid="ArticleFavoritesAppBarButton" Click="FavoritesButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE728;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+
             <AppBarSeparator />
 
             <AppBarButton x:Uid="ArticleShareAppBarButton" Icon="Share" Command="{Binding ShareCommand}" />
@@ -402,6 +412,12 @@
             <AppBarButton x:Uid="ArticleHistoryAppBarButton" Click="HistoryButtonClick">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE81C;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarButton x:Uid="ArticleFavoritesAppBarButton" Click="FavoritesButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE728;" />
                 </AppBarButton.Icon>
             </AppBarButton>
 

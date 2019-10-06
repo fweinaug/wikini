@@ -135,5 +135,11 @@ namespace WikipediaApp
 
       return false;
     }
+
+    private void ClearSearch()
+    {
+      SearchTerm = null;
+      SearchResults = null;
+    }
   }
 }

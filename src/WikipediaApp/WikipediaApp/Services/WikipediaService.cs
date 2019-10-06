@@ -211,7 +211,12 @@ namespace WikipediaApp
     {
       try
       {
-        return await searchApi.Search(searchTerm, language, cancellationToken);
+        var pages = await searchApi.PrefixSearch(searchTerm, language, cancellationToken);
+
+        if (pages.Count == 0)
+          pages = await searchApi.FullTextSearch(searchTerm, language, cancellationToken);
+
+        return pages;
       }
       catch (TaskCanceledException)
       {

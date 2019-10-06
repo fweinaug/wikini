@@ -520,43 +520,88 @@ namespace WikipediaApp
 
   public class WikipediaSearchApi : WikipediaApi
   {
-    public async Task<IList<ArticleHead>> Search(string searchTerm, string language, CancellationToken? cancellationToken)
+    private const int MaxResults = 10;
+    private const int ThumbnailSize = 100;
+
+    public async Task<IList<ArticleHead>> PrefixSearch(string searchTerm, string language, CancellationToken? cancellationToken)
+    {
+      var query = $"action=query&redirects=&converttitles=&prop=description|pageimages|info&piprop=thumbnail&pilicense=any&generator=prefixsearch&gpsnamespace=0&list=search&srnamespace=0&inprop=url&srwhat=text&srinfo=suggestion&srprop=&sroffset=0&srlimit=1&pithumbsize={ThumbnailSize}&gpssearch={searchTerm}&gpslimit={MaxResults}&srsearch={searchTerm}";
+      var response = await QueryAndParse<SearchResponse>(language, query, cancellationToken);
+
+      var pages = response?.query?.pages;
+
+      return MapPages(pages);
+    }
+
+    public async Task<IList<ArticleHead>> FullTextSearch(string searchTerm, string language, CancellationToken? cancellationToken)
+    {
+      var query = $"action=query&converttitles=&prop=description|pageimages|info&generator=search&gsrnamespace=0&gsrwhat=text&inprop=url&gsrinfo=&gsrprop=redirecttitle&piprop=thumbnail&pilicense=any&pithumbsize={ThumbnailSize}&gsrsearch={searchTerm}&gsrlimit={MaxResults}";
+      var response = await QueryAndParse<SearchResponse>(language, query, cancellationToken);
+
+      var pages = response?.query?.pages;
+
+      return MapPages(pages);
+    }
+
+    private static IList<ArticleHead> MapPages(List<Page> pages)
     {
       var list = new List<ArticleHead>();
 
-      var query = "action=opensearch&search=" + searchTerm + "&namespace=0&redirects=resolve&limit=10";
-      var response = await SendRequest(language, query, cancellationToken);
-      if (string.IsNullOrEmpty(response))
-        return list;
-
-      var array = JArray.Parse(response);
-
-      var titles = array[1].Value<JArray>();
-      var descriptions = array[2].Value<JArray>();
-      var urls = array[3].Value<JArray>();
-
-      for (var i = 0; i < titles.Count; ++i)
+      if (pages != null && pages.Count > 0)
       {
-        var article = new ArticleHead
+        foreach (var page in pages.OrderBy(x => x.index))
         {
-          Title = titles[i].Value<string>(),
-          Description = descriptions[i].Value<string>(),
-          Language = language,
-          Uri = new Uri(urls[i].Value<string>())
-        };
+          var article = new ArticleHead
+          {
+            PageId = page.pageid,
+            Title = page.title,
+            Description = page.description,
+            Language = page.pagelanguage,
+            Uri = new Uri(page.fullurl)
+          };
 
-        list.Add(article);
+          list.Add(article);
+        }
       }
 
       return list;
+    }
+
+    private class SearchResponse
+    {
+      public bool batchcomplete { get; set; }
+      public SearchQuery query { get; set; }
+    }
+
+    private class SearchQuery
+    {
+      public List<Page> pages { get; set; }
+    }
+
+    private class Page
+    {
+      public int pageid { get; set; }
+      public string title { get; set; }
+      public int index { get; set; }
+      public string description { get; set; }
+      public string fullurl { get; set; }
+      public string pagelanguage { get; set; }
+      public Thumbnail thumbnail { get; set; }
+    }
+
+    private class Thumbnail
+    {
+      public string source { get; set; }
+      public int width { get; set; }
+      public int height { get; set; }
     }
   }
 
   public abstract class WikipediaApi
   {
-    protected async Task<T> QueryAndParse<T>(string language, string query)
+    protected async Task<T> QueryAndParse<T>(string language, string query, CancellationToken? cancellationToken = null)
     {
-      var response = await SendRequest(language, query);
+      var response = await SendRequest(language, query, cancellationToken);
       var result = JsonConvert.DeserializeObject<T>(response);
 
       return result;

@@ -14,6 +14,7 @@ namespace WikipediaApp
   public sealed partial class ArticlePage : Page
   {
     private readonly DataTemplate paneHistoryTemplate;
+    private readonly DataTemplate paneFavoritesTemplate;
     private readonly DataTemplate paneContentsTemplate;
     private readonly DataTemplate paneLanguagesTemplate;
 
@@ -30,6 +31,7 @@ namespace WikipediaApp
       }
 
       paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
+      paneFavoritesTemplate = (DataTemplate)Resources["FavoritesTemplate"];
       paneContentsTemplate = (DataTemplate)Resources["ContentsTemplate"];
       paneLanguagesTemplate = (DataTemplate)Resources["LanguagesTemplate"];
     }
@@ -97,6 +99,17 @@ namespace WikipediaApp
     }
 
     private void HistoryViewArticleClick(object sender, EventArgs e)
+    {
+      if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
+        SplitView.IsPaneOpen = false;
+    }
+
+    private void FavoritesButtonClick(object sender, RoutedEventArgs e)
+    {
+      OpenOrCloseSplitView(paneFavoritesTemplate);
+    }
+
+    private void FavoritesViewArticleClick(object sender, EventArgs e)
     {
       if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
         SplitView.IsPaneOpen = false;

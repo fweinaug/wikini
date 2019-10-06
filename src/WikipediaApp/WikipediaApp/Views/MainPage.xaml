@@ -23,47 +23,12 @@
 
             <contract8Present:ThemeShadow x:Name="SharedShadow" />
 
-            <DataTemplate x:Key="DefaultListViewItemTemplate" x:DataType="local:ArticleHead">
-                <StackPanel Orientation="Vertical" Padding="0,5">
-                    <TextBlock Text="{x:Bind Title}" FontWeight="SemiBold" />
-                    <TextBlock Text="{x:Bind Description}" FontWeight="Light" FontSize="14" TextWrapping="WrapWholeWords" />
-                </StackPanel>
-            </DataTemplate>
-
-            <DataTemplate x:Key="NarrowListViewItemTemplate" x:DataType="local:ArticleHead">
-                <TextBlock Text="{x:Bind Title}" FontWeight="SemiLight" />
-            </DataTemplate>
-
             <DataTemplate x:Key="HistoryTemplate">
                 <local:HistoryView ArticleClick="HistoryViewArticleClick" />
             </DataTemplate>
 
             <DataTemplate x:Key="FavoritesTemplate">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Uid="MainFavoritesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
-
-                    <ListView Grid.Row="1" ItemsSource="{Binding Favorites}" Style="{StaticResource SplitViewPaneListViewStyle}"
-                              local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="FavoritesListViewItemClick">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ArticleHead">
-                                <Grid ToolTipService.ToolTip="{x:Bind Title}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
-                                    <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <local:FavoritesView ArticleClick="FavoritesViewArticleClick" />
             </DataTemplate>
 
             <DataTemplate x:Key="LanguagesTemplate">
@@ -105,7 +70,8 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="ListView.ItemTemplate" Value="{StaticResource DefaultListViewItemTemplate}" />
+                        <Setter Target="SearchBox.Margin" Value="100,5" />
+                        <Setter Target="SearchBox.MaxWidth" Value="800" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -115,7 +81,7 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="ListView.ItemTemplate" Value="{StaticResource NarrowListViewItemTemplate}" />
+                        <Setter Target="SearchBox.Margin" Value="5" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -158,46 +124,24 @@
             <SplitView.Content>
                 <Grid x:Name="ContentGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                    <local:SearchBox Name="SearchBox" Grid.Row="1"
+                                     QueryString="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     QueryCommand="{Binding SearchCommand}"
+                                     QueryResults="{Binding SearchResults, Mode=OneWay}"
+                                     ItemSelectedCommand="{Binding ShowArticleCommand}"
+                                     SelectLanguage="LanguagesButtonClick"
+                                     QueryLanguage="{Binding Language}" />
 
-                        <Button Style="{ThemeResource TransparentButtonStyle}" ToolTipService.ToolTip="{Binding Language.Name}"
-                                Click="LanguagesButtonClick">
-                            <Button.Content>
-                                <TextBlock Text="{Binding Language.Code}" Typography.Capitals="AllSmallCaps" FontSize="15" FontWeight="Bold" />
-                            </Button.Content>
-                        </Button>
-                        
-                        <TextBox Grid.Column="1" Margin="5,0" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 local:TextBoxExtensions.EnterCommand="{Binding SearchCommand}" />
-                        
-                        <Button Grid.Column="2" Command="{Binding SearchCommand}">
-                            <Button.Content>
-                                <SymbolIcon Symbol="Find" />
-                            </Button.Content>
-                        </Button>
-                    </Grid>
+                    <Image Grid.Row="2" Source="/Assets/Logo.png" Width="120" Height="120" Opacity="{ThemeResource WatermarkImageOpacity}" />
 
-                    <Image Grid.Row="1" Source="/Assets/Logo.png" Width="120" Height="120" Opacity="{ThemeResource WatermarkImageOpacity}"
-                           Visibility="{Binding SearchResults, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}" />
-
-                    <TextBlock x:Uid="MainNoSearchResultsTextBlock" Grid.Row="1" Margin="0,30" FontWeight="SemiLight" Foreground="Gray"
+                    <TextBlock x:Uid="MainNoSearchResultsTextBlock" Grid.Row="2" Margin="0,30" FontWeight="SemiLight" Foreground="Gray"
                                HorizontalAlignment="Center" VerticalAlignment="Top"
                                Visibility="{Binding NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}" />
-
-                    <ListView Name="ListView" Grid.Row="1" ItemsSource="{Binding SearchResults}" SelectionMode="None"
-                              Visibility="{Binding SearchResults, Converter={StaticResource CollectionToVisibilityConverter}}"
-                              local:ListViewExtensions.Command="{Binding ShowArticleCommand}">
-
-                    </ListView>
                 </Grid>
             </SplitView.Content>
         </SplitView>

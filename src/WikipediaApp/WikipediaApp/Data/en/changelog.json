@@ -1,5 +1,10 @@
 ﻿[
     [
+        "Improved search on the home page",
+        "Note if history and favorites do not contain any entries",
+        "Show favorites in article view"
+    ],
+    [
         "Display settings as a sidebar",
         "Grouping of the history by date",
         "Setting to select the app language",

@@ -126,6 +126,9 @@
   <data name="AppArticleLoadingFailedContentDialog.Title" xml:space="preserve">
     <value>Desculpa :(</value>
   </data>
+  <data name="AppSearchTextBox.PlaceholderText" xml:space="preserve">
+    <value>Pesquisar</value>
+  </data>
   <data name="ArticleAddFavoriteAppBarButton.Label" xml:space="preserve">
     <value>Adicionar aos Favoritos</value>
   </data>
@@ -219,11 +222,17 @@
   <data name="MainFavoritesAppBarButton.Label" xml:space="preserve">
     <value>Favoritos</value>
   </data>
+  <data name="MainFavoritesPaneEmptyTextBlock.Text" xml:space="preserve">
+    <value>Nenhum artigo foi adicionado aos favoritos ainda.</value>
+  </data>
   <data name="MainFavoritesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Favoritos</value>
   </data>
   <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
     <value>Histórico</value>
+  </data>
+  <data name="MainHistoryPaneEmptyTextBlock.Text" xml:space="preserve">
+    <value>Nenhum artigo foi aberto ainda.</value>
   </data>
   <data name="MainHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Histórico</value>

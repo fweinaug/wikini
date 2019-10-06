@@ -99,6 +99,8 @@ namespace WikipediaApp
 
     public void ShowArticle(ArticleHead article)
     {
+      ClearSearch();
+
       navigationService.ShowArticle(article);
     }
 

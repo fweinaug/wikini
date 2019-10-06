@@ -13,6 +13,8 @@
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
+    <SolidColorBrush x:Key="SplitViewPaneEmptyForegroundBrush" Color="#808080" />
+
     <Style TargetType="SplitView">
         <Setter Property="DisplayMode" Value="Overlay" />
         <Setter Property="OpenPaneLength" Value="300" />
@@ -41,5 +43,27 @@
     <Style x:Key="SplitViewPaneListViewStyle" TargetType="ListView">
         <Setter Property="SelectionMode" Value="None" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource SplitViewPaneListViewItemContainerStyle}" />
+    </Style>
+
+    <Style x:Key="SplitViewPaneEmptyContainerStyle" TargetType="StackPanel">
+        <Setter Property="Spacing" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="SplitViewPaneEmptyTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
+        <Setter Property="Foreground" Value="{ThemeResource SplitViewPaneEmptyForegroundBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="7" />
+    </Style>
+
+    <Style x:Key="SplitViewPaneEmptyFontIconStyle" TargetType="FontIcon">
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="Foreground" Value="{ThemeResource SplitViewPaneEmptyForegroundBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
 </ResourceDictionary>
