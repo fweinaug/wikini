@@ -10,7 +10,7 @@ namespace WikipediaApp
     public static string BuildArticle(string title, string content, string language)
     {
       var app = App.Current;
-      var settings = app.Settings;
+      var settings = Settings.Current;
 
       var darkMode = app.InDarkMode();
       var fontSize = settings.FontSize;

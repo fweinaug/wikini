@@ -9,7 +9,7 @@ namespace WikipediaApp
   {
     private string searchTerm = null;
     private bool searchTermChanged = false;
-    private IList<ArticleHead> searchResults = null;
+    private IList<FoundArticle> searchResults = null;
     private bool noSearchResults = false;
 
     private Command searchCommand = null;
@@ -38,7 +38,7 @@ namespace WikipediaApp
       get { return searchCommand ?? (searchCommand = new Command(SearchIfTermChanged, CanSearch)); }
     }
 
-    public IList<ArticleHead> SearchResults
+    public IList<FoundArticle> SearchResults
     {
       get { return searchResults; }
       private set
@@ -119,7 +119,7 @@ namespace WikipediaApp
       }
     }
 
-    private static bool ContainsNewArticles(IList<ArticleHead> currentArticles, IList<ArticleHead> foundArticles)
+    private static bool ContainsNewArticles(IList<FoundArticle> currentArticles, IList<FoundArticle> foundArticles)
     {
       if (currentArticles == null || foundArticles == null)
         return !Equals(currentArticles, foundArticles);

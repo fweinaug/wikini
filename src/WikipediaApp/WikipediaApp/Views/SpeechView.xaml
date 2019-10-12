@@ -47,22 +47,13 @@
             <ProgressBar x:Name="PositionProgressBar" Value="0" Maximum="0" />
         </StackPanel>
 
-        <ListView Grid.Row="3" x:Name="ListView" SelectionMode="None" IsItemClickEnabled="True" ItemClick="ListViewItemClick">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Margin" Value="0" />
-                    <Setter Property="Padding" Value="0" />
-                    <Setter Property="HorizontalAlignment" Value="Stretch" />
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="VerticalAlignment" Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
-
+        <ListView Grid.Row="3" x:Name="ListView" Style="{StaticResource SplitViewPaneListViewStyle}"
+                  IsItemClickEnabled="True" ItemClick="ListViewItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ArticleChapter">
                     <UserControl>
-                        <Grid Name="Root" Padding="5,5,15,5" ToolTipService.ToolTip="{x:Bind Headline}">
+                        <Grid Name="Root" Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                              Padding="5,5,15,5" ToolTipService.ToolTip="{x:Bind Headline}">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup>
                                     <VisualState>

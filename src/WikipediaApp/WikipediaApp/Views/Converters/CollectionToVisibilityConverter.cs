@@ -19,11 +19,14 @@ namespace WikipediaApp
 
       var isEmpty = true;
 
-      var collection = value as IEnumerable;
-      if (collection != null)
+      if (value is IEnumerable collection)
       {
         var enumerator = collection.GetEnumerator();
         isEmpty = !enumerator.MoveNext();
+      }
+      else if (value is int count)
+      {
+        isEmpty = count == 0;
       }
 
       if (isEmpty == inverted)

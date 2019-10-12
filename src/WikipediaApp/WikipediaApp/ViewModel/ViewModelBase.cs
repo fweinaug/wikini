@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace WikipediaApp
 {
@@ -22,8 +23,9 @@ namespace WikipediaApp
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public virtual void Initialize()
+    public virtual Task Initialize()
     {
+      return Task.CompletedTask;
     }
   }
 }

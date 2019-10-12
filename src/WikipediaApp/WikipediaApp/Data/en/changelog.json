@@ -1,5 +1,11 @@
 ﻿[
     [
+        "Search results with image",
+        "Favorites pane with context menu",
+        "Setting whether the last opened article is displayed at startup",
+        "Bugfixes"
+    ],
+    [
         "Improved search on the home page",
         "Note if history and favorites do not contain any entries",
         "Show favorites in article view"

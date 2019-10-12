@@ -15,8 +15,6 @@
 
             <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <local:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />
-
-            <local:Settings x:Key="Settings" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

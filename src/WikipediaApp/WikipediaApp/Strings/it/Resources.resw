@@ -150,6 +150,9 @@
   <data name="ArticleExitFullScreenButton.Label" xml:space="preserve">
     <value>Lascia schermo intero</value>
   </data>
+  <data name="ArticleFavoritesAppBarButton.Label" xml:space="preserve">
+    <value>Preferiti</value>
+  </data>
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
     <value>In avanti</value>
   </data>
@@ -228,6 +231,9 @@
   <data name="MainFavoritesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Preferiti</value>
   </data>
+  <data name="MainFavoritesPaneRemoveMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Rimuovi dai preferiti</value>
+  </data>
   <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
     <value>Cronologia</value>
   </data>
@@ -238,7 +244,7 @@
     <value>Cronologia</value>
   </data>
   <data name="MainHomepageAppBarButton.Label" xml:space="preserve">
-    <value>Homepage</value>
+    <value>Pagina iniziale</value>
   </data>
   <data name="MainLanguagesAppBarButton.Label" xml:space="preserve">
     <value>Lingue</value>
@@ -377,6 +383,12 @@
   </data>
   <data name="SettingsSplitViewInlineToggleSwitch.Header" xml:space="preserve">
     <value>Mostra i preferiti, la cronologia, le impostazioni, ecc. accanto al contenuto invece che sopra di esso</value>
+  </data>
+  <data name="SettingsStartHomeTextBlock.Text" xml:space="preserve">
+    <value>Pagina iniziale</value>
+  </data>
+  <data name="SettingsStartHomeToggleSwitch.Header" xml:space="preserve">
+    <value>All'avvio dell'applicazione mostra sempre la pagina iniziale invece dell'ultimo articolo aperto</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Grazie!</value>

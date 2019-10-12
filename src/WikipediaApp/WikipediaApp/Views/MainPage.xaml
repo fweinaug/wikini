@@ -44,14 +44,17 @@
                               local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:Language">
-                                <Grid ToolTipService.ToolTip="{x:Bind Name}">
+                                <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                                      ToolTipService.ToolTip="{x:Bind Name}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis" />
-                                    <TextBlock Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"
+                                               VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
+                                               VerticalAlignment="Center" Margin="5,0,0,0" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

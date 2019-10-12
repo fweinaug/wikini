@@ -79,7 +79,7 @@ namespace WikipediaApp
       set { SetValue(value); }
     }
 
-    public bool ShowThanks
+    public bool StartHome
     {
       get { return GetValue(false); }
       set { SetValue(value); }

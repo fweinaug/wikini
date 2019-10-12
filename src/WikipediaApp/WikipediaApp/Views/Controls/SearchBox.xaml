@@ -13,10 +13,12 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="BackgroundBrush">#FFFFFF</SolidColorBrush>
                     <SolidColorBrush x:Key="BorderBrush">#999999</SolidColorBrush>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="BackgroundBrush">#000000</SolidColorBrush>
                     <SolidColorBrush x:Key="BorderBrush">#666666</SolidColorBrush>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
@@ -81,23 +83,40 @@
                 </Setter>
             </Style>
 
-            <DataTemplate x:Key="NarrowItemTemplate">
-                <TextBlock Text="{Binding Title}" FontWeight="SemiLight" />
+            <DataTemplate x:Key="NarrowItemTemplate" x:DataType="local:FoundArticle">
+                <TextBlock Text="{x:Bind Title}" FontWeight="SemiLight" />
             </DataTemplate>
 
-            <DataTemplate x:Key="DefaultItemTemplate">
-                <StackPanel Orientation="Vertical" Padding="0,5">
-                    <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
-                    <TextBlock Text="{Binding Description}" FontWeight="Light" FontSize="14"
-                               TextWrapping="WrapWholeWords" Visibility="{Binding HasDescription}" />
-                </StackPanel>
+            <DataTemplate x:Key="DefaultItemTemplate" x:DataType="local:FoundArticle">
+                <Grid ColumnSpacing="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Vertical" Padding="0,5" VerticalAlignment="Center">
+                        <TextBlock Text="{x:Bind Title}" FontWeight="SemiBold" />
+                        <TextBlock Text="{x:Bind Description}" FontWeight="Light" FontSize="14"
+                                   TextWrapping="WrapWholeWords" Visibility="{x:Bind HasDescription}" />
+                    </StackPanel>
+
+                    <Border Grid.Column="1" Width="40" Height="40" CornerRadius="3">
+                        <Border.Background>
+                            <ImageBrush Stretch="UniformToFill">
+                                <ImageBrush.ImageSource>
+                                    <BitmapImage UriSource="{x:Bind ThumbnailUri}" CreateOptions="None" />
+                                </ImageBrush.ImageSource>
+                            </ImageBrush>
+                        </Border.Background>
+                    </Border>
+                </Grid>
             </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid ColumnSpacing="5" CornerRadius="4"
-          BorderThickness="2" BorderBrush="{ThemeResource BorderBrush}"
-          Background="Transparent">
+          Background="{ThemeResource BackgroundBrush}"
+          BorderThickness="2" BorderBrush="{ThemeResource BorderBrush}">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveStates">

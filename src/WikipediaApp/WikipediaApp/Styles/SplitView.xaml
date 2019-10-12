@@ -35,14 +35,22 @@
 
     <Style x:Key="SplitViewPaneListViewItemContainerStyle" TargetType="ListViewItem">
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="15,5" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 
     <Style x:Key="SplitViewPaneListViewStyle" TargetType="ListView">
         <Setter Property="SelectionMode" Value="None" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource SplitViewPaneListViewItemContainerStyle}" />
+    </Style>
+
+    <Style x:Key="SplitViewPaneListViewItemStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="15,5" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
 
     <Style x:Key="SplitViewPaneEmptyContainerStyle" TargetType="StackPanel">

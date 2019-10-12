@@ -9,6 +9,16 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
+    <UserControl.Resources>
+        <MenuFlyout x:Key="ItemMenuFlyout">
+            <MenuFlyoutItem x:Uid="MainFavoritesPaneRemoveMenuFlyoutItem" Command="{Binding RemoveFromFavoritesCommand}">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xE8D9;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+        </MenuFlyout>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -21,21 +31,26 @@
                   local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="FavoritesListViewItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ArticleHead">
-                    <Grid ToolTipService.ToolTip="{x:Bind Title}">
+                    <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                          ToolTipService.ToolTip="{x:Bind Title}"
+                          IsRightTapEnabled="True" RightTapped="FavoritesListViewItemRightTapped"
+                          FlyoutBase.AttachedFlyout="{StaticResource ItemMenuFlyout}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
-                        <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                        <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
+                                   VerticalAlignment="Center" Margin="5,0,0,0" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Style="{ThemeResource SplitViewPaneEmptyContainerStyle}"
-                    Visibility="{Binding Favorites, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">
+                    Visibility="{Binding Favorites.Count, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">
             <FontIcon Glyph="&#xE734;" Style="{ThemeResource SplitViewPaneEmptyFontIconStyle}" />
             <TextBlock x:Uid="MainFavoritesPaneEmptyTextBlock" Style="{ThemeResource SplitViewPaneEmptyTextBlockStyle}" />
         </StackPanel>

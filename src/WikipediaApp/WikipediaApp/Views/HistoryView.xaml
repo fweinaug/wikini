@@ -25,14 +25,17 @@
                   local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ReadArticle">
-                    <Grid ToolTipService.ToolTip="{x:Bind Title}">
+                    <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                          ToolTipService.ToolTip="{x:Bind Title}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" />
-                        <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                        <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{x:Bind Language}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
+                                   VerticalAlignment="Center" Margin="5,0,0,0" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

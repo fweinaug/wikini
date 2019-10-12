@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace WikipediaApp
@@ -115,7 +116,7 @@ namespace WikipediaApp
       Search();
     }
 
-    public override async void Initialize()
+    public override async Task Initialize()
     {
       var language = Settings.Current.SearchLanguage;
 

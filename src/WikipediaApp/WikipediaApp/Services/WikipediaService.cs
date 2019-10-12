@@ -207,7 +207,7 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<IList<ArticleHead>> Search(string searchTerm, string language, CancellationToken? cancellationToken)
+    public async Task<IList<FoundArticle>> Search(string searchTerm, string language, CancellationToken? cancellationToken)
     {
       try
       {

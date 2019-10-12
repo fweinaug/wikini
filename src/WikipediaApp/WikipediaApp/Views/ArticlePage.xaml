@@ -35,7 +35,8 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:ArticleSection">
                             <UserControl>
-                                <Grid ToolTipService.ToolTip="{x:Bind Headline}">
+                                <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                                      ToolTipService.ToolTip="{x:Bind Headline}">
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
                                             <VisualState>
@@ -51,10 +52,16 @@
                                         </VisualStateGroup>
                                     </VisualStateManager.VisualStateGroups>
 
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Name="NumberTextBlock" Text="{x:Bind Number}" Padding="0,0,5,0" FontWeight="SemiLight" />
-                                        <TextBlock Name="HeadlineTextBlock" Text="{x:Bind Headline}" FontWeight="Light" />
-                                    </StackPanel>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Name="NumberTextBlock" Text="{x:Bind Number}"
+                                               FontWeight="SemiLight" Padding="0,0,5,0"
+                                               VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Name="HeadlineTextBlock" Text="{x:Bind Headline}" TextTrimming="CharacterEllipsis"
+                                               FontWeight="Light" VerticalAlignment="Center" />
                                 </Grid>
                             </UserControl>
                         </DataTemplate>
@@ -76,14 +83,17 @@
                           local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:ArticleLanguage">
-                            <Grid ToolTipService.ToolTip="{x:Bind Name}">
+                            <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                                  ToolTipService.ToolTip="{x:Bind Name}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
-                                <TextBlock Grid.Column="1" Text="{Binding Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                <TextBlock Grid.Column="0" Text="{Binding Name}" TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1" Text="{Binding Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
+                                           VerticalAlignment="Center" Margin="5,0,0,0" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

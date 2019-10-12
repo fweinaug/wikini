@@ -523,7 +523,7 @@ namespace WikipediaApp
     private const int MaxResults = 10;
     private const int ThumbnailSize = 100;
 
-    public async Task<IList<ArticleHead>> PrefixSearch(string searchTerm, string language, CancellationToken? cancellationToken)
+    public async Task<IList<FoundArticle>> PrefixSearch(string searchTerm, string language, CancellationToken? cancellationToken)
     {
       var query = $"action=query&redirects=&converttitles=&prop=description|pageimages|info&piprop=thumbnail&pilicense=any&generator=prefixsearch&gpsnamespace=0&list=search&srnamespace=0&inprop=url&srwhat=text&srinfo=suggestion&srprop=&sroffset=0&srlimit=1&pithumbsize={ThumbnailSize}&gpssearch={searchTerm}&gpslimit={MaxResults}&srsearch={searchTerm}";
       var response = await QueryAndParse<SearchResponse>(language, query, cancellationToken);
@@ -533,7 +533,7 @@ namespace WikipediaApp
       return MapPages(pages);
     }
 
-    public async Task<IList<ArticleHead>> FullTextSearch(string searchTerm, string language, CancellationToken? cancellationToken)
+    public async Task<IList<FoundArticle>> FullTextSearch(string searchTerm, string language, CancellationToken? cancellationToken)
     {
       var query = $"action=query&converttitles=&prop=description|pageimages|info&generator=search&gsrnamespace=0&gsrwhat=text&inprop=url&gsrinfo=&gsrprop=redirecttitle&piprop=thumbnail&pilicense=any&pithumbsize={ThumbnailSize}&gsrsearch={searchTerm}&gsrlimit={MaxResults}";
       var response = await QueryAndParse<SearchResponse>(language, query, cancellationToken);
@@ -543,21 +543,22 @@ namespace WikipediaApp
       return MapPages(pages);
     }
 
-    private static IList<ArticleHead> MapPages(List<Page> pages)
+    private static IList<FoundArticle> MapPages(List<Page> pages)
     {
-      var list = new List<ArticleHead>();
+      var list = new List<FoundArticle>();
 
       if (pages != null && pages.Count > 0)
       {
         foreach (var page in pages.OrderBy(x => x.index))
         {
-          var article = new ArticleHead
+          var article = new FoundArticle
           {
             PageId = page.pageid,
             Title = page.title,
             Description = page.description,
             Language = page.pagelanguage,
-            Uri = new Uri(page.fullurl)
+            Uri = new Uri(page.fullurl),
+            ThumbnailUri = page.thumbnail != null ? new Uri(page.thumbnail.source) : null
           };
 
           list.Add(article);

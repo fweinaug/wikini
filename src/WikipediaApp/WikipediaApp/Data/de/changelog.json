@@ -1,5 +1,11 @@
 ﻿[
     [
+        "Suchergebnisse mit Bild",
+        "Favoriten-Leiste mit Kontextmenü",
+        "Einstellung ob beim Start der zuletzt geöffnete Artikel angezeigt wird",
+        "Fehlerbehebungen"
+    ],
+    [
         "Suche auf der Startseite überarbeitet",
         "Hinweis wenn Historie und Favoriten keine Einträge enthalten",
         "Favoriten in Artikelansicht anzeigen"

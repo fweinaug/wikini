@@ -363,7 +363,7 @@ namespace WikipediaApp
       }
     }
 
-    public override async void Initialize()
+    public override async Task Initialize()
     {
       if (Article != null)
         return;

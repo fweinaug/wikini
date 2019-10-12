@@ -150,6 +150,9 @@
   <data name="ArticleExitFullScreenButton.Label" xml:space="preserve">
     <value>Sluit de volledig scherm</value>
   </data>
+  <data name="ArticleFavoritesAppBarButton.Label" xml:space="preserve">
+    <value>Favorieten</value>
+  </data>
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
     <value>Voorwaarts</value>
   </data>
@@ -227,6 +230,9 @@
   </data>
   <data name="MainFavoritesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Favorieten</value>
+  </data>
+  <data name="MainFavoritesPaneRemoveMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Verwijderen uit favorieten</value>
   </data>
   <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
     <value>Geschiedenis</value>
@@ -377,6 +383,12 @@
   </data>
   <data name="SettingsSplitViewInlineToggleSwitch.Header" xml:space="preserve">
     <value>Favorieten, geschiedenis, instellingen, enz. naast de inhoud tonen in plaats van erboven</value>
+  </data>
+  <data name="SettingsStartHomeTextBlock.Text" xml:space="preserve">
+    <value>Startpagina</value>
+  </data>
+  <data name="SettingsStartHomeToggleSwitch.Header" xml:space="preserve">
+    <value>Bij het starten van de app altijd de startpagina tonen in plaats van het laatst geopende artikel.</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Hartelijk dank!</value>

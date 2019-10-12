@@ -150,6 +150,9 @@
   <data name="ArticleExitFullScreenButton.Label" xml:space="preserve">
     <value>Dejar pantalla completa</value>
   </data>
+  <data name="ArticleFavoritesAppBarButton.Label" xml:space="preserve">
+    <value>Favoritos</value>
+  </data>
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
     <value>Adelante</value>
   </data>
@@ -227,6 +230,9 @@
   </data>
   <data name="MainFavoritesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Favoritos</value>
+  </data>
+  <data name="MainFavoritesPaneRemoveMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Eliminar de Favoritos</value>
   </data>
   <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
     <value>Historia</value>
@@ -377,6 +383,12 @@
   </data>
   <data name="SettingsSplitViewInlineToggleSwitch.Header" xml:space="preserve">
     <value>Mostrar favoritos, historial, configuración, etc. junto al contenido en lugar de por encima de él</value>
+  </data>
+  <data name="SettingsStartHomeTextBlock.Text" xml:space="preserve">
+    <value>Página de inicio</value>
+  </data>
+  <data name="SettingsStartHomeToggleSwitch.Header" xml:space="preserve">
+    <value>Al iniciar la aplicación siempre muestra la página de inicio en lugar del último artículo abierto.</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>¡Gracias!</value>

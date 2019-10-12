@@ -39,19 +39,19 @@ namespace WikipediaApp
       }
     }
 
-    private void FrameNavigated(object sender, NavigationEventArgs e)
+    private async void FrameNavigated(object sender, NavigationEventArgs e)
     {
-      var frameViewModel = e.Parameter as ViewModelBase;
-      frameViewModel?.Initialize();
+      if (e.Parameter is ViewModelBase frameViewModel)
+        await frameViewModel.Initialize();
       
       SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Frame.CanGoBack
         ? AppViewBackButtonVisibility.Visible
         : AppViewBackButtonVisibility.Collapsed;
     }
 
-    private void PageLoaded(object sender, RoutedEventArgs e)
+    private async void PageLoaded(object sender, RoutedEventArgs e)
     {
-      viewModel.Initialize();
+      await viewModel.Initialize();
 
       if (initialArticle != null)
         viewModel.ShowArticle(initialArticle);

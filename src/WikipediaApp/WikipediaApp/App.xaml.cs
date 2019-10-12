@@ -11,23 +11,14 @@ namespace WikipediaApp
 {
   sealed partial class App : Application
   {
-    private AppShell appShell = null;
-    private Settings settings = null;
+    private readonly Settings settings = new Settings();
 
     public new static App Current
     {
       get { return (App)Application.Current; }
     }
 
-    public AppShell AppShell
-    {
-      get { return appShell; }
-    }
-
-    public Settings Settings
-    {
-      get { return settings; }
-    }
+    public AppShell AppShell { get; private set; }
 
     public App()
     {
@@ -72,7 +63,7 @@ namespace WikipediaApp
       {
         article = TileManager.ParseArguments(e.Arguments);
       }
-      else
+      else if (!settings.StartHome)
       {
         article = Settings.ReadLastArticle();
       }
@@ -90,6 +81,8 @@ namespace WikipediaApp
 
       if (shell == null)
       {
+        Resources.Add("Settings", settings);
+
         shell = new AppShell();
         shell.AppFrame.NavigationFailed += OnNavigationFailed;
 
@@ -97,8 +90,7 @@ namespace WikipediaApp
 
         Window.Current.Content = shell;
 
-        this.appShell = shell;
-        this.settings = (Settings)Resources["Settings"];
+        AppShell = shell;
       }
 
       if (article != null)

@@ -146,6 +146,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contexts\WikipediaContext.cs" />
+    <Compile Include="Model\FoundArticle.cs" />
     <Compile Include="Views\Controls\SearchBox.xaml.cs">
       <DependentUpon>SearchBox.xaml</DependentUpon>
     </Compile>
