@@ -237,6 +237,9 @@
   <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
     <value>Historia</value>
   </data>
+  <data name="MainHistoryPaneClearMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Borrar historial</value>
+  </data>
   <data name="MainHistoryPaneEmptyTextBlock.Text" xml:space="preserve">
     <value>Aún no se han abierto artículos.</value>
   </data>
@@ -254,6 +257,15 @@
   </data>
   <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
     <value>No se han encontrado artículos</value>
+  </data>
+  <data name="MainPictureOfTheDayAppBarTextBlock.Text" xml:space="preserve">
+    <value>Foto del día</value>
+  </data>
+  <data name="MainPictureOfTheDayBackAppBarButton.Label" xml:space="preserve">
+    <value>Imagen anterior</value>
+  </data>
+  <data name="MainPictureOfTheDayTodayAppBarButton.Label" xml:space="preserve">
+    <value>Imagen de hoy</value>
   </data>
   <data name="MainRandomAppBarButton.Label" xml:space="preserve">
     <value>Aleatorio</value>

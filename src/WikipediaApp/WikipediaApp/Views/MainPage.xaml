@@ -22,6 +22,7 @@
             </ResourceDictionary.ThemeDictionaries>
 
             <contract8Present:ThemeShadow x:Name="SharedShadow" />
+            <contract8Present:ThemeShadow x:Name="SearchShadow" />
 
             <DataTemplate x:Key="HistoryTemplate">
                 <local:HistoryView ArticleClick="HistoryViewArticleClick" />
@@ -125,20 +126,25 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Grid x:Name="ContentGrid">
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="3*" />
                     </Grid.RowDefinitions>
 
-                    <local:SearchBox Name="SearchBox" Grid.Row="1"
+                    <local:Background x:Name="Background" Grid.Row="0" Grid.RowSpan="3"
+                                      ImageUri="{Binding PictureOfTheDay.ThumbnailUri}" />
+
+                    <local:SearchBox x:Name="SearchBox" Grid.Row="1"
                                      QueryString="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      QueryCommand="{Binding SearchCommand}"
                                      QueryResults="{Binding SearchResults, Mode=OneWay}"
                                      ItemSelectedCommand="{Binding ShowArticleCommand}"
                                      SelectLanguage="LanguagesButtonClick"
                                      QueryLanguage="{Binding Language}" />
+
+                    <Grid x:Name="ContentGrid" Grid.Row="0" Grid.RowSpan="3" />
 
                     <Image Grid.Row="2" Source="/Assets/Logo.png" Width="120" Height="120" Opacity="{ThemeResource WatermarkImageOpacity}" />
 
@@ -155,6 +161,24 @@
         <CommandBar Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="MainSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
+
+                <AppBarSeparator />
+
+                <AppBarElementContainer>
+                    <TextBlock x:Uid="MainPictureOfTheDayAppBarTextBlock" Margin="10,5,10,8" Opacity="0.5" />
+                </AppBarElementContainer>
+
+                <AppBarButton x:Uid="MainPictureOfTheDayBackAppBarButton" Command="{Binding PictureOfTheDay.BackCommand}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE8F5;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
+                <AppBarButton x:Uid="MainPictureOfTheDayTodayAppBarButton" Command="{Binding PictureOfTheDay.TodayCommand}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE8D1;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
             </CommandBar.SecondaryCommands>
 
             <AppBarButton x:Uid="MainHomepageAppBarButton" Icon="Home" Command="{Binding ShowHomePageCommand}" />

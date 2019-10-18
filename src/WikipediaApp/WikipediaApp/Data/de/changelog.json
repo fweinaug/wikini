@@ -1,5 +1,10 @@
 ﻿[
     [
+        "Startseite mit Bild des Tages",
+        "Alphabetische Sortierung der Favoriten",
+        "Verlauf-Leiste mit Kontextmenü"
+    ],
+    [
         "Suchergebnisse mit Bild",
         "Favoriten-Leiste mit Kontextmenü",
         "Einstellung ob beim Start der zuletzt geöffnete Artikel angezeigt wird",

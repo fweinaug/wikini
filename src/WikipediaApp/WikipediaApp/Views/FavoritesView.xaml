@@ -33,8 +33,7 @@
                 <DataTemplate x:DataType="local:ArticleHead">
                     <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                           ToolTipService.ToolTip="{x:Bind Title}"
-                          IsRightTapEnabled="True" RightTapped="FavoritesListViewItemRightTapped"
-                          FlyoutBase.AttachedFlyout="{StaticResource ItemMenuFlyout}">
+                          local:ListViewExtensions.ItemMenuFlyout="{StaticResource ItemMenuFlyout}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />

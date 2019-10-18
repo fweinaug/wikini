@@ -3,6 +3,7 @@ using System.Numerics;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace WikipediaApp
 {
@@ -19,13 +20,28 @@ namespace WikipediaApp
       if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
       {
         SharedShadow.Receivers.Add(ContentGrid);
+        SearchShadow.Receivers.Add(Background);
 
         SplitViewPaneGrid.Translation += new Vector3(0, 0, 16);
+        SearchBox.Translation += new Vector3(0, 0, 32);
+
+        SearchBox.PointerEntered += SearchBoxPointerEntered;
+        SearchBox.PointerExited += SearchBoxPointerExited;
       }
 
       paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
       paneFavoritesTemplate = (DataTemplate)Resources["FavoritesTemplate"];
       paneLanguagesTemplate = (DataTemplate)Resources["LanguagesTemplate"];
+    }
+
+    private void SearchBoxPointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+      SearchBox.Shadow = SearchShadow;
+    }
+
+    private void SearchBoxPointerExited(object sender, PointerRoutedEventArgs e)
+    {
+      SearchBox.Shadow = null;
     }
 
     private void HistoryButtonClick(object sender, RoutedEventArgs e)

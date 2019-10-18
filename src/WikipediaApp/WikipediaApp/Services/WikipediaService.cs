@@ -267,5 +267,21 @@ namespace WikipediaApp
         return false;
       }
     }
+
+    public async Task<ArticleImage> GetPictureOfTheDay(DateTime date)
+    {
+      try
+      {
+        var image = await queryApi.GetPictureOfTheDay(date);
+
+        return image;
+      }
+      catch (Exception ex)
+      {
+        HockeyClient.Current.TrackException(ex);
+
+        return null;
+      }
+    }
   }
 }

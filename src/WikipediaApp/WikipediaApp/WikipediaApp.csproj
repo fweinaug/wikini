@@ -145,6 +145,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\PictureOfTheDay.cs" />
+    <Compile Include="Views\Controls\Background.xaml.cs">
+      <DependentUpon>Background.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Contexts\WikipediaContext.cs" />
     <Compile Include="Model\FoundArticle.cs" />
     <Compile Include="Views\Controls\SearchBox.xaml.cs">
@@ -257,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Controls\Background.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Controls\SearchBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -320,7 +328,7 @@
       <Version>4.1.6</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.15</Version>
+      <Version>1.11.16</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>2.2.6</Version>

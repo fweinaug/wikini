@@ -70,6 +70,13 @@ namespace WikipediaApp
       get { return changeLanguageCommand ?? (changeLanguageCommand = new Command<Language>(ChangeLanguage)); }
     }
 
+    public PictureOfTheDay PictureOfTheDay { get; }
+
+    public AppViewModel()
+    {
+      PictureOfTheDay = new PictureOfTheDay(wikipediaService);
+    }
+
     private async void ShowHomePage()
     {
       IsBusy = true;
@@ -125,6 +132,8 @@ namespace WikipediaApp
 
       await ArticleHistory.Initialize();
       await ArticleFavorites.Initialize();
+
+      PictureOfTheDay.Today();
     }
   }
 }

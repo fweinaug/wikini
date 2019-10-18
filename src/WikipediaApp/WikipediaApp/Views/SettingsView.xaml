@@ -198,6 +198,11 @@
                     <Hyperlink NavigateUri="https://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</Hyperlink> ,
                     a non-profit organization.
                 </Paragraph>
+                <Paragraph Margin="0,10">
+                    Wikimedia Commons is part of the non-profit, multilingual, free-content
+                    <Hyperlink NavigateUri="https://meta.wikimedia.org/wiki/Wikimedia_movement">Wikimedia</Hyperlink>
+                    family.
+                </Paragraph>
             </RichTextBlock>
         </ContentDialog>
 

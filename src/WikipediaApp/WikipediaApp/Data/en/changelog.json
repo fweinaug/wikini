@@ -1,5 +1,10 @@
 ﻿[
     [
+        "Home page with picture of the day",
+        "Alphabetical sorting of favorites",
+        "History pane with context menu"
+    ],
+    [
         "Search results with image",
         "Favorites pane with context menu",
         "Setting whether the last opened article is displayed at startup",

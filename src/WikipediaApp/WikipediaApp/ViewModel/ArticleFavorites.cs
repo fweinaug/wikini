@@ -28,7 +28,26 @@ namespace WikipediaApp
         context.SaveChanges();
       }
 
-      All.Insert(0, favorite);
+      All.Insert(GetIndexByTitle(favorite), favorite);
+    }
+
+    private static int GetIndexByTitle(ArticleHead favorite)
+    {
+      var index = 0;
+
+      foreach (var article in All)
+      {
+        var compare = string.Compare(favorite.Title, article.Title, StringComparison.CurrentCulture);
+
+        if (compare > 0)
+          ++index;
+        else if (compare < 0)
+          break;
+        else if (string.Compare(favorite.Language, article.Language, StringComparison.CurrentCultureIgnoreCase) > 0)
+          ++index;
+      }
+
+      return index;
     }
 
     public static void RemoveArticle(ArticleHead article)
@@ -57,7 +76,7 @@ namespace WikipediaApp
       {
         using (var context = new WikipediaContext())
         {
-          var favorites = context.Favorites.OrderByDescending(x => x.Date).ToList();
+          var favorites = context.Favorites.OrderBy(x => x.Title).ThenBy(x => x.Language).ToList();
 
           favorites.ForEach(All.Add);
         }

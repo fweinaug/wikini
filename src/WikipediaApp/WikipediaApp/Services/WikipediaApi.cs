@@ -135,6 +135,27 @@ namespace WikipediaApp
       }
     }
 
+    public async Task<ArticleImage> GetPictureOfTheDay(DateTime date)
+    {
+      var query = $"https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&generator=images&titles=Template:Potd/{date:yyyy-MM-dd}&prop=imageinfo&iiprop=url&iiurlheight=900";
+
+      var result = await QueryAndParse<ImagesGeneratorRoot>(query);
+
+      var pages = result?.query?.pages;
+      if (pages == null || pages.Count == 0)
+        return null;
+
+      var page = pages.First();
+      if (page.imageinfo == null || page.imageinfo.Count == 0)
+        return null;
+
+      return new ArticleImage
+      {
+        ImageUri = new Uri(page.imageinfo[0].url),
+        ThumbnailUri = new Uri(page.imageinfo[0].thumburl)
+      };
+    }
+
     public async Task<List<ArticleImage>> GetArticleImages(Article article)
     {
       var imagesByFilenameDictionary = await FetchArticleImagesGroupedByFilename(article.PageId.Value, article.Language);
@@ -600,24 +621,33 @@ namespace WikipediaApp
 
   public abstract class WikipediaApi
   {
-    protected async Task<T> QueryAndParse<T>(string language, string query, CancellationToken? cancellationToken = null)
+    protected Task<T> QueryAndParse<T>(string language, string query, CancellationToken? cancellationToken = null)
     {
-      var response = await SendRequest(language, query, cancellationToken);
+      var url = $"https://{language}.wikipedia.org/w/api.php?format=json&formatversion=2&{query}";
+
+      return QueryAndParse<T>(url, cancellationToken);
+    }
+
+    protected async Task<T> QueryAndParse<T>(string url, CancellationToken? cancellationToken = null)
+    {
+      var requestUri = new Uri(url);
+
+      var response = await SendRequest(requestUri, cancellationToken);
       var result = JsonConvert.DeserializeObject<T>(response);
 
       return result;
     }
 
-    protected async Task<string> SendRequest(string language, string query, CancellationToken? cancellationToken = null)
+    private static async Task<string> SendRequest(Uri requestUri, CancellationToken? cancellationToken)
     {
-      var requestUri = new Uri("https://" + language + ".wikipedia.org/w/api.php?format=json&formatversion=2&" + query);
+      using (var client = new HttpClient())
+      {
+        var operation = client.GetStringAsync(requestUri);
 
-      var client = new HttpClient();
-      var operation = client.GetStringAsync(requestUri);
+        var response = cancellationToken != null ? await operation.AsTask(cancellationToken.Value) : await operation;
 
-      var response = cancellationToken != null ? await operation.AsTask(cancellationToken.Value) : await operation;
-
-      return response;
+        return response;
+      }
     }
 
     public static string RemoveHtml(string text)
