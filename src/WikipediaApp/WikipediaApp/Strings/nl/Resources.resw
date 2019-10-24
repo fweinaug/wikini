@@ -156,6 +156,9 @@
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
     <value>Voorwaarts</value>
   </data>
+  <data name="ArticleGroupDateToday" xml:space="preserve">
+    <value>Vandaag</value>
+  </data>
   <data name="ArticleHistoryAppBarButton.Label" xml:space="preserve">
     <value>Geschiedenis</value>
   </data>
@@ -216,8 +219,38 @@
   <data name="ArticleSpeechAppBarButton.Label" xml:space="preserve">
     <value>Hardop voorlezen</value>
   </data>
+  <data name="ArticleSpeechPaneBackButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Vorige sectie</value>
+  </data>
+  <data name="ArticleSpeechPaneForwardButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Volgende sectie</value>
+  </data>
   <data name="ArticleSpeechPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Voorlezen</value>
+  </data>
+  <data name="ArticleSpeechPanePauseButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Pauze</value>
+  </data>
+  <data name="ArticleSpeechPanePlayButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Spelen</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsAddVoicesHyperlinkButton.Content" xml:space="preserve">
+    <value>Meer stemmen toevoegen</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Spraakinstellingen</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsSpeedHighTextBlock.Text" xml:space="preserve">
+    <value>snel</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsSpeedLowTextBlock.Text" xml:space="preserve">
+    <value>langzaam</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsSpeedSlider.Header" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsVoiceComboBox.Header" xml:space="preserve">
+    <value>Stem</value>
   </data>
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
     <value>Naar de top</value>

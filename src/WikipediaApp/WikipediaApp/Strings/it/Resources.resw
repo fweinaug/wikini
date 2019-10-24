@@ -156,6 +156,9 @@
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
     <value>In avanti</value>
   </data>
+  <data name="ArticleGroupDateToday" xml:space="preserve">
+    <value>Oggi</value>
+  </data>
   <data name="ArticleHistoryAppBarButton.Label" xml:space="preserve">
     <value>Cronologia</value>
   </data>
@@ -216,8 +219,38 @@
   <data name="ArticleSpeechAppBarButton.Label" xml:space="preserve">
     <value>Leggi ad alta voce</value>
   </data>
+  <data name="ArticleSpeechPaneBackButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sezione precedente</value>
+  </data>
+  <data name="ArticleSpeechPaneForwardButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sezione successiva</value>
+  </data>
   <data name="ArticleSpeechPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Leggi ad alta voce</value>
+  </data>
+  <data name="ArticleSpeechPanePauseButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sosta</value>
+  </data>
+  <data name="ArticleSpeechPanePlayButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Gioca</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsAddVoicesHyperlinkButton.Content" xml:space="preserve">
+    <value>Aggiungere altre voci</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Impostazioni vocali</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsSpeedHighTextBlock.Text" xml:space="preserve">
+    <value>celere</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsSpeedLowTextBlock.Text" xml:space="preserve">
+    <value>lento</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsSpeedSlider.Header" xml:space="preserve">
+    <value>Velocità</value>
+  </data>
+  <data name="ArticleSpeechPaneSettingsVoiceComboBox.Header" xml:space="preserve">
+    <value>Voce</value>
   </data>
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
     <value>Vai all'inizio</value>

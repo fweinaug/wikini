@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Windows.ApplicationModel.Resources;
 
 namespace WikipediaApp
 {
@@ -28,7 +29,7 @@ namespace WikipediaApp
 
       if (group == null)
       {
-        group = new ArticleGroup { Key = date, Title = date.ToShortDateString() };
+        group = new ArticleGroup { Key = date, Title = GetTitle(date) };
 
         var index = this.TakeWhile(x => (DateTime)x.Key > date).Count();
 
@@ -36,6 +37,19 @@ namespace WikipediaApp
       }
 
       return group;
+    }
+
+    private static string GetTitle(DateTime date)
+    {
+      var diff = DateTime.Today - date;
+
+      if (diff.Days > 0)
+        return date.ToShortDateString();
+
+      var resourceLoader = ResourceLoader.GetForCurrentView();
+      var title = resourceLoader.GetString("ArticleGroupDateToday");
+
+      return title;
     }
   }
 }

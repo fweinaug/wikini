@@ -41,7 +41,7 @@
                                         <VisualStateGroup>
                                             <VisualState>
                                                 <VisualState.StateTriggers>
-                                                    <StateTrigger IsActive="{Binding IsRoot}" />
+                                                    <StateTrigger IsActive="{x:Bind IsRoot}" />
                                                 </VisualState.StateTriggers>
 
                                                 <VisualState.Setters>
@@ -85,15 +85,23 @@
                         <DataTemplate x:DataType="local:ArticleLanguage">
                             <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                                   ToolTipService.ToolTip="{x:Bind Name}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" Text="{Binding Name}" TextTrimming="CharacterEllipsis"
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"
                                            VerticalAlignment="Center" />
-                                <TextBlock Grid.Column="1" Text="{Binding Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
                                            VerticalAlignment="Center" Margin="5,0,0,0" />
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Bind Title}"
+                                           Style="{StaticResource SplitViewPaneLightTextBlockStyle}" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

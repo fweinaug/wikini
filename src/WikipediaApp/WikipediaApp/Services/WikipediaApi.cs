@@ -470,13 +470,15 @@ namespace WikipediaApp
       var languages = new List<ArticleLanguage>();
       if (parseResult.langlinks != null && parseResult.langlinks.Count > 0)
       {
-        foreach (var langling in parseResult.langlinks)
+        foreach (var langlink in parseResult.langlinks)
         {
           languages.Add(new ArticleLanguage
           {
-            Code = langling.lang,
-            Name = string.IsNullOrEmpty(langling.autonym) ? langling.langname : langling.autonym,
-            Uri = new Uri(langling.url)
+            Code = langlink.lang,
+            Name = string.IsNullOrEmpty(langlink.autonym) ? langlink.langname : langlink.autonym,
+            LocalizedName = langlink.langname,
+            Title = langlink.title,
+            Uri = new Uri(langlink.url)
           });
         }
       }
@@ -524,6 +526,7 @@ namespace WikipediaApp
       public string url { get; set; }
       public string langname { get; set; }
       public string autonym { get; set; }
+      public string title { get; set; }
     }
 
     private class ParseSection

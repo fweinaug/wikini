@@ -29,7 +29,7 @@
 
         <TextBlock x:Uid="MainHistoryPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Source={StaticResource HistorySource}}" Style="{StaticResource SplitViewPaneListViewStyle}"
+        <local:GroupedListView Grid.Row="1" ItemsSource="{Binding Source={StaticResource HistorySource}}" Style="{StaticResource SplitViewPaneListViewStyle}"
                   local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ReadArticle">
@@ -48,17 +48,7 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
-            <ListView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate x:DataType="local:ArticleGroup">
-                            <TextBlock Text="{x:Bind Title}" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="SemiBold" />
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                </GroupStyle>
-            </ListView.GroupStyle>
-        </ListView>
+        </local:GroupedListView>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Style="{ThemeResource SplitViewPaneEmptyContainerStyle}"
                     Visibility="{Binding History.Count, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">

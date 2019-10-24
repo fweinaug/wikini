@@ -20,6 +20,10 @@
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="BackgroundBrush">#000000</SolidColorBrush>
                     <SolidColorBrush x:Key="BorderBrush">#666666</SolidColorBrush>
+
+                    <SolidColorBrush x:Key="TextControlBackgroundFocused">#000000</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlForegroundFocused">#FFFFFF</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlButtonForeground">#B0B0B0</SolidColorBrush>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -157,7 +161,7 @@
 
         <AutoSuggestBox x:Uid="AppSearchTextBox" x:Name="TextBox" Grid.Column="1"
                  Style="{StaticResource SearchBoxStyle}"
-                 TextMemberPath="Title"
+                 TextMemberPath="Title" VerticalAlignment="Stretch"
                  ItemsSource="{Binding ElementName=Root, Path=QueryResults}"
                  TextChanged="OnAutoSuggestBoxTextChanged" QuerySubmitted="OnAutoSuggestBoxQuerySubmitted" KeyUp="OnAutoSuggestBoxKeyUp">
 
@@ -170,7 +174,7 @@
         </AutoSuggestBox>
 
         <Button x:Name="SearchButton" Grid.Column="2" Click="OnSearchButtonClick" Background="Transparent" IsEnabled="False"
-                CornerRadius="0,3,3,0" VerticalAlignment="Stretch">
+                CornerRadius="0,3,3,0" BorderThickness="0" VerticalAlignment="Stretch">
             <Button.Content>
                 <SymbolIcon Symbol="Find" />
             </Button.Content>

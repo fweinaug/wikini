@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using Windows.Media.SpeechSynthesis;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 
 namespace WikipediaApp
@@ -31,6 +33,27 @@ namespace WikipediaApp
 
       positionUpdateTimer.Interval = TimeSpan.FromMilliseconds(500);
       positionUpdateTimer.Tick += PositionUpdateTimerTick;
+
+      UpdateSettings();
+      
+      SettingsVoiceComboBox.SelectionChanged += SettingsVoiceComboBoxSelectionChanged;
+      SettingsSpeedSlider.ValueChanged += SettingsSpeedSliderValueChanged;
+    }
+
+    ~SpeechView()
+    {
+      SettingsVoiceComboBox.SelectionChanged -= SettingsVoiceComboBoxSelectionChanged;
+      SettingsSpeedSlider.ValueChanged -= SettingsSpeedSliderValueChanged;
+    }
+
+    private void UpdateSettings()
+    {
+      var voices = SpeechSynthesizer.AllVoices;
+
+      SettingsVoiceComboBox.ItemsSource = voices;
+      SettingsVoiceComboBox.SelectedItem = voices.FirstOrDefault(x => x.Id == Synthesizer.Voice.Id);
+
+      SettingsSpeedSlider.Value = Synthesizer.Options.SpeakingRate;
     }
 
     private static void OnArticlePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -207,6 +230,60 @@ namespace WikipediaApp
 
       PositionProgressBar.Maximum = duration.TotalMilliseconds;
       PositionProgressBar.Value = position.TotalMilliseconds;
+    }
+
+    private void SettingsSpeedSliderValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {
+      Synthesizer.Options.SpeakingRate = e.NewValue;
+
+      TimeSpan GetAdjustedPosition()
+      {
+        var diff = e.OldValue / e.NewValue;
+        var seconds = MediaElement.Position.TotalSeconds * diff;
+
+        var position = TimeSpan.FromSeconds(seconds);
+
+        return position;
+      }
+
+      ReloadCurrentChapter(GetAdjustedPosition);
+    }
+
+    private void SettingsVoiceComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+      var voice = SettingsVoiceComboBox.SelectedItem as VoiceInformation;
+      if (voice == null)
+        return;
+
+      Synthesizer.Voice = voice;
+
+      ReloadCurrentChapter(() => MediaElement.Position);
+    }
+
+    private void ReloadCurrentChapter(Func<TimeSpan> positionFunc)
+    {
+      if (currentChapterIndex < 0)
+        return;
+
+      var state = MediaElement.CurrentState;
+      if (state == MediaElementState.Closed || state == MediaElementState.Stopped)
+        return;
+
+      var position = positionFunc();
+
+      if (position > TimeSpan.Zero)
+      {
+        void SetPositionAfterMediaOpened(object o, RoutedEventArgs args)
+        {
+          MediaElement.MediaOpened -= SetPositionAfterMediaOpened;
+
+          MediaElement.Position = position;
+        }
+
+        MediaElement.MediaOpened += SetPositionAfterMediaOpened;
+      }
+
+      PlayChapter(currentChapterIndex);
     }
   }
 }

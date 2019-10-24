@@ -9,9 +9,14 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
+    <UserControl.Resources>
+        <DataTemplate x:Key="SettingsHeaderTemplate">
+            <TextBlock Text="{Binding}" FontWeight="SemiBold" />
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -19,35 +24,95 @@
 
         <TextBlock Grid.Row="0" x:Uid="ArticleSpeechPaneHeaderTextBlock" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="BackButton" Click="BackClick" Margin="5">
-                <Button.Content>
-                    <SymbolIcon Symbol="Previous" />
-                </Button.Content>
-            </Button>
-            <Button x:Name="PlayButton" Click="PlayClick" Margin="5">
-                <Button.Content>
-                    <SymbolIcon Symbol="Play" />
-                </Button.Content>
-            </Button>
-            <Button x:Name="PauseButton" Click="PauseClick" Margin="5">
-                <Button.Content>
-                    <SymbolIcon Symbol="Pause" />
-                </Button.Content>
-            </Button>
-            <Button x:Name="NextButton" Click="ForwardClick" Margin="5">
-                <Button.Content>
-                    <SymbolIcon Symbol="Next" />
-                </Button.Content>
-            </Button>
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
-            <TextBlock x:Name="PositionTextBlock" Text="00:00 / 00:00" HorizontalAlignment="Center" />
-            <ProgressBar x:Name="PositionProgressBar" Value="0" Maximum="0" />
-        </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-        <ListView Grid.Row="3" x:Name="ListView" Style="{StaticResource SplitViewPaneListViewStyle}"
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Uid="ArticleSpeechPaneBackButton" x:Name="BackButton" Click="BackClick" Margin="5">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Previous" />
+                    </Button.Content>
+                </Button>
+                <Button x:Uid="ArticleSpeechPanePlayButton" x:Name="PlayButton" Click="PlayClick" Margin="5">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Play" />
+                    </Button.Content>
+                </Button>
+                <Button x:Uid="ArticleSpeechPanePauseButton" x:Name="PauseButton" Click="PauseClick" Margin="5">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Pause" />
+                    </Button.Content>
+                </Button>
+                <Button x:Uid="ArticleSpeechPaneForwardButton" x:Name="NextButton" Click="ForwardClick" Margin="5">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Next" />
+                    </Button.Content>
+                </Button>
+                <Button x:Uid="ArticleSpeechPaneSettingsButton" Margin="5" Style="{StaticResource TransparentButtonStyle}">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xEFA9;" />
+                    </Button.Content>
+
+                    <Button.Flyout>
+                        <Flyout Placement="Bottom">
+                            <StackPanel Spacing="25">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Slider x:Uid="ArticleSpeechPaneSettingsSpeedSlider" x:Name="SettingsSpeedSlider"
+                                            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                            StepFrequency="0.25" TickFrequency="0.25" TickPlacement="Outside"
+                                            Minimum="0.5" Maximum="2"
+                                            HeaderTemplate="{StaticResource SettingsHeaderTemplate}" />
+
+                                    <TextBlock x:Uid="ArticleSpeechPaneSettingsSpeedLowTextBlock"
+                                               Grid.Row="1" Grid.Column="0"
+                                               HorizontalTextAlignment="Left"
+                                               FontSize="12" FontWeight="SemiLight" />
+                                    <TextBlock x:Uid="ArticleSpeechPaneSettingsSpeedHighTextBlock"
+                                               Grid.Row="1" Grid.Column="1"
+                                               HorizontalTextAlignment="Right"
+                                               FontSize="12" FontWeight="SemiLight" />
+                                </Grid>
+
+                                <StackPanel Spacing="5">
+                                    <ComboBox x:Uid="ArticleSpeechPaneSettingsVoiceComboBox" x:Name="SettingsVoiceComboBox"
+                                              MinWidth="300" HorizontalAlignment="Stretch"
+                                              HeaderTemplate="{StaticResource SettingsHeaderTemplate}"
+                                              DisplayMemberPath="Description" />
+
+                                    <HyperlinkButton x:Uid="ArticleSpeechPaneSettingsAddVoicesHyperlinkButton"
+                                                     NavigateUri="https://go.microsoft.com/fwlink/p/?linkid=831102" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10">
+                <TextBlock x:Name="PositionTextBlock" Text="00:00 / 00:00" HorizontalAlignment="Center" />
+                <ProgressBar x:Name="PositionProgressBar" Value="0" Maximum="0" />
+            </StackPanel>
+        </Grid>
+
+        <ListView Grid.Row="2" x:Name="ListView" Style="{StaticResource SplitViewPaneListViewStyle}"
                   IsItemClickEnabled="True" ItemClick="ListViewItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ArticleChapter">
