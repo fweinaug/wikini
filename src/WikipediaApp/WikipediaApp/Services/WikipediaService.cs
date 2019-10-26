@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Storage;
-using Microsoft.HockeyApp;
+using Microsoft.AppCenter.Crashes;
 
 namespace WikipediaApp
 {
@@ -70,7 +70,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -86,7 +86,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -94,12 +94,21 @@ namespace WikipediaApp
 
     public async Task<ArticleHead> GetArticleInfo(Uri uri)
     {
-      if (!WikipediaUriParser.Parse(uri, out var title, out var language, out _))
+      try
+      {
+        if (!WikipediaUriParser.Parse(uri, out var title, out var language, out _))
+          return null;
+
+        var article = await queryApi.GetArticleInfo(language, null, title);
+
+        return article;
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+
         return null;
-
-      var article = await queryApi.GetArticleInfo(language, null, title);
-
-      return article;
+      }
     }
 
     public async Task<IList<ArticleImage>> GetArticleImages(Article article)
@@ -110,7 +119,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -159,7 +168,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -173,7 +182,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -187,7 +196,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -201,7 +210,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -224,7 +233,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }
@@ -243,7 +252,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return false;
       }
@@ -262,7 +271,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return false;
       }
@@ -278,7 +287,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return null;
       }

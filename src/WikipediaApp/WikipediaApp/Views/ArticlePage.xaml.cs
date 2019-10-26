@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.System;
 using Windows.UI.Core;
@@ -24,7 +25,7 @@ namespace WikipediaApp
 
       if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
       {
-        SharedShadow.Receivers.Add(ArticleView);
+        SharedShadow.Receivers.Add(ContentGrid);
 
         SplitViewPaneGrid.Translation += new Vector3(0, 0, 16);
         SearchBar.Translation += new Vector3(0, 0, 16);
@@ -40,6 +41,13 @@ namespace WikipediaApp
     {
       base.OnNavigatedTo(e);
 
+      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
+      {
+        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+        coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
+        coreTitleBar.IsVisibleChanged += TitleBarIsVisibleChanged;
+      }
+
       DisplayHelper.ActivateDisplay();
 
       DataContext = e.Parameter;
@@ -50,6 +58,31 @@ namespace WikipediaApp
       DisplayHelper.ReleaseDisplay();
 
       Settings.WriteLastArticle(null);
+
+      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
+      {
+        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+        coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
+        coreTitleBar.IsVisibleChanged -= TitleBarIsVisibleChanged;
+      }
+    }
+
+    private void TitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+    {
+      UpdateTitleBar(sender);
+    }
+
+    private void TitleBarIsVisibleChanged(CoreApplicationViewTitleBar sender, object args)
+    {
+      UpdateTitleBar(sender);
+    }
+
+    private void UpdateTitleBar(CoreApplicationViewTitleBar sender)
+    {
+      var height = sender.IsVisible && sender.Height > 0 ? sender.Height + 1 : 0;
+
+      SplitViewPaneGrid.Padding = ArticleView.Margin = new Thickness(0, height, 0, 0);
+      AppTitleBarBackground.Height = height;
     }
 
     private void ArticleViewArticleChanged(object sender, EventArgs e)
@@ -187,6 +220,12 @@ namespace WikipediaApp
     private void ClosePaneButtonClick(object sender, RoutedEventArgs e)
     {
       SplitView.IsPaneOpen = false;
+    }
+
+    private void ImagesViewLoaded(object sender, RoutedEventArgs e)
+    {
+      if (ImagesView.Content is Grid grid)
+        grid.Padding = SplitViewPaneGrid.Padding;
     }
 
     private void ImageStatesCurrentStateChanged(object sender, VisualStateChangedEventArgs e)

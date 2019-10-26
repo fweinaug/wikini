@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Web.Http;
 using HtmlAgilityPack;
-using Microsoft.HockeyApp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -18,121 +17,85 @@ namespace WikipediaApp
   {
     public async Task<ArticleHead> GetMainPage(string language)
     {
-      try
-      {
-        const string query = "action=query&meta=siteinfo";
+      const string query = "action=query&meta=siteinfo";
 
-        var result = await QueryAndParse<SiteinfoRoot>(language, query);
+      var result = await QueryAndParse<SiteinfoRoot>(language, query);
 
-        var general = result?.query?.general;
-        if (general == null)
-          return null;
-
-        var title = result.query.general.mainpage;
-        var uri = new Uri(result.query.general.@base);
-
-        return new ArticleHead { Language = language, Title = title, Uri = uri };
-      }
-      catch (Exception ex)
-      {
-        HockeyClient.Current.TrackException(ex);
-
+      var general = result?.query?.general;
+      if (general == null)
         return null;
-      }
+
+      var title = result.query.general.mainpage;
+      var uri = new Uri(result.query.general.@base);
+
+      return new ArticleHead { Language = language, Title = title, Uri = uri };
     }
 
     public async Task<ArticleHead> GetRandomArticle(string language)
     {
-      try
-      {
-        const string query = "action=query&generator=random&grnnamespace=0&grnlimit=1&grnfilterredir=redirects&redirects&prop=info&inprop=url";
+      const string query = "action=query&generator=random&grnnamespace=0&grnlimit=1&grnfilterredir=redirects&redirects&prop=info&inprop=url";
 
-        var result = await QueryAndParse<PagesRoot>(language, query);
+      var result = await QueryAndParse<PagesRoot>(language, query);
 
-        var pages = result?.query?.pages;
-        if (pages == null || pages.Count == 0)
-          return null;
-
-        var page = pages.First();
-
-        var pageId = page.pageid;
-        var uri = new Uri(page.fullurl);
-
-        return new ArticleHead { Language = language, PageId = pageId, Uri = uri };
-      }
-      catch (Exception ex)
-      {
-        HockeyClient.Current.TrackException(ex);
-
+      var pages = result?.query?.pages;
+      if (pages == null || pages.Count == 0)
         return null;
-      }
+
+      var page = pages.First();
+
+      var pageId = page.pageid;
+      var uri = new Uri(page.fullurl);
+
+      return new ArticleHead { Language = language, PageId = pageId, Uri = uri };
     }
 
     public async Task<ArticleHead> GetArticleInfo(string language, int? pageId, string title)
     {
-      try
-      {
-        var query = "action=query&prop=info&inprop=url";
-        if (pageId != null)
-          query += "&pageids=" + pageId;
-        else
-          query += "&titles=" + title + "&redirects=";
+      var query = "action=query&prop=info&inprop=url";
+      if (pageId != null)
+        query += "&pageids=" + pageId;
+      else
+        query += "&titles=" + title + "&redirects=";
 
-        var result = await QueryAndParse<PagesRoot>(language, query);
+      var result = await QueryAndParse<PagesRoot>(language, query);
 
-        var pages = result?.query?.pages;
-        if (pages == null || pages.Count == 0)
-          return null;
-
-        var page = pages.First();
-
-        return new ArticleHead
-        {
-          PageId = page.pageid,
-          Title = page.title,
-          Language = language,
-          Uri = new Uri(page.fullurl)
-        };
-      }
-      catch (Exception ex)
-      {
-        HockeyClient.Current.TrackException(ex);
-
+      var pages = result?.query?.pages;
+      if (pages == null || pages.Count == 0)
         return null;
-      }
+
+      var page = pages.First();
+
+      return new ArticleHead
+      {
+        PageId = page.pageid,
+        Title = page.title,
+        Language = language,
+        Uri = new Uri(page.fullurl)
+      };
     }
 
     public async Task<ArticleThumbnail> GetArticleThumbnail(string language, int? pageId, string title)
     {
-      try
-      {
-        var query = "action=query&prop=pageimages&pilicense=any&pilimit=1&pithumbsize=300";
-        if (pageId != null)
-          query += "&pageids=" + pageId;
-        else
-          query += "&titles=" + title + "&redirects=";
+      var query = "action=query&prop=pageimages&pilicense=any&pilimit=1&pithumbsize=300";
+      if (pageId != null)
+        query += "&pageids=" + pageId;
+      else
+        query += "&titles=" + title + "&redirects=";
 
-        var result = await QueryAndParse<PageimagesRoot>(language, query);
+      var result = await QueryAndParse<PageimagesRoot>(language, query);
 
-        var pages = result?.query?.pages;
-        if (pages == null || pages.Count == 0)
-          return null;
-
-        var page = pages.First();
-
-        return new ArticleThumbnail
-        {
-          PageId = page.pageid,
-          Title = page.title,
-          ImageUri = page.thumbnail?.source
-        };
-      }
-      catch (Exception ex)
-      {
-        HockeyClient.Current.TrackException(ex);
-
+      var pages = result?.query?.pages;
+      if (pages == null || pages.Count == 0)
         return null;
-      }
+
+      var page = pages.First();
+
+      return new ArticleThumbnail
+      {
+        PageId = page.pageid,
+        Title = page.title,
+        ImageUri = page.thumbnail?.source
+      };
     }
 
     public async Task<ArticleImage> GetPictureOfTheDay(DateTime date)

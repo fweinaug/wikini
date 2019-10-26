@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Numerics;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 
 namespace WikipediaApp
 {
@@ -32,6 +34,33 @@ namespace WikipediaApp
       paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
       paneFavoritesTemplate = (DataTemplate)Resources["FavoritesTemplate"];
       paneLanguagesTemplate = (DataTemplate)Resources["LanguagesTemplate"];
+    }
+
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+      base.OnNavigatedTo(e);
+
+      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
+      {
+        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+        coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
+      }
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    {
+      base.OnNavigatedFrom(e);
+
+      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
+      {
+        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+        coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
+      }
+    }
+
+    private void TitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+    {
+      SplitViewPaneGrid.Padding = new Thickness(0, sender.Height, 0, 0);
     }
 
     private void SearchBoxPointerEntered(object sender, PointerRoutedEventArgs e)

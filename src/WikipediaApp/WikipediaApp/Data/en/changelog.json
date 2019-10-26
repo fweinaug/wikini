@@ -1,5 +1,9 @@
 ﻿[
     [
+        "Improved design",
+        "Migrated to WinUI and App Center"
+    ],
+    [
         "Read aloud function with voice settings",
         "Search field in dark design improved",
         "Article languages with localized title",

@@ -126,6 +126,9 @@
   <data name="AppArticleLoadingFailedContentDialog.Title" xml:space="preserve">
     <value>Sorry :(</value>
   </data>
+  <data name="AppPaneCloseButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Hide sidebar</value>
+  </data>
   <data name="AppSearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Search</value>
   </data>

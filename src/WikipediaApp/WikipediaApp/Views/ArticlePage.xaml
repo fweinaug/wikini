@@ -11,113 +11,125 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <contract8Present:ThemeShadow x:Name="SharedShadow" />
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="AppBarBorderBrush" Color="#C9C9C9" />
+                </ResourceDictionary>
 
-        <DataTemplate x:Key="HistoryTemplate">
-            <local:HistoryView ArticleClick="HistoryViewArticleClick" />
-        </DataTemplate>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="AppBarBorderBrush" Color="#333333" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
 
-        <DataTemplate x:Key="FavoritesTemplate">
-            <local:FavoritesView ArticleClick="FavoritesViewArticleClick" />
-        </DataTemplate>
+            <contract8Present:ThemeShadow x:Name="SharedShadow" />
 
-        <DataTemplate x:Key="ContentsTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <DataTemplate x:Key="HistoryTemplate">
+                <local:HistoryView ArticleClick="HistoryViewArticleClick" />
+            </DataTemplate>
 
-                <TextBlock x:Uid="ArticleContentsPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+            <DataTemplate x:Key="FavoritesTemplate">
+                <local:FavoritesView ArticleClick="FavoritesViewArticleClick" />
+            </DataTemplate>
 
-                <ListView Grid.Row="1" ItemsSource="{Binding Sections}" Style="{StaticResource SplitViewPaneListViewStyle}"
+            <DataTemplate x:Key="ContentsTemplate">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Uid="ArticleContentsPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+
+                    <ListView Grid.Row="1" ItemsSource="{Binding Sections}" Style="{StaticResource SplitViewPaneListViewStyle}"
                           IsItemClickEnabled="True" ItemClick="ContentsListViewItemClick">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:ArticleSection">
-                            <UserControl>
-                                <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ArticleSection">
+                                <UserControl>
+                                    <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                                       ToolTipService.ToolTip="{x:Bind Headline}">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup>
-                                            <VisualState>
-                                                <VisualState.StateTriggers>
-                                                    <StateTrigger IsActive="{x:Bind IsRoot}" />
-                                                </VisualState.StateTriggers>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup>
+                                                <VisualState>
+                                                    <VisualState.StateTriggers>
+                                                        <StateTrigger IsActive="{x:Bind IsRoot}" />
+                                                    </VisualState.StateTriggers>
 
-                                                <VisualState.Setters>
-                                                    <Setter Target="NumberTextBlock.FontWeight" Value="SemiBold" />
-                                                    <Setter Target="HeadlineTextBlock.FontWeight" Value="Normal" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="NumberTextBlock.FontWeight" Value="SemiBold" />
+                                                        <Setter Target="HeadlineTextBlock.FontWeight" Value="Normal" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Name="NumberTextBlock" Text="{x:Bind Number}"
+                                        <TextBlock Grid.Column="0" Name="NumberTextBlock" Text="{x:Bind Number}"
                                                FontWeight="SemiLight" Padding="0,0,5,0"
                                                VerticalAlignment="Center" />
-                                    <TextBlock Grid.Column="1" Name="HeadlineTextBlock" Text="{x:Bind Headline}" TextTrimming="CharacterEllipsis"
+                                        <TextBlock Grid.Column="1" Name="HeadlineTextBlock" Text="{x:Bind Headline}" TextTrimming="CharacterEllipsis"
                                                FontWeight="Light" VerticalAlignment="Center" />
-                                </Grid>
-                            </UserControl>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </DataTemplate>
+                                    </Grid>
+                                </UserControl>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </DataTemplate>
 
-        <DataTemplate x:Key="LanguagesTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <DataTemplate x:Key="LanguagesTemplate">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <TextBlock x:Uid="ArticleLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
+                    <TextBlock x:Uid="ArticleLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-                <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
+                    <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
                           local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:ArticleLanguage">
-                            <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ArticleLanguage">
+                                <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                                   ToolTipService.ToolTip="{x:Bind Name}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"
                                            VerticalAlignment="Center" />
-                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
                                            VerticalAlignment="Center" Margin="5,0,0,0" />
 
-                                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Bind Title}"
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Bind Title}"
                                            Style="{StaticResource SplitViewPaneLightTextBlockStyle}" />
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </DataTemplate>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </DataTemplate>
 
-        <Storyboard x:Name="ShowSearchBarStoryboard">
-            <DoubleAnimation From="50" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
-            <DoubleAnimation From="0" To="1" Duration="00:00:0.3" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
-        </Storyboard>
+            <Storyboard x:Name="ShowSearchBarStoryboard">
+                <DoubleAnimation From="50" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
+                <DoubleAnimation From="0" To="1" Duration="00:00:0.3" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
+            </Storyboard>
 
-        <Storyboard x:Name="HideSearchBarStoryboard" Completed="HideSearchBarStoryboardCompleted">
-            <DoubleAnimation From="0" To="50" Duration="00:00:0.3" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
-            <DoubleAnimation From="1" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
-        </Storyboard>
+            <Storyboard x:Name="HideSearchBarStoryboard" Completed="HideSearchBarStoryboardCompleted">
+                <DoubleAnimation From="0" To="50" Duration="00:00:0.3" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
+                <DoubleAnimation From="1" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
+            </Storyboard>
+        </ResourceDictionary>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -175,6 +187,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <Border x:Name="AppTitleBarBackground" VerticalAlignment="Top" Height="0"
+                   contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                   BorderBrush="{ThemeResource AppBarBorderBrush}" BorderThickness="0,0,0,1" />
+
         <SplitView x:Name="SplitView" Grid.Row="0"
                    contract5Present:PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
                    PaneClosed="SplitViewPaneClosed">
@@ -186,9 +202,9 @@
                     <local:SettingsView x:Name="PaneSettingsView"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
 
-                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"
+                    <Button x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
-                        <FontIcon Glyph="&#xE894;" FontSize="15" />
+                        <FontIcon Glyph="&#xE89F;" />
                     </Button>
                 </Grid>
             </SplitView.Pane>
@@ -199,6 +215,8 @@
                                        NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}"
                                        ArticleFlyout="{Binding ArticleFlyout, Mode=TwoWay}"
                                        ArticleChanged="ArticleViewArticleChanged" />
+
+                    <Grid x:Name="ContentGrid" Grid.RowSpan="2" />
 
                     <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,16,0"
                           contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}"
@@ -454,7 +472,7 @@
             </AppBarButton>
         </CommandBar>
 
-        <local:ArticleImagesView x:Name="ImagesView" Grid.Row="0" Grid.RowSpan="2" x:DeferLoadStrategy="Lazy"
+        <local:ArticleImagesView x:Name="ImagesView" Grid.Row="0" Grid.RowSpan="2" x:DeferLoadStrategy="Lazy" Loaded="ImagesViewLoaded"
                                  Images="{Binding Images}"
                                  SelectedImage="{Binding SelectedImage, Mode=TwoWay}"
                                  CloseCommand="{Binding HideImagesCommand}"

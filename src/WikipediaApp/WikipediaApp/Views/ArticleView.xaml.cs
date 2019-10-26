@@ -7,7 +7,7 @@ using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Microsoft.HockeyApp;
+using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 
 namespace WikipediaApp
@@ -266,7 +266,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
       }
     }
 
@@ -278,7 +278,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
       }
     }
 
@@ -290,7 +290,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
       }
     }
 

@@ -10,6 +10,18 @@
     <Grid>
         <Frame x:Name="Frame" Navigated="FrameNavigated" />
 
+        <Grid x:Name="AppTitleBar" Background="Transparent" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
+                <ColumnDefinition />
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="AppTitle" Grid.Column="1"
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       Margin="12,8,0,0" />
+        </Grid>
+
         <ContentDialog x:Uid="AppArticleLoadingFailedContentDialog" x:Name="ArticleLoadingFailedContentDialog" />
     </Grid>
 </Page>

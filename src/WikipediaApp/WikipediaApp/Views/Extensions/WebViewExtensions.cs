@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
-using Microsoft.HockeyApp;
+using Microsoft.AppCenter.Crashes;
 
 namespace WikipediaApp
 {
@@ -20,7 +20,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
       }
     }
 
@@ -37,7 +37,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
       }
     }
 
@@ -51,7 +51,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
       }
     }
 
@@ -71,7 +71,7 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        HockeyClient.Current.TrackException(ex);
+        Crashes.TrackError(ex);
 
         return 0d;
       }

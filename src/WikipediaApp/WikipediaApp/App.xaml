@@ -7,12 +7,15 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="/Styles/Button.xaml" />
                 <ResourceDictionary Source="/Styles/ListView.xaml" />
                 <ResourceDictionary Source="/Styles/SplitView.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <Color x:Key="SystemAccentColor">#0063B1</Color>
+            <Color x:Key="SystemAccentColorLight1">#3784C1</Color>
+            <Color x:Key="SystemAccentColorDark1">#00599E</Color>
 
             <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <local:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />

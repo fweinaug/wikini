@@ -1,4 +1,6 @@
-﻿using Windows.Foundation.Metadata;
+﻿using Windows.ApplicationModel;
+using Windows.ApplicationModel.Core;
+using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -11,41 +13,71 @@ namespace WikipediaApp
     {
       if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
       {
-        UpdateTitleBarAdvanced(applicationView);
+        EnableExtendedView();
+        UpdateTitleBarForExtendedView(applicationView);
 
         ActualThemeChanged += OnActualThemeChanged;
       }
       else
       {
-        UpdateTitleBarDefault(applicationView);
+        UpdateTitleBarForDefaultView(applicationView);
       }
+    }
+    private void EnableExtendedView()
+    {
+      CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+
+      var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+
+      UpdateTitleBarLayoutForExtendedView(coreTitleBar);
+
+      Window.Current.SetTitleBar(AppTitleBar);
+
+      coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
+      coreTitleBar.IsVisibleChanged += TitleBarIsVisibleChanged;
+
+      AppTitle.Text = Package.Current.DisplayName;
+    }
+
+    private void TitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+    {
+      UpdateTitleBarLayoutForExtendedView(sender);
+    }
+
+    private void TitleBarIsVisibleChanged(CoreApplicationViewTitleBar sender, object args)
+    {
+      AppTitleBar.Visibility = sender.IsVisible ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    private void UpdateTitleBarLayoutForExtendedView(CoreApplicationViewTitleBar coreTitleBar)
+    {
+      LeftPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayLeftInset);
+      RightPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayRightInset);
+
+      AppTitleBar.Height = coreTitleBar.Height;
     }
 
     private void OnActualThemeChanged(FrameworkElement sender, object args)
     {
       var applicationView = ApplicationView.GetForCurrentView();
 
-      UpdateTitleBarAdvanced(applicationView);
+      UpdateTitleBarForExtendedView(applicationView);
     }
 
-    private void UpdateTitleBarAdvanced(ApplicationView applicationView)
+    private void UpdateTitleBarForExtendedView(ApplicationView applicationView)
     {
       var titleBar = applicationView.TitleBar;
       if (titleBar != null)
       {
-        var titleBarColor = (Color)Resources["SystemAccentColor"];
-        var themeColor = ActualTheme == ElementTheme.Light ? Colors.White : Colors.Black;
+        var color = ActualTheme == ElementTheme.Light ? Colors.Black : Colors.White;
 
-        titleBar.BackgroundColor = titleBarColor;
-        titleBar.ButtonBackgroundColor = titleBarColor;
-        titleBar.ButtonForegroundColor = Colors.White;
-
-        titleBar.InactiveBackgroundColor = themeColor;
-        titleBar.ButtonInactiveBackgroundColor = themeColor;
+        titleBar.ButtonForegroundColor = color;
+        titleBar.ButtonBackgroundColor = Colors.Transparent;
+        titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
       }
     }
 
-    private void UpdateTitleBarDefault(ApplicationView applicationView)
+    private void UpdateTitleBarForDefaultView(ApplicationView applicationView)
     {
       var titleBar = applicationView.TitleBar;
       if (titleBar != null)

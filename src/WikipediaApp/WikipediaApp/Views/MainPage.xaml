@@ -118,9 +118,9 @@
                     <local:SettingsView x:Name="PaneSettingsView"
                                         x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
 
-                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"
+                    <Button x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
-                        <FontIcon Glyph="&#xE894;" FontSize="15" />
+                        <FontIcon Glyph="&#xE89F;" />
                     </Button>
                 </Grid>
             </SplitView.Pane>
