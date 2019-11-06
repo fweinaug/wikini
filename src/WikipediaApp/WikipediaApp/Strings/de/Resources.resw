@@ -310,7 +310,7 @@
     <value>Einstellungen</value>
   </data>
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
-    <value>Info zu dieser App</value>
+    <value>Infos zu dieser App</value>
   </data>
   <data name="SettingsAppLanguageComboBox.Header" xml:space="preserve">
     <value>App beim nächsten Start in ausgewählter Sprache anzeigen</value>
@@ -443,5 +443,8 @@
   </data>
   <data name="SettingsTimelineTextBlock.Text" xml:space="preserve">
     <value>Timeline</value>
+  </data>
+  <data name="SettingsWebsiteButton.Content" xml:space="preserve">
+    <value>Website</value>
   </data>
 </root>

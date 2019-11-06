@@ -15,18 +15,11 @@
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="BackgroundBrush">#FFFFFF</SolidColorBrush>
                     <SolidColorBrush x:Key="BorderBrush">#999999</SolidColorBrush>
-
-                    <SolidColorBrush x:Key="TextControlBorderBrushFocused">#00FFFFFF</SolidColorBrush>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="BackgroundBrush">#000000</SolidColorBrush>
                     <SolidColorBrush x:Key="BorderBrush">#666666</SolidColorBrush>
-
-                    <SolidColorBrush x:Key="TextControlBackgroundFocused">#000000</SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlForegroundFocused">#FFFFFF</SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlButtonForeground">#B0B0B0</SolidColorBrush>
-                    <SolidColorBrush x:Key="TextControlBorderBrushFocused">#00000000</SolidColorBrush>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -158,7 +151,8 @@
         <Button Grid.Column="0" Style="{ThemeResource TransparentButtonStyle}" ToolTipService.ToolTip="{Binding ElementName=Root, Path=QueryLanguage.Name}"
                 Click="OnLanguageButtonClick" Margin="2" CornerRadius="4">
             <Button.Content>
-                <TextBlock Text="{Binding ElementName=Root, Path=QueryLanguage.Code}" Typography.Capitals="AllSmallCaps" FontSize="15" FontWeight="Bold" />
+                <TextBlock Text="{Binding ElementName=Root, Path=QueryLanguage.Code}" Typography.Capitals="AllSmallCaps" FontSize="15" FontWeight="Bold"
+                           Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
             </Button.Content>
         </Button>
 
@@ -179,7 +173,7 @@
         <Button x:Name="SearchButton" Grid.Column="2" Click="OnSearchButtonClick" Background="Transparent" IsEnabled="False"
                 CornerRadius="0,3,3,0" BorderThickness="0" VerticalAlignment="Stretch">
             <Button.Content>
-                <SymbolIcon Symbol="Find" />
+                <SymbolIcon Symbol="Find" Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
             </Button.Content>
         </Button>
     </Grid>

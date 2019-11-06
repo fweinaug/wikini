@@ -59,11 +59,12 @@ namespace WikipediaApp
     private static string GetArticleStyles(bool darkMode, int fontSize)
     {
       var scaledFontSize = GetScaledFontSize(fontSize);
+      var color = App.Current.InDarkMode() ? "#21687D" : "#3D918E";
 
       var styles = @"
         body {font-size: " + scaledFontSize + @"px;}
 
-        a, a:visited {color:#0063B1;}
+        a, a:visited {color:" + color + @" !important;}
 
         mark { background: #FAFA37; color: black; }
         mark.current {
@@ -80,8 +81,6 @@ namespace WikipediaApp
           .mw-body, #mw-mf-page-center, .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {background-color:inherit !important;}
 
           body {color:#999 !important;}
-
-          a, a:visited {color:#2372AF !important;}
 
           .content .section-heading {border-bottom-color:#333 !important;}
           .content table.infobox {color:#999 !important;background-color:#1a1a1a !important;}

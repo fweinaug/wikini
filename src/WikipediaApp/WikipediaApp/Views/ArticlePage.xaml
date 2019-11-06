@@ -218,7 +218,8 @@
 
                     <Grid x:Name="ContentGrid" Grid.RowSpan="2" />
 
-                    <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,16,0"
+                    <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,20,0"
+                          BorderThickness="0,1,1,0" BorderBrush="{ThemeResource AppBarBorderBrush}"
                           contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}"
                           contract5NotPresent:Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
                           contract8Present:Shadow="{StaticResource SharedShadow}">
@@ -236,7 +237,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBox Grid.Column="0" x:Uid="ArticleSearchTextBox" x:Name="SearchBarTextBox"
-                                 BorderThickness="1" HorizontalAlignment="Stretch"
+                                 BorderThickness="0" HorizontalAlignment="Stretch"
                                  KeyDown="SearchBarTextBoxKeyDown" />
 
                         <Button Grid.Column="1"

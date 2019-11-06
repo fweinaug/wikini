@@ -1,5 +1,9 @@
 [
     [
+        "New logo and accent color",
+        "Bugfixes"
+    ],
+    [
         "Improved design",
         "Migrated to WinUI and App Center"
     ],

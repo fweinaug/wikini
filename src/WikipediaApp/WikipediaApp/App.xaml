@@ -13,9 +13,26 @@
                 <ResourceDictionary Source="/Styles/SplitView.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <Color x:Key="SystemAccentColor">#0063B1</Color>
-            <Color x:Key="SystemAccentColorLight1">#3784C1</Color>
-            <Color x:Key="SystemAccentColorDark1">#00599E</Color>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <Color x:Key="SystemAccentColor">#337A78</Color>
+                    <Color x:Key="SystemAccentColorLight1">#388785</Color>
+                    <Color x:Key="SystemAccentColorDark1">#2F706E</Color>
+
+                    <SolidColorBrush x:Key="TextControlBorderBrushFocused">#00FFFFFF</SolidColorBrush>
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Dark">
+                    <Color x:Key="SystemAccentColor">#21687D</Color>
+                    <Color x:Key="SystemAccentColorLight1">#247187</Color>
+                    <Color x:Key="SystemAccentColorDark1">#1E6072</Color>
+
+                    <SolidColorBrush x:Key="TextControlBackgroundFocused">#000000</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlForegroundFocused">#FFFFFF</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlButtonForeground">#B0B0B0</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextControlBorderBrushFocused">#00000000</SolidColorBrush>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
 
             <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <local:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />

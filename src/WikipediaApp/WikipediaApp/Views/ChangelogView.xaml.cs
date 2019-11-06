@@ -6,6 +6,7 @@ using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Documents;
+using Windows.UI.Xaml.Media;
 
 namespace WikipediaApp
 {
@@ -21,6 +22,8 @@ namespace WikipediaApp
       if (ChangelogRichTextBlock.Blocks.Count > 0)
         return;
 
+      var accentBrush = (Brush)Resources["SystemControlHighlightAccentBrush"];
+
       var versions = await ReadFile("ms-appx:///Data/versions.json");
       var changelog = await ReadFile("ms-appx:///Data/changelog.json");
 
@@ -35,7 +38,7 @@ namespace WikipediaApp
 
         var paragraph = new Paragraph { FontSize = 14, Margin = new Thickness(0, 15, 5, 0) };
 
-        paragraph.Inlines.Add(new Run { Text = string.Format("Version {0}", versionNumber), FontWeight = FontWeights.Bold });
+        paragraph.Inlines.Add(new Run { Text = string.Format("Version {0}", versionNumber), FontWeight = FontWeights.Bold, Foreground = accentBrush });
         paragraph.Inlines.Add(new Run { Text = string.Format("  ({0:d})", releaseDate), FontWeight = FontWeights.Thin, FontSize = 12 });
         paragraph.Inlines.Add(new LineBreak());
 

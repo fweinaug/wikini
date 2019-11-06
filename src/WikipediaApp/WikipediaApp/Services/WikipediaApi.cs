@@ -100,7 +100,7 @@ namespace WikipediaApp
 
     public async Task<ArticleImage> GetPictureOfTheDay(DateTime date)
     {
-      var query = $"https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&generator=images&titles=Template:Potd/{date:yyyy-MM-dd}&prop=imageinfo&iiprop=url&iiurlheight=900";
+      var query = $"https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&generator=images&titles=Template:Potd/{date:yyyy-MM-dd}&prop=imageinfo&iiprop=url&iiurlwidth=1000";
 
       var result = await QueryAndParse<ImagesGeneratorRoot>(query);
 
@@ -608,11 +608,11 @@ namespace WikipediaApp
     {
       using (var client = new HttpClient())
       {
-        var operation = client.GetStringAsync(requestUri);
+        var operation = client.TryGetStringAsync(requestUri);
 
         var response = cancellationToken != null ? await operation.AsTask(cancellationToken.Value) : await operation;
 
-        return response;
+        return response.Value;
       }
     }
 

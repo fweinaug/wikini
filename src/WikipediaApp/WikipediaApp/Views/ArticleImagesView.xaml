@@ -26,7 +26,7 @@
         <TextBlock x:Name="PositionTextBlock" Grid.Row="0"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    FontSize="13" FontWeight="SemiBold"
-                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                   Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
                    Margin="10,0" />
 
         <FlipView x:Name="FlipView" Grid.Row="1" Background="Transparent"

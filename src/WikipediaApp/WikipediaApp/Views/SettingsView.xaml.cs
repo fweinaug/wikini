@@ -94,5 +94,11 @@ namespace WikipediaApp
         await dialog.ShowAsync();
       }
     }
+
+    private async void WebsiteClick(object sender, RoutedEventArgs e)
+    {
+      var uri = new Uri("http://wikiniapp.com");
+      await Launcher.LaunchUriAsync(uri);
+    }
   }
 }

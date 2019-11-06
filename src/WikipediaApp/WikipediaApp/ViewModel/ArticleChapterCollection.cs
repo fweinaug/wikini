@@ -56,8 +56,11 @@ namespace WikipediaApp
     {
       ClearItems();
 
-      var sections = ParseSections(article);
-      AddItemsFromSections(sections, article.Title);
+      if (article != null)
+      {
+        var sections = ParseSections(article);
+        AddItemsFromSections(sections, article.Title);
+      }
     }
 
     private static Dictionary<HtmlNode, List<HtmlNode>> ParseSections(Article article)

@@ -444,4 +444,7 @@
   <data name="SettingsTimelineTextBlock.Text" xml:space="preserve">
     <value>Timeline</value>
   </data>
+  <data name="SettingsWebsiteButton.Content" xml:space="preserve">
+    <value>Sito web</value>
+  </data>
 </root>
