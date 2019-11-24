@@ -6,6 +6,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Foundation.Metadata;
 using Windows.Web.Http;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
@@ -607,11 +608,29 @@ namespace WikipediaApp
     {
       using (var client = new HttpClient())
       {
-        var operation = client.TryGetStringAsync(requestUri);
+        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+        {
+          var operation = client.TryGetStringAsync(requestUri);
 
-        var response = cancellationToken != null ? await operation.AsTask(cancellationToken.Value) : await operation;
+          var response = cancellationToken != null ? await operation.AsTask(cancellationToken.Value) : await operation;
 
-        return response.Value;
+          return response.Value;
+        }
+        else
+        {
+          var operation = client.GetStringAsync(requestUri);
+
+          try
+          {
+            var response = cancellationToken != null ? await operation.AsTask(cancellationToken.Value) : await operation;
+
+            return response;
+          }
+          catch (Exception)
+          {
+            return string.Empty;
+          }
+        }
       }
     }
 

@@ -1,7 +1,8 @@
 [
     [
         "New background on start page",
-        "Setting whether the picture of the day is displayed on the start page at startup"
+        "Setting whether the picture of the day is displayed on the start page at startup",
+        "Fixed failing requests for Windows versions before 1903"
     ],
     [
         "New logo and accent color",

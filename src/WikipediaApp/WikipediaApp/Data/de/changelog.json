@@ -1,7 +1,8 @@
 [
     [
         "Startseite mit neuem Hintergrund",
-        "Einstellung ob beim Start das Bild des Tages auf der Startseite angezeigt wird"
+        "Einstellung ob beim Start das Bild des Tages auf der Startseite angezeigt wird",
+        "Fehlschlagende Requests für Windows-Versionen vor 1903 behoben"
     ],
     [
         "Neues Logo und Akzentfarbe",
