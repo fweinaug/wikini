@@ -438,6 +438,12 @@
   <data name="SettingsStartHomeToggleSwitch.Header" xml:space="preserve">
     <value>All'avvio dell'applicazione mostra sempre la pagina iniziale invece dell'ultimo articolo aperto</value>
   </data>
+  <data name="SettingsStartPictureOfTheDayTextBlock.Text" xml:space="preserve">
+    <value>Foto del giorno</value>
+  </data>
+  <data name="SettingsStartPictureOfTheDayToggleSwitch.Header" xml:space="preserve">
+    <value>Visualizzare l'immagine del giorno nella pagina iniziale all'avvio dell'applicazione</value>
+  </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Grazie!</value>
   </data>

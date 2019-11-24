@@ -438,6 +438,12 @@
   <data name="SettingsStartHomeToggleSwitch.Header" xml:space="preserve">
     <value>Podczas uruchamiania aplikacji zawsze pokazuj stronę startową zamiast ostatnio otwieranego artykułu.</value>
   </data>
+  <data name="SettingsStartPictureOfTheDayTextBlock.Text" xml:space="preserve">
+    <value>Zdjęcie dnia</value>
+  </data>
+  <data name="SettingsStartPictureOfTheDayToggleSwitch.Header" xml:space="preserve">
+    <value>Wyświetlanie obrazu dnia na stronie startowej, na której uruchomiona jest aplikacja.</value>
+  </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Dziękuję bardzo!</value>
   </data>

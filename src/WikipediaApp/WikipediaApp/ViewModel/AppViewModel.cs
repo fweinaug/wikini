@@ -133,7 +133,8 @@ namespace WikipediaApp
       await ArticleHistory.Initialize();
       await ArticleFavorites.Initialize();
 
-      PictureOfTheDay.Today();
+      if (Settings.Current.StartPictureOfTheDay)
+        PictureOfTheDay.Today();
     }
   }
 }

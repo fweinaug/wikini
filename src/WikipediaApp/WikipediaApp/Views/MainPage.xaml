@@ -150,7 +150,7 @@
 
                     <Border Grid.Row="2" Margin="0,30" Padding="25,10"
                             Background="{ThemeResource SystemControlHighlightAccentBrush}"
-                            BorderBrush="Gray" BorderThickness="2" CornerRadius="15"
+                            BorderThickness="0" CornerRadius="15"
                             HorizontalAlignment="Center" VerticalAlignment="Top"
                             Visibility="{Binding NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <TextBlock x:Uid="MainNoSearchResultsTextBlock" FontWeight="Normal" Foreground="White" />

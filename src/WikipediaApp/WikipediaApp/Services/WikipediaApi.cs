@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Windows.Web.Http;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace WikipediaApp
 {

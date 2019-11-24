@@ -72,7 +72,7 @@
                                         ItemTemplate="{TemplateBinding ItemTemplate}"
                                         ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                                         ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
-                                        MaxHeight="500"
+                                        MaxHeight="600"
                                         Margin="{ThemeResource AutoSuggestListMargin}"
                                         Padding="{ThemeResource AutoSuggestListPadding}" />
                                     </Border>

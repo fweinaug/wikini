@@ -233,7 +233,11 @@ namespace WikipediaApp
       }
       catch (Exception ex)
       {
-        Crashes.TrackError(ex);
+        Crashes.TrackError(ex, new Dictionary<string, string>
+        {
+          { "searchTerm", searchTerm },
+          { "language", language }
+        });
 
         return null;
       }

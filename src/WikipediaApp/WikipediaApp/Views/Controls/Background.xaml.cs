@@ -35,20 +35,16 @@ namespace WikipediaApp
       else
       {
         ImageBrush.ImageSource = null;
-        OverlayRectangle.Visibility = Visibility.Collapsed;
       }
     }
 
     private void OnImageOpened(object sender, RoutedEventArgs e)
     {
       ShowImageStoryboard.Begin();
-
-      OverlayRectangle.Visibility = Visibility.Visible;
     }
 
     private void OnImageFailed(object sender, ExceptionRoutedEventArgs e)
     {
-      OverlayRectangle.Visibility = Visibility.Collapsed;
     }
 
     private static void OnImageUriPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

@@ -1,5 +1,9 @@
 [
     [
+        "New background on start page",
+        "Setting whether the picture of the day is displayed on the start page at startup"
+    ],
+    [
         "New logo and accent color",
         "Bugfixes"
     ],

@@ -438,6 +438,12 @@
   <data name="SettingsStartHomeToggleSwitch.Header" xml:space="preserve">
     <value>Bij het starten van de app altijd de startpagina tonen in plaats van het laatst geopende artikel.</value>
   </data>
+  <data name="SettingsStartPictureOfTheDayTextBlock.Text" xml:space="preserve">
+    <value>Foto van de dag</value>
+  </data>
+  <data name="SettingsStartPictureOfTheDayToggleSwitch.Header" xml:space="preserve">
+    <value>Geef het beeld van de dag weer op de startpagina wanneer de app wordt gestart.</value>
+  </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>Hartelijk dank!</value>
   </data>

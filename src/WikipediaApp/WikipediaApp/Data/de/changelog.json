@@ -1,5 +1,9 @@
 [
     [
+        "Startseite mit neuem Hintergrund",
+        "Einstellung ob beim Start das Bild des Tages auf der Startseite angezeigt wird"
+    ],
+    [
         "Neues Logo und Akzentfarbe",
         "Fehlerbehebungen"
     ],

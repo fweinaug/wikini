@@ -85,6 +85,12 @@ namespace WikipediaApp
       set { SetValue(value); }
     }
 
+    public bool StartPictureOfTheDay
+    {
+      get { return GetValue(true); }
+      set { SetValue(value); }
+    }
+
     public Settings()
     {
       Current = this;

@@ -75,6 +75,11 @@
                 </StackPanel>
 
                 <StackPanel Margin="0,10">
+                    <TextBlock x:Uid="SettingsStartPictureOfTheDayTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                    <ToggleSwitch x:Uid="SettingsStartPictureOfTheDayToggleSwitch" IsOn="{Binding StartPictureOfTheDay, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
                     <TextBlock x:Uid="SettingsSearchRestrictedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <ToggleSwitch x:Uid="SettingsSearchRestrictedToggleSwitch" IsOn="{Binding SearchRestricted, Mode=TwoWay}" />
                 </StackPanel>

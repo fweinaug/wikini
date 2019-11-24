@@ -436,7 +436,13 @@
     <value>Página de inicio</value>
   </data>
   <data name="SettingsStartHomeToggleSwitch.Header" xml:space="preserve">
-    <value>Al iniciar la aplicación siempre muestra la página de inicio en lugar del último artículo abierto.</value>
+    <value>Al iniciar la aplicación siempre muestra la página de inicio en lugar del último artículo abierto</value>
+  </data>
+  <data name="SettingsStartPictureOfTheDayTextBlock.Text" xml:space="preserve">
+    <value>Foto del día</value>
+  </data>
+  <data name="SettingsStartPictureOfTheDayToggleSwitch.Header" xml:space="preserve">
+    <value>Mostrar la imagen del día en la página de inicio cuando se inicia la aplicación</value>
   </data>
   <data name="SettingsThanksTextBlock.Text" xml:space="preserve">
     <value>¡Gracias!</value>

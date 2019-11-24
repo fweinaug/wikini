@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="OverlayBrush" Color="#20FFFFFF" />
+                    <SolidColorBrush x:Key="OverlayBrush" Color="#10FFFFFF" />
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
@@ -30,6 +30,10 @@
     </UserControl.Resources>
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Background.jpg" />
+        </Grid.Background>
+
         <Rectangle x:Name="ImageRectangle">
             <Rectangle.Fill>
                 <ImageBrush x:Name="ImageBrush" Stretch="UniformToFill"
@@ -37,7 +41,6 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle x:Name="OverlayRectangle" Fill="{ThemeResource OverlayBrush}"
-                   Visibility="Collapsed" />
+        <Rectangle Fill="{ThemeResource OverlayBrush}" />
     </Grid>
 </UserControl>
