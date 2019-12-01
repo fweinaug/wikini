@@ -164,6 +164,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\FavoriteLanguage.cs" />
+    <Compile Include="Services\LanguagesReader.cs" />
+    <Compile Include="Views\LanguagesView.xaml.cs">
+      <DependentUpon>LanguagesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191125191544_LanguagesMigration.cs" />
+    <Compile Include="Migrations\20191125191544_LanguagesMigration.Designer.cs">
+      <DependentUpon>20191125191544_LanguagesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ArticleLanguages.cs" />
     <Compile Include="Views\Controls\GroupedListView.cs" />
     <Compile Include="ViewModel\PictureOfTheDay.cs" />
     <Compile Include="Views\Controls\Background.xaml.cs">
@@ -193,7 +203,6 @@
     <Compile Include="Services\TileManager.cs" />
     <Compile Include="Services\TimelineManager.cs" />
     <Compile Include="Services\WikipediaUriParser.cs" />
-    <Compile Include="ViewModel\ArticleGroup.cs" />
     <Compile Include="ViewModel\ArticleGroupCollection.cs" />
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
@@ -281,6 +290,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\LanguagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\ListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

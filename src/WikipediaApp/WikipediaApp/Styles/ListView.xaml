@@ -16,6 +16,7 @@
     </ResourceDictionary.ThemeDictionaries>
 
     <SolidColorBrush x:Key="ListViewHeaderItemDividerStroke" Color="Transparent" />
+    <x:Double x:Key="ListViewItemDisabledThemeOpacity">1</x:Double>
 
     <GroupStyle x:Key="ListViewGroupStyle">
         <GroupStyle.HeaderTemplate>
@@ -23,7 +24,7 @@
                 <Border BorderThickness="0,1" BorderBrush="{ThemeResource ListViewHeaderBorderBrush}"
                         Background="{ThemeResource ListViewHeaderBackgroundBrush}"
                         CornerRadius="0">
-                    <TextBlock Text="{Binding Title}" FontWeight="SemiBold" FontSize="13"
+                    <TextBlock Text="{Binding Key, Converter={StaticResource GroupKeyToTitleConverter}}" FontWeight="SemiBold" FontSize="13"
                                HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
             </DataTemplate>

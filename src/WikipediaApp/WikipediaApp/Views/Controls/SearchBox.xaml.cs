@@ -1,7 +1,10 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 
 namespace WikipediaApp
@@ -22,8 +25,11 @@ namespace WikipediaApp
     public static readonly DependencyProperty QueryResultsProperty = DependencyProperty.Register(
       nameof(QueryResults), typeof(object), typeof(SearchBox), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty ItemSelectedCommandProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty ItemSelectedCommandProperty = DependencyProperty.Register(
       nameof(ItemSelectedCommand), typeof(ICommand), typeof(SearchBox), new PropertyMetadata(null));
+
+    public static readonly DependencyProperty LanguageSelectedCommandProperty = DependencyProperty.Register(
+      nameof(LanguageSelectedCommand), typeof(ICommand), typeof(SearchBox), new PropertyMetadata(null));
 
     public Language QueryLanguage
     {
@@ -55,12 +61,70 @@ namespace WikipediaApp
       set { SetValue(ItemSelectedCommandProperty, value); }
     }
 
+    public ICommand LanguageSelectedCommand
+    {
+      get { return (ICommand)GetValue(LanguageSelectedCommandProperty); }
+      set { SetValue(LanguageSelectedCommandProperty, value); }
+    }
+
     public SearchBox()
     {
       InitializeComponent();
     }
 
     private void OnLanguageButtonClick(object sender, RoutedEventArgs e)
+    {
+      var favorites = ArticleLanguages.All.Where(x => x.IsFavorite || x == QueryLanguage).Reverse().ToList();
+
+      if (favorites.Count > 1)
+      {
+        ShowLanguagesMenuFlyout(favorites);
+      }
+      else
+      {
+        SelectLanguage?.Invoke(this, e);
+      }
+    }
+
+    private void ShowLanguagesMenuFlyout(List<Language> favorites)
+    {
+      var menuFlyout = (MenuFlyout)Resources["LanguagesMenuFlyout"];
+
+      while (menuFlyout.Items[0] is MenuFlyoutItem item)
+      {
+        item.Click -= OnLanguageMenuFlyoutItemClick;
+
+        menuFlyout.Items.RemoveAt(0);
+      }
+
+      foreach (var language in favorites)
+      {
+        var item = new MenuFlyoutItem
+        {
+          Text = language.Name,
+          Icon = language == QueryLanguage ? new FontIcon {Glyph = "\uE73E"} : null,
+          DataContext = language
+        };
+
+        item.Click += OnLanguageMenuFlyoutItemClick;
+
+        menuFlyout.Items.Insert(0, item);
+      }
+
+      menuFlyout.ShowAt(LanguageButton, new FlyoutShowOptions { Placement = FlyoutPlacementMode.BottomEdgeAlignedLeft });
+    }
+
+    private void OnLanguageMenuFlyoutItemClick(object sender, RoutedEventArgs e)
+    {
+      var item = (MenuFlyoutItem)sender;
+      var language = item.DataContext as Language;
+      
+      var command = LanguageSelectedCommand;
+      if (command != null && command.CanExecute(language))
+        command.Execute(language);
+    }
+
+    private void OnMoreLanguagesMenuFlyoutItemClick(object sender, RoutedEventArgs e)
     {
       SelectLanguage?.Invoke(this, e);
     }

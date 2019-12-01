@@ -36,6 +36,7 @@
 
             <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <local:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />
+            <local:GroupKeyToTitleConverter x:Key="GroupKeyToTitleConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

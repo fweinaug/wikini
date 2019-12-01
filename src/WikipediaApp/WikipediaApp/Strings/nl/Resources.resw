@@ -129,6 +129,9 @@
   <data name="AppPaneCloseButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Verberg zijbalk</value>
   </data>
+  <data name="AppSearchMoreLanguagesMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Meer talen</value>
+  </data>
   <data name="AppSearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Zoeken</value>
   </data>
@@ -258,6 +261,12 @@
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
     <value>Naar de top</value>
   </data>
+  <data name="LanguageGroupFavorites" xml:space="preserve">
+    <value>Mijn talen</value>
+  </data>
+  <data name="LanguageGroupMore" xml:space="preserve">
+    <value>Meer talen</value>
+  </data>
   <data name="MainFavoritesAppBarButton.Label" xml:space="preserve">
     <value>Favorieten</value>
   </data>
@@ -288,8 +297,17 @@
   <data name="MainLanguagesAppBarButton.Label" xml:space="preserve">
     <value>Talen</value>
   </data>
+  <data name="MainLanguagesPaneAddFavoriteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Toevoegen aan mijn talen</value>
+  </data>
+  <data name="MainLanguagesPaneFavoritesHintTextBlock.Text" xml:space="preserve">
+    <value>Voeg talen toe via het contextmenu om ze hier te zien.</value>
+  </data>
   <data name="MainLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Talen</value>
+  </data>
+  <data name="MainLanguagesPaneRemoveFavoriteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Verwijderen uit mijn talen</value>
   </data>
   <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
     <value>Geen artikelen gevonden</value>

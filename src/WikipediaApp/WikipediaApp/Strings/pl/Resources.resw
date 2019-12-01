@@ -129,6 +129,9 @@
   <data name="AppPaneCloseButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Ukryć pasek boczny</value>
   </data>
+  <data name="AppSearchMoreLanguagesMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Więcej języków</value>
+  </data>
   <data name="AppSearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Wyszukiwanie</value>
   </data>
@@ -258,6 +261,12 @@
   <data name="ArticleTopAppBarButton.Label" xml:space="preserve">
     <value>Do góry</value>
   </data>
+  <data name="LanguageGroupFavorites" xml:space="preserve">
+    <value>Moje języki</value>
+  </data>
+  <data name="LanguageGroupMore" xml:space="preserve">
+    <value>Więcej języków</value>
+  </data>
   <data name="MainFavoritesAppBarButton.Label" xml:space="preserve">
     <value>Ulubione</value>
   </data>
@@ -288,8 +297,17 @@
   <data name="MainLanguagesAppBarButton.Label" xml:space="preserve">
     <value>Języki</value>
   </data>
+  <data name="MainLanguagesPaneAddFavoriteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Dodaj do moich języków</value>
+  </data>
+  <data name="MainLanguagesPaneFavoritesHintTextBlock.Text" xml:space="preserve">
+    <value>Dodaj języki, korzystając z menu kontekstowego, aby zobaczyć je tutaj.</value>
+  </data>
   <data name="MainLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Języki</value>
+  </data>
+  <data name="MainLanguagesPaneRemoveFavoriteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Usuń z moich języków</value>
   </data>
   <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
     <value>Nie znaleziono żadnych artykułów</value>

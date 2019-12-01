@@ -33,34 +33,7 @@
             </DataTemplate>
 
             <DataTemplate x:Key="LanguagesTemplate">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Uid="MainLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
-
-                    <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
-                              local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:Language">
-                                <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
-                                      ToolTipService.ToolTip="{x:Bind Name}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"
-                                               VerticalAlignment="Center" />
-                                    <TextBlock Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
-                                               VerticalAlignment="Center" Margin="5,0,0,0" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <local:LanguagesView Languages="{Binding Languages}" LanguageClick="LanguagesViewLanguageClick" />
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
@@ -141,8 +114,9 @@
                                      QueryCommand="{Binding SearchCommand}"
                                      QueryResults="{Binding SearchResults, Mode=OneWay}"
                                      ItemSelectedCommand="{Binding ShowArticleCommand}"
+                                     QueryLanguage="{Binding Language, Mode=TwoWay}"
                                      SelectLanguage="LanguagesButtonClick"
-                                     QueryLanguage="{Binding Language}" />
+                                     LanguageSelectedCommand="{Binding ChangeLanguageCommand}" />
 
                     <Grid x:Name="ContentGrid" Grid.Row="0" Grid.RowSpan="3" />
 

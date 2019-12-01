@@ -1,5 +1,9 @@
 [
     [
+        "Auswahl der favorisierten Sprachen",
+        "Anzeige sämtlicher Wikipedia-Sprachen in der Sprachauswahl auf der Startseite"
+    ],
+    [
         "Startseite mit neuem Hintergrund",
         "Einstellung ob beim Start das Bild des Tages auf der Startseite angezeigt wird",
         "Fehlschlagende Requests für Windows-Versionen vor 1903 behoben"

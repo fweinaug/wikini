@@ -6,6 +6,7 @@ namespace WikipediaApp
   {
     public DbSet<ReadArticle> History { get; set; }
     public DbSet<FavoriteArticle> Favorites { get; set; }
+    public DbSet<FavoriteLanguage> Languages { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

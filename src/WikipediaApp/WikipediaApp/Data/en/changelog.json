@@ -1,5 +1,9 @@
 [
     [
+        "Select your favorite languages",
+        "Display all Wikipedia languages in the language selection on the start page"
+    ],
+    [
         "New background on start page",
         "Setting whether the picture of the day is displayed on the start page at startup",
         "Fixed failing requests for Windows versions before 1903"

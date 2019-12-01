@@ -56,7 +56,7 @@ namespace WikipediaApp
     public IList<Language> Languages
     {
       get { return languages; }
-      set { SetProperty(ref languages, value); }
+      private set { SetProperty(ref languages, value); }
     }
 
     public Language Language
@@ -125,13 +125,15 @@ namespace WikipediaApp
 
     public override async Task Initialize()
     {
+      await ArticleLanguages.Initialize();
+
       var language = Settings.Current.SearchLanguage;
 
-      Languages = await wikipediaService.GetLanguages();
+      Languages = ArticleLanguages.All;
       Language = Languages.FirstOrDefault(x => x.Code == language) ?? Languages.First(x => x.Code == Settings.DefaultSearchLanguage);
 
-      await ArticleHistory.Initialize();
       await ArticleFavorites.Initialize();
+      await ArticleHistory.Initialize();
 
       if (Settings.Current.StartPictureOfTheDay)
         PictureOfTheDay.Today();

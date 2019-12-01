@@ -82,42 +82,7 @@
             </DataTemplate>
 
             <DataTemplate x:Key="LanguagesTemplate">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Uid="ArticleLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
-
-                    <ListView Grid.Row="1" ItemsSource="{Binding Languages}" Style="{StaticResource SplitViewPaneListViewStyle}"
-                          local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="LanguagesListViewItemClick">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:ArticleLanguage">
-                                <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
-                                  ToolTipService.ToolTip="{x:Bind Name}">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Bind Name}" TextTrimming="CharacterEllipsis"
-                                           VerticalAlignment="Center" />
-                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind Code}" Typography.Capitals="AllSmallCaps" FontWeight="Light"
-                                           VerticalAlignment="Center" Margin="5,0,0,0" />
-
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Bind Title}"
-                                           Style="{StaticResource SplitViewPaneLightTextBlockStyle}" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <local:LanguagesView Languages="{Binding Languages}" LanguageClick="LanguagesViewLanguageClick" />
             </DataTemplate>
 
             <Storyboard x:Name="ShowSearchBarStoryboard">

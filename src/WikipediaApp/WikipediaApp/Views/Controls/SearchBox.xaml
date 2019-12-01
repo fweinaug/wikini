@@ -111,6 +111,15 @@
                     </Border>
                 </Grid>
             </DataTemplate>
+
+            <MenuFlyout x:Key="LanguagesMenuFlyout">
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem x:Uid="AppSearchMoreLanguagesMenuFlyoutItem" Click="OnMoreLanguagesMenuFlyoutItemClick">
+                    <MenuFlyoutItem.Icon>
+                        <FontIcon Glyph="&#xF2B7;" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+            </MenuFlyout>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -148,7 +157,8 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" Style="{ThemeResource TransparentButtonStyle}" ToolTipService.ToolTip="{Binding ElementName=Root, Path=QueryLanguage.Name}"
+        <Button x:Name="LanguageButton" Grid.Column="0"
+                Style="{ThemeResource TransparentButtonStyle}" ToolTipService.ToolTip="{Binding ElementName=Root, Path=QueryLanguage.Name}"
                 Click="OnLanguageButtonClick" Margin="2" CornerRadius="4">
             <Button.Content>
                 <TextBlock Text="{Binding ElementName=Root, Path=QueryLanguage.Code}" Typography.Capitals="AllSmallCaps" FontSize="15" FontWeight="Bold"

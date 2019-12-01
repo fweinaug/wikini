@@ -170,7 +170,7 @@ namespace WikipediaApp
       OpenOrCloseSplitView(paneLanguagesTemplate);
     }
 
-    private void LanguagesListViewItemClick(object sender, ItemClickEventArgs e)
+    private void LanguagesViewLanguageClick(object sender, EventArgs e)
     {
       if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
         SplitView.IsPaneOpen = false;

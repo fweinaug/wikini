@@ -2,52 +2,15 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Data.Json;
-using Windows.Storage;
 using Microsoft.AppCenter.Crashes;
 
 namespace WikipediaApp
 {
-  public partial class WikipediaService
+  public class WikipediaService
   {
     private readonly WikipediaSearchApi searchApi = new WikipediaSearchApi();
     private readonly WikipediaQueryApi queryApi = new WikipediaQueryApi();
     private readonly WikipediaParseApi parseApi = new WikipediaParseApi();
-
-    public async Task<IList<Language>> GetLanguages()
-    {
-      var uri = new Uri("ms-appx:///Data/languages.json");
-      var file = await StorageFile.GetFileFromApplicationUriAsync(uri);
-
-      var content = await FileIO.ReadTextAsync(file);
-      var array = JsonArray.Parse(content);
-
-      var list = new List<Language>();
-
-      foreach (var value in array)
-      {
-        var obj = value.GetObject();
-
-        var visible = obj.GetNamedBoolean("Visible");
-        if (!visible)
-          continue;
-
-        var name = obj.GetNamedString("Name");
-        var code = obj.GetNamedString("Code");
-        var url = obj.GetNamedString("Url");
-
-        var language = new Language
-        {
-          Name = name,
-          Code = code,
-          Uri = new Uri(url)
-        };
-
-        list.Add(language);
-      }
-
-      return list;
-    }
 
     public async Task<Article> GetArticle(Uri uri, bool disableImages)
     {

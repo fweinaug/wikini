@@ -90,6 +90,12 @@ namespace WikipediaApp
         SplitView.IsPaneOpen = false;
     }
 
+    private void LanguagesViewLanguageClick(object sender, EventArgs e)
+    {
+      if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
+        SplitView.IsPaneOpen = false;
+    }
+
     private void FavoritesButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneFavoritesTemplate);
@@ -98,12 +104,6 @@ namespace WikipediaApp
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneLanguagesTemplate);
-    }
-
-    private void LanguagesListViewItemClick(object sender, ItemClickEventArgs e)
-    {
-      if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
-        SplitView.IsPaneOpen = false;
     }
 
     private void SplitViewPaneClosed(SplitView sender, object e)
