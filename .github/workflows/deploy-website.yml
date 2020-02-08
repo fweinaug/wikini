@@ -1,0 +1,16 @@
+name: Deploy Website
+
+on: [push]
+
+jobs:
+  deploy-website:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Dispatch deploy event
+      run: |
+        curl -X POST https://api.github.com/repos/fweinaug/wikini-website-v2/dispatches \
+        -H 'Accept: application/vnd.github.everest-preview+json' \
+        -u fweinaug:${{ secrets.ACCESS_TOKEN }} \
+        --data '{"event_type": "deploy", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
