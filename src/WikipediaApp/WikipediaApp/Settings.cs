@@ -91,6 +91,12 @@ namespace WikipediaApp
       set { SetValue(value); }
     }
 
+    public bool DisplayActive
+    {
+      get { return GetValue(false); }
+      set { SetValue(value); }
+    }
+
     public Settings()
     {
       Current = this;

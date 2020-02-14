@@ -48,7 +48,8 @@ namespace WikipediaApp
         coreTitleBar.IsVisibleChanged += TitleBarIsVisibleChanged;
       }
 
-      DisplayHelper.ActivateDisplay();
+      if (Settings.Current.DisplayActive)
+        DisplayHelper.ActivateDisplay();
 
       DataContext = e.Parameter;
     }

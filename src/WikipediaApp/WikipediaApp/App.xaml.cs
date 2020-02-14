@@ -24,7 +24,9 @@ namespace WikipediaApp
 
     public App()
     {
+#if !DEBUG
       AppCenter.Start("{Your App Secret}", typeof(Analytics), typeof(Crashes));
+#endif
 
       InitializeComponent();
 

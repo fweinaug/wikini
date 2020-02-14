@@ -7,7 +7,7 @@ namespace WikipediaApp
 {
   public sealed partial class ImageControl : UserControl
   {
-    public static readonly DependencyProperty UriProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty UriProperty = DependencyProperty.Register(
       "Uri", typeof(Uri), typeof(ImageControl), new PropertyMetadata(null, OnUriPropertyChanged));
 
     public Uri Uri

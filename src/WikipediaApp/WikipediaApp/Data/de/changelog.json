@@ -1,5 +1,9 @@
 [
     [
+        "Bildschirm kann jetzt beim Lesen eines Artikels vom Energiesparmodus ausgeschaltet werden",
+        "Einstellung ob der Bildschirm beim Lesen eines Artikels nie ausgeschaltet wird"
+    ],
+    [
         "Auswahl der favorisierten Sprachen",
         "Anzeige sämtlicher Wikipedia-Sprachen in der Sprachauswahl auf der Startseite"
     ],

@@ -16,28 +16,28 @@ namespace WikipediaApp
   {
     public event EventHandler ArticleChanged;
 
-    public static readonly DependencyProperty ArticleProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty ArticleProperty = DependencyProperty.Register(
       "Article", typeof(Article), typeof(ArticleView), new PropertyMetadata(null, OnArticlePropertyChanged));
 
-    public static readonly DependencyProperty NavigateCommandProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty NavigateCommandProperty = DependencyProperty.Register(
       "NavigateCommand", typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty LoadedCommandProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty LoadedCommandProperty = DependencyProperty.Register(
       "LoadedCommand", typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty ShowArticleCommandProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty ShowArticleCommandProperty = DependencyProperty.Register(
       "ShowArticleCommand", typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty ArticleFlyoutProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty ArticleFlyoutProperty = DependencyProperty.Register(
       "ArticleFlyout", typeof(ArticleFlyout), typeof(ArticleView), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty CanGoBackProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty CanGoBackProperty = DependencyProperty.Register(
       "CanGoBack", typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
 
-    public static readonly DependencyProperty CanGoForwardProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty CanGoForwardProperty = DependencyProperty.Register(
       "CanGoForward", typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
 
-    public static readonly DependencyProperty SearchResultsProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty SearchResultsProperty = DependencyProperty.Register(
       "SearchResults", typeof(int), typeof(ArticleView), new PropertyMetadata(0));
 
     public Article Article

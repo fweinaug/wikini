@@ -10,7 +10,7 @@ namespace WikipediaApp
 {
   public sealed partial class SpeechView : UserControl
   {
-    public static readonly DependencyProperty ArticleProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty ArticleProperty = DependencyProperty.Register(
       "Article", typeof(Article), typeof(SpeechView), new PropertyMetadata(null, OnArticlePropertyChanged));
 
     private static readonly SpeechSynthesizer Synthesizer = new SpeechSynthesizer();

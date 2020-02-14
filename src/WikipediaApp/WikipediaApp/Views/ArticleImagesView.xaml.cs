@@ -8,13 +8,13 @@ namespace WikipediaApp
 {
   public sealed partial class ArticleImagesView : UserControl
   {
-    public static readonly DependencyProperty ImagesProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty ImagesProperty = DependencyProperty.Register(
       "Images", typeof(IEnumerable<ArticleImage>), typeof(ArticleImagesView), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty SelectedImageProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty SelectedImageProperty = DependencyProperty.Register(
       "SelectedImage", typeof(ArticleImage), typeof(ArticleImagesView), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty CloseCommandProperty = DependencyProperty.RegisterAttached(
+    public static readonly DependencyProperty CloseCommandProperty = DependencyProperty.Register(
       "CloseCommand", typeof(ICommand), typeof(ArticleImagesView), new PropertyMetadata(null));
 
     public IEnumerable<ArticleImage> Images

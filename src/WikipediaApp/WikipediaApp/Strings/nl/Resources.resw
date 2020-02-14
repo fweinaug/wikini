@@ -366,6 +366,12 @@
   <data name="SettingsDisclaimerContentDialog.Title" xml:space="preserve">
     <value>Wettelijke informatie</value>
   </data>
+  <data name="SettingsDisplayActiveToggleSwitch.Header" xml:space="preserve">
+    <value>Laat de display aanstaan tijdens het lezen van een artikel</value>
+  </data>
+  <data name="SettingsDisplayTextBlock.Text" xml:space="preserve">
+    <value>Display</value>
+  </data>
   <data name="SettingsFeedbackButton.Content" xml:space="preserve">
     <value>Terugmelding</value>
   </data>
