@@ -23,9 +23,9 @@
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
-                    <Color x:Key="SystemAccentColor">#21687D</Color>
-                    <Color x:Key="SystemAccentColorLight1">#247187</Color>
-                    <Color x:Key="SystemAccentColorDark1">#1E6072</Color>
+                    <Color x:Key="SystemAccentColor">#61B7B9</Color>
+                    <Color x:Key="SystemAccentColorLight1">#519799</Color>
+                    <Color x:Key="SystemAccentColorDark1">#4A8B8C</Color>
 
                     <SolidColorBrush x:Key="TextControlBackgroundFocused">#000000</SolidColorBrush>
                     <SolidColorBrush x:Key="TextControlForegroundFocused">#FFFFFF</SolidColorBrush>

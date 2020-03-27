@@ -59,7 +59,7 @@ namespace WikipediaApp
     private static string GetArticleStyles(bool darkMode, int fontSize)
     {
       var scaledFontSize = GetScaledFontSize(fontSize);
-      var color = App.Current.InDarkMode() ? "#21687D" : "#3D918E";
+      var color = App.Current.InDarkMode() ? "#61B7B9" : "#3D918E";
 
       var styles = @"
         body {font-size: " + scaledFontSize + @"px;}
@@ -77,13 +77,14 @@ namespace WikipediaApp
       if (darkMode)
       {
         styles += @"
-          html, body {background-color:#000 !important;}
+          html, body {background-color:#121212 !important;}
           .mw-body, #mw-mf-page-center, .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {background-color:inherit !important;}
 
-          body {color:#999 !important;}
+          body {color:#E0E0E0 !important;}
 
           .content .section-heading {border-bottom-color:#333 !important;}
-          .content table.infobox {color:#999 !important;background-color:#1a1a1a !important;}
+          .content figcaption, .content .thumbcaption {color:#A0A0A0 !important;}
+          .content table.infobox {color:#E0E0E0 !important;background-color:#1a1a1a !important;}
           .content table.infobox th[colspan=""2""] {background-color:#333 !important;}
           .content table.infobox th, .content table.infobox td {border-color:#333 !important;}
 

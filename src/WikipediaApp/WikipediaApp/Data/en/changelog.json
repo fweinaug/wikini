@@ -1,5 +1,8 @@
 [
     [
+        "Improved article view in Dark Mode"
+    ],
+    [
         "Display can now be turned off by the power management while reading an article",
         "Setting to keep the display on while reading an article"
     ],
