@@ -46,142 +46,146 @@
 
         <TextBlock Grid.Row="0" x:Uid="SettingsHeaderTextBlock" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-        <ScrollViewer Grid.Row="1">
-            <StackPanel Padding="12,0" DataContext="{StaticResource Settings}">
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsAppLanguageTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ComboBox x:Uid="SettingsAppLanguageComboBox" x:Name="LanguagesComboBox"
-                              HorizontalAlignment="Stretch"
-                              SelectionChanged="LanguagesComboBoxSelectionChanged" SelectedValuePath="LanguageTag">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Row="1" DataContext="{StaticResource Settings}">
+            <StackPanel>
+                <StackPanel Padding="15,0">
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsAppLanguageTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ComboBox x:Uid="SettingsAppLanguageComboBox" x:Name="LanguagesComboBox"
+                                  HorizontalAlignment="Stretch"
+                                  SelectionChanged="LanguagesComboBoxSelectionChanged" SelectedValuePath="LanguageTag">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="{Binding NativeName}" TextTrimming="CharacterEllipsis" />
-                                    <TextBlock Grid.Column="1" Text="{Binding LanguageTag}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
-                                </Grid>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
+                                        <TextBlock Grid.Column="0" Text="{Binding NativeName}" TextTrimming="CharacterEllipsis" />
+                                        <TextBlock Grid.Column="1" Text="{Binding LanguageTag}" Typography.Capitals="AllSmallCaps" FontWeight="Light" Margin="5,0,0,0" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsStartHomeTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsStartHomeToggleSwitch" IsOn="{Binding StartHome, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsStartHomeTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsStartHomeToggleSwitch" IsOn="{Binding StartHome, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsStartPictureOfTheDayTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsStartPictureOfTheDayToggleSwitch" IsOn="{Binding StartPictureOfTheDay, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsStartPictureOfTheDayTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsStartPictureOfTheDayToggleSwitch" IsOn="{Binding StartPictureOfTheDay, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsSearchRestrictedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsSearchRestrictedToggleSwitch" IsOn="{Binding SearchRestricted, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsSearchRestrictedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsSearchRestrictedToggleSwitch" IsOn="{Binding SearchRestricted, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsImagesDisabledTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsImagesDisabledToggleSwitch" IsOn="{Binding ImagesDisabled, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsImagesDisabledTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsImagesDisabledToggleSwitch" IsOn="{Binding ImagesDisabled, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsSectionsCollapsedToggleSwitch" IsOn="{Binding SectionsCollapsed, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsSectionsCollapsedToggleSwitch" IsOn="{Binding SectionsCollapsed, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsFontSizeTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <Slider x:Uid="SettingsFontSizeSlider" Name="FontSizeSlider" Value="{Binding FontSize, Mode=TwoWay}" Minimum="10" Maximum="25" />
-                    <ContentControl Template="{StaticResource FontSizePreview}">
-                        <TextBlock x:Uid="SettingsFontSizePreviewTextBlock" FontSize="{Binding ElementName=FontSizeSlider, Path=Value}"
-                                   IsTextScaleFactorEnabled="False" />
-                    </ContentControl>
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsFontSizeTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <Slider x:Uid="SettingsFontSizeSlider" Name="FontSizeSlider" Value="{Binding FontSize, Mode=TwoWay}" Minimum="10" Maximum="25" />
+                        <ContentControl Template="{StaticResource FontSizePreview}">
+                            <TextBlock x:Uid="SettingsFontSizePreviewTextBlock" FontSize="{Binding ElementName=FontSizeSlider, Path=Value}"
+                                       IsTextScaleFactorEnabled="False" />
+                        </ContentControl>
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsSplitViewInlineTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsSplitViewInlineToggleSwitch" IsOn="{Binding SplitViewInline, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsSplitViewInlineTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsSplitViewInlineToggleSwitch" IsOn="{Binding SplitViewInline, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsHistoryTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsHistorySessionToggleSwitch" IsOn="{Binding HistorySession, Mode=TwoWay}" />
-                    <Button x:Uid="SettingsHistoryClearButton" x:Name="ClearHistoryButton" Click="ClearHistoryClick" Margin="0,5,0,5" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsHistoryTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsHistorySessionToggleSwitch" IsOn="{Binding HistorySession, Mode=TwoWay}" />
+                        <Button x:Uid="SettingsHistoryClearButton" x:Name="ClearHistoryButton" Click="ClearHistoryClick" Margin="0,5,0,5" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10">
-                    <TextBlock x:Uid="SettingsDisplayTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsDisplayActiveToggleSwitch" IsOn="{Binding DisplayActive, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsDisplayTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsDisplayActiveToggleSwitch" IsOn="{Binding DisplayActive, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel Margin="0,10" contract5NotPresent:Visibility="Collapsed">
-                    <TextBlock x:Uid="SettingsTimelineTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <ToggleSwitch x:Uid="SettingsHistoryTimelineToggleSwitch" IsOn="{Binding HistoryTimeline, Mode=TwoWay}" />
-                </StackPanel>
+                    <StackPanel Margin="0,10" contract5NotPresent:Visibility="Collapsed">
+                        <TextBlock x:Uid="SettingsTimelineTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <ToggleSwitch x:Uid="SettingsHistoryTimelineToggleSwitch" IsOn="{Binding HistoryTimeline, Mode=TwoWay}" />
+                    </StackPanel>
 
-                <StackPanel x:Name="ThemePanel" Margin="0,10">
-                    <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <RadioButton x:Uid="SettingsDesignLightRadioButton" Tag="1" Checked="RadioButtonThemeChecked" />
-                    <RadioButton x:Uid="SettingsDesignDarkRadioButton" Tag="2" Checked="RadioButtonThemeChecked" />
-                    <RadioButton x:Uid="SettingsDesignSystemRadioButton" Tag="0" Checked="RadioButtonThemeChecked" />
+                    <StackPanel x:Name="ThemePanel" Margin="0,10">
+                        <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <RadioButton x:Uid="SettingsDesignLightRadioButton" Tag="1" Checked="RadioButtonThemeChecked" />
+                        <RadioButton x:Uid="SettingsDesignDarkRadioButton" Tag="2" Checked="RadioButtonThemeChecked" />
+                        <RadioButton x:Uid="SettingsDesignSystemRadioButton" Tag="0" Checked="RadioButtonThemeChecked" />
+                    </StackPanel>
                 </StackPanel>
 
                 <Rectangle Style="{StaticResource Separator}" />
 
-                <TextBlock x:Uid="SettingsAboutHeaderTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                <StackPanel Margin="0,10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                <StackPanel Padding="15,0">
+                    <TextBlock x:Uid="SettingsAboutHeaderTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                    <StackPanel Margin="0,20">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                        <Image Grid.RowSpan="3" Source="/Assets/Logo.png" Width="60" Margin="0,0,10,0" />
+                            <Image Grid.RowSpan="3" Source="/Assets/Logo.png" Width="60" Margin="0,0,10,0" />
 
-                        <TextBlock Grid.Column="1" Grid.Row="0" x:Name="AppNameTextBlock" FontWeight="SemiBold" />
-                        <TextBlock Grid.Column="1" Grid.Row="1" x:Name="AppVersionTextBlock" Foreground="Gray" FontWeight="SemiLight" />
-                        <TextBlock Grid.Column="1" Grid.Row="2" x:Name="DevNameTextBlock" Foreground="Gray" FontWeight="SemiLight" />
-                    </Grid>
+                            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="AppNameTextBlock" FontWeight="SemiBold" />
+                            <TextBlock Grid.Column="1" Grid.Row="1" x:Name="AppVersionTextBlock" Foreground="Gray" FontWeight="SemiLight" />
+                            <TextBlock Grid.Column="1" Grid.Row="2" x:Name="DevNameTextBlock" Foreground="Gray" FontWeight="SemiLight" />
+                        </Grid>
 
-                    <Grid Margin="0,10,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <FontIcon Grid.Column="0" Grid.Row="0" Glyph="&#xE946;" Margin="0,0,8,0" />
-                        <HyperlinkButton Grid.Column="1" Grid.Row="0" x:Uid="SettingsChangelogButton" Click="ChangelogClick" />
+                            <FontIcon Grid.Column="0" Grid.Row="0" Glyph="&#xE946;" Margin="0,0,8,0" />
+                            <HyperlinkButton Grid.Column="1" Grid.Row="0" x:Uid="SettingsChangelogButton" Click="ChangelogClick" />
 
-                        <FontIcon Grid.Column="0" Grid.Row="1" Glyph="&#xE224;" Margin="0,0,8,0" />
-                        <HyperlinkButton Grid.Column="1" Grid.Row="1" x:Uid="SettingsReviewButton" Click="ReviewClick" />
+                            <FontIcon Grid.Column="0" Grid.Row="1" Glyph="&#xE224;" Margin="0,0,8,0" />
+                            <HyperlinkButton Grid.Column="1" Grid.Row="1" x:Uid="SettingsReviewButton" Click="ReviewClick" />
 
-                        <FontIcon Grid.Column="0" Grid.Row="2" Glyph="&#xED15;" Margin="0,0,8,0" />
-                        <HyperlinkButton Grid.Column="1" Grid.Row="2" x:Uid="SettingsFeedbackButton" Click="FeedbackClick" />
+                            <FontIcon Grid.Column="0" Grid.Row="2" Glyph="&#xED15;" Margin="0,0,8,0" />
+                            <HyperlinkButton Grid.Column="1" Grid.Row="2" x:Uid="SettingsFeedbackButton" Click="FeedbackClick" />
 
-                        <FontIcon Grid.Column="0" Grid.Row="3" Glyph="&#xE774;" Margin="0,0,8,0" />
-                        <HyperlinkButton Grid.Column="1" Grid.Row="3" x:Uid="SettingsWebsiteButton" Click="WebsiteClick" />
+                            <FontIcon Grid.Column="0" Grid.Row="3" Glyph="&#xE774;" Margin="0,0,8,0" />
+                            <HyperlinkButton Grid.Column="1" Grid.Row="3" x:Uid="SettingsWebsiteButton" Click="WebsiteClick" />
 
-                        <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" x:Uid="SettingsDisclaimerButton" Click="DisclaimerClick" Style="{ThemeResource TextBlockButtonStyle}" Margin="0,50,0,0" Padding="0" />
-                    </Grid>
+                            <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" x:Uid="SettingsDisclaimerButton" Click="DisclaimerClick" Style="{ThemeResource TextBlockButtonStyle}" Margin="0,50,0,0" Padding="0" />
+                        </Grid>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

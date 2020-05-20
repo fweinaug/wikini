@@ -42,22 +42,49 @@
                     <TextBlock x:Uid="ArticleContentsPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
                     <ListView Grid.Row="1" ItemsSource="{Binding Sections}" Style="{StaticResource SplitViewPaneListViewStyle}"
-                          IsItemClickEnabled="True" ItemClick="ContentsListViewItemClick">
+                              IsItemClickEnabled="True" ItemClick="ContentsListViewItemClick">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:ArticleSection">
                                 <UserControl>
-                                    <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
-                                      ToolTipService.ToolTip="{x:Bind Headline}">
+                                    <Grid x:Name="Root" Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                                          BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0"
+                                          ToolTipService.ToolTip="{x:Bind Headline}">
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup>
                                                 <VisualState>
                                                     <VisualState.StateTriggers>
-                                                        <StateTrigger IsActive="{x:Bind IsRoot}" />
+                                                        <StateTrigger IsActive="{x:Bind IsRoot, Mode=OneWay}" />
                                                     </VisualState.StateTriggers>
 
                                                     <VisualState.Setters>
                                                         <Setter Target="NumberTextBlock.FontWeight" Value="SemiBold" />
                                                         <Setter Target="HeadlineTextBlock.FontWeight" Value="Normal" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+
+                                            <VisualStateGroup>
+                                                <VisualState>
+                                                    <VisualState.StateTriggers>
+                                                        <StateTrigger IsActive="{x:Bind IsNext, Mode=OneWay}" />
+                                                    </VisualState.StateTriggers>
+
+                                                    <VisualState.Setters>
+                                                        <Setter Target="Root.BorderThickness" Value="0,1,0,0" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+
+                                            <VisualStateGroup>
+                                                <VisualState>
+                                                    <VisualState.StateTriggers>
+                                                        <StateTrigger IsActive="{x:Bind IsActive, Mode=OneWay}" />
+                                                    </VisualState.StateTriggers>
+
+                                                    <VisualState.Setters>
+                                                        <Setter Target="Root.Background" Value="{ThemeResource SystemControlHighlightListLowBrush}" />
+                                                        <Setter Target="NumberTextBlock.Foreground" Value="{StaticResource SystemControlHighlightAccentBrush}" />
+                                                        <Setter Target="HeadlineTextBlock.Foreground" Value="{StaticResource SystemControlHighlightAccentBrush}" />
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>
@@ -69,10 +96,10 @@
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Grid.Column="0" Name="NumberTextBlock" Text="{x:Bind Number}"
-                                               FontWeight="SemiLight" Padding="0,0,5,0"
-                                               VerticalAlignment="Center" />
+                                                   FontWeight="SemiLight" Padding="0,0,5,0"
+                                                   VerticalAlignment="Center" />
                                         <TextBlock Grid.Column="1" Name="HeadlineTextBlock" Text="{x:Bind Headline}" TextTrimming="CharacterEllipsis"
-                                               FontWeight="Light" VerticalAlignment="Center" />
+                                                   FontWeight="Light" VerticalAlignment="Center" />
                                     </Grid>
                                 </UserControl>
                             </DataTemplate>
@@ -161,13 +188,28 @@
                    PaneClosed="SplitViewPaneClosed">
             <SplitView.Pane>
                 <Grid x:Name="SplitViewPaneGrid" contract8Present:Shadow="{StaticResource SharedShadow}">
-                    <ContentPresenter x:Name="PaneContentPresenter" />
-                    <local:SpeechView x:Name="PaneSpeechView" Article="{Binding Article}"
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <local:TabControl x:Name="SplitViewPaneTabs">
+                        <local:TabButton Glyph="&#xE7BC;" Click="ContentsButtonClick" />
+                        <local:TabButton Glyph="&#xF2B7;" Click="LanguagesButtonClick" />
+                        <local:TabButton Glyph="&#xE7F6;" Click="SpeechButtonClick" />
+                        <local:TabButton Glyph="&#xE728;" Click="FavoritesButtonClick" />
+                        <local:TabButton Glyph="&#xE81C;" Click="HistoryButtonClick" />
+                        <local:TabButton Glyph="&#xE713;" Click="SettingsAppBarButtonClick" />
+                    </local:TabControl>
+
+                    <ContentPresenter Grid.Row="1" x:Name="PaneContentPresenter"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-                    <local:SettingsView x:Name="PaneSettingsView"
+                    <local:SpeechView Grid.Row="1" x:Name="PaneSpeechView" Article="{Binding Article}"
+                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                    <local:SettingsView Grid.Row="1" x:Name="PaneSettingsView"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
 
-                    <Button x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
+                    <Button Grid.Row="1" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
                         <FontIcon Glyph="&#xE89F;" />
                     </Button>
@@ -330,7 +372,7 @@
                 </AppBarButton.Icon>
             </AppBarButton>
 
-            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}">
+            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LanguagesButtonClick" IsEnabled="{Binding HasLanguages}">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xF2B7;" />
                 </AppBarButton.Icon>
@@ -431,7 +473,7 @@
                 </AppBarButton.Icon>
             </AppBarButton>
 
-            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LangaugesButtonClick" IsEnabled="{Binding HasLanguages}">
+            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LanguagesButtonClick" IsEnabled="{Binding HasLanguages}">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xF2B7;" />
                 </AppBarButton.Icon>

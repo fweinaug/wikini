@@ -43,10 +43,9 @@ namespace WikipediaApp
 
     public async void Back()
     {
-      if (date > DateTime.MinValue)
-      {
-        await ChangeDate(date.AddDays(-1));
-      }
+      var previousDate = date > DateTime.MinValue ? date.AddDays(-1) : DateTime.Today;
+
+      await ChangeDate(previousDate);
     }
 
     public async void Today()

@@ -16,8 +16,6 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>WikipediaApp_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>8912E4B01E6226A6BCC00C4B5564AD295302FDFF</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
@@ -97,9 +95,12 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Content Include="Assets\Article\events.js" />
-    <Content Include="Assets\Article\mark.es6.min.js" />
-    <Content Include="Assets\Article\search.js" />
+    <None Include="Assets\Article\contextmenu.js" />
+    <None Include="Assets\Article\events.js" />
+    <None Include="Assets\Article\mark.es6.min.js" />
+    <None Include="Assets\Article\scroll.js" />
+    <None Include="Assets\Article\search.js" />
+    <Content Include="Assets\Article\wikini.min.js" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-125.png" />
     <Content Include="Assets\BadgeLogo.scale-150.png" />
@@ -166,6 +167,7 @@
     </Compile>
     <Compile Include="Model\FavoriteLanguage.cs" />
     <Compile Include="Services\LanguagesReader.cs" />
+    <Compile Include="Views\Controls\TabControl.cs" />
     <Compile Include="Views\LanguagesView.xaml.cs">
       <DependentUpon>LanguagesView.xaml</DependentUpon>
     </Compile>
@@ -290,6 +292,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LanguagesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -362,30 +368,30 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.18</Version>
+      <Version>1.11.23</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter">
-      <Version>2.6.4</Version>
+      <Version>3.2.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>2.6.4</Version>
+      <Version>3.2.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>2.6.4</Version>
+      <Version>3.2.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
-      <Version>2.2.6</Version>
+      <Version>3.1.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
-      <Version>2.2.6</Version>
+      <Version>3.1.4</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.9</Version>
+      <Version>6.2.10</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.3.191211002</Version>
+      <Version>2.4.2</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>

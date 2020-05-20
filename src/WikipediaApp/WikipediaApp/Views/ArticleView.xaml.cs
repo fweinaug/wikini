@@ -223,7 +223,15 @@ namespace WikipediaApp
         case ScriptNotifyData.Contextmenu:
           ShowArticleFlyout(data);
           break;
+        case ScriptNotifyData.Scroll:
+          UpdateScrollPosition(data);
+          break;
       }
+    }
+
+    private async void ScrollBarScroll(object sender, ScrollEventArgs e)
+    {
+      await WebView.ScrollToPosition(e.NewValue);
     }
 
     public void ScrollToTop()
@@ -231,11 +239,18 @@ namespace WikipediaApp
       WebView.ScrollToTop();
     }
 
-    public void ScrollToSection(ArticleSection section)
+    public async void ScrollToSection(ArticleSection section)
     {
-      var anchor = section.Anchor;
+      try
+      {
+        var js = $"scrollToSection('{section.Anchor}');";
 
-      WebView.ScrollToElement(anchor);
+        await WebView.InvokeScriptAsync("eval", new[] { js });
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+      }
     }
 
     public void GoBack()
@@ -365,6 +380,31 @@ namespace WikipediaApp
       ArticleFlyout = flyout;
     }
 
+    private void UpdateScrollPosition(ScriptNotifyData data)
+    {
+      if (data.Height > 0)
+      {
+        ScrollBar.Maximum = data.Height;
+        ScrollBar.ViewportSize = ActualHeight;
+        ScrollBar.Value = data.Y;
+        ScrollBar.SmallChange = ActualHeight * 0.25;
+        ScrollBar.LargeChange = ActualHeight * 0.8;
+        ScrollBar.Visibility = Visibility.Visible;
+      }
+      else
+      {
+        ScrollBar.Visibility = Visibility.Collapsed;
+        ScrollBar.Value = 0;
+        ScrollBar.ViewportSize = 0;
+        ScrollBar.Maximum = 0;
+      }
+
+      foreach (var section in Article.Sections)
+      {
+        section.IsActive = section.Anchor == data.Text;
+      }
+    }
+
     private class ArticleStackEntry : Article
     {
       public double Position { get; set; }
@@ -374,6 +414,7 @@ namespace WikipediaApp
     {
       public const string SearchResults = "SearchResults";
       public const string Contextmenu = "Contextmenu";
+      public const string Scroll = "Scroll";
 
       public string Message { get; set; }
       public double X { get; set; }

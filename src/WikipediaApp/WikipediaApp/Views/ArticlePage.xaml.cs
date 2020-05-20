@@ -130,6 +130,8 @@ namespace WikipediaApp
     private void HistoryButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneHistoryTemplate);
+
+      SplitViewPaneTabs.SelectedIndex = 4;
     }
 
     private void HistoryViewArticleClick(object sender, EventArgs e)
@@ -141,6 +143,8 @@ namespace WikipediaApp
     private void FavoritesButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneFavoritesTemplate);
+      
+      SplitViewPaneTabs.SelectedIndex = 3;
     }
 
     private void FavoritesViewArticleClick(object sender, EventArgs e)
@@ -152,6 +156,8 @@ namespace WikipediaApp
     private void ContentsButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneContentsTemplate);
+
+      SplitViewPaneTabs.SelectedIndex = 0;
     }
 
     private void ContentsListViewItemClick(object sender, ItemClickEventArgs e)
@@ -166,9 +172,11 @@ namespace WikipediaApp
       ArticleView.ScrollToSection(section);
     }
 
-    private void LangaugesButtonClick(object sender, RoutedEventArgs e)
+    private void LanguagesButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneLanguagesTemplate);
+
+      SplitViewPaneTabs.SelectedIndex = 1;
     }
 
     private void LanguagesViewLanguageClick(object sender, EventArgs e)
@@ -179,8 +187,11 @@ namespace WikipediaApp
 
     private void SplitViewPaneClosed(SplitView sender, object e)
     {
-      PaneContentPresenter.ContentTemplate = null;
-      PaneContentPresenter.Visibility = Visibility.Visible;
+      if (PaneContentPresenter != null)
+      {
+        PaneContentPresenter.ContentTemplate = null;
+        PaneContentPresenter.Visibility = Visibility.Visible;
+      }
 
       if (PaneSpeechView != null)
         PaneSpeechView.Visibility = Visibility.Collapsed;
@@ -211,11 +222,15 @@ namespace WikipediaApp
     private void SettingsAppBarButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(nameof(PaneSettingsView));
+
+      SplitViewPaneTabs.SelectedIndex = 5;
     }
 
     private void SpeechButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(nameof(PaneSpeechView));
+
+      SplitViewPaneTabs.SelectedIndex = 2;
     }
 
     private void ClosePaneButtonClick(object sender, RoutedEventArgs e)
@@ -350,8 +365,11 @@ namespace WikipediaApp
         if (PaneSpeechView != null)
           PaneSpeechView.Visibility = Visibility.Collapsed;
 
-        PaneContentPresenter.Visibility = Visibility.Collapsed;
-        PaneContentPresenter.ContentTemplate = null;
+        if (PaneContentPresenter != null)
+        {
+          PaneContentPresenter.Visibility = Visibility.Collapsed;
+          PaneContentPresenter.ContentTemplate = null;
+        }
 
         control.Visibility = Visibility.Visible;
 
@@ -365,8 +383,10 @@ namespace WikipediaApp
 
     private void OpenOrCloseSplitView(DataTemplate template)
     {
-      if (!SplitView.IsPaneOpen || PaneContentPresenter.Visibility == Visibility.Collapsed ||
-          PaneContentPresenter.ContentTemplate != template)
+      var paneContentPresenter = (ContentPresenter)FindName("PaneContentPresenter");
+
+      if (!SplitView.IsPaneOpen || paneContentPresenter.Visibility == Visibility.Collapsed ||
+          paneContentPresenter.ContentTemplate != template)
       {
         if (PaneSettingsView != null)
           PaneSettingsView.Visibility = Visibility.Collapsed;
@@ -374,8 +394,8 @@ namespace WikipediaApp
         if (PaneSpeechView != null)
           PaneSpeechView.Visibility = Visibility.Collapsed;
 
-        PaneContentPresenter.Visibility = Visibility.Visible;
-        PaneContentPresenter.ContentTemplate = template;
+        paneContentPresenter.Visibility = Visibility.Visible;
+        paneContentPresenter.ContentTemplate = template;
 
         SplitView.IsPaneOpen = true;
       }

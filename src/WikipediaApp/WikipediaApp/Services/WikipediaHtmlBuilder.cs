@@ -34,9 +34,7 @@ namespace WikipediaApp
 
         <link rel=""stylesheet"" href=""/w/load.php?lang={language}&amp;modules=ext.cite.styles%7Cext.graph.styles%7Cext.kartographer.style%7Cmediawiki.hlist%7Cmediawiki.ui.button%2Cicon%7Cmobile.init.styles%7Cskins.minerva.base.styles%7Cskins.minerva.content.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons.images%2Cwikimedia&amp;only=styles&amp;skin=minerva""/>
         <script async="""" src=""/w/load.php?lang={language}&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva&amp;target=mobile""></script>
-        <script src=""ms-appx-web:///Assets/Article/events.js"" type=""text/javascript""></script>
-        <script src=""ms-appx-web:///Assets/Article/mark.es6.min.js"" type=""text/javascript""></script>
-        <script src=""ms-appx-web:///Assets/Article/search.js"" type=""text/javascript""></script>
+        <script src=""ms-appx-web:///Assets/Article/wikini.min.js"" type=""text/javascript""></script>
         <meta name=""ResourceLoaderDynamicStyles"" content=""""/>
         <link rel=""stylesheet"" href=""/w/load.php?lang={language}&amp;modules=site.styles&amp;only=styles&amp;skin=minerva""/>
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
@@ -63,6 +61,7 @@ namespace WikipediaApp
 
       var styles = @"
         body {font-size: " + scaledFontSize + @"px;}
+        body {-ms-overflow-style: none; margin-right:10px;}
 
         a, a:visited {color:" + color + @" !important;}
 
@@ -81,6 +80,10 @@ namespace WikipediaApp
           .mw-body, #mw-mf-page-center, .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {background-color:inherit !important;}
 
           body {color:#E0E0E0 !important;}
+
+          .mw-parser-output .main-box {background-color:#121212 !important;}
+          .mw-parser-output .main-top, .mw-parser-output .main-page-body>div:last-of-type {background-color:#333 !important;}
+          .mw-parser-output .main-top-left {background-image: linear-gradient(to right,#333 0%,#333 70%,rgba(248,249,250,0)100%) !important;}
 
           .content .section-heading {border-bottom-color:#333 !important;}
           .content figcaption, .content .thumbcaption {color:#A0A0A0 !important;}

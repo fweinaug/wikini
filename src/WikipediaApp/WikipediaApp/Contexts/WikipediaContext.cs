@@ -16,10 +16,10 @@ namespace WikipediaApp
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<ReadArticle>()
-        .Property<string>("Url").HasField("url");
+        .Property("url");
 
       modelBuilder.Entity<FavoriteArticle>()
-        .Property<string>("Url").HasField("url");
+        .Property("url");
     }
   }
 }

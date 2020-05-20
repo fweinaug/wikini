@@ -76,6 +76,8 @@ namespace WikipediaApp
     private void HistoryButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneHistoryTemplate);
+
+      SplitViewPaneTabs.SelectedIndex = 2;
     }
 
     private void HistoryViewArticleClick(object sender, EventArgs e)
@@ -99,17 +101,24 @@ namespace WikipediaApp
     private void FavoritesButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneFavoritesTemplate);
+
+      SplitViewPaneTabs.SelectedIndex = 1;
     }
 
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneLanguagesTemplate);
+
+      SplitViewPaneTabs.SelectedIndex = 0;
     }
 
     private void SplitViewPaneClosed(SplitView sender, object e)
     {
-      PaneContentPresenter.ContentTemplate = null;
-      PaneContentPresenter.Visibility = Visibility.Visible;
+      if (PaneContentPresenter != null)
+      {
+        PaneContentPresenter.ContentTemplate = null;
+        PaneContentPresenter.Visibility = Visibility.Visible;
+      }
 
       if (PaneSettingsView != null)
       {
@@ -122,6 +131,8 @@ namespace WikipediaApp
     private void SettingsAppBarButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(nameof(PaneSettingsView));
+
+      SplitViewPaneTabs.SelectedIndex = 3;
     }
 
     private void ClosePaneButtonClick(object sender, RoutedEventArgs e)
@@ -138,8 +149,11 @@ namespace WikipediaApp
         if (PaneSettingsView != null)
           PaneSettingsView.Visibility = Visibility.Collapsed;
 
-        PaneContentPresenter.Visibility = Visibility.Collapsed;
-        PaneContentPresenter.ContentTemplate = null;
+        if (PaneContentPresenter != null)
+        {
+          PaneContentPresenter.Visibility = Visibility.Collapsed;
+          PaneContentPresenter.ContentTemplate = null;
+        }
 
         control.Visibility = Visibility.Visible;
 
@@ -153,14 +167,16 @@ namespace WikipediaApp
 
     private void OpenOrCloseSplitView(DataTemplate template)
     {
-      if (!SplitView.IsPaneOpen || PaneContentPresenter.Visibility == Visibility.Collapsed ||
-        PaneContentPresenter.ContentTemplate != template)
+      var paneContentPresenter = (ContentPresenter)FindName("PaneContentPresenter");
+
+      if (!SplitView.IsPaneOpen || paneContentPresenter.Visibility == Visibility.Collapsed ||
+          paneContentPresenter.ContentTemplate != template)
       {
         if (PaneSettingsView != null)
           PaneSettingsView.Visibility = Visibility.Collapsed;
 
-        PaneContentPresenter.Visibility = Visibility.Visible;
-        PaneContentPresenter.ContentTemplate = template;
+        paneContentPresenter.Visibility = Visibility.Visible;
+        paneContentPresenter.ContentTemplate = template;
 
         SplitView.IsPaneOpen = true;
       }

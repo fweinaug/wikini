@@ -28,7 +28,7 @@ namespace WikipediaApp
     {
       foreach (var item in Items)
       {
-        item.IsActive = false;
+        item.IsActive = item.IsLoading = false;
       }
     }
 

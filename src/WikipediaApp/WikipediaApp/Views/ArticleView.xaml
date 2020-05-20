@@ -30,7 +30,12 @@
         </MenuFlyout>
     </UserControl.Resources>
 
-    <WebView x:Name="WebView" DefaultBackgroundColor="Transparent"
-             NavigationStarting="WebViewNavigationStarting" NavigationCompleted="WebViewNavigationCompleted"
-             ScriptNotify="WebViewScriptNotify" />
+    <Grid>
+        <WebView x:Name="WebView" DefaultBackgroundColor="Transparent"
+                 NavigationStarting="WebViewNavigationStarting" NavigationCompleted="WebViewNavigationCompleted"
+                 ScriptNotify="WebViewScriptNotify" />
+
+        <ScrollBar x:Name="ScrollBar" Orientation="Vertical" HorizontalAlignment="Right"
+                   IndicatorMode="MouseIndicator" Scroll="ScrollBarScroll" Visibility="Collapsed" />
+    </Grid>
 </UserControl>

@@ -1,5 +1,12 @@
 [
     [
+        "Tabs in der Seitenleiste",
+        "Hervorheben des aktiven Eintrags im Inhaltsverzeichnis",
+        "Bessere Bildlaufleiste in der Artikelansicht, insbesondere im Dunklen Design",
+        "Performance- und Layout-Verbesserungen",
+        "Trennlinie zwischen Hauptkapiteln im Inhaltsverzeichnis"
+    ],
+    [
         "Verbesserte Artikelansicht im Dunklen Design"
     ],
     [

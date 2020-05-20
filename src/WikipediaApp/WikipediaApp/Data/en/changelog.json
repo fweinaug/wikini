@@ -1,5 +1,12 @@
 [
     [
+        "Tabs in the sidebar",
+        "Highlight the active entry in the table of contents",
+        "Better scroll bar in the article view, especially in Dark Mode",
+        "Performance and layout improvements",
+        "Separator between main chapters in the table of contents"
+    ],
+    [
         "Improved article view in Dark Mode"
     ],
     [

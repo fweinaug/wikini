@@ -168,21 +168,30 @@ namespace WikipediaApp
 
     private async void PlayChapter(int index)
     {
-      chapters.SetActiveChapter(index);
+      try
+      {
+        chapters.SetActiveChapter(index);
 
-      var chapter = chapters[index];
+        var chapter = chapters[index];
 
-      var ssml =
-        $@"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='{Article.Language}'>
+        var ssml =
+          $@"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='{Article.Language}'>
         {chapter.Headline}
         {chapter.Content}
         </speak>";
 
-      var stream = await Synthesizer.SynthesizeSsmlToStreamAsync(ssml);
+        var stream = await Synthesizer.SynthesizeSsmlToStreamAsync(ssml);
 
-      MediaElement.SetSource(stream, stream.ContentType);
-
-      UpdatePosition();
+        MediaElement.SetSource(stream, stream.ContentType);
+      }
+      catch (Exception)
+      {
+        chapters.ResetActiveChapter();
+      }
+      finally
+      {
+        UpdatePosition();
+      }
     }
 
     private void UpdateViewState()

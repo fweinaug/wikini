@@ -82,16 +82,32 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <local:Background x:Name="Background" Grid.Row="0" Grid.RowSpan="2"
+                          ImageUri="{Binding PictureOfTheDay.ThumbnailUri}" />
+
         <SplitView x:Name="SplitView" Grid.Row="0"
                    contract5Present:PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
                    PaneClosed="SplitViewPaneClosed" DisplayMode="Overlay">
             <SplitView.Pane>
                 <Grid x:Name="SplitViewPaneGrid" contract8Present:Shadow="{StaticResource SharedShadow}">
-                    <ContentPresenter x:Name="PaneContentPresenter" />
-                    <local:SettingsView x:Name="PaneSettingsView"
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <local:TabControl x:Name="SplitViewPaneTabs">
+                        <local:TabButton Glyph="&#xF2B7;" Click="LanguagesButtonClick" />
+                        <local:TabButton Glyph="&#xE728;" Click="FavoritesButtonClick" />
+                        <local:TabButton Glyph="&#xE81C;" Click="HistoryButtonClick" />
+                        <local:TabButton Glyph="&#xE713;" Click="SettingsAppBarButtonClick" />
+                    </local:TabControl>
+
+                    <ContentPresenter Grid.Row="1" x:Name="PaneContentPresenter"
+                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                    <local:SettingsView Grid.Row="1" x:Name="PaneSettingsView"
                                         x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
 
-                    <Button x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
+                    <Button Grid.Row="1" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
                         <FontIcon Glyph="&#xE89F;" />
                     </Button>
@@ -105,9 +121,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="3*" />
                     </Grid.RowDefinitions>
-
-                    <local:Background x:Name="Background" Grid.Row="0" Grid.RowSpan="3"
-                                      ImageUri="{Binding PictureOfTheDay.ThumbnailUri}" />
 
                     <local:SearchBox x:Name="SearchBox" Grid.Row="1"
                                      QueryString="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -136,7 +149,7 @@
         <ProgressBar Grid.Row="0" IsIndeterminate="True" VerticalAlignment="Bottom"
                                   Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-        <CommandBar Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <CommandBar Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="MainSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
 
