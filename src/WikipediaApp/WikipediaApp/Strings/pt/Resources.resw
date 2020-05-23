@@ -132,6 +132,24 @@
   <data name="AppSearchMoreLanguagesMenuFlyoutItem.Text" xml:space="preserve">
     <value>Mais idiomas</value>
   </data>
+  <data name="AppSearchSpeechLoadErrorMessageDialog.Content" xml:space="preserve">
+    <value>Os componentes dos leitores multimédia não estão disponíveis.</value>
+  </data>
+  <data name="AppSearchSpeechMicrophonePermissionMessageDialog.Content" xml:space="preserve">
+    <value>Por favor, active o Microfone nas definições de permissão da aplicação para utilizar esta funcionalidade.</value>
+  </data>
+  <data name="AppSearchSpeechNoDeviceErrorMessageDialog.Content" xml:space="preserve">
+    <value>Não existem dispositivos de captura de áudio neste sistema.</value>
+  </data>
+  <data name="AppSearchSpeechPrivacyPermissionMessageDialog.Content" xml:space="preserve">
+    <value>Por favor active o 'Reconhecimento de voz online' nas definições de privacidade do Windows para utilizar esta funcionalidade.</value>
+  </data>
+  <data name="AppSearchSpeechRecognitionUI.Example" xml:space="preserve">
+    <value>Exemplo: New York City</value>
+  </data>
+  <data name="AppSearchSpeechRecognitionUI.Prompt" xml:space="preserve">
+    <value>Diga o que pretende procurar...</value>
+  </data>
   <data name="AppSearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Pesquisar</value>
   </data>
@@ -326,6 +344,15 @@
   </data>
   <data name="MainSettingsAppBarButton.Label" xml:space="preserve">
     <value>Configurações</value>
+  </data>
+  <data name="PermissionMessageDialog.Close" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="PermissionMessageDialog.Settings" xml:space="preserve">
+    <value>Definições Abertas</value>
+  </data>
+  <data name="PermissionMessageDialog.Title" xml:space="preserve">
+    <value>Autorização necessária</value>
   </data>
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
     <value>Sobre este aplicativo</value>

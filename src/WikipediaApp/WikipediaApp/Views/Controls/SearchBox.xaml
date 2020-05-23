@@ -180,11 +180,18 @@
             </AutoSuggestBox.ItemContainerStyle>
         </AutoSuggestBox>
 
-        <Button x:Name="SearchButton" Grid.Column="2" Click="OnSearchButtonClick" Background="Transparent" IsEnabled="False"
-                CornerRadius="0,3,3,0" BorderThickness="0" VerticalAlignment="Stretch">
-            <Button.Content>
-                <SymbolIcon Symbol="Find" Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
-            </Button.Content>
-        </Button>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="3">
+            <Button Style="{StaticResource TransparentButtonStyle}" Foreground="Gray"
+                    Padding="10,0" VerticalAlignment="Stretch" Click="OnRecognizeSpeechClick">
+                <FontIcon Glyph="&#xEFA9;" FontSize="15" />
+            </Button>
+
+            <Button x:Name="SearchButton" Click="OnSearchButtonClick" Background="Transparent" IsEnabled="False"
+                    CornerRadius="0,3,3,0" BorderThickness="0" VerticalAlignment="Stretch">
+                <Button.Content>
+                    <SymbolIcon Symbol="Find" Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
+                </Button.Content>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

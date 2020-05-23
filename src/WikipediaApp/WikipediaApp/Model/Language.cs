@@ -9,6 +9,7 @@ namespace WikipediaApp
     public event PropertyChangedEventHandler PropertyChanged;
 
     private bool isFavorite = false;
+    private bool isActive = false;
 
     public string Name { get; set; }
     public string Code { get; set; }
@@ -19,8 +20,24 @@ namespace WikipediaApp
       get { return isFavorite; }
       set
       {
-        isFavorite = value;
-        OnPropertyChanged();
+        if (isFavorite != value)
+        {
+          isFavorite = value;
+          OnPropertyChanged();
+        }
+      }
+    }
+
+    public bool IsActive
+    {
+      get => isActive;
+      set
+      {
+        if (isActive != value)
+        {
+          isActive = value;
+          OnPropertyChanged();
+        }
       }
     }
 

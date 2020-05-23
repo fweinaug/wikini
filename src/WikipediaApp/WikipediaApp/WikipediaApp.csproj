@@ -168,6 +168,8 @@
     <Compile Include="Model\FavoriteLanguage.cs" />
     <Compile Include="Services\LanguagesReader.cs" />
     <Compile Include="Views\Controls\TabControl.cs" />
+    <Compile Include="Views\Helpers\AudioCapturePermissions.cs" />
+    <Compile Include="Views\Helpers\SpeechRecognitionHelper.cs" />
     <Compile Include="Views\LanguagesView.xaml.cs">
       <DependentUpon>LanguagesView.xaml</DependentUpon>
     </Compile>

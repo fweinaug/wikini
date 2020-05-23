@@ -36,7 +36,6 @@ namespace WikipediaApp
         <script async="""" src=""/w/load.php?lang={language}&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva&amp;target=mobile""></script>
         <script src=""ms-appx-web:///Assets/Article/wikini.min.js"" type=""text/javascript""></script>
         <meta name=""ResourceLoaderDynamicStyles"" content=""""/>
-        <link rel=""stylesheet"" href=""/w/load.php?lang={language}&amp;modules=site.styles&amp;only=styles&amp;skin=minerva""/>
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
@@ -99,8 +98,10 @@ namespace WikipediaApp
           .content table.wikitable > tr > th, .content table.wikitable > tr > td, .content table.wikitable > * > tr > th, .content table.wikitable > * > tr > td {border-color:#333 !important;}
 
           .hatnote {background:#1a1a1a !important;}
-          .mw-graph {background:#333 !important;}
+          .drawer.references-drawer, .mw-graph {background:#333 !important;}
+          .drawer-container__mask {background: rgba(255,255,255,0.25);}
 
+          table > * > tr.hintergrundfarbe1 > th, table > * > tr > th.hintergrundfarbe1, table.hintergrundfarbe1, .hintergrundfarbe1 {background-color:#333 !important;}
           table > * > tr.hintergrundfarbe2 > th, table > * > tr > th.hintergrundfarbe2, table.hintergrundfarbe2, .hintergrundfarbe2 {background-color:#000 !important;}
           table > * > tr.hintergrundfarbe5 > th, table > * > tr > th.hintergrundfarbe5, table.hintergrundfarbe5, .hintergrundfarbe5 {background-color:#1a1a1a !important;}
 

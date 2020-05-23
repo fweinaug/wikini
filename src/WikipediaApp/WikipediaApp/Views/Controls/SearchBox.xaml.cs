@@ -131,7 +131,8 @@ namespace WikipediaApp
 
     private void OnAutoSuggestBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
-      if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+      if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput ||
+          args.Reason == AutoSuggestionBoxTextChangeReason.ProgrammaticChange)
       {
         QueryString = sender.Text;
 
@@ -155,6 +156,17 @@ namespace WikipediaApp
     {
       if (e.Key == VirtualKey.Enter)
         PerformQuery();
+    }
+
+    private async void OnRecognizeSpeechClick(object sender, RoutedEventArgs e)
+    {
+      var text = await SpeechRecognitionHelper.RecognizeSearchTerm();
+
+      if (!string.IsNullOrEmpty(text))
+      {
+        TextBox.Focus(FocusState.Programmatic);
+        TextBox.Text = text;
+      }
     }
 
     private void OnSearchButtonClick(object sender, RoutedEventArgs e)

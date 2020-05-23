@@ -1,5 +1,10 @@
 [
     [
+        "Search with speech recognition",
+        "Highlight the selected language in sidebar",
+        "Display the article in the title bar"
+    ],
+    [
         "Tabs in the sidebar",
         "Highlight the active entry in the table of contents",
         "Better scroll bar in the article view, especially in Dark Mode",

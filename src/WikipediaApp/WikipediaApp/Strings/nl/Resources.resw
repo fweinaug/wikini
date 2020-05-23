@@ -132,6 +132,24 @@
   <data name="AppSearchMoreLanguagesMenuFlyoutItem.Text" xml:space="preserve">
     <value>Meer talen</value>
   </data>
+  <data name="AppSearchSpeechLoadErrorMessageDialog.Content" xml:space="preserve">
+    <value>De componenten van de mediaspeler zijn niet beschikbaar.</value>
+  </data>
+  <data name="AppSearchSpeechMicrophonePermissionMessageDialog.Content" xml:space="preserve">
+    <value>Activeer de Microfoon in de toestemmingsinstellingen van de app om deze functie te gebruiken.</value>
+  </data>
+  <data name="AppSearchSpeechNoDeviceErrorMessageDialog.Content" xml:space="preserve">
+    <value>Er zijn geen Audio Capture-apparaten aanwezig op dit systeem.</value>
+  </data>
+  <data name="AppSearchSpeechPrivacyPermissionMessageDialog.Content" xml:space="preserve">
+    <value>Schakel 'Online spraakherkenning' in bij de Windows-privacyinstellingen om deze functie te gebruiken.</value>
+  </data>
+  <data name="AppSearchSpeechRecognitionUI.Example" xml:space="preserve">
+    <value>Voorbeeld: New York City</value>
+  </data>
+  <data name="AppSearchSpeechRecognitionUI.Prompt" xml:space="preserve">
+    <value>Zeg wat u wilt zoeken...</value>
+  </data>
   <data name="AppSearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Zoeken</value>
   </data>
@@ -326,6 +344,15 @@
   </data>
   <data name="MainSettingsAppBarButton.Label" xml:space="preserve">
     <value>Instellingen</value>
+  </data>
+  <data name="PermissionMessageDialog.Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="PermissionMessageDialog.Settings" xml:space="preserve">
+    <value>Open instellingen</value>
+  </data>
+  <data name="PermissionMessageDialog.Title" xml:space="preserve">
+    <value>Toestemming vereist</value>
   </data>
   <data name="SettingsAboutHeaderTextBlock.Text" xml:space="preserve">
     <value>Info over deze app</value>

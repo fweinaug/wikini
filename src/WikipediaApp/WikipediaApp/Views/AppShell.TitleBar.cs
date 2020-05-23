@@ -35,8 +35,6 @@ namespace WikipediaApp
 
       coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
       coreTitleBar.IsVisibleChanged += TitleBarIsVisibleChanged;
-
-      AppTitle.Text = Package.Current.DisplayName;
     }
 
     private void TitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)

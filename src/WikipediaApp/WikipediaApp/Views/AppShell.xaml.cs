@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Navigation;
 
 namespace WikipediaApp
@@ -44,6 +46,17 @@ namespace WikipediaApp
       if (e.Parameter is ViewModelBase frameViewModel)
         await frameViewModel.Initialize();
       
+      if (e.Parameter is ArticleViewModel articleViewModel)
+      {
+        AppTitle.ClearValue(TextBlock.TextProperty);
+        AppTitle.SetBinding(TextBlock.TextProperty, new Binding { Source = articleViewModel, Path = new PropertyPath("Title") });
+      }
+      else
+      {
+        AppTitle.ClearValue(TextBlock.TextProperty);
+        AppTitle.Text = Package.Current.DisplayName;
+      }
+
       SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Frame.CanGoBack
         ? AppViewBackButtonVisibility.Visible
         : AppViewBackButtonVisibility.Collapsed;

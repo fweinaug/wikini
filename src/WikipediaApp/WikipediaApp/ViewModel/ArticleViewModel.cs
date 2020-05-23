@@ -35,6 +35,11 @@ namespace WikipediaApp
     private Command<Uri> loadedCommand;
     private Command<ArticleHead> showArticleCommand;
 
+    public string Title
+    {
+      get { return (article ?? initialArticle).Title; }
+    }
+
     public bool IsBusy
     {
       get { return isBusy; }
@@ -65,6 +70,8 @@ namespace WikipediaApp
             IsFavorite = ArticleFavorites.IsFavorite(article);
 
             AddArticleToHistory();
+
+            RaisePropertyChanged("Title");
           }
           else
           {

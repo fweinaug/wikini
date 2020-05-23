@@ -62,7 +62,18 @@ namespace WikipediaApp
     public Language Language
     {
       get { return language; }
-      private set { SetProperty(ref language, value); }
+      private set
+      {
+        var currentLanguage = language;
+
+        if (SetProperty(ref language, value))
+        {
+          language.IsActive = true;
+
+          if (currentLanguage != null)
+            currentLanguage.IsActive = false;
+        }
+      }
     }
 
     public ICommand ChangeLanguageCommand

@@ -1,5 +1,10 @@
 [
     [
+        "Suche mit Spracherkennung",
+        "Hervorheben der ausgewählten Sprache in Seitenleiste",
+        "Anzeige des Artikels in der Titelleiste"
+    ],
+    [
         "Tabs in der Seitenleiste",
         "Hervorheben des aktiven Eintrags im Inhaltsverzeichnis",
         "Bessere Bildlaufleiste in der Artikelansicht, insbesondere im Dunklen Design",
