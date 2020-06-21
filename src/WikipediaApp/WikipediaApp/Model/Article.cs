@@ -5,6 +5,7 @@ namespace WikipediaApp
 {
   public class Article : ArticleHead
   {
+    public string Direction { get; set; }
     public string Content { get; set; }
 
     public List<ArticleSection> Sections { get; set; }

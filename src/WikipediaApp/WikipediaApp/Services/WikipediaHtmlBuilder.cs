@@ -7,7 +7,7 @@ namespace WikipediaApp
   {
     private static readonly UISettings UiSettings = new UISettings();
 
-    public static string BuildArticle(string title, string content, string language)
+    public static string BuildArticle(string title, string content, string language, string direction)
     {
       var app = App.Current;
       var settings = Settings.Current;
@@ -20,14 +20,14 @@ namespace WikipediaApp
 
       var html = $@"
         <!DOCTYPE html>
-        <html class=""client-nojs"" lang=""{language}"" dir=""ltr"">
+        <html class=""client-nojs"" lang=""{language}"" dir=""{direction}"">
         <head>
         <base href=""https://{language}.m.wikipedia.org"" />
         <meta charset=""UTF-8""/>
         <title>{title} - Wikipedia</title>
 
         <script>document.documentElement.className=""client-js"";RLCONF={{""wgMFCollapseSectionsByDefault"":{sectionsCollapsedString},""wgCanonicalNamespace"":"""",""wgCanonicalSpecialPageName"":!1,""wgNamespaceNumber"":0,""wgPageName"":""{title}"",""wgTitle"":""{title}"",""wgIsArticle"":!0,""wgIsRedirect"":!1,""wgAction"":""view"",""wgUserName"":null,""wgUserGroups"":[""*""],""wgBreakFrames"":!1,""wgPageContentLanguage"":""{language}"",""wgPageContentModel"":""wikitext"",""wgSeparatorTransformTable"":["""",""""],""wgDigitTransformTable"":["""",""""],""wgDefaultDateFormat"":""dmy"",""wgMonthNames"":["""",""January"",""February"",""March"",""April"",""May"",""June"",""July"",""August"",""September"",""October"",""November"",""December""],""wgMonthNamesShort"":["""",""Jan"",""Feb"",""Mar"",""Apr"",""May"",""Jun"",""Jul"",""Aug"",""Sep"",""Oct"",""Nov"",""Dec""],""wgRelevantPageName"":""{title}"",""wgRelevantArticleId"":645042,""wgCSPNonce"":!1,""wgIsProbablyEditable"":!1,""wgRelevantPageIsProbablyEditable"":!1,""wgRestrictionEdit"":[
-        ""autoconfirmed""],""wgRestrictionMove"":[""sysop""],""wgMediaViewerOnClick"":!0,""wgMediaViewerEnabledByDefault"":!0,""wgPopupsReferencePreviews"":!1,""wgPopupsConflictsWithNavPopupGadget"":!1,""wgVisualEditor"":{{""pageLanguageCode"":""{language}"",""pageLanguageDir"":""ltr"",""pageVariantFallbacks"":""{language}""}},""wgMFMode"":""stable"",""wgMFAmc"":!1,""wgMFAmcOutreachActive"":!1,""wgMFAmcOutreachUserEligible"":!1,""wgMFLazyLoadImages"":!0,""wgMFDisplayWikibaseDescriptions"":{{""search"":!0,""nearby"":!0,""watchlist"":!0,""tagline"":!1}},""wgMFDefaultEditor"":""source"",""wgMFIsPageContentModelEditable"":!0,""wgWMESchemaEditAttemptStepOversample"":!1,""wgULSCurrentAutonym"":""English"",""wgNoticeProject"":""wikipedia"",""wgWikibaseItemId"":""Q60"",""wgCentralAuthMobileDomain"":!0,""wgEditSubmitButtonLabelPublish"":!0,""wgMinervaPermissions"":{{""watch"":!0,""talk"":!1}},""wgMinervaFeatures"":{{""beta"":!1,""mobileOptionsLink"":!0,""categories"":!1,""backToTop"":!1,""shareButton"":!1,""pageIssues"":!0,""talkAtTop"":!1,""historyInPageActions"":!1,""overflowSubmenu"":!1,""tabsOnSpecials"":!1,""personalMenu"":!1,""mainMenuExpanded"":!1}},""wgMinervaDownloadNamespaces"":[0]}};RLSTATE={{""user.styles"":""ready"",""user"":""ready"",""user.options"":""ready"",""user.tokens"":""loading"",""ext.kartographer.style"":
+        ""autoconfirmed""],""wgRestrictionMove"":[""sysop""],""wgMediaViewerOnClick"":!0,""wgMediaViewerEnabledByDefault"":!0,""wgPopupsReferencePreviews"":!1,""wgPopupsConflictsWithNavPopupGadget"":!1,""wgVisualEditor"":{{""pageLanguageCode"":""{language}"",""pageLanguageDir"":""{direction}"",""pageVariantFallbacks"":""{language}""}},""wgMFMode"":""stable"",""wgMFAmc"":!1,""wgMFAmcOutreachActive"":!1,""wgMFAmcOutreachUserEligible"":!1,""wgMFLazyLoadImages"":!0,""wgMFDisplayWikibaseDescriptions"":{{""search"":!0,""nearby"":!0,""watchlist"":!0,""tagline"":!1}},""wgMFDefaultEditor"":""source"",""wgMFIsPageContentModelEditable"":!0,""wgWMESchemaEditAttemptStepOversample"":!1,""wgULSCurrentAutonym"":""English"",""wgNoticeProject"":""wikipedia"",""wgWikibaseItemId"":""Q60"",""wgCentralAuthMobileDomain"":!0,""wgEditSubmitButtonLabelPublish"":!0,""wgMinervaPermissions"":{{""watch"":!0,""talk"":!1}},""wgMinervaFeatures"":{{""beta"":!1,""mobileOptionsLink"":!0,""categories"":!1,""backToTop"":!1,""shareButton"":!1,""pageIssues"":!0,""talkAtTop"":!1,""historyInPageActions"":!1,""overflowSubmenu"":!1,""tabsOnSpecials"":!1,""personalMenu"":!1,""mainMenuExpanded"":!1}},""wgMinervaDownloadNamespaces"":[0]}};RLSTATE={{""user.styles"":""ready"",""user"":""ready"",""user.options"":""ready"",""user.tokens"":""loading"",""ext.kartographer.style"":
         ""ready"",""ext.cite.styles"":""ready"",""ext.graph.styles"":""ready"",""skins.minerva.base.styles"":""ready"",""skins.minerva.content.styles"":""ready"",""skins.minerva.content.styles.images"":""ready"",""mediawiki.hlist"":""ready"",""mediawiki.ui.icon"":""ready"",""mediawiki.ui.button"":""ready"",""skins.minerva.icons.wikimedia"":""ready"",""skins.minerva.icons.images"":""ready"",""mobile.init.styles"":""ready""}};RLPAGEMODULES=[""ext.kartographer.staticframe"",""ext.graph.loader"",""mediawiki.page.startup"",""skins.minerva.options"",""skins.minerva.scripts"",""ext.gadget.switcher"",""ext.centralauth.centralautologin"",""ext.visualEditor.targetLoader"",""mobile.site"",""mobile.init"",""ext.relatedArticles.readMore.bootstrap"",""ext.eventLogging"",""ext.wikimediaEvents"",""ext.navigationTiming"",""mw.externalguidance.init"",""ext.quicksurveys.init"",""ext.centralNotice.geoIP"",""ext.centralNotice.startUp""];</script>
         <script>(RLQ=window.RLQ||[]).push(function(){{mw.loader.implement(""user.tokens@tffin"",function($,jQuery,require,module){{/*@nomin*/mw.user.tokens.set({{""patrolToken"":""+\\"",""watchToken"":""+\\"",""csrfToken"":""+\\""}});
         }});}});</script>
@@ -39,11 +39,11 @@ namespace WikipediaApp
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
-        <body class=""mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"">
+        <body class=""mediawiki {direction} sitedir-{direction} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"">
         <div id=""mw-mf-viewport"">
 	        <div id=""mw-mf-page-center"">
 		        <div id=""content"" class=""mw-body"">
-			        <div class=""pre-content heading-holder""><h1 id=""section_0"">{title}</h1></div><div id=""bodyContent"" class=""content""><div id=""mw-content-text"" lang=""{language}"" dir=""ltr"" class=""mw-content-ltr""><script>function mfTempOpenSection(id){{var block=document.getElementById(""mf-section-""+id);block.className+="" open-block"";block.previousSibling.className+="" open-block"";}}</script>
+			        <div class=""pre-content heading-holder""><h1 id=""section_0"">{title}</h1></div><div id=""bodyContent"" class=""content""><div id=""mw-content-text"" lang=""{language}"" dir=""{direction}"" class=""mw-content-{direction}""><script>function mfTempOpenSection(id){{var block=document.getElementById(""mf-section-""+id);block.className+="" open-block"";block.previousSibling.className+="" open-block"";}}</script>
         {content}
         </div></div></div></div></div></div>
         </body>

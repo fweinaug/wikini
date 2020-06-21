@@ -401,7 +401,7 @@ namespace WikipediaApp
   {
     public async Task<Article> FetchArticle(string language, Uri uri, bool disableImages, int? pageId = null, string title = null, string anchor = null, Article article = null)
     {
-      var query = "action=parse&prop=text|sections|langlinks|images&disableeditsection=&disabletoc=&mobileformat=";
+      var query = "action=parse&prop=text|sections|langlinks|images|headhtml&disableeditsection=&disabletoc=&mobileformat=";
       if (pageId != null)
         query += "&pageid=" + pageId;
       else
@@ -459,6 +459,7 @@ namespace WikipediaApp
         article = new Article();
 
       article.Language = language;
+      article.Direction = ParseDirection(parseResult.headhtml);
       article.PageId = parseResult.pageid;
       article.Title = parseResult.title;
       article.Content = parseResult.text;
@@ -471,6 +472,13 @@ namespace WikipediaApp
       return article;
     }
 
+    private static string ParseDirection(string html)
+    {
+      var offset = html.IndexOf(" dir=\"", StringComparison.OrdinalIgnoreCase);
+
+      return html.Substring(offset + 6, 3);
+    }
+
     private class ParseRoot
     {
       public ParseResult parse { get; set; }
@@ -480,6 +488,7 @@ namespace WikipediaApp
     {
       public string title { get; set; }
       public int pageid { get; set; }
+      public string headhtml { get; set; }
       public string text { get; set; }
       public List<ParseSection> sections { get; set; }
       public List<ParseLanglink> langlinks { get; set; }

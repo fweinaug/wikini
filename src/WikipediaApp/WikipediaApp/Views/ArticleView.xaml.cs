@@ -123,7 +123,7 @@ namespace WikipediaApp
         await UpdateStacks(article, currentArticle);
       }
 
-      var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Content, article.Language);
+      var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Content, article.Language, article.Direction);
 
       WebView.NavigateToString(html);
 

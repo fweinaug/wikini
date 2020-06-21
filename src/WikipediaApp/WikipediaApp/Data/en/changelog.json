@@ -1,5 +1,8 @@
 [
     [
+        "Improved article view for languages written from right to left"
+    ],
+    [
         "Search with speech recognition",
         "Highlight the selected language in sidebar",
         "Display the article in the title bar"

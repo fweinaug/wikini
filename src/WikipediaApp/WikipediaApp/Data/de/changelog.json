@@ -1,5 +1,8 @@
 [
     [
+        "Verbesserte Artikelansicht für von rechts nach links geschriebene Sprachen"
+    ],
+    [
         "Suche mit Spracherkennung",
         "Hervorheben der ausgewählten Sprache in Seitenleiste",
         "Anzeige des Artikels in der Titelleiste"
