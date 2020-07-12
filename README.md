@@ -4,7 +4,7 @@
 <p align="center"><img src="logo/wikini.png" width="100"></p>
 <h1 align="center">Wikini for Wikipedia</h1>
 
-Wikini is an inoffical Wikipedia app built for Windows 10 (UWP).
+Wikini is an unofficial Wikipedia app built for Windows 10 (UWP).
 
 [Learn more](http://wikiniapp.com/)\
 [Release notes](http://wikiniapp.com/releases)
