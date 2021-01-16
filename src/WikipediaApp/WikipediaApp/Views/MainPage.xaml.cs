@@ -71,7 +71,7 @@ namespace WikipediaApp
     {
       OpenOrCloseSplitView(paneHistoryTemplate);
 
-      SplitViewPaneTabs.SelectedIndex = 2;
+      SplitViewPaneTabs.SelectedIndex = 1;
     }
 
     private void HistoryViewArticleClick(object sender, EventArgs e)
@@ -96,14 +96,14 @@ namespace WikipediaApp
     {
       OpenOrCloseSplitView(paneFavoritesTemplate);
 
-      SplitViewPaneTabs.SelectedIndex = 1;
+      SplitViewPaneTabs.SelectedIndex = 0;
     }
 
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)
     {
       OpenOrCloseSplitView(paneLanguagesTemplate);
 
-      SplitViewPaneTabs.SelectedIndex = 0;
+      SplitViewPaneTabs.SelectedIndex = 2;
     }
 
     private void SplitViewPaneClosed(SplitView sender, object e)
@@ -178,6 +178,16 @@ namespace WikipediaApp
       {
         SplitView.IsPaneOpen = false;
       }
+    }
+
+    private void PictureOfTheDayStackPanelPointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+      PictureOfTheDayStackPanel.Opacity = 0.85;
+    }
+
+    private void PictureOfTheDayStackPanelPointerExited(object sender, PointerRoutedEventArgs e)
+    {
+      PictureOfTheDayStackPanel.Opacity = 0.4;
     }
   }
 }

@@ -285,7 +285,7 @@
   <data name="LanguageGroupMore" xml:space="preserve">
     <value>Más idiomas</value>
   </data>
-  <data name="MainFavoritesAppBarButton.Label" xml:space="preserve">
+  <data name="MainFavoritesButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Favoritos</value>
   </data>
   <data name="MainFavoritesPaneEmptyTextBlock.Text" xml:space="preserve">
@@ -297,7 +297,7 @@
   <data name="MainFavoritesPaneRemoveMenuFlyoutItem.Text" xml:space="preserve">
     <value>Eliminar de Favoritos</value>
   </data>
-  <data name="MainHistoryAppBarButton.Label" xml:space="preserve">
+  <data name="MainHistoryButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Historia</value>
   </data>
   <data name="MainHistoryPaneClearMenuFlyoutItem.Text" xml:space="preserve">
@@ -309,10 +309,10 @@
   <data name="MainHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Historia</value>
   </data>
-  <data name="MainHomepageAppBarButton.Label" xml:space="preserve">
+  <data name="MainHomepageButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Página de inicio</value>
   </data>
-  <data name="MainLanguagesAppBarButton.Label" xml:space="preserve">
+  <data name="MainLanguagesButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Idiomas</value>
   </data>
   <data name="MainLanguagesPaneAddFavoriteMenuFlyoutItem.Text" xml:space="preserve">
@@ -330,19 +330,25 @@
   <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
     <value>No se han encontrado artículos</value>
   </data>
-  <data name="MainPictureOfTheDayAppBarTextBlock.Text" xml:space="preserve">
+  <data name="MainPictureOfTheDayButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Foto del día</value>
   </data>
-  <data name="MainPictureOfTheDayBackAppBarButton.Label" xml:space="preserve">
+  <data name="MainPictureOfTheDayBackMenuFlyoutItem.Text" xml:space="preserve">
     <value>Imagen anterior</value>
   </data>
-  <data name="MainPictureOfTheDayTodayAppBarButton.Label" xml:space="preserve">
+  <data name="MainPictureOfTheDayTodayMenuFlyoutItem.Text" xml:space="preserve">
     <value>Imagen de hoy</value>
   </data>
-  <data name="MainRandomAppBarButton.Label" xml:space="preserve">
+  <data name="MainPictureOfTheDayRandomMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Foto al azar</value>
+  </data>
+  <data name="MainPictureOfTheDayClearMenuFlyoutItem.Text" xml:space="preserve">
+    <value>No hay foto</value>
+  </data>
+  <data name="MainRandomButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Aleatorio</value>
   </data>
-  <data name="MainSettingsAppBarButton.Label" xml:space="preserve">
+  <data name="MainSettingsButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Ajustes</value>
   </data>
   <data name="PermissionMessageDialog.Close" xml:space="preserve">

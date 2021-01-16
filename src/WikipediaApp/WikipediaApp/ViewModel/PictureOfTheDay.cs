@@ -13,6 +13,8 @@ namespace WikipediaApp
 
     private Command backCommand = null;
     private Command todayCommand = null;
+    private Command randomCommand = null;
+    private Command clearCommand = null;
 
     public PictureOfTheDay(WikipediaService wikipediaService)
     {
@@ -41,6 +43,16 @@ namespace WikipediaApp
       get { return todayCommand ?? (todayCommand = new Command(Today)); }
     }
 
+    public ICommand RandomCommand
+    {
+      get { return randomCommand ?? (randomCommand = new Command(Random)); }
+    }
+
+    public ICommand ClearCommand
+    {
+      get { return clearCommand ?? (clearCommand = new Command(Clear)); }
+    }
+
     public async void Back()
     {
       var previousDate = date > DateTime.MinValue ? date.AddDays(-1) : DateTime.Today;
@@ -52,10 +64,29 @@ namespace WikipediaApp
     {
       var today = DateTime.Today;
 
-      if (date != today)
+      if (thumbnailUri == null || date != today)
       {
         await ChangeDate(today);
       }
+    }
+
+    public async void Random()
+    {
+      DateTime randomDate;
+      var random = new Random();
+
+      do
+      {
+        var days = random.Next(1, 365);
+        randomDate = DateTime.Today.AddDays(-days);
+      } while (randomDate == date);
+
+      await ChangeDate(randomDate);
+    }
+
+    public void Clear()
+    {
+      ThumbnailUri = null;
     }
 
     private async Task ChangeDate(DateTime date)

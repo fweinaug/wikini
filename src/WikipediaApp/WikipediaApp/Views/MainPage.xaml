@@ -34,6 +34,17 @@
             <DataTemplate x:Key="LanguagesTemplate">
                 <local:LanguagesView Languages="{Binding Languages}" LanguageClick="LanguagesViewLanguageClick" />
             </DataTemplate>
+
+            <Style x:Key="CommandBarButton" TargetType="Button" BasedOn="{StaticResource TransparentButtonStyle}">
+                <Setter Property="Padding" Value="15" />
+                <Setter Property="CornerRadius" Value="7" />
+            </Style>
+
+            <Style x:Key="CommandBarSeparator" TargetType="Rectangle">
+                <Setter Property="Width" Value="1" />
+                <Setter Property="Height" Value="25" />
+                <Setter Property="Fill" Value="{ThemeResource MenuFlyoutSeparatorThemeBrush}" />
+            </Style>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -95,9 +106,9 @@
                     </Grid.RowDefinitions>
 
                     <local:TabControl x:Name="SplitViewPaneTabs">
-                        <local:TabButton Glyph="&#xF2B7;" Click="LanguagesButtonClick" />
                         <local:TabButton Glyph="&#xE728;" Click="FavoritesButtonClick" />
                         <local:TabButton Glyph="&#xE81C;" Click="HistoryButtonClick" />
+                        <local:TabButton Glyph="&#xF2B7;" Click="LanguagesButtonClick" />
                         <local:TabButton Glyph="&#xE713;" Click="SettingsAppBarButtonClick" />
                     </local:TabControl>
 
@@ -141,59 +152,91 @@
                             Visibility="{Binding NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <TextBlock x:Uid="MainNoSearchResultsTextBlock" FontWeight="Normal" Foreground="White" />
                     </Border>
+
+                    <StackPanel x:Name="PictureOfTheDayStackPanel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                Orientation="Horizontal" Spacing="5"
+                                Margin="40" Padding="0" CornerRadius="90"
+                                Background="{ThemeResource SystemControlAcrylicElementBrush}" Opacity="0.4"
+                                PointerEntered="PictureOfTheDayStackPanelPointerEntered" PointerExited="PictureOfTheDayStackPanelPointerExited">
+
+                        <Button x:Uid="MainPictureOfTheDayButton" Style="{StaticResource TransparentButtonStyle}"
+                                Padding="12" CornerRadius="90" BorderThickness="2">
+                            
+                            <FontIcon Glyph="&#xEB9F;" />
+
+                            <Button.Flyout>
+                                <MenuFlyout Placement="TopEdgeAlignedLeft">
+                                    <MenuFlyoutItem x:Uid="MainPictureOfTheDayBackMenuFlyoutItem" Command="{Binding PictureOfTheDay.BackCommand}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE8F5;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutItem x:Uid="MainPictureOfTheDayTodayMenuFlyoutItem" Command="{Binding PictureOfTheDay.TodayCommand}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE8D1;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutSeparator />
+
+                                    <MenuFlyoutItem x:Uid="MainPictureOfTheDayRandomMenuFlyoutItem" Command="{Binding PictureOfTheDay.RandomCommand}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE8BF;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutSeparator />
+
+                                    <MenuFlyoutItem x:Uid="MainPictureOfTheDayClearMenuFlyoutItem" Command="{Binding PictureOfTheDay.ClearCommand}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE711;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                </MenuFlyout>
+                            </Button.Flyout>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Orientation="Horizontal" Spacing="5"
+                                Margin="0,40" Padding="5" CornerRadius="10"
+                                Background="{ThemeResource SystemControlAcrylicElementBrush}" Opacity="0.85">
+
+                        <Button x:Uid="MainHomepageButton" Style="{StaticResource CommandBarButton}" Command="{Binding ShowHomePageCommand}">
+                            <SymbolIcon Symbol="Home" />
+                        </Button>
+
+                        <Button x:Uid="MainRandomButton" Style="{StaticResource CommandBarButton}" Command="{Binding ShowRandomArticleCommand}">
+                            <SymbolIcon Symbol="Shuffle" />
+                        </Button>
+
+                        <Rectangle Style="{StaticResource CommandBarSeparator}" />
+
+                        <Button x:Uid="MainFavoritesButton" Style="{StaticResource CommandBarButton}" Click="FavoritesButtonClick">
+                            <FontIcon Glyph="&#xE728;" />
+                        </Button>
+
+                        <Button x:Uid="MainHistoryButton" Style="{StaticResource CommandBarButton}" Click="HistoryButtonClick">
+                            <FontIcon Glyph="&#xE81C;" />
+                        </Button>
+
+                        <Button x:Uid="MainLanguagesButton" Style="{StaticResource CommandBarButton}" Click="LanguagesButtonClick">
+                            <FontIcon Glyph="&#xF2B7;" />
+                        </Button>
+
+                        <Rectangle Style="{StaticResource CommandBarSeparator}" />
+
+                        <Button x:Uid="MainSettingsButton" Style="{StaticResource CommandBarButton}" Click="SettingsAppBarButtonClick">
+                            <SymbolIcon Symbol="Setting" />
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </SplitView.Content>
         </SplitView>
 
         <ProgressBar Grid.Row="0" IsIndeterminate="True" VerticalAlignment="Bottom"
                                   Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
-
-        <CommandBar Grid.Row="1" Background="{ThemeResource SystemControlAcrylicElementBrush}">
-            <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="MainSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
-
-                <AppBarSeparator />
-
-                <AppBarElementContainer>
-                    <TextBlock x:Uid="MainPictureOfTheDayAppBarTextBlock" Margin="10,5,10,8" Opacity="0.5" />
-                </AppBarElementContainer>
-
-                <AppBarButton x:Uid="MainPictureOfTheDayBackAppBarButton" Command="{Binding PictureOfTheDay.BackCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE8F5;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="MainPictureOfTheDayTodayAppBarButton" Command="{Binding PictureOfTheDay.TodayCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE8D1;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar.SecondaryCommands>
-
-            <AppBarButton x:Uid="MainHomepageAppBarButton" Icon="Home" Command="{Binding ShowHomePageCommand}" />
-            <AppBarButton x:Uid="MainRandomAppBarButton" Icon="Shuffle" Command="{Binding ShowRandomArticleCommand}" />
-
-            <AppBarSeparator />
-
-            <AppBarButton x:Uid="MainHistoryAppBarButton" Click="HistoryButtonClick">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE81C;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-
-            <AppBarButton x:Uid="MainFavoritesAppBarButton" Click="FavoritesButtonClick">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE728;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-
-            <AppBarButton x:Uid="MainLanguagesAppBarButton" Click="LanguagesButtonClick">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xF2B7;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-        </CommandBar>
     </Grid>
 </Page>
 
