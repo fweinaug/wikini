@@ -7,31 +7,11 @@ namespace WikipediaApp
 {
   public static class WebViewExtensions
   {
-    public static async void ScrollToTop(this WebView webView)
-    {
-      try
-      {
-        var js = @"
-          var elems = document.getElementsByTagName('body');
-          if (elems.length > 0)
-            elems[0].scrollIntoView();";
-
-        await webView.InvokeScriptAsync("eval", new[] { js });
-      }
-      catch (Exception ex)
-      {
-        Crashes.TrackError(ex);
-      }
-    }
-
     public static async void ScrollToElement(this WebView webView, string elementId)
     {
       try
       {
-        var js = $@"
-          var elem = document.getElementById('{elementId}');
-          if (elem != null)
-            elem.scrollIntoView();";
+        var js = $"scrollToElement('{elementId}');";
 
         await webView.InvokeScriptAsync("eval", new[] { js });
       }

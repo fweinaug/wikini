@@ -16,6 +16,9 @@ namespace WikipediaApp
   {
     public event EventHandler ArticleChanged;
 
+    public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
+      "Header", typeof(double), typeof(ArticleView), new PropertyMetadata(0.0, OnHeaderPropertyChanged));
+
     public static readonly DependencyProperty ArticleProperty = DependencyProperty.Register(
       "Article", typeof(Article), typeof(ArticleView), new PropertyMetadata(null, OnArticlePropertyChanged));
 
@@ -40,6 +43,12 @@ namespace WikipediaApp
     public static readonly DependencyProperty SearchResultsProperty = DependencyProperty.Register(
       "SearchResults", typeof(int), typeof(ArticleView), new PropertyMetadata(0));
 
+    public double Header
+    {
+      get { return (double)GetValue(HeaderProperty); }
+      set { SetValue(HeaderProperty, value); }
+    }
+    
     public Article Article
     {
       get { return (Article)GetValue(ArticleProperty); }
@@ -96,6 +105,14 @@ namespace WikipediaApp
       InitializeComponent();
     }
 
+    private static void OnHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+      var header = (double)e.NewValue;
+
+      var view = (ArticleView)d;
+      view.UpdateHeader(header);
+    }
+
     private static void OnArticlePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       var article = e.NewValue as Article;
@@ -104,6 +121,21 @@ namespace WikipediaApp
 
       var view = (ArticleView)d;
       view.ShowArticle(article, e.OldValue as Article);
+    }
+
+    private async void UpdateHeader(double header)
+    {
+      ScrollBar.Margin = new Thickness(0, header, 0, 0);
+
+      try
+      {
+        var js = $"document.body.style.marginTop = '{header + 10}px';";
+
+        await WebView.InvokeScriptAsync("eval", new[] { js });
+      }
+      catch (Exception)
+      {
+      }
     }
 
     private async void ShowArticle(Article article, Article currentArticle)
@@ -123,7 +155,7 @@ namespace WikipediaApp
         await UpdateStacks(article, currentArticle);
       }
 
-      var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Content, article.Language, article.Direction);
+      var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Content, article.Language, article.Direction, Convert.ToInt32(Header) + 10);
 
       WebView.NavigateToString(html);
 
@@ -234,9 +266,18 @@ namespace WikipediaApp
       await WebView.ScrollToPosition(e.NewValue);
     }
 
-    public void ScrollToTop()
+    public async void ScrollToTop()
     {
-      WebView.ScrollToTop();
+      try
+      {
+        var js = "scrollToTop();";
+
+        await WebView.InvokeScriptAsync("eval", new[] { js });
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+      }
     }
 
     public async void ScrollToSection(ArticleSection section)

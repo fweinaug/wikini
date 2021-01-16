@@ -7,7 +7,7 @@ namespace WikipediaApp
   {
     private static readonly UISettings UiSettings = new UISettings();
 
-    public static string BuildArticle(string title, string content, string language, string direction)
+    public static string BuildArticle(string title, string content, string language, string direction, int header)
     {
       var app = App.Current;
       var settings = Settings.Current;
@@ -39,7 +39,7 @@ namespace WikipediaApp
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
-        <body class=""mediawiki {direction} sitedir-{direction} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"">
+        <body class=""mediawiki {direction} sitedir-{direction} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"" style=""margin-top: {header}px"">
         <div id=""mw-mf-viewport"">
 	        <div id=""mw-mf-page-center"">
 		        <div id=""content"" class=""mw-body"">

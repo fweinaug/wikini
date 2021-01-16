@@ -35,6 +35,9 @@ namespace WikipediaApp
       paneFavoritesTemplate = (DataTemplate)Resources["FavoritesTemplate"];
       paneContentsTemplate = (DataTemplate)Resources["ContentsTemplate"];
       paneLanguagesTemplate = (DataTemplate)Resources["LanguagesTemplate"];
+
+      var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+      UpdateTitleBar(coreTitleBar);
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -76,8 +79,10 @@ namespace WikipediaApp
     {
       var height = sender.IsVisible && sender.Height > 0 ? sender.Height + 1 : 0;
 
-      SplitViewPaneGrid.Padding = ArticleView.Margin = new Thickness(0, height, 0, 0);
+      SplitViewPaneGrid.Padding = new Thickness(0, height, 0, 0);
       AppTitleBarBackground.Height = height;
+      
+      ArticleView.Header = height + Math.Max(CommandBar.ActualHeight, 40);
     }
 
     private void ArticleViewArticleChanged(object sender, EventArgs e)

@@ -16,6 +16,11 @@ function registerScrollEvents() {
   _updateScrollPosition(window.scrollX, window.scrollY);
 }
 
+function scrollToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
 function scrollToSection(id) {
   const element = document.getElementById(id);
 
@@ -32,8 +37,24 @@ function scrollToSection(id) {
       _refresh();
     }
 
-    element.scrollIntoView();
+    _scrollToElement(element);
   }
+}
+
+function scrollToElement(id) {
+  const element = document.getElementById(id);
+
+  if (element != null) {
+    _scrollToElement(element);
+  }
+}
+
+function _scrollToElement(element) {
+
+  const rect = element.getBoundingClientRect();
+  const margin = document.body.style.marginTop.substring(0, document.body.style.marginTop.length - 2);
+
+  window.scrollTo(0, rect.top + window.scrollY - 20 - margin);
 }
 
 function _refresh() {

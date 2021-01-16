@@ -66,11 +66,12 @@ function _jumpTo() {
 
 function _scrollIntoView(target) {
   const rect = target.getBoundingClientRect();
+  const margin = document.body.style.marginTop.substring(0, document.body.style.marginTop.length - 2);
 
   if (rect.bottom + 50 > window.innerHeight) {
     window.scrollBy(0, rect.bottom - window.innerHeight + 50);
   }
   if (rect.top < 0) {
-    window.scrollBy(0, rect.top - 30);
+    window.scrollBy(0, rect.top - margin - 20);
   }
 }
