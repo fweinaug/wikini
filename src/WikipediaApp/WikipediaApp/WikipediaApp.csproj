@@ -165,6 +165,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210116115409_ThumbnailUrl.cs" />
+    <Compile Include="Migrations\20210116115409_ThumbnailUrl.designer.cs">
+      <DependentUpon>20210116115409_ThumbnailUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\FavoriteLanguage.cs" />
     <Compile Include="Services\LanguagesReader.cs" />
     <Compile Include="Views\Controls\TabControl.cs" />
@@ -200,7 +204,6 @@
     </Compile>
     <Compile Include="Migrations\WikipediaContextModelSnapshot.cs" />
     <Compile Include="Model\ArticleImage.cs" />
-    <Compile Include="Model\ArticleThumbnail.cs" />
     <Compile Include="Model\FavoriteArticle.cs" />
     <Compile Include="Model\ReadArticle.cs" />
     <Compile Include="Services\ShareManager.cs" />
@@ -382,10 +385,10 @@
       <Version>3.2.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
-      <Version>3.1.5</Version>
+      <Version>3.1.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
-      <Version>3.1.5</Version>
+      <Version>3.1.11</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

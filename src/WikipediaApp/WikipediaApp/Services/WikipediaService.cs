@@ -210,10 +210,10 @@ namespace WikipediaApp
     {
       try
       {
-        var thumbnail = await queryApi.GetArticleThumbnail(language, pageId, title);
+        var article = await queryApi.GetArticleInfo(language, pageId, title);
 
-        if (thumbnail != null)
-          return await TileManager.PinArticle(language, thumbnail.PageId, thumbnail.Title, uri, thumbnail.ImageUri);
+        if (article != null)
+          return await TileManager.PinArticle(language, article.PageId.GetValueOrDefault(), article.Title, uri, article.ThumbnailUri);
 
         return false;
       }
@@ -229,10 +229,10 @@ namespace WikipediaApp
     {
       try
       {
-        var thumbnail = await queryApi.GetArticleThumbnail(language, pageId, title);
+        var article = await queryApi.GetArticleInfo(language, pageId, title);
 
-        if (thumbnail != null)
-          return await TimelineManager.AddArticle(language, thumbnail.PageId, thumbnail.Title, uri, thumbnail.ImageUri);
+        if (article != null)
+          return await TimelineManager.AddArticle(language, article.PageId.GetValueOrDefault(), article.Title, uri, article.ThumbnailUri);
 
         return false;
       }

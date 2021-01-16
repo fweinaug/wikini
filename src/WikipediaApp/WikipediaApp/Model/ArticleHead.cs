@@ -8,6 +8,9 @@ namespace WikipediaApp
     private string url = null;
     private Uri uri = null;
 
+    private string thumbnailUrl = null;
+    private Uri thumbnailUri = null;
+
     public int? PageId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
@@ -35,6 +38,25 @@ namespace WikipediaApp
       {
         uri = value;
         url = value?.ToString();
+      }
+    }
+
+    [NotMapped]
+    public Uri ThumbnailUri
+    {
+      get
+      {
+        if (thumbnailUri == null && !string.IsNullOrEmpty(thumbnailUrl))
+        {
+          thumbnailUri = new Uri(thumbnailUrl);
+        }
+
+        return thumbnailUri;
+      }
+      set
+      {
+        thumbnailUri = value;
+        thumbnailUrl = value?.ToString();
       }
     }
   }

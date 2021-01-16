@@ -34,7 +34,9 @@ namespace WikipediaApp
         Language = article.Language,
         PageId = article.PageId,
         Title = article.Title,
-        Uri = article.Uri
+        Description = article.Description,
+        Uri = article.Uri,
+        ThumbnailUri = article.ThumbnailUri
       };
 
       using (var context = new WikipediaContext())

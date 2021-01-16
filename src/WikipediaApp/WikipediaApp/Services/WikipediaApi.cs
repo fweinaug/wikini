@@ -25,15 +25,12 @@ namespace WikipediaApp
       if (general == null)
         return null;
 
-      var title = result.query.general.mainpage;
-      var uri = new Uri(result.query.general.@base);
-
-      return new ArticleHead { Language = language, Title = title, Uri = uri };
+      return await GetArticleInfo(language, null, general.mainpage);
     }
 
     public async Task<ArticleHead> GetRandomArticle(string language)
     {
-      const string query = "action=query&generator=random&grnnamespace=0&grnlimit=1&grnfilterredir=redirects&redirects&prop=info&inprop=url";
+      var query = $"action=query&generator=random&grnnamespace=0&grnlimit=1&grnfilterredir=redirects&redirects&prop=info|description|pageimages&inprop=url&pilicense=any&pilimit=1&pithumbsize={ThumbnailSize}";
 
       var result = await QueryAndParse<PagesRoot>(language, query);
 
@@ -43,15 +40,12 @@ namespace WikipediaApp
 
       var page = pages.First();
 
-      var pageId = page.pageid;
-      var uri = new Uri(page.fullurl);
-
-      return new ArticleHead { Language = language, PageId = pageId, Uri = uri };
+      return MapPage(page);
     }
 
     public async Task<ArticleHead> GetArticleInfo(string language, int? pageId, string title)
     {
-      var query = "action=query&prop=info&inprop=url";
+      var query = $"action=query&prop=info|description|pageimages&inprop=url&pilicense=any&pilimit=1&pithumbsize={ThumbnailSize}";
       if (pageId != null)
         query += "&pageids=" + pageId;
       else
@@ -65,36 +59,19 @@ namespace WikipediaApp
 
       var page = pages.First();
 
-      return new ArticleHead
-      {
-        PageId = page.pageid,
-        Title = page.title,
-        Language = language,
-        Uri = new Uri(page.fullurl)
-      };
+      return MapPage(page);
     }
 
-    public async Task<ArticleThumbnail> GetArticleThumbnail(string language, int? pageId, string title)
+    private static ArticleHead MapPage(PagesPage page)
     {
-      var query = "action=query&prop=pageimages&pilicense=any&pilimit=1&pithumbsize=300";
-      if (pageId != null)
-        query += "&pageids=" + pageId;
-      else
-        query += "&titles=" + title + "&redirects=";
-
-      var result = await QueryAndParse<PageimagesRoot>(language, query);
-
-      var pages = result?.query?.pages;
-      if (pages == null || pages.Count == 0)
-        return null;
-
-      var page = pages.First();
-
-      return new ArticleThumbnail
+      return new ArticleHead
       {
+        Language = page.pagelanguage,
         PageId = page.pageid,
         Title = page.title,
-        ImageUri = page.thumbnail?.source
+        Description = page.description,
+        Uri = new Uri(page.fullurl),
+        ThumbnailUri = !string.IsNullOrEmpty(page.thumbnail?.source) ? new Uri(page.thumbnail.source) : null
       };
     }
 
@@ -292,7 +269,6 @@ namespace WikipediaApp
 
     private class SiteinfoRoot
     {
-      public bool batchcomplete { get; set; }
       public SiteinfoQuery query { get; set; }
     }
 
@@ -304,20 +280,11 @@ namespace WikipediaApp
     private class SiteinfoGeneral
     {
       public string mainpage { get; set; }
-      public string @base { get; set; }
     }
 
     private class PagesRoot
     {
-      public bool batchcomplete { get; set; }
-      public PagesContinue @continue { get; set; }
       public PagesQuery query { get; set; }
-    }
-
-    private class PagesContinue
-    {
-      public string grncontinue { get; set; }
-      public string @continue { get; set; }
     }
 
     private class PagesQuery
@@ -328,41 +295,20 @@ namespace WikipediaApp
     private class PagesPage
     {
       public int pageid { get; set; }
-      public int ns { get; set; }
+      public string pagelanguage { get; set; }
       public string title { get; set; }
       public string fullurl { get; set; }
-    }
-
-    private class PageimagesRoot
-    {
-      public bool batchcomplete { get; set; }
-      public PageimagesQuery query { get; set; }
-    }
-
-    private class PageimagesQuery
-    {
-      public List<PageimagesPage> pages { get; set; }
-    }
-
-    private class PageimagesPage
-    {
-      public int pageid { get; set; }
-      public int ns { get; set; }
-      public string title { get; set; }
+      public string description { get; set; }
       public Thumbnail thumbnail { get; set; }
-      public string pageimage { get; set; }
     }
 
     private class Thumbnail
     {
-      public Uri source { get; set; }
-      public int width { get; set; }
-      public int height { get; set; }
+      public string source { get; set; }
     }
 
     private class ImagesGeneratorRoot
     {
-      public bool batchcomplete { get; set; }
       public ImagesGeneratorContinue @continue { get; set; }
       public ImagesGeneratorQuery query { get; set; }
     }
@@ -380,11 +326,6 @@ namespace WikipediaApp
 
     private class ImagesGeneratorPage
     {
-      public int ns { get; set; }
-      public string title { get; set; }
-      public bool missing { get; set; }
-      public bool known { get; set; }
-      public string imagerepository { get; set; }
       public List<ImagesGeneratorImageInfo> imageinfo { get; set; }
     }
 
@@ -393,7 +334,6 @@ namespace WikipediaApp
       public string thumburl { get; set; }
       public string url { get; set; }
       public string descriptionurl { get; set; }
-      public string descriptionshorturl { get; set; }
     }
   }
 
@@ -507,12 +447,8 @@ namespace WikipediaApp
     private class ParseSection
     {
       public int toclevel { get; set; }
-      public string level { get; set; }
       public string line { get; set; }
       public string number { get; set; }
-      public string index { get; set; }
-      public string fromtitle { get; set; }
-      public int? byteoffset { get; set; }
       public string anchor { get; set; }
     }
   }
@@ -520,7 +456,6 @@ namespace WikipediaApp
   public class WikipediaSearchApi : WikipediaApi
   {
     private const int MaxResults = 10;
-    private const int ThumbnailSize = 100;
 
     public async Task<IList<FoundArticle>> PrefixSearch(string searchTerm, string language, CancellationToken? cancellationToken)
     {
@@ -569,7 +504,6 @@ namespace WikipediaApp
 
     private class SearchResponse
     {
-      public bool batchcomplete { get; set; }
       public SearchQuery query { get; set; }
     }
 
@@ -592,13 +526,13 @@ namespace WikipediaApp
     private class Thumbnail
     {
       public string source { get; set; }
-      public int width { get; set; }
-      public int height { get; set; }
     }
   }
 
   public abstract class WikipediaApi
   {
+    protected const int ThumbnailSize = 300;
+
     protected Task<T> QueryAndParse<T>(string language, string query, CancellationToken? cancellationToken = null)
     {
       var url = $"https://{language}.wikipedia.org/w/api.php?format=json&formatversion=2&{query}";
@@ -656,11 +590,6 @@ namespace WikipediaApp
       text = text.Replace("\n", string.Empty);
 
       return text;
-    }
-
-    public static string DecodeHtml(string text)
-    {
-      return WebUtility.HtmlDecode(text);
     }
   }
 }

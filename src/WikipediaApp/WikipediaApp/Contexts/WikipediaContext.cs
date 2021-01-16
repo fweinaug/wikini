@@ -17,9 +17,13 @@ namespace WikipediaApp
     {
       modelBuilder.Entity<ReadArticle>()
         .Property("url");
+      modelBuilder.Entity<ReadArticle>()
+        .Property("thumbnailUrl");
 
       modelBuilder.Entity<FavoriteArticle>()
         .Property("url");
+      modelBuilder.Entity<FavoriteArticle>()
+        .Property("thumbnailUrl");
     }
   }
 }
