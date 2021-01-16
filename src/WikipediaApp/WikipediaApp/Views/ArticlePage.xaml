@@ -136,28 +136,6 @@
                 </VisualState>
             </VisualStateGroup>
 
-            <VisualStateGroup x:Name="AdaptiveStates">
-                <VisualState x:Name="DefaultState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720" />
-                    </VisualState.StateTriggers>
-
-                    <VisualState.Setters>
-                        <Setter Target="DefaultCommandBar.Visibility" Value="Visible" />
-                    </VisualState.Setters>
-                </VisualState>
-
-                <VisualState x:Name="NarrowState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-
-                    <VisualState.Setters>
-                        <Setter Target="NarrowCommandBar.Visibility" Value="Visible" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-
             <VisualStateGroup x:Name="SplitViewStates">
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -276,8 +254,7 @@
         <ProgressBar Grid.Row="0" IsIndeterminate="True" VerticalAlignment="Bottom"
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-        <CommandBar Name="DefaultCommandBar" Grid.Row="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                    x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Opening="DefaultCommandBarOpening">
+        <CommandBar Grid.Row="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}" Opening="CommandBarOpening">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
                 <AppBarButton x:Uid="ArticleRefreshAppBarButton" Icon="Refresh" Command="{Binding RefreshCommand}" />
@@ -304,13 +281,13 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
 
-                <AppBarButton x:Uid="ArticleEnterFullScreenButton" x:Name="DefaultEnterFullScreenButton" Click="EnterFullScreenButtonClick">
+                <AppBarButton x:Uid="ArticleEnterFullScreenButton" x:Name="EnterFullScreenButton" Click="EnterFullScreenButtonClick">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE740;" />
                     </AppBarButton.Icon>
                 </AppBarButton>
 
-                <AppBarButton x:Uid="ArticleExitFullScreenButton" x:Name="DefaultExitFullScreenButton" Click="ExitFullScreenButtonClick">
+                <AppBarButton x:Uid="ArticleExitFullScreenButton" x:Name="ExitFullScreenButton" Click="ExitFullScreenButtonClick">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE73F;" />
                     </AppBarButton.Icon>
@@ -360,107 +337,6 @@
             </AppBarButton>
 
             <AppBarButton x:Uid="ArticleSearchAppBarButton" Icon="Find" Click="ToggleSearchBarAppBarButtonClick" />
-
-            <AppBarSeparator />
-
-            <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick" IsEnabled="{Binding HasSections}">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE7BC;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-
-            <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LanguagesButtonClick" IsEnabled="{Binding HasLanguages}">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xF2B7;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-        </CommandBar>
-
-        <CommandBar Name="NarrowCommandBar" Grid.Row="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                    x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Opening="NarrowCommandBarOpening">
-            <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="ArticleForwardAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoForward}" Click="ForwardButtonClick">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE76C;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
-                <AppBarButton x:Uid="ArticleRefreshAppBarButton" Icon="Refresh" Command="{Binding RefreshCommand}" />
-                <AppBarButton x:Uid="ArticleShareAppBarButton" Command="{Binding ShareCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE72D;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE8B9;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleSearchAppBarButton" Icon="Find" Click="ToggleSearchBarAppBarButtonClick" />
-
-                <AppBarButton x:Uid="ArticleAddFavoriteAppBarButton" Command="{Binding AddToFavoritesCommand}"
-                              Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE734;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleRemoveFavoriteAppBarButton" Command="{Binding RemoveFromFavoritesCommand}"
-                              Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE8D9;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticlePinAppBarButton" Icon="Pin" Command="{Binding PinCommand}" />
-
-                <AppBarButton x:Uid="ArticleSpeechAppBarButton" Click="SpeechButtonClick">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE7F6;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleEnterFullScreenButton" x:Name="NarrowEnterFullScreenButton" Click="EnterFullScreenButtonClick">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE740;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleExitFullScreenButton" x:Name="NarrowExitFullScreenButton" Click="ExitFullScreenButtonClick">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE73F;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xEB41;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-
-                <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
-            </CommandBar.SecondaryCommands>
-
-            <AppBarButton x:Uid="ArticleBackAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoBack}" Click="BackButtonClick">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE76B;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-
-            <AppBarButton x:Uid="ArticleHistoryAppBarButton" Click="HistoryButtonClick">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE81C;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-
-            <AppBarButton x:Uid="ArticleFavoritesAppBarButton" Click="FavoritesButtonClick">
-                <AppBarButton.Icon>
-                    <FontIcon Glyph="&#xE728;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
 
             <AppBarSeparator />
 

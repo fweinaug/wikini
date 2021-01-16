@@ -89,35 +89,19 @@ namespace WikipediaApp
       HideSearchBar(resetSearch: false);
     }
 
-    private void DefaultCommandBarOpening(object sender, object e)
+    private void CommandBarOpening(object sender, object e)
     {
       var applicationView = ApplicationView.GetForCurrentView();
 
       if (applicationView.IsFullScreenMode)
       {
-        DefaultEnterFullScreenButton.Visibility = Visibility.Collapsed;
-        DefaultExitFullScreenButton.Visibility = Visibility.Visible;
+        EnterFullScreenButton.Visibility = Visibility.Collapsed;
+        ExitFullScreenButton.Visibility = Visibility.Visible;
       }
       else
       {
-        DefaultEnterFullScreenButton.Visibility = Visibility.Visible;
-        DefaultExitFullScreenButton.Visibility = Visibility.Collapsed;
-      }
-    }
-
-    private void NarrowCommandBarOpening(object sender, object e)
-    {
-      var applicationView = ApplicationView.GetForCurrentView();
-
-      if (applicationView.IsFullScreenMode)
-      {
-        NarrowEnterFullScreenButton.Visibility = Visibility.Collapsed;
-        NarrowExitFullScreenButton.Visibility = Visibility.Visible;
-      }
-      else
-      {
-        NarrowEnterFullScreenButton.Visibility = Visibility.Visible;
-        NarrowExitFullScreenButton.Visibility = Visibility.Collapsed;
+        EnterFullScreenButton.Visibility = Visibility.Visible;
+        ExitFullScreenButton.Visibility = Visibility.Collapsed;
       }
     }
 
