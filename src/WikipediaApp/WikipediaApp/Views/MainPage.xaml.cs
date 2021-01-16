@@ -40,22 +40,16 @@ namespace WikipediaApp
     {
       base.OnNavigatedTo(e);
 
-      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
-      {
-        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-        coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
-      }
+      var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+      coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
     }
 
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
       base.OnNavigatedFrom(e);
 
-      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
-      {
-        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-        coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
-      }
+      var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+      coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
     }
 
     private void TitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)

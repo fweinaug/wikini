@@ -5,7 +5,6 @@
     xmlns:local="using:WikipediaApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -120,7 +119,7 @@
                         <ToggleSwitch x:Uid="SettingsDisplayActiveToggleSwitch" IsOn="{Binding DisplayActive, Mode=TwoWay}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,10" contract5NotPresent:Visibility="Collapsed">
+                    <StackPanel Margin="0,10">
                         <TextBlock x:Uid="SettingsTimelineTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                         <ToggleSwitch x:Uid="SettingsHistoryTimelineToggleSwitch" IsOn="{Binding HistoryTimeline, Mode=TwoWay}" />
                     </StackPanel>

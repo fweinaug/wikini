@@ -41,12 +41,9 @@ namespace WikipediaApp
     {
       base.OnNavigatedTo(e);
 
-      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
-      {
-        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-        coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
-        coreTitleBar.IsVisibleChanged += TitleBarIsVisibleChanged;
-      }
+      var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+      coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
+      coreTitleBar.IsVisibleChanged += TitleBarIsVisibleChanged;
 
       if (Settings.Current.DisplayActive)
         DisplayHelper.ActivateDisplay();
@@ -60,12 +57,9 @@ namespace WikipediaApp
 
       Settings.WriteLastArticle(null);
 
-      if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
-      {
-        var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-        coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
-        coreTitleBar.IsVisibleChanged -= TitleBarIsVisibleChanged;
-      }
+      var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+      coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
+      coreTitleBar.IsVisibleChanged -= TitleBarIsVisibleChanged;
     }
 
     private void TitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)

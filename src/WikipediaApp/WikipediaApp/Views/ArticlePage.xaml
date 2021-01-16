@@ -5,8 +5,6 @@
     xmlns:local="using:WikipediaApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
-    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
     xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,8)"
     mc:Ignorable="d">
 
@@ -180,11 +178,11 @@
         </Grid.RowDefinitions>
 
         <Border x:Name="AppTitleBarBackground" VerticalAlignment="Top" Height="0"
-                   contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                   Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                    BorderBrush="{ThemeResource AppBarBorderBrush}" BorderThickness="0,0,0,1" />
 
         <SplitView x:Name="SplitView" Grid.Row="0"
-                   contract5Present:PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
+                   PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
                    PaneClosed="SplitViewPaneClosed">
             <SplitView.Pane>
                 <Grid x:Name="SplitViewPaneGrid" contract8Present:Shadow="{StaticResource SharedShadow}">
@@ -227,8 +225,7 @@
 
                     <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,20,0"
                           BorderThickness="0,1,1,0" BorderBrush="{ThemeResource AppBarBorderBrush}"
-                          contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}"
-                          contract5NotPresent:Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                          Background="{ThemeResource SystemControlAcrylicElementBrush}"
                           contract8Present:Shadow="{StaticResource SharedShadow}">
 
                         <Grid.RenderTransform>
@@ -249,14 +246,14 @@
 
                         <Button Grid.Column="1"
                                 VerticalAlignment="Stretch" Margin="2,5" BorderThickness="1" Background="Transparent"
-                                contract5Present:Style="{StaticResource ButtonRevealStyle}"
+                                Style="{StaticResource ButtonRevealStyle}"
                                 Click="SearchBackwardButtonClick">
                             <FontIcon Glyph="&#xE96D;" FontSize="10" />
                         </Button>
 
                         <Button Grid.Column="2"
                                 VerticalAlignment="Stretch" Margin="2,5" BorderThickness="1" Background="Transparent"
-                                contract5Present:Style="{StaticResource ButtonRevealStyle}"
+                                Style="{StaticResource ButtonRevealStyle}"
                                 Click="SearchForwardButtonClick">
                             <FontIcon Glyph="&#xE96E;" FontSize="10" />
                         </Button>
@@ -267,7 +264,7 @@
                         
                         <Button Grid.Column="4"
                                 VerticalAlignment="Stretch" Margin="5" BorderThickness="1" Background="Transparent"
-                                contract5Present:Style="{StaticResource ButtonRevealStyle}"
+                                Style="{StaticResource ButtonRevealStyle}"
                                 Click="HideSearchBarButtonClick">
                             <FontIcon Glyph="&#xEF2C;" FontSize="10" />
                         </Button>
@@ -279,7 +276,7 @@
         <ProgressBar Grid.Row="0" IsIndeterminate="True" VerticalAlignment="Bottom"
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-        <CommandBar Name="DefaultCommandBar" Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+        <CommandBar Name="DefaultCommandBar" Grid.Row="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                     x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Opening="DefaultCommandBarOpening">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
@@ -379,7 +376,7 @@
             </AppBarButton>
         </CommandBar>
 
-        <CommandBar Name="NarrowCommandBar" Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+        <CommandBar Name="NarrowCommandBar" Grid.Row="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                     x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Opening="NarrowCommandBarOpening">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="ArticleForwardAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoForward}" Click="ForwardButtonClick">

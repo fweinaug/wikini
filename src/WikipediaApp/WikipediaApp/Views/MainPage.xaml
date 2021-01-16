@@ -5,7 +5,6 @@
     xmlns:local="using:WikipediaApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
     xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,8)"
     mc:Ignorable="d">
 
@@ -86,7 +85,7 @@
                           ImageUri="{Binding PictureOfTheDay.ThumbnailUri}" />
 
         <SplitView x:Name="SplitView" Grid.Row="0"
-                   contract5Present:PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
+                   PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}"
                    PaneClosed="SplitViewPaneClosed" DisplayMode="Overlay">
             <SplitView.Pane>
                 <Grid x:Name="SplitViewPaneGrid" contract8Present:Shadow="{StaticResource SharedShadow}">
@@ -149,7 +148,7 @@
         <ProgressBar Grid.Row="0" IsIndeterminate="True" VerticalAlignment="Bottom"
                                   Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-        <CommandBar Grid.Row="1" contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <CommandBar Grid.Row="1" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="MainSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
 
