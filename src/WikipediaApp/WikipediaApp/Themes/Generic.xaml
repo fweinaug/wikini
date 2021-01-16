@@ -8,7 +8,7 @@
             <Setter.Value>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"
-                                BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0,0,0,1" />
+                                BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0,1,0,0" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

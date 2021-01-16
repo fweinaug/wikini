@@ -156,11 +156,23 @@
             <SplitView.Pane>
                 <Grid x:Name="SplitViewPaneGrid" contract8Present:Shadow="{StaticResource SharedShadow}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <local:TabControl x:Name="SplitViewPaneTabs">
+                    <ContentPresenter Grid.Row="0" x:Name="PaneContentPresenter"
+                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                    <local:SpeechView Grid.Row="0" x:Name="PaneSpeechView" Article="{Binding Article}"
+                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                    <local:SettingsView Grid.Row="0" x:Name="PaneSettingsView"
+                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+
+                    <Button Grid.Row="0" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
+                            Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
+                        <FontIcon Glyph="&#xE89F;" />
+                    </Button>
+
+                    <local:TabControl x:Name="SplitViewPaneTabs" Grid.Row="1">
                         <local:TabButton Glyph="&#xE7BC;" Click="ContentsButtonClick" />
                         <local:TabButton Glyph="&#xF2B7;" Click="LanguagesButtonClick" />
                         <local:TabButton Glyph="&#xE7F6;" Click="SpeechButtonClick" />
@@ -168,18 +180,6 @@
                         <local:TabButton Glyph="&#xE81C;" Click="HistoryButtonClick" />
                         <local:TabButton Glyph="&#xE713;" Click="SettingsAppBarButtonClick" />
                     </local:TabControl>
-
-                    <ContentPresenter Grid.Row="1" x:Name="PaneContentPresenter"
-                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-                    <local:SpeechView Grid.Row="1" x:Name="PaneSpeechView" Article="{Binding Article}"
-                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-                    <local:SettingsView Grid.Row="1" x:Name="PaneSettingsView"
-                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-
-                    <Button Grid.Row="1" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
-                            Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
-                        <FontIcon Glyph="&#xE89F;" />
-                    </Button>
                 </Grid>
             </SplitView.Pane>
 
