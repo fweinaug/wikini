@@ -30,7 +30,11 @@ namespace WikipediaApp
     public Uri ThumbnailUri
     {
       get { return thumbnailUri; }
-      private set { SetProperty(ref thumbnailUri, value); }
+      private set
+      {
+        if (SetProperty(ref thumbnailUri, value))
+          clearCommand?.RaiseCanExecuteChanged();
+      }
     }
 
     public ICommand BackCommand
@@ -50,7 +54,7 @@ namespace WikipediaApp
 
     public ICommand ClearCommand
     {
-      get { return clearCommand ?? (clearCommand = new Command(Clear)); }
+      get { return clearCommand ?? (clearCommand = new Command(Clear, () => thumbnailUri != null)); }
     }
 
     public async void Back()
