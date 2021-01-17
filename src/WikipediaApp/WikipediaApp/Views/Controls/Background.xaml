@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="OverlayBrush" Color="#10FFFFFF" />
+                    <SolidColorBrush x:Key="OverlayBrush" Color="#09FFFFFF" />
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
