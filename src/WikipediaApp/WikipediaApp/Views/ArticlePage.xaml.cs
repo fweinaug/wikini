@@ -77,7 +77,7 @@ namespace WikipediaApp
 
     private void UpdateTitleBar(CoreApplicationViewTitleBar sender)
     {
-      var height = sender.IsVisible && sender.Height > 0 ? sender.Height + 1 : 0;
+      var height = sender.IsVisible && sender.Height > 0 ? sender.Height + 10 : 0;
 
       SplitViewPaneGrid.Padding = new Thickness(0, height, 0, 0);
       AppTitleBarBackground.Height = height;
