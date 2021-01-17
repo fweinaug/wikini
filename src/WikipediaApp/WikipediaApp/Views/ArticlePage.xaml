@@ -173,12 +173,12 @@
                     </Button>
 
                     <local:TabControl x:Name="SplitViewPaneTabs" Grid.Row="1">
-                        <local:TabButton Glyph="&#xF652;" Click="ContentsButtonClick" />
-                        <local:TabButton Glyph="&#xF4F3;" Click="LanguagesButtonClick" />
-                        <local:TabButton Glyph="&#xF64D;" Click="SpeechButtonClick" />
-                        <local:TabButton Glyph="&#xFB51;" Click="FavoritesButtonClick" />
-                        <local:TabButton Glyph="&#xF47E;" Click="HistoryButtonClick" />
-                        <local:TabButton Glyph="&#xF6A9;" Click="SettingsAppBarButtonClick" />
+                        <local:TabButton x:Uid="ArticlePaneContentsTabButton" Glyph="&#xF652;" Click="ContentsButtonClick" />
+                        <local:TabButton x:Uid="AppPaneLanguagesTabButton" Glyph="&#xF4F3;" Click="LanguagesButtonClick" />
+                        <local:TabButton x:Uid="ArticlePaneSpeechTabButton" Glyph="&#xF64D;" Click="SpeechButtonClick" />
+                        <local:TabButton x:Uid="AppPaneFavoritesTabButton" Glyph="&#xFB51;" Click="FavoritesButtonClick" />
+                        <local:TabButton x:Uid="AppPaneHistoryTabButton" Glyph="&#xF47E;" Click="HistoryButtonClick" />
+                        <local:TabButton x:Uid="AppPaneSettingsTabButton" Glyph="&#xF6A9;" Click="SettingsAppBarButtonClick" />
                     </local:TabControl>
                 </Grid>
             </SplitView.Pane>

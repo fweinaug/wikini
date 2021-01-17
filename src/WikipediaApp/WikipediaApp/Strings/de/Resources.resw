@@ -129,8 +129,26 @@
   <data name="AppPaneCloseButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Seitenleiste ausblenden</value>
   </data>
+  <data name="AppPaneFavoritesTabButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="AppPaneHistoryTabButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Verlauf</value>
+  </data>
+  <data name="AppPaneLanguagesTabButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sprachen</value>
+  </data>
+  <data name="AppPaneSettingsTabButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
   <data name="AppSearchMoreLanguagesMenuFlyoutItem.Text" xml:space="preserve">
     <value>Weitere Sprachen</value>
+  </data>
+  <data name="AppSearchRunButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="AppSearchSpeechButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Spracherkennung</value>
   </data>
   <data name="AppSearchSpeechLoadErrorMessageDialog.Content" xml:space="preserve">
     <value>Media Player-Komponenten sind nicht verfügbar.</value>
@@ -159,11 +177,17 @@
   <data name="ArticleBackAppBarButton.Label" xml:space="preserve">
     <value>Zurück</value>
   </data>
+  <data name="ArticleBackAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
   <data name="ArticleBrowserAppBarButton.Label" xml:space="preserve">
     <value>Im Browser öffnen</value>
   </data>
   <data name="ArticleContentsAppBarButton.Label" xml:space="preserve">
     <value>Inhalt</value>
+  </data>
+  <data name="ArticleContentsAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Inhaltsverzeichnis</value>
   </data>
   <data name="ArticleContentsPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Inhaltsverzeichnis</value>
@@ -177,7 +201,13 @@
   <data name="ArticleFavoritesAppBarButton.Label" xml:space="preserve">
     <value>Favoriten</value>
   </data>
+  <data name="ArticleFavoritesAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
   <data name="ArticleForwardAppBarButton.Label" xml:space="preserve">
+    <value>Vorwärts</value>
+  </data>
+  <data name="ArticleForwardAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Vorwärts</value>
   </data>
   <data name="ArticleGroupDateToday" xml:space="preserve">
@@ -186,16 +216,31 @@
   <data name="ArticleHistoryAppBarButton.Label" xml:space="preserve">
     <value>Verlauf</value>
   </data>
+  <data name="ArticleHistoryAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Verlauf</value>
+  </data>
   <data name="ArticleHistoryPaneHeaderTextBlock.Text" xml:space="preserve">
     <value>Verlauf</value>
   </data>
   <data name="ArticleImagesAppBarButton.Label" xml:space="preserve">
     <value>Bilder anzeigen</value>
   </data>
+  <data name="ArticleImagesAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Bilder anzeigen</value>
+  </data>
+  <data name="ArticleImagesCloseAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="ArticleImagesDownloadAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Herunterladen</value>
+  </data>
   <data name="ArticleImagesEmptyTextBlock.Text" xml:space="preserve">
     <value>Der Artikel enthält keine Bilder.</value>
   </data>
   <data name="ArticleLanguagesAppBarButton.Label" xml:space="preserve">
+    <value>Sprachen</value>
+  </data>
+  <data name="ArticleLanguagesAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Sprachen</value>
   </data>
   <data name="ArticleLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
@@ -222,6 +267,12 @@
   <data name="ArticlePinAppBarButton.Label" xml:space="preserve">
     <value>An „Start“ anheften</value>
   </data>
+  <data name="ArticlePaneContentsTabButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Inhaltsverzeichnis</value>
+  </data>
+  <data name="ArticlePaneSpeechTabButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Vorlesen</value>
+  </data>
   <data name="ArticleRefreshAppBarButton.Label" xml:space="preserve">
     <value>Aktualisieren</value>
   </data>
@@ -231,6 +282,9 @@
   <data name="ArticleSearchAppBarButton.Label" xml:space="preserve">
     <value>Im Artikel suchen</value>
   </data>
+  <data name="ArticleSearchAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Im Artikel suchen</value>
+  </data>
   <data name="ArticleSearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Im Artikel suchen</value>
   </data>
@@ -238,6 +292,9 @@
     <value>Einstellungen</value>
   </data>
   <data name="ArticleShareAppBarButton.Label" xml:space="preserve">
+    <value>Teilen</value>
+  </data>
+  <data name="ArticleShareAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Teilen</value>
   </data>
   <data name="ArticleSpeechAppBarButton.Label" xml:space="preserve">

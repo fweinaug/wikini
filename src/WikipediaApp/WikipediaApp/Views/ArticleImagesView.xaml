@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <CommandBar Grid.Row="0" Background="Transparent" OverflowButtonVisibility="Collapsed">
-            <AppBarButton Click="DownloadButtonClick">
+            <AppBarButton x:Uid="ArticleImagesDownloadAppBarButton" Click="DownloadButtonClick">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xF151;" />
                 </AppBarButton.Icon>
@@ -22,7 +22,7 @@
 
             <AppBarSeparator />
 
-            <AppBarButton Click="CloseButtonClick">
+            <AppBarButton x:Uid="ArticleImagesCloseAppBarButton" Click="CloseButtonClick">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xF36B;" />
                 </AppBarButton.Icon>
