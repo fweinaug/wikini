@@ -346,7 +346,7 @@
 
                                 <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xF499;" />
+                                        <FontIcon Glyph="&#xF487;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
