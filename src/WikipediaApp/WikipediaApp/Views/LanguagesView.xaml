@@ -78,13 +78,13 @@
             <MenuFlyoutItem x:Uid="MainLanguagesPaneAddFavoriteMenuFlyoutItem" Click="OnAddFavoriteMenuFlyoutItemClick"
                             Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
                 <MenuFlyoutItem.Icon>
-                    <FontIcon Glyph="&#xE710;" />
+                    <FontIcon Glyph="&#xF108;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
             <MenuFlyoutItem x:Uid="MainLanguagesPaneRemoveFavoriteMenuFlyoutItem" Click="OnRemoveFavoriteMenuFlyoutItemClick"
                             Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <MenuFlyoutItem.Icon>
-                    <FontIcon Glyph="&#xE738;" />
+                    <FontIcon Glyph="&#xFC73;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
         </MenuFlyout>

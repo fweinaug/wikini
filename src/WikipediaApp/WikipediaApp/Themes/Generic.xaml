@@ -32,7 +32,8 @@
                         </VisualStateManager.VisualStateGroups>
 
                         <Button Name="PART_Button" Style="{StaticResource SplitViewPaneHeaderButtonStyle}" Width="50" Height="40">
-                            <FontIcon Name="Icon" Glyph="{TemplateBinding Glyph}" FontSize="14" />
+                            <FontIcon Name="Icon" Glyph="{TemplateBinding Glyph}"
+                                      FontFamily="/Assets/Fonts/FluentSystemIcons-Regular.ttf#FluentSystemIcons-Regular" FontSize="20" />
                         </Button>
                     </Grid>
                 </ControlTemplate>

@@ -13,7 +13,7 @@
         <MenuFlyout x:Key="ItemMenuFlyout">
             <MenuFlyoutItem x:Uid="MainHistoryPaneClearMenuFlyoutItem" Command="{Binding ClearHistoryCommand}">
                 <MenuFlyoutItem.Icon>
-                    <FontIcon Glyph="&#xE74D;" />
+                    <FontIcon Glyph="&#xF9BB;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
         </MenuFlyout>

@@ -13,7 +13,7 @@
         <MenuFlyout x:Key="ItemMenuFlyout">
             <MenuFlyoutItem x:Uid="MainFavoritesPaneRemoveMenuFlyoutItem" Command="{Binding RemoveFromFavoritesCommand}">
                 <MenuFlyoutItem.Icon>
-                    <FontIcon Glyph="&#xE8D9;" />
+                    <FontIcon Glyph="&#xF71D;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
         </MenuFlyout>

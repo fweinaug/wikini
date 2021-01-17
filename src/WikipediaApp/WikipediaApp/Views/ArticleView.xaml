@@ -9,24 +9,46 @@
 
     <UserControl.Resources>
         <MenuFlyout x:Name="LinkMenuFlyout">
-            <MenuFlyoutItem x:Uid="ArticleLinkNavigateMenuFlyoutItem" Icon="Go" DataContext="{Binding ArticleFlyout}" Click="NavigateLinkMenuFlyoutItem" ToolTipService.ToolTip="{Binding Title}" />
+            <MenuFlyoutItem x:Uid="ArticleLinkNavigateMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Click="NavigateLinkMenuFlyoutItem" ToolTipService.ToolTip="{Binding Title}">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xF581;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+
             <MenuFlyoutItem x:Uid="ArticleLinkAddFavoritesMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding AddToFavoritesCommand}" IsEnabled="{Binding IsArticle}"
                             Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
                 <MenuFlyoutItem.Icon>
-                    <FontIcon Glyph="&#xE734;" />
+                    <FontIcon Glyph="&#xF712;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
+
             <MenuFlyoutItem x:Uid="ArticleLinkRemoveFavoritesMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding RemoveFromFavoritesCommand}"
                             Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <MenuFlyoutItem.Icon>
-                    <FontIcon Glyph="&#xE8D9;" />
+                    <FontIcon Glyph="&#xF71D;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
-            <MenuFlyoutItem x:Uid="ArticleLinkPinMenuFlyoutItem" Icon="Pin" DataContext="{Binding ArticleFlyout}" Command="{Binding PinCommand}"
-                            Visibility="{Binding IsArticle, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+            <MenuFlyoutItem x:Uid="ArticleLinkPinMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding PinCommand}"
+                            Visibility="{Binding IsArticle, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xF600;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+
             <MenuFlyoutSeparator />
-            <MenuFlyoutItem x:Uid="ArticleLinkShareMenuFlyoutItem" Icon="Share" DataContext="{Binding ArticleFlyout}" Command="{Binding ShareCommand}" />
-            <MenuFlyoutItem x:Uid="ArticleLinkClipboardMenuFlyoutItem" Icon="Copy" DataContext="{Binding ArticleFlyout}" Command="{Binding CopyToClipboardCommand}" />
+            
+            <MenuFlyoutItem x:Uid="ArticleLinkShareMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding ShareCommand}">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xF6AF;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+
+            <MenuFlyoutItem x:Uid="ArticleLinkClipboardMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding CopyToClipboardCommand}">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xF2D1;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
         </MenuFlyout>
     </UserControl.Resources>
 

@@ -34,6 +34,11 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
+            <Style TargetType="FontIcon">
+                <Setter Property="FontFamily" Value="/Assets/Fonts/FluentSystemIcons-Regular.ttf#FluentSystemIcons-Regular" />
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+
             <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <local:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />
             <local:GroupKeyToTitleConverter x:Key="GroupKeyToTitleConverter" />

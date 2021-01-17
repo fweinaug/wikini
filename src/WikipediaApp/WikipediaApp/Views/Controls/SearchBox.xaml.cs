@@ -102,7 +102,7 @@ namespace WikipediaApp
         var item = new MenuFlyoutItem
         {
           Text = language.Name,
-          Icon = language == QueryLanguage ? new FontIcon {Glyph = "\uE73E"} : null,
+          Icon = language == QueryLanguage ? new FontIcon { Glyph="\uF96C" } : null,
           DataContext = language
         };
 

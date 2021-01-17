@@ -116,7 +116,7 @@
                 <MenuFlyoutSeparator />
                 <MenuFlyoutItem x:Uid="AppSearchMoreLanguagesMenuFlyoutItem" Click="OnMoreLanguagesMenuFlyoutItemClick">
                     <MenuFlyoutItem.Icon>
-                        <FontIcon Glyph="&#xF2B7;" />
+                        <FontIcon Glyph="&#xF4F2;" />
                     </MenuFlyoutItem.Icon>
                 </MenuFlyoutItem>
             </MenuFlyout>
@@ -183,13 +183,13 @@
         <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="3">
             <Button Style="{StaticResource TransparentButtonStyle}" Foreground="Gray"
                     Padding="10,0" VerticalAlignment="Stretch" Click="OnRecognizeSpeechClick">
-                <FontIcon Glyph="&#xEFA9;" FontSize="15" />
+                <FontIcon Glyph="&#xF5DE;" FontSize="16" />
             </Button>
 
             <Button x:Name="SearchButton" Click="OnSearchButtonClick" Background="Transparent" IsEnabled="False"
                     CornerRadius="0,3,3,0" BorderThickness="0" VerticalAlignment="Stretch">
                 <Button.Content>
-                    <SymbolIcon Symbol="Find" Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
+                    <FontIcon Glyph="&#xF68F;" Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
                 </Button.Content>
             </Button>
         </StackPanel>

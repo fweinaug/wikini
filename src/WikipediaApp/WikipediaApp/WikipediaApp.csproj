@@ -158,6 +158,7 @@
     <Content Include="Data\versions.json" />
     <Content Include="Data\de\changelog.json" />
     <Content Include="Data\en\changelog.json" />
+    <Content Include="Assets\Fonts\FluentSystemIcons-Regular.ttf" />
     <PRIResource Include="Strings\fr\Resources.resw" />
     <PRIResource Include="Strings\fr\ManifestStrings.resw" />
   </ItemGroup>

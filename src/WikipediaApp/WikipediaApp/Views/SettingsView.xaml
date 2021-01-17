@@ -170,16 +170,16 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
 
-                            <FontIcon Grid.Column="0" Grid.Row="0" Glyph="&#xE946;" Margin="0,0,8,0" />
+                            <FontIcon Grid.Column="0" Grid.Row="0" Glyph="&#xF4A4;" Margin="0,0,8,0" />
                             <HyperlinkButton Grid.Column="1" Grid.Row="0" x:Uid="SettingsChangelogButton" Click="ChangelogClick" />
 
-                            <FontIcon Grid.Column="0" Grid.Row="1" Glyph="&#xE224;" Margin="0,0,8,0" />
+                            <FontIcon Grid.Column="0" Grid.Row="1" Glyph="&#xF710;" Margin="0,0,8,0" />
                             <HyperlinkButton Grid.Column="1" Grid.Row="1" x:Uid="SettingsReviewButton" Click="ReviewClick" />
 
-                            <FontIcon Grid.Column="0" Grid.Row="2" Glyph="&#xED15;" Margin="0,0,8,0" />
+                            <FontIcon Grid.Column="0" Grid.Row="2" Glyph="&#xF5D3;" Margin="0,0,8,0" />
                             <HyperlinkButton Grid.Column="1" Grid.Row="2" x:Uid="SettingsFeedbackButton" Click="FeedbackClick" />
 
-                            <FontIcon Grid.Column="0" Grid.Row="3" Glyph="&#xE774;" Margin="0,0,8,0" />
+                            <FontIcon Grid.Column="0" Grid.Row="3" Glyph="&#xF45B;" Margin="0,0,8,0" />
                             <HyperlinkButton Grid.Column="1" Grid.Row="3" x:Uid="SettingsWebsiteButton" Click="WebsiteClick" />
 
                             <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" x:Uid="SettingsDisclaimerButton" Click="DisclaimerClick" Style="{ThemeResource TextBlockButtonStyle}" Margin="0,50,0,0" Padding="0" />

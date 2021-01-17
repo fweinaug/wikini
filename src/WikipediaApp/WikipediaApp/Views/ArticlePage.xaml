@@ -169,16 +169,16 @@
 
                     <Button Grid.Row="0" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
-                        <FontIcon Glyph="&#xE89F;" />
+                        <FontIcon Glyph="&#xF598;" />
                     </Button>
 
                     <local:TabControl x:Name="SplitViewPaneTabs" Grid.Row="1">
-                        <local:TabButton Glyph="&#xE7BC;" Click="ContentsButtonClick" />
-                        <local:TabButton Glyph="&#xF2B7;" Click="LanguagesButtonClick" />
-                        <local:TabButton Glyph="&#xE7F6;" Click="SpeechButtonClick" />
-                        <local:TabButton Glyph="&#xE728;" Click="FavoritesButtonClick" />
-                        <local:TabButton Glyph="&#xE81C;" Click="HistoryButtonClick" />
-                        <local:TabButton Glyph="&#xE713;" Click="SettingsAppBarButtonClick" />
+                        <local:TabButton Glyph="&#xF652;" Click="ContentsButtonClick" />
+                        <local:TabButton Glyph="&#xF4F3;" Click="LanguagesButtonClick" />
+                        <local:TabButton Glyph="&#xF64D;" Click="SpeechButtonClick" />
+                        <local:TabButton Glyph="&#xFB51;" Click="FavoritesButtonClick" />
+                        <local:TabButton Glyph="&#xF47E;" Click="HistoryButtonClick" />
+                        <local:TabButton Glyph="&#xF6A9;" Click="SettingsAppBarButtonClick" />
                     </local:TabControl>
                 </Grid>
             </SplitView.Pane>
@@ -216,14 +216,14 @@
                                     VerticalAlignment="Stretch" Margin="2,5" BorderThickness="1" Background="Transparent"
                                     Style="{StaticResource ButtonRevealStyle}"
                                     Click="SearchBackwardButtonClick">
-                                <FontIcon Glyph="&#xE96D;" FontSize="10" />
+                                <FontIcon Glyph="&#xF2B4;" FontSize="12" />
                             </Button>
 
                             <Button Grid.Column="2"
                                     VerticalAlignment="Stretch" Margin="2,5" BorderThickness="1" Background="Transparent"
                                     Style="{StaticResource ButtonRevealStyle}"
                                     Click="SearchForwardButtonClick">
-                                <FontIcon Glyph="&#xE96E;" FontSize="10" />
+                                <FontIcon Glyph="&#xF2A1;" FontSize="12" />
                             </Button>
 
                             <TextBlock Grid.Column="3"
@@ -234,7 +234,7 @@
                                     VerticalAlignment="Stretch" Margin="5" BorderThickness="1" Background="Transparent"
                                     Style="{StaticResource ButtonRevealStyle}"
                                     Click="HideSearchBarButtonClick">
-                                <FontIcon Glyph="&#xEF2C;" FontSize="10" />
+                                <FontIcon Glyph="&#xF367;" FontSize="10" />
                             </Button>
                         </Grid>
                     </Grid>
@@ -247,101 +247,126 @@
 
                             <CommandBar x:Name="CommandBar" Background="Transparent" DefaultLabelPosition="Collapsed" Opening="CommandBarOpening">
                                 <CommandBar.SecondaryCommands>
-                                    <AppBarButton x:Uid="ArticleTopAppBarButton" Icon="Up" Click="TopButtonClick" />
-                                    <AppBarButton x:Uid="ArticleRefreshAppBarButton" Icon="Refresh" Command="{Binding RefreshCommand}" />
+                                    <AppBarButton x:Uid="ArticleTopAppBarButton" Click="TopButtonClick">
+                                        <AppBarButton.Icon>
+                                            <FontIcon Glyph="&#xF19B;" />
+                                        </AppBarButton.Icon>
+                                    </AppBarButton>
+
+                                    <AppBarButton x:Uid="ArticleRefreshAppBarButton" Command="{Binding RefreshCommand}">
+                                        <AppBarButton.Icon>
+                                            <FontIcon Glyph="&#xF13F;" />
+                                        </AppBarButton.Icon>
+                                    </AppBarButton>
 
                                     <AppBarButton x:Uid="ArticleAddFavoriteAppBarButton" Command="{Binding AddToFavoritesCommand}"
                                                   Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
                                         <AppBarButton.Icon>
-                                            <FontIcon Glyph="&#xE734;" />
+                                            <FontIcon Glyph="&#xF712;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
                                     <AppBarButton x:Uid="ArticleRemoveFavoriteAppBarButton" Command="{Binding RemoveFromFavoritesCommand}"
                                                   Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <AppBarButton.Icon>
-                                            <FontIcon Glyph="&#xE8D9;" />
+                                            <FontIcon Glyph="&#xF71D;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
-                                    <AppBarButton x:Uid="ArticlePinAppBarButton" Icon="Pin" Command="{Binding PinCommand}" />
+                                    <AppBarButton x:Uid="ArticlePinAppBarButton" Command="{Binding PinCommand}">
+                                        <AppBarButton.Icon>
+                                            <FontIcon Glyph="&#x0F600;" />
+                                        </AppBarButton.Icon>
+                                    </AppBarButton>
 
                                     <AppBarButton x:Uid="ArticleSpeechAppBarButton" Click="SpeechButtonClick">
                                         <AppBarButton.Icon>
-                                            <FontIcon Glyph="&#xE7F6;" />
+                                            <FontIcon Glyph="&#xF64D;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
                                     <AppBarButton x:Uid="ArticleEnterFullScreenButton" x:Name="EnterFullScreenButton" Click="EnterFullScreenButtonClick">
                                         <AppBarButton.Icon>
-                                            <FontIcon Glyph="&#xE740;" />
+                                            <FontIcon Glyph="&#xFC16;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
                                     <AppBarButton x:Uid="ArticleExitFullScreenButton" x:Name="ExitFullScreenButton" Click="ExitFullScreenButtonClick">
                                         <AppBarButton.Icon>
-                                            <FontIcon Glyph="&#xE73F;" />
+                                            <FontIcon Glyph="&#xFC17;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
                                     <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
                                         <AppBarButton.Icon>
-                                            <FontIcon Glyph="&#xEB41;" />
+                                            <FontIcon Glyph="&#xFA16;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
                                     <AppBarSeparator />
 
-                                    <AppBarButton x:Uid="ArticleSettingsAppBarButton" Icon="Setting" Click="SettingsAppBarButtonClick" />
+                                    <AppBarButton x:Uid="ArticleSettingsAppBarButton" Click="SettingsAppBarButtonClick">
+                                        <AppBarButton.Icon>
+                                            <FontIcon Glyph="&#xF6A8;" />
+                                        </AppBarButton.Icon>
+                                    </AppBarButton>
                                 </CommandBar.SecondaryCommands>
 
                                 <AppBarButton x:Uid="ArticleBackAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoBack}" Click="BackButtonClick">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xE76B;" />
+                                        <FontIcon Glyph="&#xF2A9;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
                                 <AppBarButton x:Uid="ArticleForwardAppBarButton" IsEnabled="{Binding ElementName=ArticleView, Path=CanGoForward}" Click="ForwardButtonClick">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xE76C;" />
+                                        <FontIcon Glyph="&#xF2AF;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
                                 <AppBarButton x:Uid="ArticleHistoryAppBarButton" Click="HistoryButtonClick">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xE81C;" />
+                                        <FontIcon Glyph="&#xF47E;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
                                 <AppBarButton x:Uid="ArticleFavoritesAppBarButton" Click="FavoritesButtonClick">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xE728;" />
+                                        <FontIcon Glyph="&#xFB51;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
                                 <AppBarSeparator />
 
-                                <AppBarButton x:Uid="ArticleShareAppBarButton" Icon="Share" Command="{Binding ShareCommand}" />
-
-                                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
+                                <AppBarButton x:Uid="ArticleShareAppBarButton" Command="{Binding ShareCommand}">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xE8B9;" />
+                                        <FontIcon Glyph="&#xF6AF;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
-                                <AppBarButton x:Uid="ArticleSearchAppBarButton" Icon="Find" Click="ToggleSearchBarAppBarButtonClick" />
+                                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
+                                    <AppBarButton.Icon>
+                                        <FontIcon Glyph="&#xF499;" />
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
+
+                                <AppBarButton x:Uid="ArticleSearchAppBarButton" Click="ToggleSearchBarAppBarButtonClick">
+                                    <AppBarButton.Icon>
+                                        <FontIcon Glyph="&#xF3AE;" />
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
 
                                 <AppBarSeparator />
 
                                 <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick" IsEnabled="{Binding HasSections}">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xE7BC;" />
+                                        <FontIcon Glyph="&#xF651;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
                                 <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LanguagesButtonClick" IsEnabled="{Binding HasLanguages}">
                                     <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xF2B7;" />
+                                        <FontIcon Glyph="&#xF4F2;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
                             </CommandBar>

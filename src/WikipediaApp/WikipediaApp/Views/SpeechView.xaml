@@ -38,27 +38,27 @@
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Uid="ArticleSpeechPaneBackButton" x:Name="BackButton" Click="BackClick" Margin="5">
                     <Button.Content>
-                        <SymbolIcon Symbol="Previous" />
+                        <FontIcon Glyph="&#xF674;" FontSize="20" />
                     </Button.Content>
                 </Button>
                 <Button x:Uid="ArticleSpeechPanePlayButton" x:Name="PlayButton" Click="PlayClick" Margin="5">
                     <Button.Content>
-                        <SymbolIcon Symbol="Play" />
+                        <FontIcon Glyph="&#xF605;" FontSize="20" />
                     </Button.Content>
                 </Button>
                 <Button x:Uid="ArticleSpeechPanePauseButton" x:Name="PauseButton" Click="PauseClick" Margin="5">
                     <Button.Content>
-                        <SymbolIcon Symbol="Pause" />
+                        <FontIcon Glyph="&#xF5A1;" FontSize="20" />
                     </Button.Content>
                 </Button>
                 <Button x:Uid="ArticleSpeechPaneForwardButton" x:Name="NextButton" Click="ForwardClick" Margin="5">
                     <Button.Content>
-                        <SymbolIcon Symbol="Next" />
+                        <FontIcon Glyph="&#xF3FE;" FontSize="20" />
                     </Button.Content>
                 </Button>
                 <Button x:Uid="ArticleSpeechPaneSettingsButton" Margin="5" Style="{StaticResource TransparentButtonStyle}">
                     <Button.Content>
-                        <FontIcon Glyph="&#xEFA9;" />
+                        <FontIcon Glyph="&#xF5DE;" FontSize="20" />
                     </Button.Content>
 
                     <Button.Flyout>
@@ -154,7 +154,7 @@
                                         </VisualState.StateTriggers>
 
                                         <VisualState.Setters>
-                                            <Setter Target="StatusIcon.Symbol" Value="Pause" />
+                                            <Setter Target="StatusIcon.Glyph" Value="&#xF5A1;" />
                                             <Setter Target="NumberTextBlock.FontWeight" Value="SemiBold" />
                                             <Setter Target="HeadlineTextBlock.FontWeight" Value="SemiBold" />
                                         </VisualState.Setters>
@@ -178,9 +178,10 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            
-                            <SymbolIcon Grid.Column="0" Name="StatusIcon" Symbol="Play" Foreground="Gray" Margin="5,0"
-                                        VerticalAlignment="Center" />
+
+                            <FontIcon Grid.Column="0" Name="StatusIcon" Glyph="&#xF608;"
+                                      FontFamily="/Assets/Fonts/FluentSystemIcons-Regular.ttf#FluentSystemIcons-Regular" FontSize="20" Foreground="Gray" Margin="5,0"
+                                      VerticalAlignment="Center" />
                             <ProgressRing Grid.Column="0" Name="LoadingProgressRing" IsActive="True" Foreground="Gray" Margin="5,0"
                                           VerticalAlignment="Center" Visibility="Collapsed" />
 

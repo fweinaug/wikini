@@ -36,8 +36,9 @@
             </DataTemplate>
 
             <Style x:Key="CommandBarButton" TargetType="Button" BasedOn="{StaticResource TransparentButtonStyle}">
-                <Setter Property="Padding" Value="15" />
+                <Setter Property="Padding" Value="12" />
                 <Setter Property="CornerRadius" Value="7" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
 
             <Style x:Key="CommandBarSeparator" TargetType="Rectangle">
@@ -112,14 +113,14 @@
 
                     <Button Grid.Row="0" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
-                        <FontIcon Glyph="&#xE89F;" />
+                        <FontIcon Glyph="&#xF598;" />
                     </Button>
 
                     <local:TabControl x:Name="SplitViewPaneTabs" Grid.Row="1">
-                        <local:TabButton Glyph="&#xE728;" Click="FavoritesButtonClick" />
-                        <local:TabButton Glyph="&#xE81C;" Click="HistoryButtonClick" />
-                        <local:TabButton Glyph="&#xF2B7;" Click="LanguagesButtonClick" />
-                        <local:TabButton Glyph="&#xE713;" Click="SettingsAppBarButtonClick" />
+                        <local:TabButton Glyph="&#xFB51;" Click="FavoritesButtonClick" />
+                        <local:TabButton Glyph="&#xF47E;" Click="HistoryButtonClick" />
+                        <local:TabButton Glyph="&#xF4F3;" Click="LanguagesButtonClick" />
+                        <local:TabButton Glyph="&#xF6A9;" Click="SettingsAppBarButtonClick" />
                     </local:TabControl>
                 </Grid>
             </SplitView.Pane>
@@ -161,20 +162,20 @@
 
                         <Button x:Uid="MainPictureOfTheDayButton" Style="{StaticResource TransparentButtonStyle}"
                                 Padding="12" CornerRadius="90" BorderThickness="2">
-                            
-                            <FontIcon Glyph="&#xEB9F;" />
+
+                            <FontIcon Glyph="&#xF489;" />
 
                             <Button.Flyout>
                                 <MenuFlyout Placement="TopEdgeAlignedLeft">
                                     <MenuFlyoutItem x:Uid="MainPictureOfTheDayBackMenuFlyoutItem" Command="{Binding PictureOfTheDay.BackCommand}">
                                         <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE8F5;" />
+                                            <FontIcon Glyph="&#xF231;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
                                     <MenuFlyoutItem x:Uid="MainPictureOfTheDayTodayMenuFlyoutItem" Command="{Binding PictureOfTheDay.TodayCommand}">
                                         <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE8D1;" />
+                                            <FontIcon Glyph="&#xF23B;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
@@ -182,7 +183,7 @@
 
                                     <MenuFlyoutItem x:Uid="MainPictureOfTheDayRandomMenuFlyoutItem" Command="{Binding PictureOfTheDay.RandomCommand}">
                                         <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE8BF;" />
+                                            <FontIcon Glyph="&#xF934;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
@@ -190,7 +191,7 @@
 
                                     <MenuFlyoutItem x:Uid="MainPictureOfTheDayClearMenuFlyoutItem" Command="{Binding PictureOfTheDay.ClearCommand}">
                                         <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE711;" />
+                                            <FontIcon Glyph="&#xF368;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
                                 </MenuFlyout>
@@ -204,31 +205,31 @@
                                 Background="{ThemeResource SystemControlAcrylicElementBrush}" Opacity="0.85">
 
                         <Button x:Uid="MainHomepageButton" Style="{StaticResource CommandBarButton}" Command="{Binding ShowHomePageCommand}">
-                            <SymbolIcon Symbol="Home" />
+                            <FontIcon Glyph="&#xF481;" />
                         </Button>
 
                         <Button x:Uid="MainRandomButton" Style="{StaticResource CommandBarButton}" Command="{Binding ShowRandomArticleCommand}">
-                            <SymbolIcon Symbol="Shuffle" />
+                            <FontIcon Glyph="&#xf18E;" />
                         </Button>
 
                         <Rectangle Style="{StaticResource CommandBarSeparator}" />
 
                         <Button x:Uid="MainFavoritesButton" Style="{StaticResource CommandBarButton}" Click="FavoritesButtonClick">
-                            <FontIcon Glyph="&#xE728;" />
+                            <FontIcon Glyph="&#xFB52;" />
                         </Button>
 
                         <Button x:Uid="MainHistoryButton" Style="{StaticResource CommandBarButton}" Click="HistoryButtonClick">
-                            <FontIcon Glyph="&#xE81C;" />
+                            <FontIcon Glyph="&#xF47F;" />
                         </Button>
 
                         <Button x:Uid="MainLanguagesButton" Style="{StaticResource CommandBarButton}" Click="LanguagesButtonClick">
-                            <FontIcon Glyph="&#xF2B7;" />
+                            <FontIcon Glyph="&#xF4F4;" />
                         </Button>
 
                         <Rectangle Style="{StaticResource CommandBarSeparator}" />
 
                         <Button x:Uid="MainSettingsButton" Style="{StaticResource CommandBarButton}" Click="SettingsAppBarButtonClick">
-                            <SymbolIcon Symbol="Setting" />
+                            <FontIcon Glyph="&#xF6AA;" />
                         </Button>
                     </StackPanel>
                 </Grid>

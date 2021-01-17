@@ -14,11 +14,19 @@
         </Grid.RowDefinitions>
 
         <CommandBar Grid.Row="0" Background="Transparent" OverflowButtonVisibility="Collapsed">
-            <AppBarButton Icon="Download" Click="DownloadButtonClick" />
+            <AppBarButton Click="DownloadButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xF151;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
 
             <AppBarSeparator />
 
-            <AppBarButton Icon="Cancel" Click="CloseButtonClick" />
+            <AppBarButton Click="CloseButtonClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xF36B;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
         </CommandBar>
 
         <TextBlock x:Name="PositionTextBlock" Grid.Row="0"
