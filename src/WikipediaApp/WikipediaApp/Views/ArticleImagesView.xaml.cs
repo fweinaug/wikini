@@ -59,8 +59,7 @@ namespace WikipediaApp
 
     private void Close()
     {
-      if (CloseCommand != null && CloseCommand.CanExecute(null))
-        CloseCommand.Execute(null);
+      CloseCommand?.Execute(null);
     }
 
     private void FlipViewSelectionChanged(object sender, SelectionChangedEventArgs e)

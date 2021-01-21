@@ -23,7 +23,10 @@ namespace WikipediaApp
 
     public void Execute(object parameter)
     {
-      action((T)parameter);
+      if (CanExecute(parameter))
+      {
+        action((T)parameter);
+      }
     }
 
     public void RaiseCanExecuteChanged()
@@ -52,7 +55,10 @@ namespace WikipediaApp
 
     public void Execute(object parameter)
     {
-      action();
+      if (CanExecute(parameter))
+      {
+        action();
+      }
     }
 
     public void RaiseCanExecuteChanged()

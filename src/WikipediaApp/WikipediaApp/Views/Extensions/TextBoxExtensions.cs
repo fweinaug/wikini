@@ -41,8 +41,7 @@ namespace WikipediaApp
       var textBox = (TextBox)sender;
       var command = GetEnterCommand(textBox);
 
-      if (command != null && command.CanExecute(null))
-        command.Execute(null);
+      command?.Execute(null);
     }
   }
 }

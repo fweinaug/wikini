@@ -235,12 +235,7 @@ namespace WikipediaApp
           WebView.ScrollToElement(Article.Anchor);
       }
 
-      var command = LoadedCommand;
-
-      if (command != null && command.CanExecute(e.Uri))
-      {
-        command.Execute(e.Uri);
-      }
+      LoadedCommand?.Execute(e.Uri);
     }
 
     private void WebViewScriptNotify(object sender, NotifyEventArgs e)
@@ -390,10 +385,7 @@ namespace WikipediaApp
         WebView.NavigationCompleted += webViewOnNavigationCompleted;
       }
 
-      var command = ShowArticleCommand;
-
-      if (command != null && command.CanExecute(entry))
-        ShowArticleCommand.Execute(entry);
+      ShowArticleCommand?.Execute(entry);
     }
 
     private void ShowArticleFlyout(ScriptNotifyData data)

@@ -53,8 +53,7 @@ namespace WikipediaApp
       var listView = (ListViewBase)sender;
       var command = GetCommand(listView);
 
-      if (command != null && command.CanExecute(e.ClickedItem))
-        command.Execute(e.ClickedItem);
+      command?.Execute(e.ClickedItem);
     }
 
     private static void OnItemMenuFlyoutPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

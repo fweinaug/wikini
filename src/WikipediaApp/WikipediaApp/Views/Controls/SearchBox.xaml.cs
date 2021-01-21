@@ -119,9 +119,7 @@ namespace WikipediaApp
       var item = (MenuFlyoutItem)sender;
       var language = item.DataContext as Language;
       
-      var command = LanguageSelectedCommand;
-      if (command != null && command.CanExecute(language))
-        command.Execute(language);
+      LanguageSelectedCommand?.Execute(language);
     }
 
     private void OnMoreLanguagesMenuFlyoutItemClick(object sender, RoutedEventArgs e)
@@ -145,10 +143,8 @@ namespace WikipediaApp
       if (args.ChosenSuggestion != null)
       {
         var item = args.ChosenSuggestion;
-        var command = ItemSelectedCommand;
 
-        if (command != null && command.CanExecute(item))
-          command.Execute(item);
+        ItemSelectedCommand?.Execute(item);
       }
     }
 
@@ -176,10 +172,7 @@ namespace WikipediaApp
 
     private void PerformQuery()
     {
-      var command = QueryCommand;
-
-      if (command != null && command.CanExecute(null))
-        command.Execute(null);
+      QueryCommand?.Execute(null);
       
       if (TextBox.Items?.Count > 0)
         TextBox.IsSuggestionListOpen = true;
