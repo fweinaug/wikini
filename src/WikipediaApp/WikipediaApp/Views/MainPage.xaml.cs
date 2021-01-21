@@ -182,12 +182,12 @@ namespace WikipediaApp
 
     private void PictureOfTheDayStackPanelPointerEntered(object sender, PointerRoutedEventArgs e)
     {
-      PictureOfTheDayStackPanel.Opacity = 0.85;
+      PictureOfTheDayStackPanel.Opacity = 0.9;
     }
 
     private void PictureOfTheDayStackPanelPointerExited(object sender, PointerRoutedEventArgs e)
     {
-      PictureOfTheDayStackPanel.Opacity = 0.4;
+      PictureOfTheDayStackPanel.Opacity = 0.5;
     }
   }
 }

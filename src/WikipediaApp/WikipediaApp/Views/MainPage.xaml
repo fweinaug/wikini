@@ -157,7 +157,7 @@
                     <StackPanel x:Name="PictureOfTheDayStackPanel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 Orientation="Horizontal" Spacing="5"
                                 Margin="40" Padding="0" CornerRadius="90"
-                                Background="{ThemeResource SystemControlAcrylicElementBrush}" Opacity="0.4"
+                                Opacity="0.4" RequestedTheme="Dark"
                                 PointerEntered="PictureOfTheDayStackPanelPointerEntered" PointerExited="PictureOfTheDayStackPanelPointerExited">
 
                         <Button x:Uid="MainPictureOfTheDayButton" Style="{StaticResource TransparentButtonStyle}"
