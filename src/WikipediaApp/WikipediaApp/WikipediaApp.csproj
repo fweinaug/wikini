@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="Model\FavoriteLanguage.cs" />
     <Compile Include="Services\LanguagesReader.cs" />
+    <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="Views\Controls\TabControl.cs" />
     <Compile Include="Views\Helpers\AudioCapturePermissions.cs" />
     <Compile Include="Views\Helpers\SpeechRecognitionHelper.cs" />

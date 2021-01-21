@@ -1,6 +1,6 @@
 ﻿namespace WikipediaApp
 {
-  public class ArticleChapter : ViewModelBase
+  public class ArticleChapter : ObservableObject
   {
     private bool isActive = false;
     private bool isLoading = false;

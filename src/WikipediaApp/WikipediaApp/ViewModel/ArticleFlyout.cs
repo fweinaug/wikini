@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace WikipediaApp
 {
-  public class ArticleFlyout : ViewModelBase
+  public class ArticleFlyout : ObservableObject
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
 

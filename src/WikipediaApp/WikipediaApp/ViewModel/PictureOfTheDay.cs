@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace WikipediaApp
 {
-  public class PictureOfTheDay : ViewModelBase
+  public class PictureOfTheDay : ObservableObject
   {
     private readonly WikipediaService wikipediaService;
 
