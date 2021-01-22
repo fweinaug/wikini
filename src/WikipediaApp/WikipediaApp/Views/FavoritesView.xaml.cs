@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace WikipediaApp
@@ -15,6 +16,13 @@ namespace WikipediaApp
     private void FavoritesListViewItemClick(object sender, ItemClickEventArgs e)
     {
       ArticleClick?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void RemoveArticleClick(object sender, RoutedEventArgs e)
+    {
+      var article = ((FrameworkElement)e.OriginalSource).DataContext as ArticleHead;
+
+      ArticleFavorites.RemoveArticle(article);
     }
   }
 }

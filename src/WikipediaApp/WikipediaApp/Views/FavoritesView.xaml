@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <MenuFlyout x:Key="ItemMenuFlyout">
-            <MenuFlyoutItem x:Uid="MainFavoritesPaneRemoveMenuFlyoutItem" Command="{Binding RemoveFromFavoritesCommand}">
+            <MenuFlyoutItem x:Uid="MainFavoritesPaneRemoveMenuFlyoutItem" Click="RemoveArticleClick">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xF71D;" />
                 </MenuFlyoutItem.Icon>

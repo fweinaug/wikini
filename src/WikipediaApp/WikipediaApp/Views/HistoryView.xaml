@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <MenuFlyout x:Key="ItemMenuFlyout">
-            <MenuFlyoutItem x:Uid="MainHistoryPaneClearMenuFlyoutItem" Command="{Binding ClearHistoryCommand}">
+            <MenuFlyoutItem x:Uid="MainHistoryPaneClearMenuFlyoutItem" Click="ClearHistoryClick">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xF9BB;" />
                 </MenuFlyoutItem.Icon>

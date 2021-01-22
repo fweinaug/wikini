@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace WikipediaApp
@@ -15,6 +16,11 @@ namespace WikipediaApp
     private void HistoryListViewItemClick(object sender, ItemClickEventArgs e)
     {
       ArticleClick?.Invoke(this, EventArgs.Empty);
+    }
+
+    private async void ClearHistoryClick(object sender, RoutedEventArgs e)
+    {
+      await ArticleHistory.Clear();
     }
   }
 }
