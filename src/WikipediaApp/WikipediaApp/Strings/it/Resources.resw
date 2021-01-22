@@ -360,6 +360,9 @@
   <data name="MainHistoryPaneClearMenuFlyoutItem.Text" xml:space="preserve">
     <value>Cancella cronologia</value>
   </data>
+  <data name="MainHistoryPaneRemoveMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Rimuovi dalla cronologia</value>
+  </data>
   <data name="MainHistoryPaneEmptyTextBlock.Text" xml:space="preserve">
     <value>Non sono stati ancora aperti articoli.</value>
   </data>

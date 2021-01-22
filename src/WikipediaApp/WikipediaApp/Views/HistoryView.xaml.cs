@@ -22,5 +22,12 @@ namespace WikipediaApp
     {
       await ArticleHistory.Clear();
     }
+
+    private void RemoveArticleClick(object sender, RoutedEventArgs e)
+    {
+      var article = ((FrameworkElement)e.OriginalSource).DataContext as ReadArticle;
+
+      ArticleHistory.RemoveArticle(article);
+    }
   }
 }

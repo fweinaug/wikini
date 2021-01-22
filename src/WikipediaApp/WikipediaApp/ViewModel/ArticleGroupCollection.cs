@@ -28,18 +28,30 @@ namespace WikipediaApp
 
     private ArticleGroup GetGroup(DateTime date)
     {
-      var group = this.FirstOrDefault(x => (DateTime)x.Key == date);
+      var group = this.FirstOrDefault(x => x.Key == date);
 
       if (group == null)
       {
         group = new ArticleGroup { Key = date };
 
-        var index = this.TakeWhile(x => (DateTime)x.Key > date).Count();
+        var index = this.TakeWhile(x => x.Key > date).Count();
 
         Insert(index, group);
       }
 
       return group;
+    }
+
+    public void RemoveArticle(ReadArticle article)
+    {
+      var group = this.FirstOrDefault(x => x.Key == article.Date.Date);
+
+      if (group != null)
+      {
+        var readArticle = group.FirstOrDefault(x => ((ReadArticle)x).Id == article.Id);
+
+        group.Remove(readArticle);
+      }
     }
   }
 }

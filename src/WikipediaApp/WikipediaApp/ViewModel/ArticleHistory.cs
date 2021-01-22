@@ -115,5 +115,23 @@ namespace WikipediaApp
       database.Clear();
       session.Clear();
     }
+
+    public static void RemoveArticle(ReadArticle article)
+    {
+      if (database.FirstOrDefault(x => x.Id == article.Id) is ReadArticle readArticle)
+      {
+        using (var context = new WikipediaContext())
+        {
+          context.History.Remove(readArticle);
+          context.SaveChanges();
+        }
+
+        database.Remove(readArticle);
+      }
+
+      session.Remove(article);
+
+      groupedArticles.RemoveArticle(article);
+    }
   }
 }

@@ -360,6 +360,9 @@
   <data name="MainHistoryPaneClearMenuFlyoutItem.Text" xml:space="preserve">
     <value>Geschiedenis wissen</value>
   </data>
+  <data name="MainHistoryPaneRemoveMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Uit de geschiedenis verwijderen</value>
+  </data>
   <data name="MainHistoryPaneEmptyTextBlock.Text" xml:space="preserve">
     <value>Er zijn nog geen artikelen geopend.</value>
   </data>

@@ -360,6 +360,9 @@
   <data name="MainHistoryPaneClearMenuFlyoutItem.Text" xml:space="preserve">
     <value>Limpar histórico</value>
   </data>
+  <data name="MainHistoryPaneRemoveMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Remover da histórico</value>
+  </data>
   <data name="MainHistoryPaneEmptyTextBlock.Text" xml:space="preserve">
     <value>Nenhum artigo foi aberto ainda.</value>
   </data>

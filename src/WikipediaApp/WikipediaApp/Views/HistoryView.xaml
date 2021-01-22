@@ -11,6 +11,14 @@
 
     <UserControl.Resources>
         <MenuFlyout x:Key="ItemMenuFlyout">
+            <MenuFlyoutItem x:Uid="MainHistoryPaneRemoveMenuFlyoutItem" Click="RemoveArticleClick">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xF62D;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+
+            <MenuFlyoutSeparator />
+
             <MenuFlyoutItem x:Uid="MainHistoryPaneClearMenuFlyoutItem" Click="ClearHistoryClick">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xF9BB;" />
