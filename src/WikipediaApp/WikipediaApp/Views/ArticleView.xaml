@@ -25,7 +25,7 @@
             <MenuFlyoutItem x:Uid="ArticleLinkRemoveFavoritesMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Command="{Binding RemoveFromFavoritesCommand}"
                             Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <MenuFlyoutItem.Icon>
-                    <FontIcon Glyph="&#xF71D;" />
+                    <FontIcon Glyph="&#xF719;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
 

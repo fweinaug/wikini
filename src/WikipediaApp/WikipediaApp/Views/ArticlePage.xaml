@@ -269,7 +269,7 @@
                                     <AppBarButton x:Uid="ArticleRemoveFavoriteAppBarButton" Command="{Binding RemoveFromFavoritesCommand}"
                                                   Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <AppBarButton.Icon>
-                                            <FontIcon Glyph="&#xF71D;" />
+                                            <FontIcon Glyph="&#xF719;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
