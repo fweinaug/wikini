@@ -155,7 +155,7 @@ namespace WikipediaApp
         await UpdateStacks(article, currentArticle);
       }
 
-      var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Content, article.Language, article.Direction, Convert.ToInt32(Header) + 10);
+      var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Content, article.Language, article.TextDirection, Convert.ToInt32(Header) + 10);
 
       WebView.NavigateToString(html);
 

@@ -5,7 +5,7 @@ namespace WikipediaApp
 {
   public class Article : ArticleHead
   {
-    public string Direction { get; set; }
+    public string TextDirection { get; set; }
     public string Content { get; set; }
 
     public List<ArticleSection> Sections { get; set; }
@@ -16,7 +16,7 @@ namespace WikipediaApp
 
     protected Article(Article article) : this((ArticleHead)article)
     {
-      Direction = article.Direction;
+      TextDirection = article.TextDirection;
       Content = article.Content;
       Sections = article.Sections;
       Languages = article.Languages;

@@ -398,7 +398,7 @@ namespace WikipediaApp
       if (article == null)
         article = new Article(head);
 
-      article.Direction = ParseDirection(parseResult.headhtml);
+      article.TextDirection = ParseDirection(parseResult.headhtml);
       article.Title = parseResult.title;
       article.Content = parseResult.text;
       article.Sections = sections;
