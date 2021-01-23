@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
+using Windows.ApplicationModel;
+using Windows.Media;
 using Windows.Media.SpeechSynthesis;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -15,6 +18,7 @@ namespace WikipediaApp
 
     private static readonly SpeechSynthesizer Synthesizer = new SpeechSynthesizer();
 
+    private readonly SystemMediaTransportControls systemMediaControls;
     private readonly DispatcherTimer positionUpdateTimer = new DispatcherTimer();
     private readonly ArticleChapterCollection chapters = new ArticleChapterCollection();
     private int currentChapterIndex = -1;
@@ -31,6 +35,14 @@ namespace WikipediaApp
 
       ListView.ItemsSource = chapters;
 
+      systemMediaControls = SystemMediaTransportControls.GetForCurrentView();
+      systemMediaControls.IsEnabled = false;
+      systemMediaControls.ButtonPressed += SystemMediaControlsButtonPressed;
+
+      systemMediaControls.IsPlayEnabled = true;
+      systemMediaControls.IsPauseEnabled = true;
+      systemMediaControls.PlaybackStatus = MediaPlaybackStatus.Closed;
+
       positionUpdateTimer.Interval = TimeSpan.FromMilliseconds(500);
       positionUpdateTimer.Tick += PositionUpdateTimerTick;
 
@@ -40,8 +52,30 @@ namespace WikipediaApp
       SettingsSpeedSlider.ValueChanged += SettingsSpeedSliderValueChanged;
     }
 
+    private async void SystemMediaControlsButtonPressed(SystemMediaTransportControls sender, SystemMediaTransportControlsButtonPressedEventArgs args)
+    {
+      switch (args.Button)
+      {
+        case SystemMediaTransportControlsButton.Play:
+          await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, Resume);
+          break;
+        case SystemMediaTransportControlsButton.Pause:
+          await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, Pause);
+          break;
+        case SystemMediaTransportControlsButton.Next:
+          await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => GoForward());
+          break;
+        case SystemMediaTransportControlsButton.Previous:
+          await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, GoBack);
+          break;
+      }
+    }
+
     public void Unload()
     {
+      systemMediaControls.IsEnabled = false;
+      systemMediaControls.ButtonPressed -= SystemMediaControlsButtonPressed;
+
       positionUpdateTimer.Tick -= PositionUpdateTimerTick;
 
       SettingsVoiceComboBox.SelectionChanged -= SettingsVoiceComboBoxSelectionChanged;
@@ -75,6 +109,24 @@ namespace WikipediaApp
       chapters.Update(article);
 
       UpdateViewState();
+
+      systemMediaControls.IsEnabled = true;
+      UpdateSystemMediaControlsInfo(article);
+    }
+
+    private void UpdateSystemMediaControlsInfo(Article article)
+    {
+      var updater = systemMediaControls.DisplayUpdater;
+
+      updater.Type = MediaPlaybackType.Music;
+      updater.MusicProperties.Artist = Package.Current.DisplayName;
+      updater.MusicProperties.Title = article.Title;
+
+      updater.Thumbnail = article.ThumbnailUri != null
+        ? RandomAccessStreamReference.CreateFromUri(article.ThumbnailUri)
+        : null;
+
+      updater.Update();
     }
 
     private void PositionUpdateTimerTick(object sender, object e)
@@ -219,9 +271,25 @@ namespace WikipediaApp
           break;
       }
 
-      PlayButton.IsEnabled = chapters.Count > 0;
-      BackButton.IsEnabled = currentChapterIndex > 0;
-      NextButton.IsEnabled = currentChapterIndex + 1 < chapters.Count;
+      switch (state)
+      {
+        case MediaElementState.Playing:
+          systemMediaControls.PlaybackStatus = MediaPlaybackStatus.Playing;
+          break;
+        case MediaElementState.Paused:
+          systemMediaControls.PlaybackStatus = MediaPlaybackStatus.Paused;
+          break;
+        case MediaElementState.Stopped:
+          systemMediaControls.PlaybackStatus = MediaPlaybackStatus.Stopped;
+          break;
+        case MediaElementState.Closed:
+          systemMediaControls.PlaybackStatus = MediaPlaybackStatus.Closed;
+          break;
+      }
+
+      PlayButton.IsEnabled = systemMediaControls.IsPlayEnabled = chapters.Count > 0;
+      BackButton.IsEnabled = systemMediaControls.IsPreviousEnabled = currentChapterIndex > 0;
+      NextButton.IsEnabled = systemMediaControls.IsNextEnabled = currentChapterIndex + 1 < chapters.Count;
 
       if (state == MediaElementState.Playing || state == MediaElementState.Closed)
         UpdatePosition();
