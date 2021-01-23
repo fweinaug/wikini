@@ -35,13 +35,15 @@ namespace WikipediaApp
       positionUpdateTimer.Tick += PositionUpdateTimerTick;
 
       UpdateSettings();
-      
+
       SettingsVoiceComboBox.SelectionChanged += SettingsVoiceComboBoxSelectionChanged;
       SettingsSpeedSlider.ValueChanged += SettingsSpeedSliderValueChanged;
     }
 
-    ~SpeechView()
+    public void Unload()
     {
+      positionUpdateTimer.Tick -= PositionUpdateTimerTick;
+
       SettingsVoiceComboBox.SelectionChanged -= SettingsVoiceComboBoxSelectionChanged;
       SettingsSpeedSlider.ValueChanged -= SettingsSpeedSliderValueChanged;
     }

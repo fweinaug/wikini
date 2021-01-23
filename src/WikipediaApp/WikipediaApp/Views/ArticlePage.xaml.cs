@@ -63,6 +63,8 @@ namespace WikipediaApp
       var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
       coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
       coreTitleBar.IsVisibleChanged -= TitleBarIsVisibleChanged;
+
+      PaneSpeechView?.Unload();
     }
 
     private void TitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
