@@ -169,16 +169,8 @@ namespace WikipediaApp
       var entry = currentArticle as ArticleStackEntry;
       if (entry == null)
       {
-        entry = new ArticleStackEntry
+        entry = new ArticleStackEntry(currentArticle)
         {
-          Language = currentArticle.Language,
-          PageId = currentArticle.PageId,
-          Title = currentArticle.Title,
-          Content = currentArticle.Content,
-          Uri = currentArticle.Uri,
-          Sections = currentArticle.Sections,
-          Languages = currentArticle.Languages,
-          Images = currentArticle.Images,
           Position = position
         };
       }
@@ -441,6 +433,10 @@ namespace WikipediaApp
     private class ArticleStackEntry : Article
     {
       public double Position { get; set; }
+
+      public ArticleStackEntry(Article article) : base(article)
+      {
+      }
     }
 
     private class ScriptNotifyData

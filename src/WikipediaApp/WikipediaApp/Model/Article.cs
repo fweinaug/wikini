@@ -14,6 +14,26 @@ namespace WikipediaApp
 
     public string Anchor { get; set; }
 
+    protected Article(Article article) : this((ArticleHead)article)
+    {
+      Direction = article.Direction;
+      Content = article.Content;
+      Sections = article.Sections;
+      Languages = article.Languages;
+      Images = article.Images;
+      Anchor = article.Anchor;
+    }
+
+    public Article(ArticleHead article)
+    {
+      PageId = article.PageId;
+      Title = article.Title;
+      Description = article.Description;
+      Language = article.Language;
+      Uri = article.Uri;
+      ThumbnailUri = article.ThumbnailUri;
+    }
+
     public List<ArticleSection> GetRootSections()
     {
       if (Sections == null || Sections.Count == 0)

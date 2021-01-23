@@ -29,7 +29,11 @@ namespace WikipediaApp
 
       try
       {
-        return await parseApi.FetchArticle(language, uri, disableImages, title: title, anchor: anchor);
+        var head = await queryApi.GetArticleInfo(language, null, title);
+        if (head == null)
+          return null;
+
+        return await parseApi.FetchArticle(head.Language, head.PageId, head.Title, disableImages, anchor, head);
       }
       catch (Exception ex)
       {
@@ -155,7 +159,9 @@ namespace WikipediaApp
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, article.Uri, disableImages, title: article.Title, pageId: article.PageId);
+        var head = await queryApi.GetArticleInfo(article.Language, article.PageId, article.Title);
+
+        return await parseApi.FetchArticle(article.Language, article.PageId, article.Title, disableImages, head: head);
       }
       catch (Exception ex)
       {
@@ -169,7 +175,7 @@ namespace WikipediaApp
     {
       try
       {
-        return await parseApi.FetchArticle(article.Language, article.Uri, disableImages, article.PageId, anchor: article.Anchor, article: article);
+        return await parseApi.FetchArticle(article.Language, article.PageId, article.Title, disableImages, article.Anchor, article: article);
       }
       catch (Exception ex)
       {

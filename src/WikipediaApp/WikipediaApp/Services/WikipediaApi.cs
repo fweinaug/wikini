@@ -339,7 +339,7 @@ namespace WikipediaApp
 
   public class WikipediaParseApi : WikipediaApi
   {
-    public async Task<Article> FetchArticle(string language, Uri uri, bool disableImages, int? pageId = null, string title = null, string anchor = null, Article article = null)
+    public async Task<Article> FetchArticle(string language, int? pageId, string title, bool disableImages, string anchor = null, ArticleHead head = null, Article article = null)
     {
       var query = "action=parse&prop=text|sections|langlinks|images|headhtml&disableeditsection=&disabletoc=&mobileformat=";
       if (pageId != null)
@@ -396,14 +396,11 @@ namespace WikipediaApp
       }
 
       if (article == null)
-        article = new Article();
+        article = new Article(head);
 
-      article.Language = language;
       article.Direction = ParseDirection(parseResult.headhtml);
-      article.PageId = parseResult.pageid;
       article.Title = parseResult.title;
       article.Content = parseResult.text;
-      article.Uri = uri;
       article.Sections = sections;
       article.Languages = languages;
       article.Images = images;
