@@ -288,6 +288,9 @@
   <data name="ArticleSearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Zoek in artikel</value>
   </data>
+  <data name="ArticleSelectionCopyMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Kopiëren</value>
+  </data>
   <data name="ArticleSettingsAppBarButton.Label" xml:space="preserve">
     <value>Instellingen</value>
   </data>

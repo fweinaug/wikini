@@ -8,6 +8,14 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
+        <MenuFlyout x:Name="SelectionMenuFlyout">
+            <MenuFlyoutItem x:Uid="ArticleSelectionCopyMenuFlyoutItem" Click="CopySelectionClick">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xF32A;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+        </MenuFlyout>
+
         <MenuFlyout x:Name="LinkMenuFlyout">
             <MenuFlyoutItem x:Uid="ArticleLinkNavigateMenuFlyoutItem" DataContext="{Binding ArticleFlyout}" Click="NavigateLinkMenuFlyoutItem" ToolTipService.ToolTip="{Binding Title}">
                 <MenuFlyoutItem.Icon>

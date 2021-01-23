@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -240,7 +241,10 @@ namespace WikipediaApp
           SearchResults = Convert.ToInt32(data.Number);
           break;
         case ScriptNotifyData.Contextmenu:
-          ShowArticleFlyout(data);
+          if (data.HasUrl)
+            ShowArticleFlyout(data);
+          else if (data.HasText)
+            ShowSelectionFlyout(data);
           break;
         case ScriptNotifyData.Scroll:
           UpdateScrollPosition(data);
@@ -380,6 +384,18 @@ namespace WikipediaApp
       ShowArticleCommand?.Execute(entry);
     }
 
+    private void ShowSelectionFlyout(ScriptNotifyData data)
+    {
+      SelectionMenuFlyout.ShowAt(WebView, new FlyoutShowOptions { Position = new Point(data.X, data.Y) });
+    }
+
+    private async void CopySelectionClick(object sender, RoutedEventArgs e)
+    {
+      var selectedContent = await WebView.CaptureSelectedContentToDataPackageAsync();
+
+      Clipboard.SetContent(selectedContent);
+    }
+
     private void ShowArticleFlyout(ScriptNotifyData data)
     {
       var flyout = new ArticleFlyout
@@ -453,6 +469,9 @@ namespace WikipediaApp
       public string Url { get; set; }
       public string Text { get; set; }
       public int Number { get; set; }
+
+      public bool HasUrl => !string.IsNullOrWhiteSpace(Url);
+      public bool HasText => !string.IsNullOrWhiteSpace(Text);
     }
   }
 }

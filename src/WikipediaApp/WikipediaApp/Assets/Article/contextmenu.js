@@ -1,11 +1,26 @@
 ﻿function registerContextmenuEvents() {
   document.oncontextmenu = function (e) {
-    const target = e.target.closest("a");
+    e.preventDefault();
 
-    if (target) {
-      _handleLinkContextmenu(target);
+    const selection = document.getSelection();
+
+    if (selection.containsNode(e.target, true)) {
+      _handleSelectionContextmenu(e, selection);
+    } else {
+      const target = e.target.closest("a");
+
+      if (target) {
+        _handleLinkContextmenu(target);
+      }
     }
   }
+}
+
+function _handleSelectionContextmenu(event, selection) {
+  const left = event.clientX;
+  const top = event.clientY;
+
+  window.external.notify(`{ 'Message': 'Contextmenu', 'X': ${left}, 'Y': ${top}, 'Text': '${selection}' }`);
 }
 
 function _handleLinkContextmenu(target) {
