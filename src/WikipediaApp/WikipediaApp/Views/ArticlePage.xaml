@@ -338,12 +338,6 @@
 
                                 <AppBarSeparator />
 
-                                <AppBarButton x:Uid="ArticleShareAppBarButton" Command="{Binding ShareCommand}">
-                                    <AppBarButton.Icon>
-                                        <FontIcon Glyph="&#xF6AF;" />
-                                    </AppBarButton.Icon>
-                                </AppBarButton>
-
                                 <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
                                     <AppBarButton.Icon>
                                         <FontIcon Glyph="&#xF487;" />
@@ -353,6 +347,12 @@
                                 <AppBarButton x:Uid="ArticleSearchAppBarButton" Click="ToggleSearchBarAppBarButtonClick">
                                     <AppBarButton.Icon>
                                         <FontIcon Glyph="&#xF3AE;" />
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
+
+                                <AppBarButton x:Uid="ArticleShareAppBarButton" Command="{Binding ShareCommand}">
+                                    <AppBarButton.Icon>
+                                        <FontIcon Glyph="&#xF6AF;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
