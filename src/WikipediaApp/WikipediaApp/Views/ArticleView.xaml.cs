@@ -390,17 +390,17 @@ namespace WikipediaApp
         Title = data.Text
       };
 
-      void OnArticleFlyoutOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+      void OnArticleFlyoutPropertyChanged(object sender, PropertyChangedEventArgs e)
       {
         if (e.PropertyName == nameof(ArticleFlyout.Loaded))
         {
-          flyout.PropertyChanged -= OnArticleFlyoutOnPropertyChanged;
+          flyout.PropertyChanged -= OnArticleFlyoutPropertyChanged;
 
           LinkMenuFlyout.ShowAt(WebView, new FlyoutShowOptions { Position = new Point(flyout.Left, flyout.Top) });
         }
       }
 
-      flyout.PropertyChanged += OnArticleFlyoutOnPropertyChanged;
+      flyout.PropertyChanged += OnArticleFlyoutPropertyChanged;
 
       ArticleFlyout = flyout;
     }

@@ -17,6 +17,10 @@ namespace WikipediaApp
         return false;
 
       title = uri.AbsolutePath.Substring(6);
+
+      if (title.StartsWith("File:"))
+        return false;
+      
       language = uri.Host.Substring(0, uri.Host.IndexOf('.'));
 
       if (uri.Fragment.StartsWith("#"))
