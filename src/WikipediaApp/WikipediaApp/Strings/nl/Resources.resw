@@ -370,7 +370,7 @@
     <value>Geschiedenis</value>
   </data>
   <data name="MainHomepageButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Startpagina</value>
+    <value>Startpagina Wikipedia</value>
   </data>
   <data name="MainLanguagesButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Talen</value>
@@ -406,7 +406,7 @@
     <value>Geen foto</value>
   </data>
   <data name="MainRandomButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Toevalligheid</value>
+    <value>Willekeurig artikel</value>
   </data>
   <data name="MainSettingsButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Instellingen</value>

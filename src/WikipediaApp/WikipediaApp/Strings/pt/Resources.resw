@@ -370,7 +370,7 @@
     <value>Histórico</value>
   </data>
   <data name="MainHomepageButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Página inicial</value>
+    <value>Página inicial da Wikipedia</value>
   </data>
   <data name="MainLanguagesButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Línguas</value>
@@ -406,7 +406,7 @@
     <value>Nenhuma foto</value>
   </data>
   <data name="MainRandomButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Aleatório</value>
+    <value>Artigo aleatório</value>
   </data>
   <data name="MainSettingsButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Configurações</value>
