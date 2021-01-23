@@ -116,7 +116,7 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        await wikipediaService.PinArticle(article.Language, article.PageId, article.Title, article.Uri);
+        await wikipediaService.PinArticle(article);
       }
     }
 

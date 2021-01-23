@@ -232,7 +232,7 @@ namespace WikipediaApp
 
       if (Settings.Current.HistoryTimeline)
       {
-        await wikipediaService.AddArticleToTimeline(article.Language, article.PageId, article.Title, article.Uri);
+        await wikipediaService.AddArticleToTimeline(article);
       }
     }
 
@@ -262,11 +262,11 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        await wikipediaService.PinArticle(article.Language, article.PageId, article.Title, article.Uri);
+        await wikipediaService.PinArticle(article);
       }
       else if (initialArticle != null)
       {
-        await wikipediaService.PinArticle(initialArticle.Language, initialArticle.PageId, initialArticle.Title, initialArticle.Uri);
+        await wikipediaService.PinArticle(initialArticle.Language, initialArticle.PageId, initialArticle.Title);
       }
     }
 

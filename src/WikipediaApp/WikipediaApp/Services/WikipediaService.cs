@@ -212,14 +212,14 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<bool> PinArticle(string language, int? pageId, string title, Uri uri)
+    public async Task<bool> PinArticle(string language, int? pageId, string title)
     {
       try
       {
         var article = await queryApi.GetArticleInfo(language, pageId, title);
 
         if (article != null)
-          return await TileManager.PinArticle(language, article.PageId.GetValueOrDefault(), article.Title, uri, article.ThumbnailUri);
+          return await TileManager.PinArticle(language, article.PageId.GetValueOrDefault(), article.Title, article.Uri, article.ThumbnailUri);
 
         return false;
       }
@@ -231,16 +231,25 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<bool> AddArticleToTimeline(string language, int? pageId, string title, Uri uri)
+    public async Task<bool> PinArticle(ArticleHead article)
     {
       try
       {
-        var article = await queryApi.GetArticleInfo(language, pageId, title);
-
-        if (article != null)
-          return await TimelineManager.AddArticle(language, article.PageId.GetValueOrDefault(), article.Title, uri, article.ThumbnailUri);
+        return await TileManager.PinArticle(article.Language, article.PageId.GetValueOrDefault(), article.Title, article.Uri, article.ThumbnailUri);
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
 
         return false;
+      }
+    }
+
+    public async Task<bool> AddArticleToTimeline(ArticleHead article)
+    {
+      try
+      {
+        return await TimelineManager.AddArticle(article.Language, article.PageId.GetValueOrDefault(), article.Title, article.Uri, article.ThumbnailUri);
       }
       catch (Exception ex)
       {
