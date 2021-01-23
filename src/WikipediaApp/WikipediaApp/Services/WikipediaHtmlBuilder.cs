@@ -7,7 +7,7 @@ namespace WikipediaApp
   {
     private static readonly UISettings UiSettings = new UISettings();
 
-    public static string BuildArticle(string title, string content, string language, string direction, int header)
+    public static string BuildArticle(string title, string description, string content, string language, string direction, int header)
     {
       var app = App.Current;
       var settings = Settings.Current;
@@ -43,7 +43,11 @@ namespace WikipediaApp
         <div id=""mw-mf-viewport"">
 	        <div id=""mw-mf-page-center"">
 		        <div id=""content"" class=""mw-body"">
-			        <div class=""pre-content heading-holder""><h1 id=""section_0"">{title}</h1></div><div id=""bodyContent"" class=""content""><div id=""mw-content-text"" lang=""{language}"" dir=""{direction}"" class=""mw-content-{direction}""><script>function mfTempOpenSection(id){{var block=document.getElementById(""mf-section-""+id);block.className+="" open-block"";block.previousSibling.className+="" open-block"";}}</script>
+              <div class=""pre-content heading-holder"">
+                <h1 id=""section_0"">{title}</h1>
+                <span style=""font-size:0.8125em;line-height:1.5;color:gray"">{description}</span>
+                <hr style=""margin-bottom:20px;width:100px;height:1px;text-align:left;border:none;background:gray"">
+              </div><div id=""bodyContent"" class=""content""><div id=""mw-content-text"" lang=""{language}"" dir=""{direction}"" class=""mw-content-{direction}""><script>function mfTempOpenSection(id){{var block=document.getElementById(""mf-section-""+id);block.className+="" open-block"";block.previousSibling.className+="" open-block"";}}</script>
         {content}
         </div></div></div></div></div></div>
         </body>
