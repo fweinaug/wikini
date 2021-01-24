@@ -1,5 +1,13 @@
 [
     [
+        "Context menu for articles and selection in article view",
+        "Read aloud with media controls and playback in background",
+        "Display description in article view",
+        "Remove article from history",
+        "Improved context menu for links in article view",
+        "More design improvements"
+    ],
+    [
         "Command bar in article view at top",
         "Revamped home page design",
         "Switch to Fluent Icons",
