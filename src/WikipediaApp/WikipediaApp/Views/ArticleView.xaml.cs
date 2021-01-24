@@ -35,6 +35,9 @@ namespace WikipediaApp
     public static readonly DependencyProperty ArticleFlyoutProperty = DependencyProperty.Register(
       "ArticleFlyout", typeof(ArticleFlyout), typeof(ArticleView), new PropertyMetadata(null));
 
+    public static readonly DependencyProperty FlyoutProperty = DependencyProperty.Register(
+      "Flyout", typeof(FlyoutBase), typeof(ArticleView), new PropertyMetadata(null));
+
     public static readonly DependencyProperty CanGoBackProperty = DependencyProperty.Register(
       "CanGoBack", typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
 
@@ -78,6 +81,12 @@ namespace WikipediaApp
     {
       get { return (ArticleFlyout)GetValue(ArticleFlyoutProperty); }
       set { SetValue(ArticleFlyoutProperty, value); }
+    }
+
+    public FlyoutBase Flyout
+    {
+      get { return (FlyoutBase)GetValue(FlyoutProperty); }
+      set { SetValue(FlyoutProperty, value); }
     }
 
     public bool CanGoBack
@@ -245,6 +254,8 @@ namespace WikipediaApp
             ShowArticleFlyout(data);
           else if (data.HasText)
             ShowSelectionFlyout(data);
+          else
+            ShowFlyout(data);
           break;
         case ScriptNotifyData.Scroll:
           UpdateScrollPosition(data);
@@ -382,6 +393,11 @@ namespace WikipediaApp
       }
 
       ShowArticleCommand?.Execute(entry);
+    }
+
+    private void ShowFlyout(ScriptNotifyData data)
+    {
+      Flyout.ShowAt(WebView, new FlyoutShowOptions { Position = new Point(data.X, data.Y) });
     }
 
     private void ShowSelectionFlyout(ScriptNotifyData data)

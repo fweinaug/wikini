@@ -11,6 +11,8 @@
 
       if (target) {
         _handleLinkContextmenu(target);
+      } else {
+        _handleContextmenu(e);
       }
     }
   }
@@ -34,4 +36,11 @@ function _handleLinkContextmenu(target) {
   const title = target.title.replace(/'/g, "\\'");
 
   window.external.notify(`{ 'Message': 'Contextmenu', 'X': ${left}, 'Y': ${top}, 'Width': ${width}, 'Height': ${height}, 'Url': '${url}', 'Text': '${title}' }`);
+}
+
+function _handleContextmenu(event) {
+  const left = event.clientX;
+  const top = event.clientY;
+
+  window.external.notify(`{ 'Message': 'Contextmenu', 'X': ${left}, 'Y': ${top} }`);
 }

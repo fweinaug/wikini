@@ -189,7 +189,71 @@
                         <local:ArticleView x:Name="ArticleView" Article="{Binding Article}" ShowArticleCommand="{Binding ShowArticleCommand}"
                                            NavigateCommand="{Binding NavigateCommand}" LoadedCommand="{Binding LoadedCommand}"
                                            ArticleFlyout="{Binding ArticleFlyout, Mode=TwoWay}"
-                                           ArticleChanged="ArticleViewArticleChanged" />
+                                           ArticleChanged="ArticleViewArticleChanged">
+
+                            <local:ArticleView.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Uid="ArticleContentsMenuFlyoutItem" Click="ContentsButtonClick" IsEnabled="{Binding HasSections}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF651;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutItem x:Uid="ArticleLanguagesMenuFlyoutItem" Click="LanguagesButtonClick" IsEnabled="{Binding HasLanguages}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF4F2;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutItem x:Uid="ArticleImagesMenuFlyoutItem" Command="{Binding ShowImagesCommand}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF487;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutItem x:Uid="ArticleSpeechMenuFlyoutItem" Click="SpeechButtonClick">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF64D;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutItem x:Uid="ArticleSearchMenuFlyoutItem" Click="ToggleSearchBarAppBarButtonClick">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF3AE;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutSeparator />
+
+                                    <MenuFlyoutItem x:Uid="ArticleAddFavoriteMenuFlyoutItem" Command="{Binding AddToFavoritesCommand}"
+                                                    Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF712;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutItem x:Uid="ArticleRemoveFavoriteMenuFlyoutItem" Command="{Binding RemoveFromFavoritesCommand}"
+                                                    Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF719;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutItem x:Uid="ArticlePinMenuFlyoutItem" Command="{Binding PinCommand}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#x0F600;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+
+                                    <MenuFlyoutSeparator />
+
+                                    <MenuFlyoutItem x:Uid="ArticleShareMenuFlyoutItem" Command="{Binding ShareCommand}">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xF6AF;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                </MenuFlyout>
+                            </local:ArticleView.Flyout>
+                        </local:ArticleView>
 
                         <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,20,0"
                               BorderThickness="0,1,1,0" BorderBrush="{ThemeResource AppBarBorderBrush}"

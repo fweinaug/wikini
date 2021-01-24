@@ -174,6 +174,9 @@
   <data name="ArticleAddFavoriteAppBarButton.Label" xml:space="preserve">
     <value>Zu Favoriten hinzufügen</value>
   </data>
+  <data name="ArticleAddFavoriteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Zu Favoriten hinzufügen</value>
+  </data>
   <data name="ArticleBackAppBarButton.Label" xml:space="preserve">
     <value>Zurück</value>
   </data>
@@ -187,6 +190,9 @@
     <value>Inhalt</value>
   </data>
   <data name="ArticleContentsAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Inhaltsverzeichnis</value>
+  </data>
+  <data name="ArticleContentsMenuFlyoutItem.Text" xml:space="preserve">
     <value>Inhaltsverzeichnis</value>
   </data>
   <data name="ArticleContentsPaneHeaderTextBlock.Text" xml:space="preserve">
@@ -228,6 +234,9 @@
   <data name="ArticleImagesAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Bilder anzeigen</value>
   </data>
+  <data name="ArticleImagesMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Bilder anzeigen</value>
+  </data>
   <data name="ArticleImagesCloseAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Schließen</value>
   </data>
@@ -241,6 +250,9 @@
     <value>Sprachen</value>
   </data>
   <data name="ArticleLanguagesAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sprachen</value>
+  </data>
+  <data name="ArticleLanguagesMenuFlyoutItem.Text" xml:space="preserve">
     <value>Sprachen</value>
   </data>
   <data name="ArticleLanguagesPaneHeaderTextBlock.Text" xml:space="preserve">
@@ -267,6 +279,9 @@
   <data name="ArticlePinAppBarButton.Label" xml:space="preserve">
     <value>An „Start“ anheften</value>
   </data>
+  <data name="ArticlePinMenuFlyoutItem.Text" xml:space="preserve">
+    <value>An „Start“ anheften</value>
+  </data>
   <data name="ArticlePaneContentsTabButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Inhaltsverzeichnis</value>
   </data>
@@ -279,10 +294,16 @@
   <data name="ArticleRemoveFavoriteAppBarButton.Label" xml:space="preserve">
     <value>Aus Favoriten entfernen</value>
   </data>
+  <data name="ArticleRemoveFavoriteMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Aus Favoriten entfernen</value>
+  </data>
   <data name="ArticleSearchAppBarButton.Label" xml:space="preserve">
     <value>Im Artikel suchen</value>
   </data>
   <data name="ArticleSearchAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Im Artikel suchen</value>
+  </data>
+  <data name="ArticleSearchMenuFlyoutItem.Text" xml:space="preserve">
     <value>Im Artikel suchen</value>
   </data>
   <data name="ArticleSearchTextBox.PlaceholderText" xml:space="preserve">
@@ -300,7 +321,13 @@
   <data name="ArticleShareAppBarButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Teilen</value>
   </data>
+  <data name="ArticleShareMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Teilen</value>
+  </data>
   <data name="ArticleSpeechAppBarButton.Label" xml:space="preserve">
+    <value>Vorlesen lassen</value>
+  </data>
+  <data name="ArticleSpeechMenuFlyoutItem.Text" xml:space="preserve">
     <value>Vorlesen lassen</value>
   </data>
   <data name="ArticleSpeechPaneBackButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
