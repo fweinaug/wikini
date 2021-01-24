@@ -33,6 +33,7 @@
     {
       get { return Level == 1; }
     }
+    public bool IsNext => IsRoot && HasNumber && int.Parse(Number) > 1;
 
     public bool HasNumber
     {

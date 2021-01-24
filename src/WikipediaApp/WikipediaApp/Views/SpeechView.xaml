@@ -113,11 +113,13 @@
         </Grid>
 
         <ListView Grid.Row="2" x:Name="ListView" Style="{StaticResource SplitViewPaneListViewStyle}"
+                  BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0,1,0,0"
                   IsItemClickEnabled="True" ItemClick="ListViewItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ArticleChapter">
                     <UserControl>
                         <Grid Name="Root" Style="{StaticResource SplitViewPaneListViewItemStyle}"
+                              BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0"
                               Padding="5,5,15,5" ToolTipService.ToolTip="{x:Bind Headline}">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup>
@@ -145,9 +147,7 @@
                                             <Setter Target="LoadingProgressRing.Visibility" Value="Visible" />
                                         </VisualState.Setters>
                                     </VisualState>
-                                </VisualStateGroup>
 
-                                <VisualStateGroup>
                                     <VisualState>
                                         <VisualState.StateTriggers>
                                             <StateTrigger IsActive="{Binding IsPlaying}" />
@@ -168,6 +168,18 @@
                                         <VisualState.Setters>
                                             <Setter Target="NumberTextBlock.FontWeight" Value="SemiBold" />
                                             <Setter Target="HeadlineTextBlock.FontWeight" Value="Normal" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                                <VisualStateGroup>
+                                    <VisualState>
+                                        <VisualState.StateTriggers>
+                                            <StateTrigger IsActive="{x:Bind IsNext, Mode=OneWay}" />
+                                        </VisualState.StateTriggers>
+
+                                        <VisualState.Setters>
+                                            <Setter Target="Root.BorderThickness" Value="0,1,0,0" />
                                         </VisualState.Setters>
                                     </VisualState>
                                 </VisualStateGroup>
