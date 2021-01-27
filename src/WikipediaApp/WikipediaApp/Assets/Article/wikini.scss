@@ -1,0 +1,133 @@
+﻿body {
+    font-size: var(--font-size);
+}
+
+body {
+    -ms-overflow-style: none;
+    margin-right: 10px;
+}
+
+a, a:visited {
+    color: var(--color) !important;
+}
+
+mark {
+    background: #FAFA37;
+    color: black;
+}
+
+mark.current {
+    background: orange;
+}
+
+.content {
+    .in-block {
+        display: block;
+    }
+
+    table.infobox > caption {
+        display: inline;
+    }
+}
+
+.theme-dark {
+    &, body {
+        background-color: #121212 !important;
+        color: #E0E0E0 !important;
+    }
+
+    .mw-body, #mw-mf-page-center, .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {
+        background-color: inherit !important;
+    }
+
+    .mw-parser-output {
+        .main-box {
+            background-color: #121212 !important;
+        }
+
+        .main-top, .mw-parser-output .main-page-body > div:last-of-type {
+            background-color: #333 !important;
+        }
+
+        .main-top-left {
+            background-image: linear-gradient(to right,#333 0%,#333 70%,rgba(248,249,250,0)100%) !important;
+        }
+    }
+
+    .content {
+        .section-heading {
+            border-bottom-color: #333 !important;
+        }
+
+        figcaption, .thumbcaption {
+            color: #A0A0A0 !important;
+        }
+
+        table.infobox {
+            color: #E0E0E0 !important;
+            background-color: #1a1a1a !important;
+        }
+
+        table.infobox th[colspan="2"] {
+            background-color: #333 !important;
+        }
+
+        table.infobox th, table.infobox td {
+            border-color: #333 !important;
+        }
+
+        table.wikitable {
+            border-color: #333 !important;
+        }
+
+        table.wikitable > tr > th, table.wikitable > * > tr > th {
+            background-color: #333 !important;
+        }
+
+        table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th, table.wikitable > * > tr > td {
+            border-color: #333 !important;
+        }
+    }
+
+    li.gallerybox div.thumb, .mbox-small {
+        background-color: #1a1a1a !important;
+        border-color: #333 !important;
+    }
+
+    img.thumbimage {
+        background: #333;
+        padding: 5px;
+    }
+
+    .hatnote {
+        background: #1a1a1a !important;
+    }
+
+    .drawer.references-drawer, .mw-graph {
+        background: #333 !important;
+    }
+
+    .drawer-container__mask {
+        background: rgba(255,255,255,0.25);
+    }
+
+    table > * > tr.hintergrundfarbe1 > th, table > * > tr > th.hintergrundfarbe1, table.hintergrundfarbe1, .hintergrundfarbe1 {
+        background-color: #333 !important;
+    }
+
+    table > * > tr.hintergrundfarbe2 > th, table > * > tr > th.hintergrundfarbe2, table.hintergrundfarbe2, .hintergrundfarbe2 {
+        background-color: #000 !important;
+    }
+
+    table > * > tr.hintergrundfarbe5 > th, table > * > tr > th.hintergrundfarbe5, table.hintergrundfarbe5, .hintergrundfarbe5 {
+        background-color: #1a1a1a !important;
+    }
+
+    .mwe-math-fallback-image-inline {
+        filter: invert(0.6);
+    }
+
+    .mw-ui-icon-mf-expand:before {
+        background-image: linear-gradient(transparent,transparent),url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22#bbb%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E %3Ctitle%3E expand %3C/title%3E %3Cpath d=%22M17.5 4.75l-7.5 7.5-7.5-7.5L1 6.25l9 9 9-9z%22/%3E %3C/svg%3E') !important;
+    }
+}

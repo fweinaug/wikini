@@ -99,6 +99,8 @@
     <None Include="Assets\Article\mark.es6.min.js" />
     <None Include="Assets\Article\scroll.js" />
     <None Include="Assets\Article\search.js" />
+    <None Include="Assets\Article\wikini.scss" />
+    <Content Include="Assets\Article\wikini.min.css" />
     <Content Include="Assets\Article\wikini.min.js" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-125.png" />

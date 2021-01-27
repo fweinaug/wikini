@@ -16,11 +16,12 @@ namespace WikipediaApp
       var fontSize = settings.FontSize;
       var styles = GetArticleStyles(darkMode, fontSize);
 
+      var themeClass = darkMode ? "theme-dark" : "theme-light";
       var sectionsCollapsedString = settings.SectionsCollapsed ? "true" : "false";
 
       var html = $@"
         <!DOCTYPE html>
-        <html class=""client-nojs"" lang=""{language}"" dir=""{direction}"">
+        <html class=""client-nojs {themeClass}"" lang=""{language}"" dir=""{direction}"">
         <head>
         <base href=""https://{language}.m.wikipedia.org"" />
         <meta charset=""UTF-8""/>
@@ -33,13 +34,14 @@ namespace WikipediaApp
         }});}});</script>
 
         <link rel=""stylesheet"" href=""/w/load.php?lang={language}&amp;modules=ext.cite.styles%7Cext.graph.styles%7Cext.kartographer.style%7Cmediawiki.hlist%7Cmediawiki.ui.button%2Cicon%7Cmobile.init.styles%7Cskins.minerva.base.styles%7Cskins.minerva.content.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons.images%2Cwikimedia&amp;only=styles&amp;skin=minerva""/>
+        <link rel=""stylesheet"" href=""ms-appx-web:///Assets/Article/wikini.min.css""/>
         <script async="""" src=""/w/load.php?lang={language}&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva&amp;target=mobile""></script>
         <script src=""ms-appx-web:///Assets/Article/wikini.min.js"" type=""text/javascript""></script>
         <meta name=""ResourceLoaderDynamicStyles"" content=""""/>
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
-        <body class=""mediawiki {direction} sitedir-{direction} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"" style=""margin-top: {header}px"">
+        <body class=""{themeClass} mediawiki {direction} sitedir-{direction} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"" style=""margin-top: {header}px"">
         <div id=""mw-mf-viewport"">
 	        <div id=""mw-mf-page-center"">
 		        <div id=""content"" class=""mw-body"">
@@ -60,61 +62,14 @@ namespace WikipediaApp
     private static string GetArticleStyles(bool darkMode, int fontSize)
     {
       var scaledFontSize = GetScaledFontSize(fontSize);
-      var color = App.Current.InDarkMode() ? "#61B7B9" : "#3D918E";
+      var color = darkMode ? "#61B7B9" : "#3D918E";
 
-      var styles = @"
-        body {font-size: " + scaledFontSize + @"px;}
-        body {-ms-overflow-style: none; margin-right:10px;}
-
-        a, a:visited {color:" + color + @" !important;}
-
-        mark { background: #FAFA37; color: black; }
-        mark.current {
-          background: orange;
-        }
-
-        .content .in-block { display:block; }
-        .content table.infobox > caption { display: inline; }";
-
-      if (darkMode)
-      {
-        styles += @"
-          html, body {background-color:#121212 !important;}
-          .mw-body, #mw-mf-page-center, .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {background-color:inherit !important;}
-
-          body {color:#E0E0E0 !important;}
-
-          .mw-parser-output .main-box {background-color:#121212 !important;}
-          .mw-parser-output .main-top, .mw-parser-output .main-page-body>div:last-of-type {background-color:#333 !important;}
-          .mw-parser-output .main-top-left {background-image: linear-gradient(to right,#333 0%,#333 70%,rgba(248,249,250,0)100%) !important;}
-
-          .content .section-heading {border-bottom-color:#333 !important;}
-          .content figcaption, .content .thumbcaption {color:#A0A0A0 !important;}
-          .content table.infobox {color:#E0E0E0 !important;background-color:#1a1a1a !important;}
-          .content table.infobox th[colspan=""2""] {background-color:#333 !important;}
-          .content table.infobox th, .content table.infobox td {border-color:#333 !important;}
-
-          li.gallerybox div.thumb, .mbox-small {background-color:#1a1a1a !important;border-color:#333 !important;}
-          img.thumbimage {background:#333;padding:5px;}
-
-          .content table.wikitable {border-color:#333 !important;}
-          .content table.wikitable > tr > th, .content table.wikitable > * > tr > th {background-color:#333 !important;}
-          .content table.wikitable > tr > th, .content table.wikitable > tr > td, .content table.wikitable > * > tr > th, .content table.wikitable > * > tr > td {border-color:#333 !important;}
-
-          .hatnote {background:#1a1a1a !important;}
-          .drawer.references-drawer, .mw-graph {background:#333 !important;}
-          .drawer-container__mask {background: rgba(255,255,255,0.25);}
-
-          table > * > tr.hintergrundfarbe1 > th, table > * > tr > th.hintergrundfarbe1, table.hintergrundfarbe1, .hintergrundfarbe1 {background-color:#333 !important;}
-          table > * > tr.hintergrundfarbe2 > th, table > * > tr > th.hintergrundfarbe2, table.hintergrundfarbe2, .hintergrundfarbe2 {background-color:#000 !important;}
-          table > * > tr.hintergrundfarbe5 > th, table > * > tr > th.hintergrundfarbe5, table.hintergrundfarbe5, .hintergrundfarbe5 {background-color:#1a1a1a !important;}
-
-          .mwe-math-fallback-image-inline {filter:invert(0.6);}
-
-          .mw-ui-icon-mf-expand:before {
-            background-image: linear-gradient(transparent,transparent),url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22#bbb%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E %3Ctitle%3E expand %3C/title%3E %3Cpath d=%22M17.5 4.75l-7.5 7.5-7.5-7.5L1 6.25l9 9 9-9z%22/%3E %3C/svg%3E') !important;
-          }";
-      }
+      var styles = $@"
+        :root {{
+          --font-size: {scaledFontSize}px;
+          --color: {color};
+        }}
+      ";
 
       return styles;
     }
