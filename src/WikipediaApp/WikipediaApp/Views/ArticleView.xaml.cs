@@ -213,6 +213,22 @@ namespace WikipediaApp
       CanGoForward = forwardStack.Count > 0;
     }
 
+    private async void OnActualThemeChanged(FrameworkElement sender, object args)
+    {
+      try
+      {
+        var theme = ActualTheme == ElementTheme.Light ? "theme-light" : "theme-dark";
+
+        var js = $"if (typeof changeTheme !== 'undefined') changeTheme('{theme}');";
+
+        await WebView.InvokeScriptAsync("eval", new[] { js });
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+      }
+    }
+
     private void NavigateLinkMenuFlyoutItem(object sender, RoutedEventArgs e)
     {
       var item = (MenuFlyoutItem)sender;
