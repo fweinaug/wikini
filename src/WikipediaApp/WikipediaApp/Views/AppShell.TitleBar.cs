@@ -1,7 +1,9 @@
-﻿using Windows.ApplicationModel.Core;
+﻿using System;
+using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace WikipediaApp
 {
@@ -45,6 +47,13 @@ namespace WikipediaApp
       RightPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayRightInset);
 
       AppTitleBar.Height = coreTitleBar.Height;
+
+      AppIcon.Source = new BitmapImage
+      {
+        UriSource = new Uri("ms-appx:///Assets/Logo.png"),
+        DecodePixelWidth = Convert.ToInt32(coreTitleBar.Height),
+        DecodePixelHeight = Convert.ToInt32(coreTitleBar.Height)
+      };
     }
 
     private void OnActualThemeChanged(FrameworkElement sender, object args)

@@ -48,11 +48,13 @@ namespace WikipediaApp
       
       if (e.Parameter is ArticleViewModel articleViewModel)
       {
+        AppIcon.Visibility = Visibility.Visible;
         AppTitle.ClearValue(TextBlock.TextProperty);
         AppTitle.SetBinding(TextBlock.TextProperty, new Binding { Source = articleViewModel, Path = new PropertyPath("Title") });
       }
       else
       {
+        AppIcon.Visibility = Visibility.Collapsed;
         AppTitle.ClearValue(TextBlock.TextProperty);
         AppTitle.Text = Package.Current.DisplayName;
       }

@@ -17,9 +17,13 @@
                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="AppTitle" Grid.Column="1"
-                       Style="{StaticResource CaptionTextBlockStyle}" 
-                       Margin="12,8,0,0" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Image x:Name="AppIcon" Stretch="UniformToFill" Margin="8,4,0,4" />
+
+                <TextBlock x:Name="AppTitle"
+                           Style="{StaticResource CaptionTextBlockStyle}" 
+                           Margin="8,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
         </Grid>
 
         <ContentDialog x:Uid="AppArticleLoadingFailedContentDialog" x:Name="ArticleLoadingFailedContentDialog" />
