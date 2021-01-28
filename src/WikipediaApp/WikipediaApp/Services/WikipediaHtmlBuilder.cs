@@ -81,7 +81,7 @@ namespace WikipediaApp
       var scaleFactor = UiSettings.TextScaleFactor * 100;
       var fontFactor = fontSize * 100 / baseFontSize;
 
-      var scaledFontSize = Math.Floor(baseFontSize * (fontFactor / scaleFactor));
+      var scaledFontSize = Math.Round(baseFontSize * (fontFactor / scaleFactor));
       return Convert.ToInt32(scaledFontSize);
     }
   }

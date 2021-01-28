@@ -16,7 +16,7 @@ namespace WikipediaApp
     public const bool DefaultImagesDisabled = false;
     public const bool DefaultHistorySession = false;
     public const bool DefaultHistoryTimeline = true;
-    public const int DefaultFontSize = 15;
+    public const int DefaultFontSize = 16;
 
     public static Settings Current { get; private set; }
 
