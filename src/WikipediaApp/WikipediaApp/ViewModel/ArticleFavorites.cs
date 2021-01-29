@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WikipediaApp
 {
@@ -74,15 +75,12 @@ namespace WikipediaApp
 
     public static async Task Initialize()
     {
-      await Task.Run(() =>
+      using (var context = new WikipediaContext())
       {
-        using (var context = new WikipediaContext())
-        {
-          var favorites = context.Favorites.OrderBy(x => x.Title).ThenBy(x => x.Language).ToList();
+        var favorites = await context.Favorites.OrderBy(x => x.Title).ThenBy(x => x.Language).ToListAsync();
 
-          favorites.ForEach(All.Add);
-        }
-      });
+        favorites.ForEach(All.Add);
+      }
     }
   }
 }

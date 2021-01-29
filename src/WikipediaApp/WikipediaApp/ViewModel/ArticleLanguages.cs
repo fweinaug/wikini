@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WikipediaApp
 {
@@ -63,7 +64,7 @@ namespace WikipediaApp
 
       using (var context = new WikipediaContext())
       {
-        var favorites = context.Languages.ToList();
+        var favorites = await context.Languages.ToListAsync();
 
         foreach (var favorite in favorites)
         {

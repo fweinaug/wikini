@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WikipediaApp
 {
@@ -52,19 +53,14 @@ namespace WikipediaApp
 
     public static async Task Initialize()
     {
-      await Task.Run(() =>
+      using (var context = new WikipediaContext())
       {
-        using (var context = new WikipediaContext())
-        {
-          return context.History.OrderByDescending(x => x.Date).ToList();
-        }
-      }).ContinueWith(task =>
-      {
-        var history = task.Result;
+        var history = await context.History.OrderByDescending(x => x.Date).ToListAsync();
+
         history.ForEach(database.Add);
 
         InitializeSource();
-      }, TaskScheduler.FromCurrentSynchronizationContext());
+      }
     }
 
     private static void InitializeSource()
@@ -103,14 +99,11 @@ namespace WikipediaApp
 
     public static async Task Clear()
     {
-      await Task.Run(() =>
+      using (var context = new WikipediaContext())
       {
-        using (var context = new WikipediaContext())
-        {
-          context.RemoveRange(context.History);
-          context.SaveChanges();
-        }
-      });
+        context.RemoveRange(context.History);
+        await context.SaveChangesAsync();
+      }
 
       database.Clear();
       session.Clear();
