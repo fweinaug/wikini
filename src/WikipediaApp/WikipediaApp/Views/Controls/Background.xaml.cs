@@ -8,7 +8,7 @@ namespace WikipediaApp
   public sealed partial class Background : UserControl
   {
     public static readonly DependencyProperty ImageUriProperty = DependencyProperty.Register(
-      "ImageUri", typeof(Uri), typeof(Background), new PropertyMetadata(null, OnImageUriPropertyChanged));
+      nameof(ImageUri), typeof(Uri), typeof(Background), new PropertyMetadata(null, OnImageUriPropertyChanged));
 
     public Uri ImageUri
     {

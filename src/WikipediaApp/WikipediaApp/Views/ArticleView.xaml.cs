@@ -18,34 +18,34 @@ namespace WikipediaApp
     public event EventHandler ArticleChanged;
 
     public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
-      "Header", typeof(double), typeof(ArticleView), new PropertyMetadata(0.0, OnHeaderPropertyChanged));
+      nameof(Header), typeof(double), typeof(ArticleView), new PropertyMetadata(0.0, OnHeaderPropertyChanged));
 
     public static readonly DependencyProperty ArticleProperty = DependencyProperty.Register(
-      "Article", typeof(Article), typeof(ArticleView), new PropertyMetadata(null, OnArticlePropertyChanged));
+      nameof(Article), typeof(Article), typeof(ArticleView), new PropertyMetadata(null, OnArticlePropertyChanged));
 
     public static readonly DependencyProperty NavigateCommandProperty = DependencyProperty.Register(
-      "NavigateCommand", typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
+      nameof(NavigateCommand), typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty LoadedCommandProperty = DependencyProperty.Register(
-      "LoadedCommand", typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
+      nameof(LoadedCommand), typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty ShowArticleCommandProperty = DependencyProperty.Register(
-      "ShowArticleCommand", typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
+      nameof(ShowArticleCommand), typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty ArticleFlyoutProperty = DependencyProperty.Register(
-      "ArticleFlyout", typeof(ArticleFlyout), typeof(ArticleView), new PropertyMetadata(null));
+      nameof(ArticleFlyout), typeof(ArticleFlyout), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty FlyoutProperty = DependencyProperty.Register(
-      "Flyout", typeof(FlyoutBase), typeof(ArticleView), new PropertyMetadata(null));
+      nameof(Flyout), typeof(FlyoutBase), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty CanGoBackProperty = DependencyProperty.Register(
-      "CanGoBack", typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
+      nameof(CanGoBack), typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
 
     public static readonly DependencyProperty CanGoForwardProperty = DependencyProperty.Register(
-      "CanGoForward", typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
+      nameof(CanGoForward), typeof(bool), typeof(ArticleView), new PropertyMetadata(false));
 
     public static readonly DependencyProperty SearchResultsProperty = DependencyProperty.Register(
-      "SearchResults", typeof(int), typeof(ArticleView), new PropertyMetadata(0));
+      nameof(SearchResults), typeof(int), typeof(ArticleView), new PropertyMetadata(0));
 
     public double Header
     {
