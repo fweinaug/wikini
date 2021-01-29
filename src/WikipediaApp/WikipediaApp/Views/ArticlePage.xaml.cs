@@ -145,10 +145,9 @@ namespace WikipediaApp
       SplitViewPaneTabs.SelectedIndex = 0;
     }
 
-    private void ContentsListViewItemClick(object sender, ItemClickEventArgs e)
+    private void ContentsViewArticleSectionClick(object sender, ArticleSectionEventArgs e)
     {
-      var section = e.ClickedItem as ArticleSection;
-      if (string.IsNullOrWhiteSpace(section?.Anchor))
+      if (string.IsNullOrWhiteSpace(e.Section.Anchor))
         return;
 
       if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)

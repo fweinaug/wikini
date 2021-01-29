@@ -175,6 +175,9 @@
     <Compile Include="Model\FavoriteLanguage.cs" />
     <Compile Include="Services\LanguagesReader.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
+    <Compile Include="Views\ContentsView.xaml.cs">
+      <DependentUpon>ContentsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\TabControl.cs" />
     <Compile Include="Views\Helpers\AudioCapturePermissions.cs" />
     <Compile Include="Views\Helpers\SpeechRecognitionHelper.cs" />
@@ -302,6 +305,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
