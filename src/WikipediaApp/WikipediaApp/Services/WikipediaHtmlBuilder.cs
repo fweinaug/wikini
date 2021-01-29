@@ -74,7 +74,7 @@ namespace WikipediaApp
       return styles;
     }
 
-    private static int GetScaledFontSize(int fontSize)
+    public static int GetScaledFontSize(int fontSize)
     {
       const int baseFontSize = 14;
 

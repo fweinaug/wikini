@@ -115,6 +115,50 @@ namespace WikipediaApp
       InitializeComponent();
     }
 
+    private async void OnActualThemeChanged(FrameworkElement sender, object args)
+    {
+      try
+      {
+        var theme = ActualTheme == ElementTheme.Light ? "theme-light" : "theme-dark";
+
+        var js = $"if (typeof changeTheme !== 'undefined') changeTheme('{theme}');";
+
+        await WebView.InvokeScriptAsync("eval", new[] { js });
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+      }
+    }
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+      Settings.Current.PropertyChanged += OnSettingsPropertyChanged;
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+      Settings.Current.PropertyChanged -= OnSettingsPropertyChanged;
+    }
+
+    private async void OnSettingsPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName != nameof(Settings.FontSize))
+        return;
+      
+      try
+      {
+        var fontSize = WikipediaHtmlBuilder.GetScaledFontSize(Settings.Current.FontSize);
+        var js = $"document.documentElement.style.setProperty('--font-size', '{fontSize}px');";
+
+        await WebView.InvokeScriptAsync("eval", new[] { js });
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+      }
+    }
+
     private static void OnHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       var header = (double)e.NewValue;
@@ -143,8 +187,9 @@ namespace WikipediaApp
 
         await WebView.InvokeScriptAsync("eval", new[] { js });
       }
-      catch (Exception)
+      catch (Exception ex)
       {
+        Crashes.TrackError(ex);
       }
     }
 
@@ -211,22 +256,6 @@ namespace WikipediaApp
 
       CanGoBack = backStack.Count > 0;
       CanGoForward = forwardStack.Count > 0;
-    }
-
-    private async void OnActualThemeChanged(FrameworkElement sender, object args)
-    {
-      try
-      {
-        var theme = ActualTheme == ElementTheme.Light ? "theme-light" : "theme-dark";
-
-        var js = $"if (typeof changeTheme !== 'undefined') changeTheme('{theme}');";
-
-        await WebView.InvokeScriptAsync("eval", new[] { js });
-      }
-      catch (Exception ex)
-      {
-        Crashes.TrackError(ex);
-      }
     }
 
     private void NavigateLinkMenuFlyoutItem(object sender, RoutedEventArgs e)
