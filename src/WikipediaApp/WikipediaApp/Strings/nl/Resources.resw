@@ -345,6 +345,9 @@
   <data name="ArticleSpeechPanePlayButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Spelen</value>
   </data>
+  <data name="ArticleSpeechPaneSectionMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Ga naar de sectie</value>
+  </data>
   <data name="ArticleSpeechPaneSettingsAddVoicesHyperlinkButton.Content" xml:space="preserve">
     <value>Meer stemmen toevoegen</value>
   </data>

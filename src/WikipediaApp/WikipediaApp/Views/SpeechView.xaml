@@ -13,6 +13,14 @@
         <DataTemplate x:Key="SettingsHeaderTemplate">
             <TextBlock Text="{Binding}" FontWeight="SemiBold" />
         </DataTemplate>
+
+        <MenuFlyout x:Key="ItemMenuFlyout">
+            <MenuFlyoutItem x:Uid="ArticleSpeechPaneSectionMenuFlyoutItem" Click="GoToSectionClick">
+                <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xF7F6;" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+        </MenuFlyout>
     </UserControl.Resources>
 
     <Grid>
@@ -120,7 +128,8 @@
                     <UserControl>
                         <Grid Name="Root" Style="{StaticResource SplitViewPaneListViewItemStyle}"
                               BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0"
-                              Padding="5,5,15,5" ToolTipService.ToolTip="{x:Bind Headline}">
+                              Padding="5,5,15,5" ToolTipService.ToolTip="{x:Bind Headline}"
+                              local:ListViewExtensions.ItemMenuFlyout="{StaticResource ItemMenuFlyout}">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup>
                                     <VisualState>

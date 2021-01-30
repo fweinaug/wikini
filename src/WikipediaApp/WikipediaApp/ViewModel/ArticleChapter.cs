@@ -10,6 +10,7 @@
     public string Number { get; set; }
     public string Headline { get; set; }
     public string Content { get; set; }
+    public string Anchor { get; set; }
 
     public bool IsActive
     {

@@ -153,7 +153,7 @@ namespace WikipediaApp
       if (SplitView.DisplayMode == SplitViewDisplayMode.Overlay)
         SplitView.IsPaneOpen = false;
 
-      ArticleView.ScrollToSection(section);
+      ArticleView.ScrollToSection(e.Section.Anchor);
     }
 
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)
@@ -215,6 +215,11 @@ namespace WikipediaApp
       OpenOrCloseSplitView(nameof(PaneSpeechView));
 
       SplitViewPaneTabs.SelectedIndex = 2;
+    }
+
+    private void SpeechViewChapterClick(object sender, ArticleChapterEventArgs e)
+    {
+      ArticleView.ScrollToSection(e.Chapter.Anchor);
     }
 
     private void ClosePaneButtonClick(object sender, RoutedEventArgs e)

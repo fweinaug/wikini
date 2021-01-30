@@ -327,11 +327,11 @@ namespace WikipediaApp
       }
     }
 
-    public async void ScrollToSection(ArticleSection section)
+    public async void ScrollToSection(string id)
     {
       try
       {
-        var js = $"scrollToSection('{section.Anchor}');";
+        var js = $"scrollToSection('{id}');";
 
         await WebView.InvokeScriptAsync("eval", new[] { js });
       }

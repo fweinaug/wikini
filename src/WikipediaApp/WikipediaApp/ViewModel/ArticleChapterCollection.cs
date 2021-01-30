@@ -164,6 +164,7 @@ namespace WikipediaApp
           chapter.Headline = WikipediaApi.RemoveHtml(headline.InnerText);
           chapter.Level = 1;
           chapter.Number = mainNumber.ToString();
+          chapter.Anchor = headline.LastChild.Id;
         }
         else if (headline.OriginalName == "h3")
         {
@@ -173,6 +174,7 @@ namespace WikipediaApp
           chapter.Headline = WikipediaApi.RemoveHtml(headline.InnerText);
           chapter.Level = 2;
           chapter.Number = $"{mainNumber}.{extensionNumber}";
+          chapter.Anchor = headline.LastChild.Id;
         }
         else if (headline.OriginalName == "h4")
         {
@@ -181,11 +183,13 @@ namespace WikipediaApp
           chapter.Headline = WikipediaApi.RemoveHtml(headline.InnerText);
           chapter.Level = 3;
           chapter.Number = $"{mainNumber}.{extensionNumber}.{subNumber}";
+          chapter.Anchor = headline.LastChild.Id;
         }
         else
         {
           chapter.Headline = title;
           chapter.Level = 1;
+          chapter.Anchor = "section_0";
         }
 
         var contentBuilder = new StringBuilder();

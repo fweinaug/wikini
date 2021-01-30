@@ -161,7 +161,9 @@
     <Content Include="Data\de\changelog.json" />
     <Content Include="Data\en\changelog.json" />
     <Content Include="Assets\Fonts\FluentSystemIcons-Regular.ttf" />
-    <PRIResource Include="Strings\fr\Resources.resw" />
+    <PRIResource Include="Strings\fr\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
     <PRIResource Include="Strings\fr\ManifestStrings.resw" />
   </ItemGroup>
   <ItemGroup>
@@ -285,8 +287,12 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <PRIResource Include="Strings\de\Resources.resw" />
-    <PRIResource Include="Strings\en\Resources.resw" />
+    <PRIResource Include="Strings\de\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="Strings\en\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
     <PRIResource Include="Strings\de\ManifestStrings.resw">
       <SubType>Designer</SubType>
     </PRIResource>
@@ -414,7 +420,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\es\Resources.resw" />
+    <PRIResource Include="Strings\es\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\es\ManifestStrings.resw" />
@@ -432,7 +440,9 @@
     <PRIResource Include="Strings\pt\ManifestStrings.resw" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\pt\Resources.resw" />
+    <PRIResource Include="Strings\pt\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\nl\ManifestStrings.resw">
@@ -440,7 +450,9 @@
     </PRIResource>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\nl\Resources.resw" />
+    <PRIResource Include="Strings\nl\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\pl\ManifestStrings.resw">
@@ -448,7 +460,9 @@
     </PRIResource>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\pl\Resources.resw" />
+    <PRIResource Include="Strings\pl\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

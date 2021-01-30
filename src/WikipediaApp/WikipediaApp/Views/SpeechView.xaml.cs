@@ -11,8 +11,20 @@ using Windows.UI.Xaml.Media;
 
 namespace WikipediaApp
 {
+  public class ArticleChapterEventArgs : EventArgs
+  {
+    public ArticleChapter Chapter { get; }
+
+    public ArticleChapterEventArgs(ArticleChapter chapter)
+    {
+      Chapter = chapter;
+    }
+  }
+
   public sealed partial class SpeechView : UserControl
   {
+    public event EventHandler<ArticleChapterEventArgs> ChapterClick;
+
     public static readonly DependencyProperty ArticleProperty = DependencyProperty.Register(
       nameof(Article), typeof(Article), typeof(SpeechView), new PropertyMetadata(null, OnArticlePropertyChanged));
 
@@ -363,6 +375,13 @@ namespace WikipediaApp
       }
 
       PlayChapter(currentChapterIndex);
+    }
+
+    private void GoToSectionClick(object sender, RoutedEventArgs e)
+    {
+      var chapter = ((FrameworkElement)e.OriginalSource).DataContext as ArticleChapter;
+
+      ChapterClick?.Invoke(this, new ArticleChapterEventArgs(chapter));
     }
   }
 }
