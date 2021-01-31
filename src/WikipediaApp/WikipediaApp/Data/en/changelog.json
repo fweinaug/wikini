@@ -1,5 +1,11 @@
 [
     [
+        "Automatically change design in article view",
+        "Automatically update font size in article view",
+        "Read aloud with context menu to jump to section",
+        "Performance and layout improvements"
+    ],
+    [
         "Context menu for articles and selection in article view",
         "Read aloud with media controls and playback in background",
         "Display description in article view",

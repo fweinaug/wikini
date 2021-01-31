@@ -1,5 +1,11 @@
 [
     [
+        "Design in Artikelansicht automatisch wechseln",
+        "Schriftgröße in Artikelansicht automatisch aktualisieren",
+        "Artikel vorlesen mit Kontextmenü um zu Abschnitt zu springen",
+        "Performance- und Layout-Verbesserungen"
+    ],
+    [
         "Kontextmenü für Artikel und Auswahl in Artikelansicht",
         "Artikel vorlesen mit Media Controls und Wiedergabe im Hintergrund",
         "Anzeige der Beschreibung in Artikelansicht",
