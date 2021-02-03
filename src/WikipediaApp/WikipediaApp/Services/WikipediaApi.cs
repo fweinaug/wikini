@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -523,6 +524,131 @@ namespace WikipediaApp
     private class Thumbnail
     {
       public string source { get; set; }
+    }
+  }
+
+  public class WikipediaGeosearchApi : WikipediaApi
+  {
+    public async Task<IList<NearbyArticle>> Search(double latitude, double longitude, string language)
+    {
+      var pages = new List<Page>();
+
+      await GeoSearch(language, latitude, longitude, null, pages);
+
+      return MapPages(language, pages);
+    }
+
+    private async Task GeoSearch(string language, double latitude, double longitude, string cocontinue, List<Page> pages)
+    {
+      var query = $"action=query&generator=geosearch&prop=coordinates&ggscoord={latitude.ToString(CultureInfo.InvariantCulture)}|{longitude.ToString(CultureInfo.InvariantCulture)}&ggslimit=30&ggsradius=5000";
+
+      if (!string.IsNullOrEmpty(cocontinue))
+        query += $"&cocontinue={cocontinue}";
+
+      var response = await QueryAndParse<GeosearchResponse>(language, query);
+
+      if (response?.query?.pages != null)
+      {
+        foreach (var page in response.query.pages)
+        {
+          if (page.coordinates == null || page.coordinates.Count == 0)
+            continue;
+
+          pages.Add(page);
+        }
+      }
+
+      if (!string.IsNullOrEmpty(response?.@continue?.cocontinue))
+        await GeoSearch(language, latitude, longitude, response.@continue.cocontinue, pages);
+    }
+
+    public async Task<NearbyArticle> GetArticleLocation(string language, int? pageId, string title, int thumbnailSize)
+    {
+      var query = $"action=query&prop=info|description|pageimages|coordinates|extracts&inprop=url&exintro=&explaintext=&pilicense=any&pilimit=1&pithumbsize={thumbnailSize}";
+      if (pageId != null)
+        query += "&pageids=" + pageId;
+      else
+        query += "&titles=" + title + "&redirects=";
+
+      var result = await QueryAndParse<GeosearchResponse>(language, query);
+
+      var pages = result?.query?.pages;
+      if (pages == null || pages.Count == 0)
+        return null;
+
+      var page = pages.First();
+      var coordinates = page.coordinates.FirstOrDefault();
+
+      return new NearbyArticle
+      {
+        Language = page.pagelanguage,
+        PageId = page.pageid,
+        Title = page.title,
+        Description = page.description,
+        Uri = new Uri(page.fullurl),
+        ThumbnailUri = !string.IsNullOrEmpty(page.thumbnail?.source) ? new Uri(page.thumbnail.source) : null,
+        Coordinates = coordinates != null ? new Coordinates(coordinates.lat, coordinates.lon) : null,
+        Excerpt = page.extract
+      };
+    }
+
+    private static IList<NearbyArticle> MapPages(string language, List<Page> pages)
+    {
+      var list = new List<NearbyArticle>();
+
+      foreach (var page in pages)
+      {
+        var coordinates = page.coordinates.First();
+
+        list.Add(new NearbyArticle
+        {
+          Language = language,
+          PageId = page.pageid,
+          Title = page.title,
+          Coordinates = new Coordinates(coordinates.lat, coordinates.lon)
+        });
+      }
+
+      return list;
+    }
+
+    private class GeosearchResponse
+    {
+      public Continue @continue { get; set; }
+      public Query query { get; set; }
+    }
+
+    private class Continue
+    {
+      public string cocontinue { get; set; }
+    }
+
+    private class Query
+    {
+      public List<Page> pages { get; set; }
+    }
+
+    private class Page
+    {
+      public int pageid { get; set; }
+      public string title { get; set; }
+      public string description { get; set; }
+      public string fullurl { get; set; }
+      public string pagelanguage { get; set; }
+      public Thumbnail thumbnail { get; set; }
+      public List<LatituteLongitude> coordinates { get; set; }
+      public string extract { get; set; }
+    }
+
+    private class Thumbnail
+    {
+      public string source { get; set; }
+    }
+
+    private class LatituteLongitude
+    {
+      public double lat { get; set; }
+      public double lon { get; set; }
     }
   }
 

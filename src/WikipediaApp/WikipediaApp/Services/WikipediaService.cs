@@ -9,6 +9,7 @@ namespace WikipediaApp
   public class WikipediaService
   {
     private readonly WikipediaSearchApi searchApi = new WikipediaSearchApi();
+    private readonly WikipediaGeosearchApi geosearchApi = new WikipediaGeosearchApi();
     private readonly WikipediaQueryApi queryApi = new WikipediaQueryApi();
     private readonly WikipediaParseApi parseApi = new WikipediaParseApi();
 
@@ -273,6 +274,34 @@ namespace WikipediaApp
 
         return null;
       }
+    }
+
+    public async Task<IList<NearbyArticle>> SearchNearby(string language, double latitude, double longitude)
+    {
+      try
+      {
+        return await geosearchApi.Search(latitude, longitude, language);
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+
+        return null;
+      }
+    }
+
+    public async Task<NearbyArticle> GetArticleLocation(string language, int? pageId, string title, int thumbnailSize = 350)
+    {
+        try
+        {
+          return await geosearchApi.GetArticleLocation(language, pageId, title, thumbnailSize);
+        }
+        catch (Exception ex)
+        {
+          Crashes.TrackError(ex);
+
+          return null;
+        }
     }
   }
 }
