@@ -420,6 +420,9 @@
   <data name="MainLanguagesPaneRemoveFavoriteMenuFlyoutItem.Text" xml:space="preserve">
     <value>Eliminar de mis idiomas</value>
   </data>
+  <data name="MainMapButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Mapa del entorno</value>
+  </data>
   <data name="MainNoSearchResultsTextBlock.Text" xml:space="preserve">
     <value>No se han encontrado artículos</value>
   </data>

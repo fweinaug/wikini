@@ -209,7 +209,11 @@
                         </Button>
 
                         <Button x:Uid="MainRandomButton" Style="{StaticResource CommandBarButton}" Command="{Binding ShowRandomArticleCommand}">
-                            <FontIcon Glyph="&#xf18E;" />
+                            <FontIcon Glyph="&#xF18E;" />
+                        </Button>
+
+                        <Button x:Uid="MainMapButton" Style="{StaticResource CommandBarButton}" Command="{Binding ShowMapCommand}">
+                            <FontIcon Glyph="&#xF52E;" />
                         </Button>
 
                         <Rectangle Style="{StaticResource CommandBarSeparator}" />

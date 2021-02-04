@@ -23,6 +23,12 @@ namespace WikipediaApp
     }
 
     [NotMapped]
+    public bool HasThumbnail
+    {
+      get { return ThumbnailUri != null; }
+    }
+
+    [NotMapped]
     public Uri Uri
     {
       get

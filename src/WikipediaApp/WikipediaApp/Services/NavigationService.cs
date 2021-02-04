@@ -21,11 +21,6 @@ namespace WikipediaApp
       if (ShowArticleInCurrentArticlePage(article))
         return;
 
-      while (Frame.CanGoBack)
-      {
-        Frame.GoBack();
-      }
-
       var viewModel = new ArticleViewModel(article);
 
       Frame.Navigate(typeof(ArticlePage), viewModel);
@@ -41,6 +36,13 @@ namespace WikipediaApp
 
       currentViewModel.ShowArticle(article);
       return true;
+    }
+
+    public void ShowMap(string language)
+    {
+      var viewModel = new MapViewModel(language);
+
+      Frame.Navigate(typeof(MapPage), viewModel);
     }
 
     public async void OpenInBrowser(Uri uri)

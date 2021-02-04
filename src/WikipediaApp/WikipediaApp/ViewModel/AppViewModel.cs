@@ -16,6 +16,7 @@ namespace WikipediaApp
 
     private Command showHomePageCommand = null;
     private Command showRandomArticleCommand = null;
+    private Command showMapCommand = null;
     private Command<ArticleHead> showArticleCommand = null;
 
     private IList<Language> languages = null;
@@ -36,6 +37,11 @@ namespace WikipediaApp
     public ICommand ShowRandomArticleCommand
     {
       get { return showRandomArticleCommand ?? (showRandomArticleCommand = new Command(ShowRandomArticle)); }
+    }
+
+    public ICommand ShowMapCommand
+    {
+      get { return showMapCommand ?? (showMapCommand = new Command(ShowMap)); }
     }
 
     public ICommand ShowArticleCommand
@@ -114,6 +120,11 @@ namespace WikipediaApp
         dialogService.ShowLoadingError();
 
       IsBusy = false;
+    }
+
+    private void ShowMap()
+    {
+      navigationService.ShowMap(Language.Code);
     }
 
     public void ShowArticle(ArticleHead article)
