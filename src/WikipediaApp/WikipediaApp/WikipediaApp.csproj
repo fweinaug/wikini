@@ -176,6 +176,9 @@
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="ViewModel\AsyncCommand.cs" />
+    <Compile Include="Views\Controls\ImageLoader.xaml.cs">
+      <DependentUpon>ImageLoader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20210116115409_ThumbnailUrl.cs" />
     <Compile Include="Migrations\20210116115409_ThumbnailUrl.designer.cs">
       <DependentUpon>20210116115409_ThumbnailUrl.cs</DependentUpon>
@@ -316,6 +319,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Controls\ImageLoader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
