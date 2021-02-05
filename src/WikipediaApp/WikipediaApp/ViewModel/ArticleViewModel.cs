@@ -395,28 +395,12 @@ namespace WikipediaApp
 
     private async Task<Article> GetArticle(Uri uri)
     {
-      var article = ArticleCache.GetArticle(uri);
-      if (article != null)
-        return article;
-
-      article = await wikipediaService.GetArticle(uri, Settings.Current.ImagesDisabled);
-      if (article != null)
-        ArticleCache.AddArticle(article);
-
-      return article;
+      return await wikipediaService.GetArticle(uri, Settings.Current.ImagesDisabled);
     }
 
     private async Task<Article> GetArticle(ArticleHead articleHead)
     {
-      var article = ArticleCache.GetArticle(articleHead.Uri, articleHead.Language, articleHead.PageId);
-      if (article != null)
-        return article;
-
-      article = await wikipediaService.GetArticle(articleHead, Settings.Current.ImagesDisabled);
-      if (article != null)
-        ArticleCache.AddArticle(article);
-
-      return article;
+      return await wikipediaService.GetArticle(articleHead, Settings.Current.ImagesDisabled);
     }
 
     private async Task<Article> RefreshArticle(Article article)

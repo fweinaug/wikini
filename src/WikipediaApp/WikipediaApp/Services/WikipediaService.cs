@@ -8,6 +8,10 @@ namespace WikipediaApp
 {
   public class WikipediaService
   {
+    private static readonly ArticleCache<ArticleHead> articleHeadCache = new ArticleCache<ArticleHead>();
+    private static readonly ArticleCache<Article> articleCache = new ArticleCache<Article>();
+    private static readonly ArticleCache<NearbyArticle> articleLocationCache = new ArticleCache<NearbyArticle>();
+
     private readonly WikipediaSearchApi searchApi = new WikipediaSearchApi();
     private readonly WikipediaGeosearchApi geosearchApi = new WikipediaGeosearchApi();
     private readonly WikipediaQueryApi queryApi = new WikipediaQueryApi();
@@ -30,11 +34,20 @@ namespace WikipediaApp
 
       try
       {
-        var head = await queryApi.GetArticleInfo(language, null, title);
+        var article = articleCache.FindArticle(uri, language);
+        if (article != null)
+          return article;
+
+        var head = await GetArticleInfo(language, null, title);
         if (head == null)
           return null;
 
-        return await parseApi.FetchArticle(head.Language, head.PageId, head.Title, disableImages, anchor, head);
+        article = await parseApi.FetchArticle(head.Language, head.PageId, head.Title, disableImages, anchor, head);
+
+        if (article != null)
+          articleCache.AddArticle(article);
+
+        return article;
       }
       catch (Exception ex)
       {
@@ -48,9 +61,32 @@ namespace WikipediaApp
     {
       try
       {
-        var article = await queryApi.GetArticleInfo(language, pageId, title);
+        var article = await GetArticleInfo(language, pageId, title);
 
         return article?.Uri;
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+
+        return null;
+      }
+    }
+
+    public async Task<ArticleHead> GetArticleInfo(string language, int? pageId, string title)
+    {
+      try
+      {
+        var article = articleHeadCache.FindArticle(language, pageId, title);
+        if (article != null)
+          return article;
+
+        article = await queryApi.GetArticleInfo(language, pageId, title);
+
+        if (article != null)
+          articleHeadCache.AddArticle(article);
+
+        return article;
       }
       catch (Exception ex)
       {
@@ -67,7 +103,7 @@ namespace WikipediaApp
         if (!WikipediaUriParser.Parse(uri, out var title, out var language, out _))
           return null;
 
-        var article = await queryApi.GetArticleInfo(language, null, title);
+        var article = await GetArticleInfo(language, null, title);
 
         return article;
       }
@@ -156,13 +192,21 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<Article> GetArticle(ArticleHead article, bool disableImages)
+    public async Task<Article> GetArticle(ArticleHead data, bool disableImages)
     {
       try
       {
-        var head = await queryApi.GetArticleInfo(article.Language, article.PageId, article.Title);
+        var article = articleCache.FindArticle(data.Uri, data.Language, data.PageId);
+        if (article != null)
+          return article;
 
-        return await parseApi.FetchArticle(article.Language, article.PageId, article.Title, disableImages, head: head);
+        var head = await GetArticleInfo(data.Language, data.PageId, data.Title);
+        article = await parseApi.FetchArticle(data.Language, data.PageId, data.Title, disableImages, head: head);
+
+        if (article != null)
+          articleCache.AddArticle(article);
+
+        return article;
       }
       catch (Exception ex)
       {
@@ -217,7 +261,7 @@ namespace WikipediaApp
     {
       try
       {
-        var article = await queryApi.GetArticleInfo(language, pageId, title);
+        var article = await GetArticleInfo(language, pageId, title);
 
         if (article != null)
           return await TileManager.PinArticle(language, article.PageId.GetValueOrDefault(), article.Title, article.Uri, article.ThumbnailUri);
@@ -292,16 +336,25 @@ namespace WikipediaApp
 
     public async Task<NearbyArticle> GetArticleLocation(string language, int? pageId, string title, int thumbnailSize = 350)
     {
-        try
-        {
-          return await geosearchApi.GetArticleLocation(language, pageId, title, thumbnailSize);
-        }
-        catch (Exception ex)
-        {
-          Crashes.TrackError(ex);
+      try
+      {
+        var article = articleLocationCache.FindArticle(language, pageId, title);
+        if (article != null)
+          return article;
 
-          return null;
-        }
+        article = await geosearchApi.GetArticleLocation(language, pageId, title, thumbnailSize);
+
+        if (article != null)
+          articleLocationCache.AddArticle(article);
+
+        return article;
+      }
+      catch (Exception ex)
+      {
+        Crashes.TrackError(ex);
+
+        return null;
+      }
     }
   }
 }

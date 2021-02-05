@@ -248,7 +248,7 @@
     <Compile Include="Views\SpeechView.xaml.cs">
       <DependentUpon>SpeechView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ArticleCache.cs" />
+    <Compile Include="Services\ArticleCache.cs" />
     <Compile Include="ViewModel\ArticleFavorites.cs" />
     <Compile Include="ViewModel\ArticleViewModel.Images.cs" />
     <Compile Include="Views\ArticleImagesView.xaml.cs">
