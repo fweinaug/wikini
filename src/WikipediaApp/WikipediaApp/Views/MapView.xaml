@@ -32,21 +32,23 @@
         <StackPanel Orientation="Vertical" Spacing="10" Margin="15"
                     HorizontalAlignment="Right" VerticalAlignment="Center">
 
-            <Button Padding="10" Click="ZoomInButtonClick"
-                    BorderThickness="0" CornerRadius="90"
-                    Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource AcrylicButtonStyle}">
+                    <Setter Property="CornerRadius" Value="90" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Padding" Value="10" />
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Click="ZoomInButtonClick">
                 <FontIcon Glyph="&#xF8C5;" />
             </Button>
 
-            <Button Padding="10" Click="ZoomOutButtonClick"
-                    BorderThickness="0" CornerRadius="90"
-                    Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}">
+            <Button Click="ZoomOutButtonClick">
                 <FontIcon Glyph="&#xF8C7;" />
             </Button>
 
-            <Button Padding="10" Command="{Binding ElementName=Root, Path=UpdateLocationCommand}"
-                    BorderThickness="0" CornerRadius="90"
-                    Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}">
+            <Button Command="{Binding ElementName=Root, Path=UpdateLocationCommand}">
                 <FontIcon Glyph="&#xF55F;" />
             </Button>
         </StackPanel>
