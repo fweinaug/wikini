@@ -109,7 +109,7 @@ namespace WikipediaApp
     {
       var dictionary = new Dictionary<string, ArticleImage>();
 
-      var query = "action=query&generator=images&gimlimit=50&prop=imageinfo&iiprop=url&iiurlwidth=800&iiurlheight=800";
+      var query = "action=query&generator=images&gimlimit=50&prop=imageinfo&iiprop=url&iiurlwidth=300&iiurlheight=300";
       query += "&pageids=" + pageId;
 
       var query2 = query;
@@ -129,7 +129,9 @@ namespace WikipediaApp
 
           var imageinfo = page.imageinfo[0];
 
-          var imageUri = new Uri(imageinfo.url);
+          var imageUri = new Uri(imageinfo.url.EndsWith(".svg", StringComparison.InvariantCultureIgnoreCase)
+            ? imageinfo.thumburl.Replace("/300px-", "/1400px-")
+            : imageinfo.url);
           var thumbnailUri = new Uri(imageinfo.thumburl);
           var descriptionUrl = new Uri(imageinfo.descriptionurl);
 

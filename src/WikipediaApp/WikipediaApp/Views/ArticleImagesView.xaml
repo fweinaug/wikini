@@ -47,14 +47,14 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <local:ImageControl Grid.Row="0" Uri="{Binding ThumbnailUri}" />
+                        <local:ImageControl Grid.Row="0" Uri="{x:Bind ImageUri}" />
                         <TextBlock Grid.Row="1"
-                                   Text="{Binding Description}"
+                                   Text="{x:Bind Description}"
                                    FontSize="13" FontWeight="Light"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    TextWrapping="WrapWholeWords" TextAlignment="Center"
                                    Margin="0,5,0,10"
-                                   Visibility="{Binding HasDescription, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                   Visibility="{x:Bind HasDescription, Converter={StaticResource BooleanToVisibilityConverter}}" />
                     </Grid>
                 </DataTemplate>
             </FlipView.ItemTemplate>
