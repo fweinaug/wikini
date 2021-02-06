@@ -13,7 +13,11 @@
 
         <ScrollViewer x:Name="ScrollViewer"
                       HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
-                      ZoomMode="Enabled" MinZoomFactor="1" MaxZoomFactor="5">
+                      ZoomMode="Enabled" MinZoomFactor="1" MaxZoomFactor="5"
+                      DoubleTapped="ScrollViewerDoubleTapped"
+                      PointerPressed="ScrollViewerPointerPressed"
+                      PointerReleased="ScrollViewerPointerReleased"
+                      PointerMoved="ScrollViewerPointerMoved">
             <Image x:Name="Image" HorizontalAlignment="Center" VerticalAlignment="Center"
                    ImageOpened="ImageOpened" ImageFailed="ImageFailed"
                    MaxWidth="{Binding Path=ViewportWidth, ElementName=ScrollViewer}"
