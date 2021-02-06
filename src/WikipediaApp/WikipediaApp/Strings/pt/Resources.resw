@@ -246,6 +246,9 @@
   <data name="ArticleImagesEmptyTextBlock.Text" xml:space="preserve">
     <value>Este artigo não contém quaisquer imagens.</value>
   </data>
+  <data name="ArticleImagesGalleryAppBarToggleButton.Label" xml:space="preserve">
+    <value>Galeria</value>
+  </data>
   <data name="ArticleLanguagesAppBarButton.Label" xml:space="preserve">
     <value>Línguas</value>
   </data>

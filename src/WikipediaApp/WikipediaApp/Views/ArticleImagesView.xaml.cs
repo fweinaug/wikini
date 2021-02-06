@@ -76,5 +76,36 @@ namespace WikipediaApp
       if (SelectedImage != null)
         await DownloadHelper.DownloadImage(SelectedImage);
     }
+    private void GalleryAppBarToggleButtonChecked(object sender, RoutedEventArgs e)
+    {
+      if (GridView == null)
+      {
+        FindName(nameof(GridView));
+
+        GridView.Visibility = Visibility.Visible;
+      }
+
+      FlipView.Opacity = 0;
+
+      GridView.Opacity = 1;
+      GridView.IsHitTestVisible = true;
+    }
+
+    private void GalleryAppBarToggleButtonUnchecked(object sender, RoutedEventArgs e)
+    {
+      GridView.Opacity = 0;
+      GridView.IsHitTestVisible = false;
+
+      FlipView.Opacity = 1;
+    }
+
+    private void GridViewItemClick(object sender, ItemClickEventArgs e)
+    {
+      FlipView.UseTouchAnimationsForAllNavigation = false;
+      FlipView.SelectedItem = e.ClickedItem;
+      FlipView.UseTouchAnimationsForAllNavigation = true;
+
+      GalleryAppBarToggleButton.IsChecked = false;
+    }
   }
 }

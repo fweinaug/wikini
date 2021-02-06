@@ -14,6 +14,9 @@ namespace WikipediaApp
     public static readonly DependencyProperty UriProperty = DependencyProperty.Register(
       nameof(Uri), typeof(Uri), typeof(ImageControl), new PropertyMetadata(null, OnUriPropertyChanged));
 
+    public static readonly DependencyProperty ZoomEnabledProperty = DependencyProperty.Register(
+      nameof(ZoomEnabled), typeof(bool), typeof(ImageControl), new PropertyMetadata(true, OnZoomEnabledPropertyChanged));
+
     private PointerPoint pointerPressedAtPoint = null;
     private Point pointerPressedOffset;
 
@@ -21,6 +24,12 @@ namespace WikipediaApp
     {
       get { return (Uri)GetValue(UriProperty); }
       set { SetValue(UriProperty, value); }
+    }
+
+    public bool ZoomEnabled
+    {
+      get { return (bool)GetValue(ZoomEnabledProperty); }
+      set { SetValue(ZoomEnabledProperty, value); }
     }
 
     public ImageControl()
@@ -35,12 +44,24 @@ namespace WikipediaApp
       control.ChangeImage(e.NewValue as Uri);
     }
 
+    private static void OnZoomEnabledPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+      var control = (ImageControl)d;
+
+      control.UpdateZoomMode();
+    }
+
     private void ChangeImage(Uri uri)
     {
       ProgressRing.Visibility = Visibility.Visible;
       ProgressRing.IsActive = true;
 
       Image.Source = new BitmapImage { UriSource = uri };
+    }
+
+    private void UpdateZoomMode()
+    {
+      ScrollViewer.ZoomMode = ZoomEnabled ? ZoomMode.Enabled : ZoomMode.Disabled;
     }
 
     private void ImageOpened(object sender, RoutedEventArgs e)
