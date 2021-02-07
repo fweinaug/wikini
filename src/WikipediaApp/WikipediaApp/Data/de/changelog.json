@@ -1,5 +1,10 @@
 [
     [
+        "Umgebungskarte",
+        "Artikelansicht mit Bildergalerie",
+        "Bilder mit dem Cursor scrollen und zoomen"
+    ],
+    [
         "Design in Artikelansicht automatisch wechseln",
         "Schriftgröße in Artikelansicht automatisch aktualisieren",
         "Artikel vorlesen mit Kontextmenü um zu Abschnitt zu springen",

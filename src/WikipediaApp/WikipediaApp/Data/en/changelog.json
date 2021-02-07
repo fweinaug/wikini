@@ -1,5 +1,10 @@
 [
     [
+        "Surroundings map",
+        "Article view with image gallery",
+        "Scroll and zoom images with cursor"
+    ],
+    [
         "Automatically change design in article view",
         "Automatically update font size in article view",
         "Read aloud with context menu to jump to section",
