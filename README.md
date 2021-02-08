@@ -9,7 +9,7 @@ Wikini is an unofficial Wikipedia app built for Windows 10 (UWP).
 [Learn more](http://wikiniapp.com/)\
 [Release notes](http://wikiniapp.com/releases)
 
-[Download](https://www.microsoft.com/store/apps/9nkvw50h59sl)
+[Download (Microsoft Store)](https://www.microsoft.com/store/apps/9nkvw50h59sl)
 
 ## Features
 
@@ -18,10 +18,12 @@ Wikini is an unofficial Wikipedia app built for Windows 10 (UWP).
 - Live search
 - Favorites
 - Read articles aloud
-- Image browser
+- Image browser & gallery
 - Search in article
 - TOC
-- ..and so much more!
+- Map
+- Picture of the day
+- ..and much more!
 
 ## Screenshots
 
@@ -31,15 +33,23 @@ Wikini is an unofficial Wikipedia app built for Windows 10 (UWP).
     <td>Article</td>
     <td>Read aloud</td>
     <td>Languages</td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107275739-6dfb9980-6a52-11eb-9934-0a9021ab5d16.png" width="100"></td>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107275258-cda57500-6a51-11eb-8ae0-9e1b0669a90e.png" width="100"></td>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107275235-c5e5d080-6a51-11eb-9838-e07a038cdbaa.png" width="100"></td>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107275805-7f44a600-6a52-11eb-8735-46e3cb2f391a.png" width="100"></td>
+  </tr>
+  <tr>
     <td>Images</td>
+    <td>Gallery</td>
+    <td>Map</td>
     <td>TOC</td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/17765766/79636468-254bba80-8178-11ea-9e01-2e81dc971dd0.png" width="100"></td>
-    <td><img src="https://user-images.githubusercontent.com/17765766/79636467-24b32400-8178-11ea-837b-78cf2b7ba662.png" width="100"></td>
-    <td><img src="https://user-images.githubusercontent.com/17765766/79636463-22e96080-8178-11ea-96c9-2e7e9e565c05.png" width="100"></td>
-    <td><img src="https://user-images.githubusercontent.com/17765766/79636461-22e96080-8178-11ea-8387-195590653482.png" width="100"></td>
-    <td><img src="https://user-images.githubusercontent.com/17765766/79636460-1e24ac80-8178-11ea-8454-cd58d94fa2e6.png" width="100"></td>
-    <td><img src="https://user-images.githubusercontent.com/17765766/79636466-241a8d80-8178-11ea-8841-e14819619559.png" width="100"></td>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107275246-caaa8480-6a51-11eb-8f26-d60d21bd01ec.png" width="100"></td>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107274928-625ba300-6a51-11eb-86ba-9b3c6d5decf9.png" width="100"></td>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107275268-d007cf00-6a51-11eb-9a8e-145b48c42e76.png" width="100"></td>
+    <td><img src="https://user-images.githubusercontent.com/17765766/107275303-dbf39100-6a51-11eb-9808-80a8a079207d.png" width="100"></td>
   </tr>
 </table>
