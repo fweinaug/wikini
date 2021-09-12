@@ -8,7 +8,7 @@
     mc:Ignorable="d" Loaded="PageLoaded" RequestedTheme="{Binding Source={StaticResource Settings}, Path=AppTheme, Mode=TwoWay}">
 
     <Grid>
-        <Frame x:Name="Frame" Navigated="FrameNavigated" />
+        <Frame x:Name="Frame" Navigating="FrameNavigating" Navigated="FrameNavigated" />
 
         <Grid x:Name="AppTitleBar" Background="Transparent" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -17,12 +17,11 @@
                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Image x:Name="AppIcon" Stretch="UniformToFill" Margin="8,4,0,4" />
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image x:Name="AppIcon" Stretch="UniformToFill" Margin="0,4,8,4" />
 
-                <TextBlock x:Name="AppTitle"
-                           Style="{StaticResource CaptionTextBlockStyle}" 
-                           Margin="8,0,0,0" VerticalAlignment="Center" />
+                <TextBlock x:Name="AppTitle" VerticalAlignment="Center"
+                           Style="{StaticResource CaptionTextBlockStyle}" />
             </StackPanel>
         </Grid>
 

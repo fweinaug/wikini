@@ -41,11 +41,8 @@ namespace WikipediaApp
       }
     }
 
-    private async void FrameNavigated(object sender, NavigationEventArgs e)
+    private void FrameNavigating(object sender, NavigatingCancelEventArgs e)
     {
-      if (e.Parameter is ViewModelBase frameViewModel)
-        await frameViewModel.Initialize();
-      
       if (e.Parameter is ArticleViewModel articleViewModel)
       {
         AppIcon.Visibility = Visibility.Visible;
@@ -58,10 +55,16 @@ namespace WikipediaApp
         AppTitle.ClearValue(TextBlock.TextProperty);
         AppTitle.Text = Package.Current.DisplayName;
       }
+    }
 
+    private async void FrameNavigated(object sender, NavigationEventArgs e)
+    {
       SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Frame.CanGoBack
         ? AppViewBackButtonVisibility.Visible
         : AppViewBackButtonVisibility.Collapsed;
+
+      if (e.Parameter is ViewModelBase frameViewModel)
+        await frameViewModel.Initialize();
     }
 
     private async void PageLoaded(object sender, RoutedEventArgs e)
