@@ -18,6 +18,10 @@
                     <Color x:Key="SystemAccentColor">#337A78</Color>
                     <Color x:Key="SystemAccentColorLight1">#388785</Color>
                     <Color x:Key="SystemAccentColorDark1">#2F706E</Color>
+                    <Color x:Key="SystemAccentColorLight2">#388785</Color>
+                    <Color x:Key="SystemAccentColorDark2">#2F706E</Color>
+                    <Color x:Key="SystemAccentColorLight3">#388785</Color>
+                    <Color x:Key="SystemAccentColorDark3">#2F706E</Color>
 
                     <SolidColorBrush x:Key="TextControlBorderBrushFocused">#00FFFFFF</SolidColorBrush>
                 </ResourceDictionary>
@@ -26,6 +30,10 @@
                     <Color x:Key="SystemAccentColor">#61B7B9</Color>
                     <Color x:Key="SystemAccentColorLight1">#519799</Color>
                     <Color x:Key="SystemAccentColorDark1">#4A8B8C</Color>
+                    <Color x:Key="SystemAccentColorLight2">#519799</Color>
+                    <Color x:Key="SystemAccentColorDark2">#4A8B8C</Color>
+                    <Color x:Key="SystemAccentColorLight3">#519799</Color>
+                    <Color x:Key="SystemAccentColorDark3">#4A8B8C</Color>
 
                     <SolidColorBrush x:Key="TextControlBackgroundFocused">#000000</SolidColorBrush>
                     <SolidColorBrush x:Key="TextControlForegroundFocused">#FFFFFF</SolidColorBrush>
@@ -33,6 +41,13 @@
                     <SolidColorBrush x:Key="TextControlBorderBrushFocused">#00000000</SolidColorBrush>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
+
+            <StaticResource x:Key="TextControlBackgroundPointerOver" ResourceKey="SystemControlTransparentBrush" />
+            <StaticResource x:Key="TextControlBackgroundFocused" ResourceKey="SystemControlTransparentBrush" />
+            <Thickness x:Key="TextControlBorderThemeThicknessFocused">0</Thickness>
+
+            <StaticResource x:Key="CommandBarBackgroundOpen" ResourceKey="SystemControlTransparentBrush" />
+            <Thickness x:Key="CommandBarBorderThicknessOpen">0</Thickness>
 
             <Style TargetType="FontIcon">
                 <Setter Property="FontFamily" Value="/Assets/Fonts/FluentSystemIcons-Regular.ttf#FluentSystemIcons-Regular" />

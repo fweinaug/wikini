@@ -184,9 +184,8 @@
                         </local:ArticleView>
 
                         <Grid x:Name="SearchBar" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,20,0"
-                              BorderThickness="0,1,1,0" BorderBrush="{ThemeResource AppBarBorderBrush}"
-                              Background="{ThemeResource SystemControlAcrylicElementBrush}"
-                              contract8Present:Shadow="{StaticResource SharedShadow}">
+                              BorderThickness="0,1,1,0" BorderBrush="{ThemeResource AppBarBorderBrush}" CornerRadius="0,4,0,0"
+                              Background="{ThemeResource SystemControlAcrylicElementBrush}">
 
                             <Grid.RenderTransform>
                                 <TranslateTransform x:Name="SearchBarTranslate" Y="50" />
@@ -201,7 +200,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBox Grid.Column="0" x:Uid="ArticleSearchTextBox" x:Name="SearchBarTextBox"
-                                     BorderThickness="0" HorizontalAlignment="Stretch"
+                                     HorizontalAlignment="Stretch" BorderThickness="0" Background="Transparent"
                                      KeyDown="SearchBarTextBoxKeyDown" />
 
                             <Button Grid.Column="1"

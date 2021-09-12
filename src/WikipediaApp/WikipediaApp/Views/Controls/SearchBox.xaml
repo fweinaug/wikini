@@ -24,7 +24,7 @@
             </ResourceDictionary.ThemeDictionaries>
 
             <Style x:Key="SearchBoxStyle" TargetType="AutoSuggestBox">
-                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
                 <Setter Property="IsTabStop" Value="False" />
                 <Setter Property="TextBoxStyle" Value="{StaticResource AutoSuggestBoxTextBoxStyle}" />
                 <Setter Property="UseSystemFocusVisuals" Value="{ThemeResource IsApplicationFocusVisualKindReveal}" />
@@ -49,6 +49,10 @@
 
                                 <TextBox x:Name="TextBox"
                                     Style="{TemplateBinding TextBoxStyle}"
+                                    Background="Transparent"
+                                    HorizontalContentAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
                                     PlaceholderText="{TemplateBinding PlaceholderText}"
                                     Header="{TemplateBinding Header}"
                                     Width="{TemplateBinding Width}"
@@ -58,23 +62,22 @@
                                     Margin="0"
                                     DesiredCandidateWindowAlignment="BottomEdge"
                                     UseSystemFocusVisuals="{TemplateBinding UseSystemFocusVisuals}"
-                                    BorderThickness="0"
-                                    Padding="0,7,0,0" />
+                                    BorderThickness="0" />
 
                                 <Popup x:Name="SuggestionsPopup">
                                     <Border x:Name="SuggestionsContainer">
                                         <ListView x:Name="SuggestionsList"
-                                        Background="{ThemeResource AutoSuggestBoxSuggestionsListBackground}"
-                                        BorderThickness="{ThemeResource AutoSuggestListBorderThemeThickness}"
-                                        BorderBrush="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}"
-                                        DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
-                                        IsItemClickEnabled="True"
-                                        ItemTemplate="{TemplateBinding ItemTemplate}"
-                                        ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                        ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
-                                        MaxHeight="600"
-                                        Margin="{ThemeResource AutoSuggestListMargin}"
-                                        Padding="{ThemeResource AutoSuggestListPadding}" />
+                                            Background="{ThemeResource AutoSuggestBoxSuggestionsListBackground}"
+                                            BorderThickness="{ThemeResource AutoSuggestListBorderThemeThickness}"
+                                            BorderBrush="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}"
+                                            DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                            IsItemClickEnabled="True"
+                                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                                            ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                            ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                            MaxHeight="600"
+                                            Margin="{ThemeResource AutoSuggestListMargin}"
+                                            Padding="{ThemeResource AutoSuggestListPadding}" />
                                     </Border>
                                 </Popup>
                             </Grid>
@@ -181,7 +184,7 @@
         </AutoSuggestBox>
 
         <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="3">
-            <Button x:Uid="AppSearchSpeechButton" Style="{StaticResource TransparentButtonStyle}" Foreground="Gray" BorderThickness="0"
+            <Button x:Uid="AppSearchSpeechButton" Style="{StaticResource TransparentButtonStyle}" Foreground="Gray" CornerRadius="0" BorderThickness="0"
                     Padding="10,0" VerticalAlignment="Stretch" Click="OnRecognizeSpeechClick">
                 <FontIcon Glyph="&#xF5DE;" FontSize="16" />
             </Button>
