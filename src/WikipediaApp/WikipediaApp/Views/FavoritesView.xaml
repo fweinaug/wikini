@@ -32,12 +32,20 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ArticleHead">
                     <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
-                          ToolTipService.ToolTip="{x:Bind Title}"
                           local:ListViewExtensions.ItemMenuFlyout="{StaticResource ItemMenuFlyout}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
+
+                        <ToolTipService.ToolTip>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{x:Bind Title}" />
+                                <TextBlock Text="{x:Bind Description}" TextTrimming="CharacterEllipsis"
+                                           Style="{StaticResource SplitViewPaneLightTextBlockStyle}"
+                                           Visibility="{x:Bind HasDescription, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            </StackPanel>
+                        </ToolTipService.ToolTip>
 
                         <TextBlock Grid.Column="0" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis"
                                    VerticalAlignment="Center" />
