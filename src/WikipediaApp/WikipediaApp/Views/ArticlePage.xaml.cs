@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Microsoft.Toolkit.Uwp.UI;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.System;
@@ -18,6 +19,8 @@ namespace WikipediaApp
     private readonly DataTemplate paneFavoritesTemplate;
     private readonly DataTemplate paneContentsTemplate;
     private readonly DataTemplate paneLanguagesTemplate;
+
+    private readonly DispatcherQueueTimer keyDebounceTimer = DispatcherQueue.GetForCurrentThread().CreateTimer();
 
     public ArticlePage()
     {
@@ -273,7 +276,7 @@ namespace WikipediaApp
 
     private void SearchBarTextBoxTextChanged(object sender, TextChangedEventArgs e)
     {
-      ArticleView.Search(SearchBarTextBox.Text);
+      keyDebounceTimer.Debounce(() => ArticleView.Search(SearchBarTextBox.Text), TimeSpan.FromMilliseconds(300));
     }
 
     private void SearchForwardButtonClick(object sender, RoutedEventArgs e)
