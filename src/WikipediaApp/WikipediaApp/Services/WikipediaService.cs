@@ -11,6 +11,7 @@ namespace WikipediaApp
     private static readonly ArticleCache<ArticleHead> articleHeadCache = new ArticleCache<ArticleHead>();
     private static readonly ArticleCache<Article> articleCache = new ArticleCache<Article>();
     private static readonly ArticleCache<NearbyArticle> articleLocationCache = new ArticleCache<NearbyArticle>();
+    private static readonly Dictionary<DateTime, ArticleImage> pictureOfTheDayCache = new Dictionary<DateTime, ArticleImage>();
 
     private readonly WikipediaSearchApi searchApi = new WikipediaSearchApi();
     private readonly WikipediaGeosearchApi geosearchApi = new WikipediaGeosearchApi();
@@ -308,7 +309,14 @@ namespace WikipediaApp
     {
       try
       {
+        if (pictureOfTheDayCache.TryGetValue(date, out var cachedImage))
+        {
+          return cachedImage;
+        }
+
         var image = await queryApi.GetPictureOfTheDay(date);
+
+        pictureOfTheDayCache.Add(date, image);
 
         return image;
       }
