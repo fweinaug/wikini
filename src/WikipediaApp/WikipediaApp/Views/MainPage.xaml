@@ -147,11 +147,11 @@
                     <Image Grid.Row="2" Source="/Assets/Logo.png" Width="120" Height="120" Opacity="{ThemeResource WatermarkImageOpacity}" />
 
                     <Border Grid.Row="2" Margin="0,30" Padding="25,10"
-                            Background="{ThemeResource SystemControlHighlightAccentBrush}"
+                            Background="{ThemeResource SystemControlAcrylicElementBrush}"
                             BorderThickness="0" CornerRadius="15"
                             HorizontalAlignment="Center" VerticalAlignment="Top"
                             Visibility="{Binding NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <TextBlock x:Uid="MainNoSearchResultsTextBlock" FontWeight="Normal" Foreground="White" />
+                        <TextBlock x:Uid="MainNoSearchResultsTextBlock" FontWeight="Normal" />
                     </Border>
 
                     <StackPanel x:Name="PictureOfTheDayStackPanel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"
