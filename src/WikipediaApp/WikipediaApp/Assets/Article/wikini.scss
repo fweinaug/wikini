@@ -30,13 +30,25 @@ mark.current {
     }
 }
 
+
+.mw-body, #mw-mf-page-center {
+    background-color: inherit !important;
+}
+
+.theme-light {
+    & {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+}
+
 .theme-dark {
-    &, body {
-        background-color: #121212 !important;
+    & {
+        background: #121212 !important;
         color: #E0E0E0 !important;
     }
 
-    .mw-body, #mw-mf-page-center, .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {
+    .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {
         background-color: inherit !important;
     }
 

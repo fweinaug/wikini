@@ -61,7 +61,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <WebView x:Name="WebView" DefaultBackgroundColor="Transparent"
+        <WebView x:Name="WebView" DefaultBackgroundColor="{ThemeResource SolidBackgroundFillColorBase}"
                  NavigationStarting="WebViewNavigationStarting" NavigationCompleted="WebViewNavigationCompleted"
                  ScriptNotify="WebViewScriptNotify" />
 
