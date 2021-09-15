@@ -609,4 +609,13 @@
   <data name="SettingsWebsiteButton.Content" xml:space="preserve">
     <value>Website</value>
   </data>
+  <data name="ArticleSearchBackwardButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Achteruit</value>
+  </data>
+  <data name="ArticleSearchCloseButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="ArticleSearchForwardButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
 </root>
