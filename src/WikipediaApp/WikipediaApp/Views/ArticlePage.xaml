@@ -47,6 +47,8 @@
                 <DoubleAnimation From="0" To="50" Duration="00:00:0.3" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
                 <DoubleAnimation From="1" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
             </Storyboard>
+
+            <local:NumericComparisonToBooleanConverter x:Key="SearchResultsToBooleanConverter" ComparisonType="GreaterThan" ComparisonValue="0" />
         </ResourceDictionary>
     </Page.Resources>
 
@@ -206,14 +208,16 @@
                             <Button Grid.Column="1"
                                     VerticalAlignment="Stretch" Margin="2,5" BorderThickness="1" Background="Transparent"
                                     Style="{StaticResource ButtonRevealStyle}"
-                                    Click="SearchBackwardButtonClick">
+                                    Click="SearchBackwardButtonClick"
+                                    IsEnabled="{Binding ElementName=ArticleView, Path=SearchResults, Converter={StaticResource SearchResultsToBooleanConverter}}">
                                 <FontIcon Glyph="&#xF2B4;" FontSize="12" />
                             </Button>
 
                             <Button Grid.Column="2"
                                     VerticalAlignment="Stretch" Margin="2,5" BorderThickness="1" Background="Transparent"
                                     Style="{StaticResource ButtonRevealStyle}"
-                                    Click="SearchForwardButtonClick">
+                                    Click="SearchForwardButtonClick"
+                                    IsEnabled="{Binding ElementName=ArticleView, Path=SearchResults, Converter={StaticResource SearchResultsToBooleanConverter}}">
                                 <FontIcon Glyph="&#xF2A1;" FontSize="12" />
                             </Button>
 

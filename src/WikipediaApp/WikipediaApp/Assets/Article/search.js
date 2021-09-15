@@ -16,13 +16,13 @@ function search(query) {
       {
         separateWordSearch: false,
         acrossElements: true,
-        done: function() {
+        done: function(counter) {
           results = content.getElementsByTagName("mark");
 
           currentIndex = 0;
           _jumpTo();
 
-          window.external.notify(`{ 'Message': 'SearchResults', 'Number': ${results.length.toString()} }`);
+          window.external.notify(`{ 'Message': 'SearchResults', 'Number': ${counter} }`);
         }
       });
     }

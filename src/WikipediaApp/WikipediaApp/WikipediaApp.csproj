@@ -180,6 +180,7 @@
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Converters\NumericComparisonToBooleanConverter.cs" />
     <Compile Include="Views\MapView.xaml.cs">
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>
