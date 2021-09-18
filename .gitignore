@@ -18,3 +18,5 @@ project.lock.json
 [Bb]undle[Aa]rtifacts/
 Package.StoreAssociation.xml
 _pkginfo.txt
+
+.sass-cache
