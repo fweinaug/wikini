@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
@@ -156,7 +157,7 @@ namespace WikipediaApp
         var index = uri.AbsolutePath.IndexOf(':', 6);
         if (index > 0)
         {
-          filename = uri.AbsolutePath.Substring(index + 1);
+          filename = WebUtility.UrlDecode(uri.AbsolutePath.Substring(index + 1));
           return true;
         }
       }
