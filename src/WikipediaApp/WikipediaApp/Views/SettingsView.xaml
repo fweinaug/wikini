@@ -39,6 +39,8 @@
                 <Setter Property="Margin" Value="0,0,0,5" />
                 <Setter Property="FontWeight" Value="Normal" />
             </Style>
+
+            <local:EnumToBooleanConverter x:Key="TypefaceToBooleanConverter" EnumType="local:Typeface" />
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -100,6 +102,21 @@
                     </StackPanel>
 
                     <StackPanel Margin="0,10">
+                        <TextBlock x:Uid="SettingsTypefaceTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <TextBlock x:Uid="SettingsTypefaceHeaderTextBlock" TextWrapping="WrapWholeWords" />
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+                            <RadioButton GroupName="Typeface"
+                                         IsChecked="{Binding Typeface, Mode=TwoWay, Converter={StaticResource TypefaceToBooleanConverter}, ConverterParameter=SansSerif}">
+                                sans-serif
+                            </RadioButton>
+                            <RadioButton GroupName="Typeface"
+                                         IsChecked="{Binding Typeface, Mode=TwoWay, Converter={StaticResource TypefaceToBooleanConverter}, ConverterParameter=Serif}">
+                                serif
+                            </RadioButton>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
                         <TextBlock x:Uid="SettingsFontSizeTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                         <Slider x:Uid="SettingsFontSizeSlider" Name="FontSizeSlider" Value="{Binding FontSize, Mode=TwoWay}" Minimum="10" Maximum="25" />
                         <ContentControl Template="{StaticResource FontSizePreview}">
@@ -131,9 +148,9 @@
 
                     <StackPanel x:Name="ThemePanel" Margin="0,10">
                         <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                        <RadioButton x:Uid="SettingsDesignLightRadioButton" Tag="1" Checked="RadioButtonThemeChecked" />
-                        <RadioButton x:Uid="SettingsDesignDarkRadioButton" Tag="2" Checked="RadioButtonThemeChecked" />
-                        <RadioButton x:Uid="SettingsDesignSystemRadioButton" Tag="0" Checked="RadioButtonThemeChecked" />
+                        <RadioButton x:Uid="SettingsDesignLightRadioButton" GroupName="Design" Tag="1" Checked="RadioButtonThemeChecked" />
+                        <RadioButton x:Uid="SettingsDesignDarkRadioButton" GroupName="Design" Tag="2" Checked="RadioButtonThemeChecked" />
+                        <RadioButton x:Uid="SettingsDesignSystemRadioButton" GroupName="Design" Tag="0" Checked="RadioButtonThemeChecked" />
                     </StackPanel>
                 </StackPanel>
 

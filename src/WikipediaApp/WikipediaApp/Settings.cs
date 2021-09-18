@@ -5,6 +5,12 @@ using Windows.Storage;
 
 namespace WikipediaApp
 {
+  public enum Typeface
+  {
+    SansSerif,
+    Serif
+  }
+
   public class Settings : INotifyPropertyChanged
   {
     public event PropertyChangedEventHandler PropertyChanged;
@@ -16,6 +22,7 @@ namespace WikipediaApp
     public const bool DefaultImagesDisabled = false;
     public const bool DefaultHistorySession = false;
     public const bool DefaultHistoryTimeline = true;
+    public const Typeface DefaultTypeface = Typeface.SansSerif;
     public const int DefaultFontSize = 16;
 
     public static Settings Current { get; private set; }
@@ -70,6 +77,12 @@ namespace WikipediaApp
       set { SetValue(value); }
     }
 
+    public Typeface Typeface
+    {
+      get { return GetValue(DefaultTypeface); }
+      set { SetValue(value); }
+    }
+
     public int FontSize
     {
       get { return GetValue(DefaultFontSize); }
@@ -103,15 +116,24 @@ namespace WikipediaApp
 
     private T GetValue<T>(T defaultValue, [CallerMemberName]string name = null)
     {
-      return (T)(container.Values[name] ?? defaultValue);
+      var value = container.Values[name];
+      if (value == null)
+        return defaultValue;
+
+      return typeof(T).IsEnum
+        ? (T)Enum.Parse(typeof(T), value.ToString())
+        : (T)value;
     }
 
-    private void SetValue(object value, [CallerMemberName]string name = null)
+    private void SetValue<T>(T value, [CallerMemberName]string name = null)
     {
-      if (container.Values[name] == value)
+      if (container.Values[name]?.Equals(value) == true)
         return;
 
-      container.Values[name] = value;
+      if (typeof(T).IsEnum)
+        container.Values[name] = value.ToString();
+      else  
+        container.Values[name] = value;
 
       RaisePropertyChanged(name);
     }

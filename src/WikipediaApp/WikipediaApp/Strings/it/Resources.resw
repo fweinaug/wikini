@@ -618,4 +618,10 @@
   <data name="ArticleSearchForwardButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Avanti</value>
   </data>
+  <data name="SettingsTypefaceHeaderTextBlock.Text" xml:space="preserve">
+    <value>Mostra gli articoli in carattere serif o sans-serif</value>
+  </data>
+  <data name="SettingsTypefaceTextBlock.Text" xml:space="preserve">
+    <value>Tipo di carattere</value>
+  </data>
 </root>

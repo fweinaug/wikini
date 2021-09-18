@@ -618,4 +618,10 @@
   <data name="ArticleSearchForwardButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Volgende</value>
   </data>
+  <data name="SettingsTypefaceHeaderTextBlock.Text" xml:space="preserve">
+    <value>Toon artikelen in schreef of schreefloos lettertype</value>
+  </data>
+  <data name="SettingsTypefaceTextBlock.Text" xml:space="preserve">
+    <value>Lettertype</value>
+  </data>
 </root>

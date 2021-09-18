@@ -618,4 +618,10 @@
   <data name="ArticleSearchForwardButton.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Dalej</value>
   </data>
+  <data name="SettingsTypefaceHeaderTextBlock.Text" xml:space="preserve">
+    <value>Pokaż artykuły pisane czcionką szeryfową lub bezszeryfową</value>
+  </data>
+  <data name="SettingsTypefaceTextBlock.Text" xml:space="preserve">
+    <value>Krój pisma</value>
+  </data>
 </root>

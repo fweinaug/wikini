@@ -143,15 +143,20 @@ namespace WikipediaApp
 
     private async void OnSettingsPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-      if (e.PropertyName != nameof(Settings.FontSize))
-        return;
-      
       try
       {
-        var fontSize = WikipediaHtmlBuilder.GetScaledFontSize(Settings.Current.FontSize);
-        var js = $"document.documentElement.style.setProperty('--font-size', '{fontSize}px');";
+        if (e.PropertyName == nameof(Settings.Typeface))
+        {
+          var js = WikipediaHtmlBuilder.BuildTypefaceUpdateJS();
 
-        await WebView.InvokeScriptAsync("eval", new[] { js });
+          await WebView.InvokeScriptAsync("eval", new[] { js });
+        }
+        else if (e.PropertyName == nameof(Settings.FontSize))
+        {
+          var js = WikipediaHtmlBuilder.BuildFontSizeUpdateJS();
+
+          await WebView.InvokeScriptAsync("eval", new[] { js });
+        }
       }
       catch (Exception ex)
       {

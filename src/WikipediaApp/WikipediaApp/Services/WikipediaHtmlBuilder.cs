@@ -16,7 +16,8 @@ namespace WikipediaApp
       var fontSize = settings.FontSize;
       var styles = GetArticleStyles(darkMode, fontSize);
 
-      var themeClass = darkMode ? "theme-dark" : "theme-light";
+      var themeClass = GetThemeClass();
+      var bodyClasses = themeClass + " " + GetTypefaceClass();
       var sectionsCollapsedString = settings.SectionsCollapsed ? "true" : "false";
 
       var html = $@"
@@ -41,7 +42,7 @@ namespace WikipediaApp
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
-        <body class=""{themeClass} mediawiki {direction} sitedir-{direction} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"" style=""margin-top: {header}px"">
+        <body class=""{bodyClasses} mediawiki {direction} sitedir-{direction} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"" style=""margin-top: {header}px"">
         <div id=""mw-mf-viewport"">
 	        <div id=""mw-mf-page-center"">
 		        <div id=""content"" class=""mw-body"">
@@ -59,6 +60,20 @@ namespace WikipediaApp
       return html;
     }
 
+    public static string BuildTypefaceUpdateJS()
+    {
+      var classNames = GetThemeClass() + " " + GetTypefaceClass();
+
+      return $"document.body.className='{classNames}';";
+    }
+
+    public static string BuildFontSizeUpdateJS()
+    {
+      var fontSize = GetScaledFontSize(Settings.Current.FontSize);
+
+      return $"document.documentElement.style.setProperty('--font-size', '{fontSize}px');";
+    }
+
     private static string GetArticleStyles(bool darkMode, int fontSize)
     {
       var scaledFontSize = GetScaledFontSize(fontSize);
@@ -74,7 +89,7 @@ namespace WikipediaApp
       return styles;
     }
 
-    public static int GetScaledFontSize(int fontSize)
+    private static int GetScaledFontSize(int fontSize)
     {
       const int baseFontSize = 14;
 
@@ -83,6 +98,20 @@ namespace WikipediaApp
 
       var scaledFontSize = Math.Round(baseFontSize * (fontFactor / scaleFactor));
       return Convert.ToInt32(scaledFontSize);
+    }
+
+    private static string GetThemeClass()
+    {
+      var darkMode = App.Current.InDarkMode();
+
+      return darkMode ? "theme-dark" : "theme-light";
+    }
+
+    private static string GetTypefaceClass()
+    {
+      var typeface = Settings.Current.Typeface;
+
+      return typeface == Typeface.Serif ? "serif" : "sans-serif";
     }
   }
 }
