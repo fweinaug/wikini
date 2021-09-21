@@ -182,6 +182,7 @@
     </Compile>
     <Compile Include="Views\Converters\EnumToBooleanConverter.cs" />
     <Compile Include="Views\Converters\NumericComparisonToBooleanConverter.cs" />
+    <Compile Include="Views\Extensions\TypeExtension.cs" />
     <Compile Include="Views\MapView.xaml.cs">
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>

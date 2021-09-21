@@ -40,7 +40,7 @@
                 <Setter Property="FontWeight" Value="Normal" />
             </Style>
 
-            <local:EnumToBooleanConverter x:Key="TypefaceToBooleanConverter" EnumType="local:Typeface" />
+            <local:EnumToBooleanConverter x:Key="TypefaceToBooleanConverter" EnumType="{local:Type TypeName=WikipediaApp.Typeface}" />
         </ResourceDictionary>
     </UserControl.Resources>
 
