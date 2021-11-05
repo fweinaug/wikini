@@ -7,6 +7,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
 namespace WikipediaApp
@@ -33,7 +34,9 @@ namespace WikipediaApp
     private readonly SystemMediaTransportControls systemMediaControls;
     private readonly DispatcherTimer positionUpdateTimer = new DispatcherTimer();
     private readonly ArticleChapterCollection chapters = new ArticleChapterCollection();
+
     private int currentChapterIndex = -1;
+    private bool isDraggingPositionSlider = false;
 
     public Article Article
     {
@@ -319,8 +322,12 @@ namespace WikipediaApp
 
       PositionTextBlock.Text = $"{position:mm\\:ss} / {duration:mm\\:ss}";
 
-      PositionProgressBar.Maximum = duration.TotalMilliseconds;
-      PositionProgressBar.Value = position.TotalMilliseconds;
+      if (!isDraggingPositionSlider)
+      {
+        PositionSlider.Maximum = duration.TotalMilliseconds;
+        PositionSlider.Value = position.TotalMilliseconds;
+        PositionSlider.IsEnabled = PositionSlider.Maximum > 0;
+      }
     }
 
     private void SettingsSpeedSliderValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -382,6 +389,21 @@ namespace WikipediaApp
       var chapter = ((FrameworkElement)e.OriginalSource).DataContext as ArticleChapter;
 
       ChapterClick?.Invoke(this, new ArticleChapterEventArgs(chapter));
+    }
+
+    private void PositionSliderPointerCaptureLost(object sender, PointerRoutedEventArgs e)
+    {
+      MediaElement.Position = TimeSpan.FromMilliseconds(PositionSlider.Value);
+    }
+
+    private void PositionSliderManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+    {
+      isDraggingPositionSlider = true;
+    }
+
+    private void PositionSliderManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+    {
+      isDraggingPositionSlider = false;
     }
   }
 }

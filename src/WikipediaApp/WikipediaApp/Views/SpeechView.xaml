@@ -21,6 +21,8 @@
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
         </MenuFlyout>
+
+        <local:MillisecondsToMinutesConverter x:Key="MillisecondsToMinutesConverter" />
     </UserControl.Resources>
 
     <Grid>
@@ -116,7 +118,9 @@
 
             <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10">
                 <TextBlock x:Name="PositionTextBlock" Text="00:00 / 00:00" HorizontalAlignment="Center" />
-                <ProgressBar x:Name="PositionProgressBar" Value="0" Maximum="0" />
+                <Slider x:Name="PositionSlider" Minimum="0" Maximum="0" Value="0" IsEnabled="False"
+                        ThumbToolTipValueConverter="{StaticResource MillisecondsToMinutesConverter}" PointerCaptureLost="PositionSliderPointerCaptureLost"
+                        ManipulationMode="All" ManipulationStarted="PositionSliderManipulationStarted" ManipulationCompleted="PositionSliderManipulationCompleted" />
             </StackPanel>
         </Grid>
 
