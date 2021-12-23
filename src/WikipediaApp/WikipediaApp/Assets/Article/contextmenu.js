@@ -21,8 +21,9 @@
 function _handleSelectionContextmenu(event, selection) {
   const left = event.clientX;
   const top = event.clientY;
+  const text = selection.toString().replace(/'/g, "\\'");
 
-  window.external.notify(`{ 'Message': 'Contextmenu', 'X': ${left}, 'Y': ${top}, 'Text': '${selection}' }`);
+  window.external.notify(`{ 'Message': 'Contextmenu', 'X': ${left}, 'Y': ${top}, 'Text': '${text}' }`);
 }
 
 function _handleLinkContextmenu(target) {
