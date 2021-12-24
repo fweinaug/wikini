@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
@@ -18,11 +20,11 @@ namespace WikipediaApp
     private bool isArticle;
     private bool? isFavorite;
 
-    private Command pinCommand;
-    private Command addToFavoritesCommand;
-    private Command removeFromFavoritesCommand;
-    private Command shareCommand;
-    private Command copyToClipboardCommand;
+    private RelayCommand pinCommand;
+    private RelayCommand addToFavoritesCommand;
+    private RelayCommand removeFromFavoritesCommand;
+    private RelayCommand shareCommand;
+    private RelayCommand copyToClipboardCommand;
 
     public bool Loaded
     {
@@ -89,27 +91,27 @@ namespace WikipediaApp
 
     public ICommand PinCommand
     {
-      get { return pinCommand ?? (pinCommand = new Command(Pin)); }
+      get { return pinCommand ?? (pinCommand = new RelayCommand(Pin)); }
     }
 
     public ICommand AddToFavoritesCommand
     {
-      get { return addToFavoritesCommand ?? (addToFavoritesCommand = new Command(AddToFavorites)); }
+      get { return addToFavoritesCommand ?? (addToFavoritesCommand = new RelayCommand(AddToFavorites)); }
     }
 
     public ICommand RemoveFromFavoritesCommand
     {
-      get { return removeFromFavoritesCommand ?? (removeFromFavoritesCommand = new Command(RemoveFromFavorites)); }
+      get { return removeFromFavoritesCommand ?? (removeFromFavoritesCommand = new RelayCommand(RemoveFromFavorites)); }
     }
 
     public ICommand ShareCommand
     {
-      get { return shareCommand ?? (shareCommand = new Command(Share)); }
+      get { return shareCommand ?? (shareCommand = new RelayCommand(Share)); }
     }
 
     public ICommand CopyToClipboardCommand
     {
-      get { return copyToClipboardCommand ?? (copyToClipboardCommand = new Command(CopyToClipboard)); }
+      get { return copyToClipboardCommand ?? (copyToClipboardCommand = new RelayCommand(CopyToClipboard)); }
     }
 
     private async void Pin()

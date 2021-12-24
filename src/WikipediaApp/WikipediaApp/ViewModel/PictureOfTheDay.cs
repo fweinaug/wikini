@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
@@ -11,10 +13,10 @@ namespace WikipediaApp
     private DateTime date;
     private Uri thumbnailUri;
 
-    private Command backCommand = null;
-    private Command todayCommand = null;
-    private Command randomCommand = null;
-    private Command clearCommand = null;
+    private RelayCommand backCommand = null;
+    private RelayCommand todayCommand = null;
+    private RelayCommand randomCommand = null;
+    private RelayCommand clearCommand = null;
 
     public PictureOfTheDay(WikipediaService wikipediaService)
     {
@@ -33,28 +35,28 @@ namespace WikipediaApp
       private set
       {
         if (SetProperty(ref thumbnailUri, value))
-          clearCommand?.RaiseCanExecuteChanged();
+          clearCommand?.NotifyCanExecuteChanged();
       }
     }
 
     public ICommand BackCommand
     {
-      get { return backCommand ?? (backCommand = new Command(Back)); }
+      get { return backCommand ?? (backCommand = new RelayCommand(Back)); }
     }
 
     public ICommand TodayCommand
     {
-      get { return todayCommand ?? (todayCommand = new Command(Today)); }
+      get { return todayCommand ?? (todayCommand = new RelayCommand(Today)); }
     }
 
     public ICommand RandomCommand
     {
-      get { return randomCommand ?? (randomCommand = new Command(Random)); }
+      get { return randomCommand ?? (randomCommand = new RelayCommand(Random)); }
     }
 
     public ICommand ClearCommand
     {
-      get { return clearCommand ?? (clearCommand = new Command(Clear, () => thumbnailUri != null)); }
+      get { return clearCommand ?? (clearCommand = new RelayCommand(Clear, () => thumbnailUri != null)); }
     }
 
     public async void Back()

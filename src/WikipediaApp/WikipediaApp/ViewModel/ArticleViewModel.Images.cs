@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
@@ -12,8 +13,8 @@ namespace WikipediaApp
     private ArticleImage selectedImage = null;
     private bool imagesVisible = false;
 
-    private Command showImagesCommand;
-    private Command hideImagesCommand;
+    private RelayCommand showImagesCommand;
+    private RelayCommand hideImagesCommand;
 
     public IList<ArticleImage> Images
     {
@@ -35,12 +36,12 @@ namespace WikipediaApp
 
     public ICommand ShowImagesCommand
     {
-      get { return showImagesCommand ?? (showImagesCommand = new Command(ShowImages)); }
+      get { return showImagesCommand ?? (showImagesCommand = new RelayCommand(ShowImages)); }
     }
 
     public ICommand HideImagesCommand
     {
-      get { return hideImagesCommand ?? (hideImagesCommand = new Command(HideImages)); }
+      get { return hideImagesCommand ?? (hideImagesCommand = new RelayCommand(HideImages)); }
     }
 
     private async void ShowImages()

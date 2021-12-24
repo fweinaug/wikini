@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
@@ -12,7 +13,7 @@ namespace WikipediaApp
     private IList<FoundArticle> searchResults = null;
     private bool noSearchResults = false;
 
-    private Command searchCommand = null;
+    private RelayCommand searchCommand = null;
 
     private CancellationTokenSource liveSearchCancellationTokenSource = null;
     private readonly object liveSearchLock = new object();
@@ -25,7 +26,7 @@ namespace WikipediaApp
         if (SetProperty(ref searchTerm, value))
         {
           searchTermChanged = true;
-          searchCommand?.RaiseCanExecuteChanged();
+          searchCommand?.NotifyCanExecuteChanged();
 
           if (Settings.Current.SearchRestricted || deviceService.IsInternetConnectionUnrestricted())
             LiveSearch();
@@ -35,7 +36,7 @@ namespace WikipediaApp
 
     public ICommand SearchCommand
     {
-      get { return searchCommand ?? (searchCommand = new Command(SearchIfTermChanged, CanSearch)); }
+      get { return searchCommand ?? (searchCommand = new RelayCommand(SearchIfTermChanged, CanSearch)); }
     }
 
     public IList<FoundArticle> SearchResults

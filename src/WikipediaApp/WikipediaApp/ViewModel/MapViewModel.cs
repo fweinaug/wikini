@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
@@ -18,12 +19,12 @@ namespace WikipediaApp
     }
 
     private MapPosition position = null;
-    private Command<MapPosition> movePositionCommand = null;
+    private RelayCommand<MapPosition> movePositionCommand = null;
     private IList<NearbyArticle> articles = null;
     private NearbyArticle selectedArticle = null;
-    private Command<NearbyArticle> selectArticleCommand = null;
-    private Command<NearbyArticle> showArticleCommand = null;
-    private AsyncCommand updateLocationCommand = null;
+    private RelayCommand<NearbyArticle> selectArticleCommand = null;
+    private RelayCommand<NearbyArticle> showArticleCommand = null;
+    private AsyncRelayCommand updateLocationCommand = null;
 
     public MapPosition Position
     {
@@ -33,7 +34,7 @@ namespace WikipediaApp
 
     public ICommand MovePositionCommand
     {
-      get { return movePositionCommand ?? (movePositionCommand = new Command<MapPosition>(MovePosition)); }
+      get { return movePositionCommand ?? (movePositionCommand = new RelayCommand<MapPosition>(MovePosition)); }
     }
 
     public IList<NearbyArticle> Articles
@@ -50,17 +51,17 @@ namespace WikipediaApp
 
     public ICommand SelectArticleCommand
     {
-      get { return selectArticleCommand ?? (selectArticleCommand = new Command<NearbyArticle>(SelectArticle)); }
+      get { return selectArticleCommand ?? (selectArticleCommand = new RelayCommand<NearbyArticle>(SelectArticle)); }
     }
 
     public ICommand ShowArticleCommand
     {
-      get { return showArticleCommand ?? (showArticleCommand = new Command<NearbyArticle>(ShowArticle)); }
+      get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<NearbyArticle>(ShowArticle)); }
     }
 
     public ICommand UpdateLocationCommand
     {
-      get { return updateLocationCommand ?? (updateLocationCommand = new AsyncCommand(UpdateLocation)); }
+      get { return updateLocationCommand ?? (updateLocationCommand = new AsyncRelayCommand(UpdateLocation)); }
     }
 
     public override async Task Initialize()

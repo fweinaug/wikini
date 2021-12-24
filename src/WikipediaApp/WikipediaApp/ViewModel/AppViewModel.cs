@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
@@ -14,14 +15,14 @@ namespace WikipediaApp
 
     private bool isBusy = false;
 
-    private Command showHomePageCommand = null;
-    private Command showRandomArticleCommand = null;
-    private Command showMapCommand = null;
-    private Command<ArticleHead> showArticleCommand = null;
+    private RelayCommand showHomePageCommand = null;
+    private RelayCommand showRandomArticleCommand = null;
+    private RelayCommand showMapCommand = null;
+    private RelayCommand<ArticleHead> showArticleCommand = null;
 
     private IList<Language> languages = null;
     private Language language = null;
-    private Command<Language> changeLanguageCommand = null;
+    private RelayCommand<Language> changeLanguageCommand = null;
 
     public bool IsBusy
     {
@@ -31,22 +32,22 @@ namespace WikipediaApp
 
     public ICommand ShowHomePageCommand
     {
-      get { return showHomePageCommand ?? (showHomePageCommand = new Command(ShowHomePage)); }
+      get { return showHomePageCommand ?? (showHomePageCommand = new RelayCommand(ShowHomePage)); }
     }
 
     public ICommand ShowRandomArticleCommand
     {
-      get { return showRandomArticleCommand ?? (showRandomArticleCommand = new Command(ShowRandomArticle)); }
+      get { return showRandomArticleCommand ?? (showRandomArticleCommand = new RelayCommand(ShowRandomArticle)); }
     }
 
     public ICommand ShowMapCommand
     {
-      get { return showMapCommand ?? (showMapCommand = new Command(ShowMap)); }
+      get { return showMapCommand ?? (showMapCommand = new RelayCommand(ShowMap)); }
     }
 
     public ICommand ShowArticleCommand
     {
-      get { return showArticleCommand ?? (showArticleCommand = new Command<ArticleHead>(ShowArticle)); }
+      get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
     public IList<ArticleGroup> History
@@ -84,7 +85,7 @@ namespace WikipediaApp
 
     public ICommand ChangeLanguageCommand
     {
-      get { return changeLanguageCommand ?? (changeLanguageCommand = new Command<Language>(ChangeLanguage)); }
+      get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<Language>(ChangeLanguage)); }
     }
 
     public PictureOfTheDay PictureOfTheDay { get; }

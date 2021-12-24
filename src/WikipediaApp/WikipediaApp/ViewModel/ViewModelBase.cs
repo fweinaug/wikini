@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace WikipediaApp
 {

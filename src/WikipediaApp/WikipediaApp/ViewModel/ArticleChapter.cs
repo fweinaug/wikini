@@ -1,4 +1,6 @@
-﻿namespace WikipediaApp
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+
+namespace WikipediaApp
 {
   public class ArticleChapter : ObservableObject
   {

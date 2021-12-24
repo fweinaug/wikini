@@ -175,7 +175,6 @@
     <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />
-    <Compile Include="ViewModel\AsyncCommand.cs" />
     <Compile Include="ViewModel\MapPosition.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
@@ -197,7 +196,6 @@
     </Compile>
     <Compile Include="Model\FavoriteLanguage.cs" />
     <Compile Include="Services\LanguagesReader.cs" />
-    <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="Views\ContentsView.xaml.cs">
       <DependentUpon>ContentsView.xaml</DependentUpon>
     </Compile>
@@ -289,7 +287,6 @@
     </Compile>
     <Compile Include="Views\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Views\Converters\CollectionToVisibilityConverter.cs" />
-    <Compile Include="ViewModel\Command.cs" />
     <Compile Include="Model\Language.cs" />
     <Compile Include="Views\Extensions\ListViewExtensions.cs" />
     <Compile Include="Services\NavigationService.cs" />
@@ -444,6 +441,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.13</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm">
+      <Version>7.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
       <Version>7.1.1</Version>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
@@ -23,17 +24,17 @@ namespace WikipediaApp
     private bool isFavorite = false;
     private ArticleFlyout articleFlyout;
 
-    private Command refreshCommand;
-    private Command<ArticleLanguage> changeLanguageCommand;
-    private Command openInBrowserCommand;
-    private Command pinCommand;
-    private Command addToFavoritesCommand;
-    private Command removeFromFavoritesCommand;
-    private Command shareCommand;
+    private RelayCommand refreshCommand;
+    private RelayCommand<ArticleLanguage> changeLanguageCommand;
+    private RelayCommand openInBrowserCommand;
+    private RelayCommand pinCommand;
+    private RelayCommand addToFavoritesCommand;
+    private RelayCommand removeFromFavoritesCommand;
+    private RelayCommand shareCommand;
 
-    private Command<Uri> navigateCommand;
-    private Command<Uri> loadedCommand;
-    private Command<ArticleHead> showArticleCommand;
+    private RelayCommand<Uri> navigateCommand;
+    private RelayCommand<Uri> loadedCommand;
+    private RelayCommand<ArticleHead> showArticleCommand;
 
     public string Title
     {
@@ -71,7 +72,7 @@ namespace WikipediaApp
 
             AddArticleToHistory();
 
-            RaisePropertyChanged("Title");
+            OnPropertyChanged(nameof(Title));
           }
           else
           {
@@ -149,52 +150,52 @@ namespace WikipediaApp
 
     public ICommand RefreshCommand
     {
-      get { return refreshCommand ?? (refreshCommand = new Command(Refresh)); }
+      get { return refreshCommand ?? (refreshCommand = new RelayCommand(Refresh)); }
     }
 
     public ICommand ChangeLanguageCommand
     {
-      get { return changeLanguageCommand ?? (changeLanguageCommand = new Command<ArticleLanguage>(ChangeLanguage)); }
+      get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<ArticleLanguage>(ChangeLanguage)); }
     }
 
     public ICommand OpenInBrowserCommand
     {
-      get { return openInBrowserCommand ?? (openInBrowserCommand = new Command(OpenInBrowser)); }
+      get { return openInBrowserCommand ?? (openInBrowserCommand = new RelayCommand(OpenInBrowser)); }
     }
 
     public ICommand PinCommand
     {
-      get { return pinCommand ?? (pinCommand = new Command(Pin)); }
+      get { return pinCommand ?? (pinCommand = new RelayCommand(Pin)); }
     }
 
     public ICommand AddToFavoritesCommand
     {
-      get { return addToFavoritesCommand ?? (addToFavoritesCommand = new Command(AddToFavorites)); }
+      get { return addToFavoritesCommand ?? (addToFavoritesCommand = new RelayCommand(AddToFavorites)); }
     }
 
     public ICommand RemoveFromFavoritesCommand
     {
-      get { return removeFromFavoritesCommand ?? (removeFromFavoritesCommand = new Command(RemoveFromFavorites)); }
+      get { return removeFromFavoritesCommand ?? (removeFromFavoritesCommand = new RelayCommand(RemoveFromFavorites)); }
     }
 
     public ICommand ShareCommand
     {
-      get { return shareCommand ?? (shareCommand = new Command(Share)); }
+      get { return shareCommand ?? (shareCommand = new RelayCommand(Share)); }
     }
 
     public ICommand NavigateCommand
     {
-      get { return navigateCommand ?? (navigateCommand = new Command<Uri>(Navigate)); }
+      get { return navigateCommand ?? (navigateCommand = new RelayCommand<Uri>(Navigate)); }
     }
 
     public ICommand LoadedCommand
     {
-      get { return loadedCommand ?? (loadedCommand = new Command<Uri>(Loaded)); }
+      get { return loadedCommand ?? (loadedCommand = new RelayCommand<Uri>(Loaded)); }
     }
 
     public ICommand ShowArticleCommand
     {
-      get { return showArticleCommand ?? (showArticleCommand = new Command<ArticleHead>(ShowArticle)); }
+      get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
     public ArticleViewModel(ArticleHead initialArticle)
