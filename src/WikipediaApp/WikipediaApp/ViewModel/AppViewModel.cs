@@ -11,7 +11,6 @@ namespace WikipediaApp
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
     private readonly DialogService dialogService = new DialogService();
-    private readonly DeviceService deviceService = new DeviceService();
 
     private bool isBusy = false;
 
@@ -23,6 +22,8 @@ namespace WikipediaApp
     private IList<Language> languages = null;
     private Language language = null;
     private RelayCommand<Language> changeLanguageCommand = null;
+
+    public SearchViewModel Search { get; }
 
     public bool IsBusy
     {
@@ -79,6 +80,8 @@ namespace WikipediaApp
 
           if (currentLanguage != null)
             currentLanguage.IsActive = false;
+
+          Search.Language = language;
         }
       }
     }
@@ -93,6 +96,7 @@ namespace WikipediaApp
     public AppViewModel()
     {
       PictureOfTheDay = new PictureOfTheDay(wikipediaService);
+      Search = new SearchViewModel();
     }
 
     private async void ShowHomePage()
@@ -130,8 +134,6 @@ namespace WikipediaApp
 
     public void ShowArticle(ArticleHead article)
     {
-      ClearSearch();
-
       navigationService.ShowArticle(article);
     }
 
@@ -143,7 +145,6 @@ namespace WikipediaApp
       Settings.Current.SearchLanguage = language.Code;
 
       Language = language;
-      Search();
     }
 
     public override async Task Initialize()

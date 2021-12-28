@@ -1,22 +1,41 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public partial class AppViewModel
+  public class SearchViewModel : ObservableObject
   {
+    private readonly WikipediaService wikipediaService = new WikipediaService();
+    private readonly NavigationService navigationService = new NavigationService();
+    private readonly DeviceService deviceService = new DeviceService();
+
+    private Language language = null;
     private string searchTerm = null;
     private bool searchTermChanged = false;
     private IList<FoundArticle> searchResults = null;
     private bool noSearchResults = false;
 
     private RelayCommand searchCommand = null;
+    private RelayCommand<ArticleHead> showArticleCommand = null;
 
     private CancellationTokenSource liveSearchCancellationTokenSource = null;
     private readonly object liveSearchLock = new object();
+
+    public Language Language
+    {
+      get { return language; }
+      set
+      {
+        if (SetProperty(ref language, value))
+        {
+          Search();
+        }
+      }
+    }
 
     public string SearchTerm
     {
@@ -55,15 +74,25 @@ namespace WikipediaApp
       private set { SetProperty(ref noSearchResults, value); }
     }
 
-    private void SearchIfTermChanged()
+    public ICommand ShowArticleCommand
     {
-      if (!searchTermChanged)
-        return;
-
-      Search();
+      get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    private async void Search()
+    public void ShowArticle(ArticleHead article)
+    {
+      ClearSearch();
+
+      navigationService.ShowArticle(article);
+    }
+
+    private void ClearSearch()
+    {
+      SearchTerm = null;
+      SearchResults = null;
+    }
+
+    public async void Search()
     {
       if (string.IsNullOrWhiteSpace(searchTerm))
       {
@@ -80,6 +109,14 @@ namespace WikipediaApp
       }
 
       searchTermChanged = false;
+    }
+
+    private void SearchIfTermChanged()
+    {
+      if (!searchTermChanged)
+        return;
+
+      Search();
     }
 
     private bool CanSearch()
@@ -135,12 +172,6 @@ namespace WikipediaApp
       }
 
       return false;
-    }
-
-    private void ClearSearch()
-    {
-      SearchTerm = null;
-      SearchResults = null;
     }
   }
 }

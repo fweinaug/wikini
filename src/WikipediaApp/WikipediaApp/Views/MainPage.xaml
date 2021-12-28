@@ -134,11 +134,11 @@
                     </Grid.RowDefinitions>
 
                     <local:SearchBox x:Name="SearchBox" Grid.Row="1"
-                                     QueryString="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     QueryCommand="{Binding SearchCommand}"
-                                     QueryResults="{Binding SearchResults, Mode=OneWay}"
-                                     ItemSelectedCommand="{Binding ShowArticleCommand}"
-                                     QueryLanguage="{Binding Language, Mode=TwoWay}"
+                                     QueryString="{Binding Search.SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     QueryCommand="{Binding Search.SearchCommand}"
+                                     QueryResults="{Binding Search.SearchResults, Mode=OneWay}"
+                                     ItemSelectedCommand="{Binding Search.ShowArticleCommand}"
+                                     QueryLanguage="{Binding Search.Language, Mode=OneWay}"
                                      SelectLanguage="LanguagesButtonClick"
                                      LanguageSelectedCommand="{Binding ChangeLanguageCommand}" />
 
@@ -150,7 +150,7 @@
                             Background="{ThemeResource SystemControlAcrylicElementBrush}"
                             BorderThickness="0" CornerRadius="15"
                             HorizontalAlignment="Center" VerticalAlignment="Top"
-                            Visibility="{Binding NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            Visibility="{Binding Search.NoSearchResults, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <TextBlock x:Uid="MainNoSearchResultsTextBlock" FontWeight="Normal" />
                     </Border>
 

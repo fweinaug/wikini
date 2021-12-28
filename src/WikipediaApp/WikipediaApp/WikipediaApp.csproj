@@ -176,6 +176,7 @@
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="ViewModel\MapPosition.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
     </Compile>
@@ -265,7 +266,6 @@
     <Compile Include="Services\DeviceService.cs" />
     <Compile Include="Services\WikipediaApi.cs" />
     <Compile Include="Services\WikipediaHtmlBuilder.cs" />
-    <Compile Include="ViewModel\AppViewModel.Search.cs" />
     <Compile Include="ViewModel\ArticleHistory.cs" />
     <Compile Include="Views\AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
