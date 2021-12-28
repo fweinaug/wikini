@@ -1,11 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public class MapViewModel : ViewModelBase
+  public class MapPosition
+  {
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+
+    public double Altitude { get; set; }
+    public double ZoomLevel { get; set; }
+
+    public bool SameLocation(MapPosition position)
+    {
+      return position != null && Math.Abs(Latitude - position.Latitude) < 0.000001 && Math.Abs(Longitude - position.Longitude) < 0.000001;
+    }
+  }
+
+  public class MapPageViewModel : ViewModelBase
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
@@ -13,7 +28,7 @@ namespace WikipediaApp
 
     private readonly string language;
 
-    public MapViewModel(string language)
+    public MapPageViewModel(string language)
     {
       this.language = language;
     }

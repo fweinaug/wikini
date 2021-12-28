@@ -175,7 +175,6 @@
     <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />
-    <Compile Include="ViewModel\MapPosition.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
@@ -187,7 +186,7 @@
     <Compile Include="Views\MapView.xaml.cs">
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\MapViewModel.cs" />
+    <Compile Include="ViewModel\MapPageViewModel.cs" />
     <Compile Include="Views\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>

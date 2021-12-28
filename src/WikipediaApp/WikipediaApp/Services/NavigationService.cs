@@ -40,7 +40,7 @@ namespace WikipediaApp
 
     public void ShowMap(string language)
     {
-      var viewModel = new MapViewModel(language);
+      var viewModel = new MapPageViewModel(language);
 
       Frame.Navigate(typeof(MapPage), viewModel);
     }
