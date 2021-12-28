@@ -6,7 +6,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public class PictureOfTheDay : ObservableObject
+  public class PictureOfTheDayViewModel : ObservableObject
   {
     private readonly WikipediaService wikipediaService;
 
@@ -18,7 +18,7 @@ namespace WikipediaApp
     private RelayCommand randomCommand = null;
     private RelayCommand clearCommand = null;
 
-    public PictureOfTheDay(WikipediaService wikipediaService)
+    public PictureOfTheDayViewModel(WikipediaService wikipediaService)
     {
       this.wikipediaService = wikipediaService;
     }

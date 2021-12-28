@@ -91,12 +91,12 @@ namespace WikipediaApp
       get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<Language>(ChangeLanguage)); }
     }
 
-    public PictureOfTheDay PictureOfTheDay { get; }
+    public PictureOfTheDayViewModel PictureOfTheDay { get; }
 
     public AppViewModel()
     {
-      PictureOfTheDay = new PictureOfTheDay(wikipediaService);
       Search = new SearchViewModel();
+      PictureOfTheDay = new PictureOfTheDayViewModel(wikipediaService);
     }
 
     private async void ShowHomePage()

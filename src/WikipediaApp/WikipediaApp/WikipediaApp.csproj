@@ -212,7 +212,7 @@
     </Compile>
     <Compile Include="ViewModel\ArticleLanguages.cs" />
     <Compile Include="Views\Controls\GroupedListView.cs" />
-    <Compile Include="ViewModel\PictureOfTheDay.cs" />
+    <Compile Include="ViewModel\PictureOfTheDayViewModel.cs" />
     <Compile Include="Views\Controls\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
