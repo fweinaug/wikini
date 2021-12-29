@@ -105,7 +105,7 @@ namespace WikipediaApp
         if (shell.AppFrame.Content == null)
         {
           // Navigate to the first page
-          shell.AppFrame.Navigate(typeof(MainPage), null);
+          shell.AppFrame.Navigate(typeof(MainPage), shell.ViewModel.MainPage);
         }
 
         Window.Current.Activate();

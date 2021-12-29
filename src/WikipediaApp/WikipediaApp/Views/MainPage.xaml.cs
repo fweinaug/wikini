@@ -40,6 +40,8 @@ namespace WikipediaApp
     {
       base.OnNavigatedTo(e);
 
+      DataContext = e.Parameter;
+
       var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
       coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
     }

@@ -175,6 +175,7 @@
     <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />
+    <Compile Include="ViewModel\AppShellViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
@@ -273,7 +274,7 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DialogService.cs" />
-    <Compile Include="ViewModel\AppViewModel.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="Model\Article.cs" />
     <Compile Include="Model\ArticleLanguage.cs" />
     <Compile Include="Views\ArticlePage.xaml.cs">

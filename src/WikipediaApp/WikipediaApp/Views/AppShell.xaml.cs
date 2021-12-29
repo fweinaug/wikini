@@ -11,7 +11,7 @@ namespace WikipediaApp
 {
   public sealed partial class AppShell : Page
   {
-    private readonly AppViewModel viewModel;
+    private readonly AppShellViewModel viewModel = new AppShellViewModel();
 
     private ArticleHead initialArticle = null;
 
@@ -20,13 +20,18 @@ namespace WikipediaApp
       get { return Frame; }
     }
 
+    public AppShellViewModel ViewModel
+    {
+      get { return viewModel; }
+    }
+
     public AppShell()
     {
       InitializeComponent();
 
       SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManagerBackRequested;
 
-      viewModel = new AppViewModel();
+      viewModel = new AppShellViewModel();
 
       DataContext = viewModel;
     }

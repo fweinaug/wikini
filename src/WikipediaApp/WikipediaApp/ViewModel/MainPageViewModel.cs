@@ -6,7 +6,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public partial class AppViewModel : ViewModelBase
+  public class MainPageViewModel : ViewModelBase
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
@@ -93,7 +93,7 @@ namespace WikipediaApp
 
     public PictureOfTheDayViewModel PictureOfTheDay { get; }
 
-    public AppViewModel()
+    public MainPageViewModel()
     {
       Search = new SearchViewModel();
       PictureOfTheDay = new PictureOfTheDayViewModel(wikipediaService);
@@ -149,15 +149,13 @@ namespace WikipediaApp
 
     public override async Task Initialize()
     {
-      await ArticleLanguages.Initialize();
+      if (ArticleLanguages.All.Count == 0 || Languages?.Count > 0)
+        return;
 
       var language = Settings.Current.SearchLanguage;
 
       Languages = ArticleLanguages.All;
       Language = Languages.FirstOrDefault(x => x.Code == language) ?? Languages.First(x => x.Code == Settings.DefaultSearchLanguage);
-
-      await ArticleFavorites.Initialize();
-      await ArticleHistory.Initialize();
 
       if (Settings.Current.StartPictureOfTheDay)
         PictureOfTheDay.Today();
