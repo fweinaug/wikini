@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public partial class ArticleViewModel
+  public class ArticleImageGalleryViewModel : ObservableObject
   {
+    private readonly WikipediaService wikipediaService = new WikipediaService();
+
+    private readonly Article article;
+
     private IList<ArticleImage> images = null;
     private ArticleImage selectedImage = null;
-    private bool imagesVisible = false;
+    private bool isOpen = false;
 
-    private RelayCommand showImagesCommand;
-    private RelayCommand hideImagesCommand;
+    private RelayCommand openCommand;
+    private RelayCommand closeCommand;
 
     public IList<ArticleImage> Images
     {
@@ -28,33 +33,28 @@ namespace WikipediaApp
       set { SetProperty(ref selectedImage, value); }
     }
 
-    public bool ImagesVisible
+    public bool IsOpen
     {
-      get { return imagesVisible; }
-      private set { SetProperty(ref imagesVisible, value); }
+      get { return isOpen; }
+      private set { SetProperty(ref isOpen, value); }
     }
 
-    public ICommand ShowImagesCommand
+    public ICommand OpenCommand
     {
-      get { return showImagesCommand ?? (showImagesCommand = new RelayCommand(ShowImages)); }
+      get { return openCommand ?? (openCommand = new RelayCommand(Open)); }
     }
 
-    public ICommand HideImagesCommand
+    public ICommand CloseCommand
     {
-      get { return hideImagesCommand ?? (hideImagesCommand = new RelayCommand(HideImages)); }
+      get { return closeCommand ?? (closeCommand = new RelayCommand(Close)); }
     }
 
-    private async void ShowImages()
+    public ArticleImageGalleryViewModel(Article article)
     {
-      await LoadAndShowImages();
+      this.article = article;
     }
 
-    private void HideImages()
-    {
-      ImagesVisible = false;
-    }
-
-    private async Task<bool> NavigateToImage(Uri uri)
+    public async Task<bool> NavigateToImage(Uri uri)
     {
       if (article?.Images != null && wikipediaService.IsLinkToWikipediaImage(uri, out var filename)
         && article.Images.Contains(filename))
@@ -67,9 +67,19 @@ namespace WikipediaApp
       return false;
     }
 
+    private async void Open()
+    {
+      await LoadAndShowImages();
+    }
+
+    private void Close()
+    {
+      IsOpen = false;
+    }
+
     private async Task LoadAndShowImages(string selectedImageName = null)
     {
-      IsBusy = true;
+      IsOpen = true;
 
       if (Images == null)
         Images = await wikipediaService.GetArticleImages(article);
@@ -77,9 +87,6 @@ namespace WikipediaApp
       SelectedImage = !string.IsNullOrEmpty(selectedImageName)
         ? Images?.FirstOrDefault(x => x.Name == selectedImageName)
         : Images?.FirstOrDefault();
-
-      IsBusy = false;
-      ImagesVisible = true;
     }
   }
 }

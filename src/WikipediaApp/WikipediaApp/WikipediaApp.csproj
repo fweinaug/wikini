@@ -176,12 +176,14 @@
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="ViewModel\AppShellViewModel.cs" />
+    <Compile Include="ViewModel\ArticleImageGalleryViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Converters\EnumToBooleanConverter.cs" />
     <Compile Include="Views\Converters\MillisecondsToMinutesConverter.cs" />
+    <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Views\Converters\NumericComparisonToBooleanConverter.cs" />
     <Compile Include="Views\Extensions\TypeExtension.cs" />
     <Compile Include="Views\MapView.xaml.cs">
@@ -253,7 +255,6 @@
     </Compile>
     <Compile Include="Services\ArticleCache.cs" />
     <Compile Include="ViewModel\ArticleFavorites.cs" />
-    <Compile Include="ViewModel\ArticleViewModel.Images.cs" />
     <Compile Include="Views\ArticleImagesView.xaml.cs">
       <DependentUpon>ArticleImagesView.xaml</DependentUpon>
     </Compile>

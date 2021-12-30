@@ -6,7 +6,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public partial class ArticleViewModel : ViewModelBase
+  public class ArticleViewModel : ViewModelBase
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
@@ -57,6 +57,14 @@ namespace WikipediaApp
       get { return ArticleFavorites.All; }
     }
 
+    private ArticleImageGalleryViewModel imageGallery = null;
+
+    public ArticleImageGalleryViewModel ImageGallery
+    {
+      get { return imageGallery; }
+      private set { SetProperty(ref imageGallery, value); }
+    }
+
     public Article Article
     {
       get { return article; }
@@ -69,6 +77,7 @@ namespace WikipediaApp
             Languages = article.Languages;
             Sections = Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections;
             IsFavorite = ArticleFavorites.IsFavorite(article);
+            ImageGallery = new ArticleImageGalleryViewModel(article);
 
             AddArticleToHistory();
 
@@ -79,6 +88,7 @@ namespace WikipediaApp
             Languages = null;
             Sections = null;
             IsFavorite = false;
+            ImageGallery = null;
           }
         }
       }
@@ -310,8 +320,8 @@ namespace WikipediaApp
 
     private async void Navigate(Uri uri)
     {
-      var image = await NavigateToImage(uri);
-      if (image)
+      var isImage = await ImageGallery.NavigateToImage(uri);
+      if (isImage)
         return;
 
       IsBusy = true;
@@ -323,8 +333,6 @@ namespace WikipediaApp
         if (article != null)
         {
           Article = article;
-          Images = null;
-          SelectedImage = null;
         }
         else
         {
@@ -360,8 +368,6 @@ namespace WikipediaApp
       if (article != null)
       {
         Article = article;
-        Images = null;
-        SelectedImage = null;
       }
       else
       {
@@ -383,8 +389,6 @@ namespace WikipediaApp
       if (article != null)
       {
         Article = article;
-        Images = null;
-        SelectedImage = null;
       }
       else
       {

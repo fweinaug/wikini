@@ -106,12 +106,16 @@
             </GridView.ItemContainerStyle>
         </GridView>
 
-        <TextBlock x:Uid="ArticleImagesEmptyTextBlock" Grid.Row="1"
+        <ProgressRing x:Name="ProgressRing" Grid.Row="1" Width="50" Height="50"
+                      IsActive="True"
+                      Visibility="{Binding ElementName=FlipView, Path=ItemsSource, Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=True}" />
+
+        <!--<TextBlock x:Uid="ArticleImagesEmptyTextBlock" Grid.Row="1"
                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
                    FontSize="15" FontWeight="Light"
                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                    TextWrapping="WrapWholeWords" TextAlignment="Center"
                    Margin="5"
-                   Visibility="{Binding ElementName=FlipView, Path=ItemsSource, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}" />
+                   Visibility="{Binding ElementName=FlipView, Path=ItemsSource, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}" />-->
     </Grid>
 </UserControl>

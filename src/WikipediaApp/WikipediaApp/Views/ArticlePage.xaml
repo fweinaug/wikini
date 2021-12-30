@@ -57,7 +57,7 @@
             <VisualStateGroup x:Name="ImageStates" CurrentStateChanged="ImageStatesCurrentStateChanged">
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <StateTrigger IsActive="{Binding ImagesVisible}" />
+                        <StateTrigger IsActive="{Binding ImageGallery.IsOpen}" />
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
@@ -135,7 +135,7 @@
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
-                                    <MenuFlyoutItem x:Uid="ArticleImagesMenuFlyoutItem" Command="{Binding ShowImagesCommand}">
+                                    <MenuFlyoutItem x:Uid="ArticleImagesMenuFlyoutItem" Command="{Binding ImageGallery.OpenCommand}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xF487;" />
                                         </MenuFlyoutItem.Icon>
@@ -333,7 +333,7 @@
 
                                 <AppBarSeparator />
 
-                                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ShowImagesCommand}">
+                                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ImageGallery.OpenCommand}">
                                     <AppBarButton.Icon>
                                         <FontIcon Glyph="&#xF487;" />
                                     </AppBarButton.Icon>
@@ -377,9 +377,9 @@
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
         <local:ArticleImagesView x:Name="ImagesView" x:DeferLoadStrategy="Lazy" Loaded="ImagesViewLoaded"
-                                 Images="{Binding Images}"
-                                 SelectedImage="{Binding SelectedImage, Mode=TwoWay}"
-                                 CloseCommand="{Binding HideImagesCommand}"
+                                 Images="{Binding ImageGallery.Images}"
+                                 SelectedImage="{Binding ImageGallery.SelectedImage, Mode=TwoWay}"
+                                 CloseCommand="{Binding ImageGallery.CloseCommand, Mode=OneWay}"
                                  Visibility="Collapsed" />
     </Grid>
 </Page>
