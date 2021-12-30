@@ -5,7 +5,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public class ArticleFlyout : ObservableObject
+  public class ArticleFlyoutViewModel : ObservableObject
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
 

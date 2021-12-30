@@ -33,7 +33,7 @@ namespace WikipediaApp
       nameof(ShowArticleCommand), typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty ArticleFlyoutProperty = DependencyProperty.Register(
-      nameof(ArticleFlyout), typeof(ArticleFlyout), typeof(ArticleView), new PropertyMetadata(null));
+      nameof(ArticleFlyout), typeof(ArticleFlyoutViewModel), typeof(ArticleView), new PropertyMetadata(null));
 
     public static readonly DependencyProperty FlyoutProperty = DependencyProperty.Register(
       nameof(Flyout), typeof(FlyoutBase), typeof(ArticleView), new PropertyMetadata(null));
@@ -77,9 +77,9 @@ namespace WikipediaApp
       set { SetValue(ShowArticleCommandProperty, value); }
     }
 
-    public ArticleFlyout ArticleFlyout
+    public ArticleFlyoutViewModel ArticleFlyout
     {
-      get { return (ArticleFlyout)GetValue(ArticleFlyoutProperty); }
+      get { return (ArticleFlyoutViewModel)GetValue(ArticleFlyoutProperty); }
       set { SetValue(ArticleFlyoutProperty, value); }
     }
 
@@ -266,7 +266,7 @@ namespace WikipediaApp
     private void NavigateLinkMenuFlyoutItem(object sender, RoutedEventArgs e)
     {
       var item = (MenuFlyoutItem)sender;
-      var article = (ArticleFlyout)item.DataContext;
+      var article = (ArticleFlyoutViewModel)item.DataContext;
 
       NavigateToUri(article.Uri);
     }
@@ -464,7 +464,7 @@ namespace WikipediaApp
 
     private void ShowArticleFlyout(ScriptNotifyData data)
     {
-      var flyout = new ArticleFlyout
+      var viewModel = new ArticleFlyoutViewModel
       {
         Uri = new Uri(data.Url),
         Left = data.X,
@@ -476,15 +476,15 @@ namespace WikipediaApp
       {
         if (e.PropertyName == nameof(ArticleFlyout.Loaded))
         {
-          flyout.PropertyChanged -= OnArticleFlyoutPropertyChanged;
+          viewModel.PropertyChanged -= OnArticleFlyoutPropertyChanged;
 
-          LinkMenuFlyout.ShowAt(WebView, new FlyoutShowOptions { Position = new Point(flyout.Left, flyout.Top) });
+          LinkMenuFlyout.ShowAt(WebView, new FlyoutShowOptions { Position = new Point(viewModel.Left, viewModel.Top) });
         }
       }
 
-      flyout.PropertyChanged += OnArticleFlyoutPropertyChanged;
+      viewModel.PropertyChanged += OnArticleFlyoutPropertyChanged;
 
-      ArticleFlyout = flyout;
+      ArticleFlyout = viewModel;
     }
 
     private void UpdateScrollPosition(ScriptNotifyData data)

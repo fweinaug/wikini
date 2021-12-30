@@ -22,7 +22,7 @@ namespace WikipediaApp
     private IList<ArticleLanguage> languages = null;
     private bool hasLanguages = false;
     private bool isFavorite = false;
-    private ArticleFlyout articleFlyout;
+    private ArticleFlyoutViewModel articleFlyout;
 
     private RelayCommand refreshCommand;
     private RelayCommand<ArticleLanguage> changeLanguageCommand;
@@ -132,7 +132,7 @@ namespace WikipediaApp
       private set { SetProperty(ref isFavorite, value); }
     }
 
-    public ArticleFlyout ArticleFlyout
+    public ArticleFlyoutViewModel ArticleFlyout
     {
       get { return articleFlyout; }
       set
