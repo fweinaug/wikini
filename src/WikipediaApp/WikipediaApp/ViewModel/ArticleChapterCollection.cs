@@ -6,7 +6,7 @@ using HtmlAgilityPack;
 
 namespace WikipediaApp
 {
-  public class ArticleChapterCollection : ObservableCollection<ArticleChapter>
+  public class ArticleChapterCollection : ObservableCollection<ArticleChapterViewModel>
   {
     public bool ChapterIsBeingLoaded()
     {
@@ -152,7 +152,7 @@ namespace WikipediaApp
 
       foreach (var section in expandedSections)
       {
-        var chapter = new ArticleChapter();
+        var chapter = new ArticleChapterViewModel();
 
         var headline = section.Key;
         if (headline.OriginalName == "h2")

@@ -128,7 +128,7 @@
                   BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0,1,0,0"
                   IsItemClickEnabled="True" ItemClick="ListViewItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:ArticleChapter">
+                <DataTemplate x:DataType="local:ArticleChapterViewModel">
                     <UserControl>
                         <Grid Name="Root" Style="{StaticResource SplitViewPaneListViewItemStyle}"
                               BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0"
@@ -188,7 +188,7 @@
                                 <VisualStateGroup>
                                     <VisualState>
                                         <VisualState.StateTriggers>
-                                            <StateTrigger IsActive="{x:Bind IsNext, Mode=OneWay}" />
+                                            <StateTrigger IsActive="{x:Bind NewSection, Mode=OneWay}" />
                                         </VisualState.StateTriggers>
 
                                         <VisualState.Setters>

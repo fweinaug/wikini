@@ -2,7 +2,7 @@
 
 namespace WikipediaApp
 {
-  public class ArticleChapter : ObservableObject
+  public class ArticleChapterViewModel : ObservableObject
   {
     private bool isActive = false;
     private bool isLoading = false;
@@ -36,7 +36,8 @@ namespace WikipediaApp
     {
       get { return Level == 1; }
     }
-    public bool IsNext => IsRoot && HasNumber && int.Parse(Number) > 1;
+
+    public bool NewSection => IsRoot && HasNumber && int.Parse(Number) > 1;
 
     public bool HasNumber
     {

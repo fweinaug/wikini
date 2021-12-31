@@ -246,7 +246,7 @@
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ArticleChapter.cs" />
+    <Compile Include="ViewModel\ArticleChapterViewModel.cs" />
     <Compile Include="ViewModel\ArticleChapterCollection.cs" />
     <Compile Include="ViewModel\ArticleFlyoutViewModel.cs" />
     <Compile Include="Views\Helpers\DisplayHelper.cs" />

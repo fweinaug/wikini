@@ -14,9 +14,9 @@ namespace WikipediaApp
 {
   public class ArticleChapterEventArgs : EventArgs
   {
-    public ArticleChapter Chapter { get; }
+    public ArticleChapterViewModel Chapter { get; }
 
-    public ArticleChapterEventArgs(ArticleChapter chapter)
+    public ArticleChapterEventArgs(ArticleChapterViewModel chapter)
     {
       Chapter = chapter;
     }
@@ -171,7 +171,7 @@ namespace WikipediaApp
 
     private void ListViewItemClick(object sender, ItemClickEventArgs e)
     {
-      var chapter = (ArticleChapter)e.ClickedItem;
+      var chapter = (ArticleChapterViewModel)e.ClickedItem;
 
       PlayOrPauseChapter(chapter);
     }
@@ -225,7 +225,7 @@ namespace WikipediaApp
         PlayChapter(--currentChapterIndex);
     }
 
-    private void PlayOrPauseChapter(ArticleChapter chapter)
+    private void PlayOrPauseChapter(ArticleChapterViewModel chapter)
     {
       if (chapter.IsPlaying)
         MediaElement.Pause();
@@ -386,7 +386,7 @@ namespace WikipediaApp
 
     private void GoToSectionClick(object sender, RoutedEventArgs e)
     {
-      var chapter = ((FrameworkElement)e.OriginalSource).DataContext as ArticleChapter;
+      var chapter = ((FrameworkElement)e.OriginalSource).DataContext as ArticleChapterViewModel;
 
       ChapterClick?.Invoke(this, new ArticleChapterEventArgs(chapter));
     }
