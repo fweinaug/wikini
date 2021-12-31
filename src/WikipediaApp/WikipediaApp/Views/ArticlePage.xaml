@@ -35,7 +35,7 @@
             </DataTemplate>
 
             <DataTemplate x:Key="LanguagesTemplate">
-                <local:LanguagesView Languages="{Binding Languages}" LanguageClick="LanguagesViewLanguageClick" />
+                <local:LanguagesView Languages="{Binding Article.Languages}" LanguageClick="LanguagesViewLanguageClick" />
             </DataTemplate>
 
             <Storyboard x:Name="ShowSearchBarStoryboard">
@@ -92,7 +92,7 @@
 
                     <ContentPresenter Grid.Row="0" x:Name="PaneContentPresenter"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-                    <local:SpeechView Grid.Row="0" x:Name="PaneSpeechView" Article="{Binding Article}" ChapterClick="SpeechViewChapterClick"
+                    <local:SpeechView Grid.Row="0" x:Name="PaneSpeechView" Article="{Binding Article.Article}" ChapterClick="SpeechViewChapterClick"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
                     <local:SettingsView Grid.Row="0" x:Name="PaneSettingsView"
                                       x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
@@ -123,19 +123,19 @@
 
                             <local:ArticleView.Flyout>
                                 <MenuFlyout>
-                                    <MenuFlyoutItem x:Uid="ArticleContentsMenuFlyoutItem" Click="ContentsButtonClick" IsEnabled="{Binding HasSections}">
+                                    <MenuFlyoutItem x:Uid="ArticleContentsMenuFlyoutItem" Click="ContentsButtonClick" IsEnabled="{Binding Article.HasSections}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xF651;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
-                                    <MenuFlyoutItem x:Uid="ArticleLanguagesMenuFlyoutItem" Click="LanguagesButtonClick" IsEnabled="{Binding HasLanguages}">
+                                    <MenuFlyoutItem x:Uid="ArticleLanguagesMenuFlyoutItem" Click="LanguagesButtonClick" IsEnabled="{Binding Article.HasLanguages}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xF4F2;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
-                                    <MenuFlyoutItem x:Uid="ArticleImagesMenuFlyoutItem" Command="{Binding ImageGallery.OpenCommand}">
+                                    <MenuFlyoutItem x:Uid="ArticleImagesMenuFlyoutItem" Command="{Binding ImageGallery.OpenCommand}" IsEnabled="{Binding Article.HasImages}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xF487;" />
                                         </MenuFlyoutItem.Icon>
@@ -154,21 +154,21 @@
                                     </MenuFlyoutItem>
                                     <MenuFlyoutSeparator />
 
-                                    <MenuFlyoutItem x:Uid="ArticleAddFavoriteMenuFlyoutItem" Command="{Binding AddToFavoritesCommand}"
-                                                    Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
+                                    <MenuFlyoutItem x:Uid="ArticleAddFavoriteMenuFlyoutItem" Command="{Binding Article.AddToFavoritesCommand}"
+                                                    Visibility="{Binding Article.IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xF712;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
-                                    <MenuFlyoutItem x:Uid="ArticleRemoveFavoriteMenuFlyoutItem" Command="{Binding RemoveFromFavoritesCommand}"
-                                                    Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <MenuFlyoutItem x:Uid="ArticleRemoveFavoriteMenuFlyoutItem" Command="{Binding Article.RemoveFromFavoritesCommand}"
+                                                    Visibility="{Binding Article.IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xF719;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
 
-                                    <MenuFlyoutItem x:Uid="ArticlePinMenuFlyoutItem" Command="{Binding PinCommand}">
+                                    <MenuFlyoutItem x:Uid="ArticlePinMenuFlyoutItem" Command="{Binding Article.PinCommand}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#x0F600;" />
                                         </MenuFlyoutItem.Icon>
@@ -176,7 +176,7 @@
 
                                     <MenuFlyoutSeparator />
 
-                                    <MenuFlyoutItem x:Uid="ArticleShareMenuFlyoutItem" Command="{Binding ShareCommand}">
+                                    <MenuFlyoutItem x:Uid="ArticleShareMenuFlyoutItem" Command="{Binding Article.ShareCommand}">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xF6AF;" />
                                         </MenuFlyoutItem.Icon>
@@ -254,21 +254,21 @@
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
-                                    <AppBarButton x:Uid="ArticleAddFavoriteAppBarButton" Command="{Binding AddToFavoritesCommand}"
-                                                  Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
+                                    <AppBarButton x:Uid="ArticleAddFavoriteAppBarButton" Command="{Binding Article.AddToFavoritesCommand}"
+                                                  Visibility="{Binding Article.IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
                                         <AppBarButton.Icon>
                                             <FontIcon Glyph="&#xF712;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
-                                    <AppBarButton x:Uid="ArticleRemoveFavoriteAppBarButton" Command="{Binding RemoveFromFavoritesCommand}"
-                                                  Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <AppBarButton x:Uid="ArticleRemoveFavoriteAppBarButton" Command="{Binding Article.RemoveFromFavoritesCommand}"
+                                                  Visibility="{Binding Article.IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <AppBarButton.Icon>
                                             <FontIcon Glyph="&#xF719;" />
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
-                                    <AppBarButton x:Uid="ArticlePinAppBarButton" Command="{Binding PinCommand}">
+                                    <AppBarButton x:Uid="ArticlePinAppBarButton" Command="{Binding Article.PinCommand}">
                                         <AppBarButton.Icon>
                                             <FontIcon Glyph="&#x0F600;" />
                                         </AppBarButton.Icon>
@@ -292,7 +292,7 @@
                                         </AppBarButton.Icon>
                                     </AppBarButton>
 
-                                    <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding OpenInBrowserCommand}">
+                                    <AppBarButton x:Uid="ArticleBrowserAppBarButton" Command="{Binding Article.OpenInBrowserCommand}">
                                         <AppBarButton.Icon>
                                             <FontIcon Glyph="&#xFA16;" />
                                         </AppBarButton.Icon>
@@ -333,7 +333,7 @@
 
                                 <AppBarSeparator />
 
-                                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ImageGallery.OpenCommand}">
+                                <AppBarButton x:Uid="ArticleImagesAppBarButton" Command="{Binding ImageGallery.OpenCommand}" IsEnabled="{Binding Article.HasImages}">
                                     <AppBarButton.Icon>
                                         <FontIcon Glyph="&#xF487;" />
                                     </AppBarButton.Icon>
@@ -345,7 +345,7 @@
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
-                                <AppBarButton x:Uid="ArticleShareAppBarButton" Command="{Binding ShareCommand}">
+                                <AppBarButton x:Uid="ArticleShareAppBarButton" Command="{Binding Article.ShareCommand}">
                                     <AppBarButton.Icon>
                                         <FontIcon Glyph="&#xF6AF;" />
                                     </AppBarButton.Icon>
@@ -353,13 +353,13 @@
 
                                 <AppBarSeparator />
 
-                                <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick" IsEnabled="{Binding HasSections}">
+                                <AppBarButton x:Uid="ArticleContentsAppBarButton" Click="ContentsButtonClick" IsEnabled="{Binding Article.HasSections}">
                                     <AppBarButton.Icon>
                                         <FontIcon Glyph="&#xF651;" />
                                     </AppBarButton.Icon>
                                 </AppBarButton>
 
-                                <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LanguagesButtonClick" IsEnabled="{Binding HasLanguages}">
+                                <AppBarButton x:Uid="ArticleLanguagesAppBarButton" Click="LanguagesButtonClick" IsEnabled="{Binding Article.HasLanguages}">
                                     <AppBarButton.Icon>
                                         <FontIcon Glyph="&#xF4F2;" />
                                     </AppBarButton.Icon>

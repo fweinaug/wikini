@@ -21,7 +21,7 @@ namespace WikipediaApp
       if (ShowArticleInCurrentArticlePage(article))
         return;
 
-      var viewModel = new ArticleViewModel(article);
+      var viewModel = new ArticlePageViewModel(article);
 
       Frame.Navigate(typeof(ArticlePage), viewModel);
     }
@@ -30,7 +30,7 @@ namespace WikipediaApp
     {
       var currentPage = Frame.Content as ArticlePage;
 
-      var currentViewModel = currentPage?.DataContext as ArticleViewModel;
+      var currentViewModel = currentPage?.DataContext as ArticlePageViewModel;
       if (currentViewModel == null)
         return false;
 

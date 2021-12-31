@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.Input;
 
@@ -10,88 +9,33 @@ namespace WikipediaApp
   {
     private readonly WikipediaService wikipediaService = new WikipediaService();
     private readonly NavigationService navigationService = new NavigationService();
-    private readonly DialogService dialogService = new DialogService();
-
-    private bool isBusy = false;
 
     private readonly ArticleHead initialArticle;
+    private readonly Article article;
 
-    private Article article = null;
     private IList<ArticleSection> sections = null;
     private bool hasSections = false;
     private IList<ArticleLanguage> languages = null;
     private bool hasLanguages = false;
+    private bool hasImages = false;
     private bool isFavorite = false;
-    private ArticleFlyoutViewModel articleFlyout;
 
-    private RelayCommand refreshCommand;
-    private RelayCommand<ArticleLanguage> changeLanguageCommand;
     private RelayCommand openInBrowserCommand;
     private RelayCommand pinCommand;
     private RelayCommand addToFavoritesCommand;
     private RelayCommand removeFromFavoritesCommand;
     private RelayCommand shareCommand;
 
-    private RelayCommand<Uri> navigateCommand;
-    private RelayCommand<Uri> loadedCommand;
-    private RelayCommand<ArticleHead> showArticleCommand;
-
-    public string Title
-    {
-      get { return (article ?? initialArticle).Title; }
-    }
-
-    public bool IsBusy
-    {
-      get { return isBusy; }
-      set { SetProperty(ref isBusy, value); }
-    }
-
-    public IList<ArticleGroup> History
-    {
-      get { return ArticleHistory.All; }
-    }
-
-    public IList<ArticleHead> Favorites
-    {
-      get { return ArticleFavorites.All; }
-    }
-
-    private ArticleImageGalleryViewModel imageGallery = null;
-
-    public ArticleImageGalleryViewModel ImageGallery
-    {
-      get { return imageGallery; }
-      private set { SetProperty(ref imageGallery, value); }
-    }
+    public string Language => article?.Language;
+    public string Title => (article ?? initialArticle).Title;
+    public string Description => (article ?? initialArticle).Description;
+    public string Content => article?.Content;
+    public string TextDirection => article?.TextDirection;
+    public string Anchor => article?.Anchor;
 
     public Article Article
     {
       get { return article; }
-      private set
-      {
-        if (SetProperty(ref article, value))
-        {
-          if (article != null)
-          {
-            Languages = article.Languages;
-            Sections = Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections;
-            IsFavorite = ArticleFavorites.IsFavorite(article);
-            ImageGallery = new ArticleImageGalleryViewModel(article);
-
-            AddArticleToHistory();
-
-            OnPropertyChanged(nameof(Title));
-          }
-          else
-          {
-            Languages = null;
-            Sections = null;
-            IsFavorite = false;
-            ImageGallery = null;
-          }
-        }
-      }
     }
 
     public IList<ArticleSection> Sections
@@ -126,46 +70,16 @@ namespace WikipediaApp
       private set { SetProperty(ref hasLanguages, value); }
     }
 
+    public bool HasImages
+    {
+      get { return hasImages; }
+      private set { SetProperty(ref hasImages, value); }
+    }
+
     public bool IsFavorite
     {
       get { return isFavorite; }
       private set { SetProperty(ref isFavorite, value); }
-    }
-
-    public ArticleFlyoutViewModel ArticleFlyout
-    {
-      get { return articleFlyout; }
-      set
-      {
-        if (SetProperty(ref articleFlyout, value)
-            && articleFlyout != null && !articleFlyout.Loaded)
-        {
-          LoadArticleFlyout();
-        }
-      }
-    }
-
-    private async void LoadArticleFlyout()
-    {
-      var article = await wikipediaService.GetArticleInfo(articleFlyout.Uri);
-
-      if (article != null)
-        articleFlyout.Title = article.Title;
-      else if (string.IsNullOrWhiteSpace(articleFlyout.Title))
-        articleFlyout.Title = articleFlyout.Uri.ToString();
-
-      articleFlyout.Article = article;
-      articleFlyout.Loaded = true;
-    }
-
-    public ICommand RefreshCommand
-    {
-      get { return refreshCommand ?? (refreshCommand = new RelayCommand(Refresh)); }
-    }
-
-    public ICommand ChangeLanguageCommand
-    {
-      get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<ArticleLanguage>(ChangeLanguage)); }
     }
 
     public ICommand OpenInBrowserCommand
@@ -193,51 +107,30 @@ namespace WikipediaApp
       get { return shareCommand ?? (shareCommand = new RelayCommand(Share)); }
     }
 
-    public ICommand NavigateCommand
-    {
-      get { return navigateCommand ?? (navigateCommand = new RelayCommand<Uri>(Navigate)); }
-    }
-
-    public ICommand LoadedCommand
-    {
-      get { return loadedCommand ?? (loadedCommand = new RelayCommand<Uri>(Loaded)); }
-    }
-
-    public ICommand ShowArticleCommand
-    {
-      get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
-    }
-
     public ArticleViewModel(ArticleHead initialArticle)
     {
       this.initialArticle = initialArticle;
     }
 
-    private async void Refresh()
+    public ArticleViewModel(Article article)
     {
-      if (article == null && initialArticle == null)
-        return;
+      this.article = article;
 
-      IsBusy = true;
-
-      var updated = article != null
-        ? await RefreshArticle(article)
-        : await GetArticle(initialArticle);
-
-      if (updated != null)
-      {
-        Article = null;
-        Article = updated;
-      }
-      else
-      {
-        IsBusy = false;
-
-        dialogService.ShowLoadingError();
-      }
+      Languages = article.Languages;
+      Sections = Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections;
+      HasImages = article.Images?.Count > 0;
+      IsFavorite = ArticleFavorites.IsFavorite(article);
     }
 
-    private async void AddArticleToHistory()
+    public bool IsSameArticle(ArticleHead articleHead)
+    {
+      var article = this.article ?? this.initialArticle;
+
+      return (article.Language == articleHead.Language && article.PageId == articleHead.PageId)
+        || (article.Uri != null && article.Uri == articleHead.Uri);
+    }
+
+    public async void AddArticleToHistory()
     {
       ArticleHistory.AddArticle(article);
 
@@ -245,11 +138,6 @@ namespace WikipediaApp
       {
         await wikipediaService.AddArticleToTimeline(article);
       }
-    }
-
-    private void ChangeLanguage(ArticleLanguage language)
-    {
-      Navigate(language.Uri);
     }
 
     private async void OpenInBrowser()
@@ -316,101 +204,6 @@ namespace WikipediaApp
       {
         ShareManager.ShareArticle(shareArticle.Title, shareArticle.Uri);
       }
-    }
-
-    private async void Navigate(Uri uri)
-    {
-      var isImage = await ImageGallery.NavigateToImage(uri);
-      if (isImage)
-        return;
-
-      IsBusy = true;
-
-      if (wikipediaService.IsWikipediaUri(uri))
-      {
-        var article = await GetArticle(uri);
-
-        if (article != null)
-        {
-          Article = article;
-        }
-        else
-        {
-          IsBusy = false;
-
-          dialogService.ShowLoadingError();
-        }
-      }
-      else
-      {
-        IsBusy = false;
-
-        navigationService.OpenInBrowser(uri);
-      }
-    }
-
-    private void Loaded(Uri uri)
-    {
-      IsBusy = false;
-    }
-
-    public async void ShowArticle(ArticleHead articleHead)
-    {
-      if (this.article != null && ((this.article.Language == articleHead.Language && this.article.PageId == articleHead.PageId)
-                                   || (this.article.Uri != null && this.article.Uri == articleHead.Uri)))
-        return;
-
-      IsBusy = true;
-
-      var article = articleHead as Article
-                    ?? await GetArticle(articleHead);
-
-      if (article != null)
-      {
-        Article = article;
-      }
-      else
-      {
-        IsBusy = false;
-
-        dialogService.ShowLoadingError();
-      }
-    }
-
-    public override async Task Initialize()
-    {
-      if (Article != null)
-        return;
-
-      IsBusy = true;
-
-      var article = await GetArticle(initialArticle);
-
-      if (article != null)
-      {
-        Article = article;
-      }
-      else
-      {
-        IsBusy = false;
-
-        dialogService.ShowLoadingError();
-      }
-    }
-
-    private async Task<Article> GetArticle(Uri uri)
-    {
-      return await wikipediaService.GetArticle(uri, Settings.Current.ImagesDisabled);
-    }
-
-    private async Task<Article> GetArticle(ArticleHead articleHead)
-    {
-      return await wikipediaService.GetArticle(articleHead, Settings.Current.ImagesDisabled);
-    }
-
-    private async Task<Article> RefreshArticle(Article article)
-    {
-      return await wikipediaService.RefreshArticle(article, Settings.Current.ImagesDisabled);
     }
   }
 }

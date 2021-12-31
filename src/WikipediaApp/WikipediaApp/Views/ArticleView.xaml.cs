@@ -21,7 +21,7 @@ namespace WikipediaApp
       nameof(Header), typeof(double), typeof(ArticleView), new PropertyMetadata(0.0, OnHeaderPropertyChanged));
 
     public static readonly DependencyProperty ArticleProperty = DependencyProperty.Register(
-      nameof(Article), typeof(Article), typeof(ArticleView), new PropertyMetadata(null, OnArticlePropertyChanged));
+      nameof(Article), typeof(ArticleViewModel), typeof(ArticleView), new PropertyMetadata(null, OnArticlePropertyChanged));
 
     public static readonly DependencyProperty NavigateCommandProperty = DependencyProperty.Register(
       nameof(NavigateCommand), typeof(ICommand), typeof(ArticleView), new PropertyMetadata(null));
@@ -53,9 +53,9 @@ namespace WikipediaApp
       set { SetValue(HeaderProperty, value); }
     }
     
-    public Article Article
+    public ArticleViewModel Article
     {
-      get { return (Article)GetValue(ArticleProperty); }
+      get { return (ArticleViewModel)GetValue(ArticleProperty); }
       set { SetValue(ArticleProperty, value); }
     }
 
@@ -174,12 +174,12 @@ namespace WikipediaApp
 
     private static void OnArticlePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-      var article = e.NewValue as Article;
+      var article = e.NewValue as ArticleViewModel;
       if (string.IsNullOrEmpty(article?.Content))
         return;
 
       var view = (ArticleView)d;
-      view.ShowArticle(article, e.OldValue as Article);
+      view.ShowArticle(article, e.OldValue as ArticleViewModel);
     }
 
     private async void UpdateHeader(double header)
@@ -198,7 +198,7 @@ namespace WikipediaApp
       }
     }
 
-    private async void ShowArticle(Article article, Article currentArticle)
+    private async void ShowArticle(ArticleViewModel article, ArticleViewModel currentArticle)
     {
       try
       {
@@ -210,9 +210,9 @@ namespace WikipediaApp
 
       SearchResults = 0;
 
-      if (currentArticle != null && currentArticle.PageId != article.PageId)
+      if (currentArticle != null && !currentArticle.IsSameArticle(article.Article))
       {
-        await UpdateStacks(article, currentArticle);
+        await UpdateStacks(article.Article, currentArticle.Article);
       }
 
       var html = WikipediaHtmlBuilder.BuildArticle(article.Title, article.Description, article.Content, article.Language, article.TextDirection, Convert.ToInt32(Header) + 10);
@@ -506,9 +506,12 @@ namespace WikipediaApp
         ScrollBar.Maximum = 0;
       }
 
-      foreach (var section in Article.Sections)
+      if (Article.HasSections)
       {
-        section.IsActive = section.Anchor == data.Text;
+        foreach (var section in Article.Sections)
+        {
+          section.IsActive = section.Anchor == data.Text;
+        }
       }
     }
 

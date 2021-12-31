@@ -48,11 +48,11 @@ namespace WikipediaApp
 
     private void FrameNavigating(object sender, NavigatingCancelEventArgs e)
     {
-      if (e.Parameter is ArticleViewModel articleViewModel)
+      if (e.Parameter is ArticlePageViewModel viewModel)
       {
         AppIcon.Visibility = Visibility.Visible;
         AppTitle.ClearValue(TextBlock.TextProperty);
-        AppTitle.SetBinding(TextBlock.TextProperty, new Binding { Source = articleViewModel, Path = new PropertyPath("Title") });
+        AppTitle.SetBinding(TextBlock.TextProperty, new Binding { Source = viewModel, Path = new PropertyPath("Title") });
       }
       else
       {

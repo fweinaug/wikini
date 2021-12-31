@@ -94,7 +94,7 @@ namespace WikipediaApp
     {
       var article = ArticleView.Article;
 
-      Settings.WriteLastArticle(article);
+      Settings.WriteLastArticle(article.Article);
 
       HideSearchBar(resetSearch: false);
     }

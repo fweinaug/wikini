@@ -17,7 +17,7 @@
 
         <TextBlock x:Uid="ArticleContentsPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Sections}" Style="{StaticResource SplitViewPaneListViewStyle}"
+        <ListView Grid.Row="1" ItemsSource="{Binding Article.Sections}" Style="{StaticResource SplitViewPaneListViewStyle}"
                                IsItemClickEnabled="True" ItemClick="ContentsListViewItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ArticleSection">

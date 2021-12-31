@@ -177,6 +177,7 @@
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="ViewModel\AppShellViewModel.cs" />
     <Compile Include="ViewModel\ArticleImageGalleryViewModel.cs" />
+    <Compile Include="ViewModel\ArticlePageViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
