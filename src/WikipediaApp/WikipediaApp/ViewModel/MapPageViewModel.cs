@@ -22,17 +22,11 @@ namespace WikipediaApp
 
   public class MapPageViewModel : ViewModelBase
   {
-    private readonly IWikipediaService wikipediaService = new WikipediaService();
-    private readonly INavigationService navigationService = new NavigationService();
-    private readonly IGeolocationService geolocationService = new GeolocationService();
+    private readonly IWikipediaService wikipediaService;
+    private readonly INavigationService navigationService;
+    private readonly IGeolocationService geolocationService;
 
-    private readonly string language;
-
-    public MapPageViewModel(string language)
-    {
-      this.language = language;
-    }
-
+    private string language;
     private MapPosition position = null;
     private RelayCommand<MapPosition> movePositionCommand = null;
     private IList<NearbyArticle> articles = null;
@@ -40,6 +34,12 @@ namespace WikipediaApp
     private RelayCommand<NearbyArticle> selectArticleCommand = null;
     private RelayCommand<NearbyArticle> showArticleCommand = null;
     private AsyncRelayCommand updateLocationCommand = null;
+
+    public string Language
+    {
+      get { return language; }
+      set { SetProperty(ref language, value); }
+    }
 
     public MapPosition Position
     {
@@ -77,6 +77,13 @@ namespace WikipediaApp
     public ICommand UpdateLocationCommand
     {
       get { return updateLocationCommand ?? (updateLocationCommand = new AsyncRelayCommand(UpdateLocation)); }
+    }
+
+    public MapPageViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IGeolocationService geolocationService)
+    {
+      this.wikipediaService = wikipediaService;
+      this.navigationService = navigationService;
+      this.geolocationService = geolocationService;
     }
 
     public override async Task Initialize()

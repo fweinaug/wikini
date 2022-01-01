@@ -7,8 +7,8 @@ namespace WikipediaApp
 {
   public class ArticleFlyoutViewModel : ObservableObject
   {
-    private readonly IWikipediaService wikipediaService = new WikipediaService();
-    private readonly IShareManager shareManager = new ShareManager();
+    private readonly IWikipediaService wikipediaService;
+    private readonly IShareManager shareManager;
 
     private bool loaded = false;
 
@@ -113,6 +113,12 @@ namespace WikipediaApp
     public ICommand CopyToClipboardCommand
     {
       get { return copyToClipboardCommand ?? (copyToClipboardCommand = new RelayCommand(CopyToClipboard)); }
+    }
+
+    public ArticleFlyoutViewModel(IWikipediaService wikipediaService, IShareManager shareManager)
+    {
+      this.wikipediaService = wikipediaService;
+      this.shareManager = shareManager;
     }
 
     private async void Pin()

@@ -10,7 +10,7 @@ namespace WikipediaApp
 {
   public class ArticleImageGalleryViewModel : ObservableObject
   {
-    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly IWikipediaService wikipediaService;
 
     private readonly Article article;
 
@@ -49,9 +49,10 @@ namespace WikipediaApp
       get { return closeCommand ?? (closeCommand = new RelayCommand(Close)); }
     }
 
-    public ArticleImageGalleryViewModel(Article article)
+    public ArticleImageGalleryViewModel(Article article, IWikipediaService wikipediaService)
     {
       this.article = article;
+      this.wikipediaService = wikipediaService;
     }
 
     public async Task<bool> NavigateToImage(Uri uri)

@@ -9,9 +9,9 @@ namespace WikipediaApp
 {
   public class SearchViewModel : ObservableObject
   {
-    private readonly IWikipediaService wikipediaService = new WikipediaService();
-    private readonly INavigationService navigationService = new NavigationService();
-    private readonly IDeviceService deviceService = new DeviceService();
+    private readonly IWikipediaService wikipediaService;
+    private readonly INavigationService navigationService;
+    private readonly IDeviceService deviceService;
 
     private LanguageViewModel language = null;
     private string searchTerm = null;
@@ -77,6 +77,13 @@ namespace WikipediaApp
     public ICommand ShowArticleCommand
     {
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
+    }
+
+    public SearchViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDeviceService deviceService)
+    {
+      this.wikipediaService = wikipediaService;
+      this.navigationService = navigationService;
+      this.deviceService = deviceService;
     }
 
     public void ShowArticle(ArticleHead article)

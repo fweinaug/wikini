@@ -8,7 +8,7 @@ namespace WikipediaApp
 {
   public class PictureOfTheDayViewModel : ObservableObject
   {
-    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly IWikipediaService wikipediaService;
 
     private DateTime date;
     private Uri thumbnailUri;
@@ -52,6 +52,11 @@ namespace WikipediaApp
     public ICommand ClearCommand
     {
       get { return clearCommand ?? (clearCommand = new RelayCommand(Clear, () => thumbnailUri != null)); }
+    }
+
+    public PictureOfTheDayViewModel(IWikipediaService wikipediaService)
+    {
+      this.wikipediaService = wikipediaService;
     }
 
     public async void Back()

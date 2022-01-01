@@ -4,11 +4,17 @@ namespace WikipediaApp
 {
   public class AppShellViewModel : ViewModelBase
   {
-    private readonly INavigationService navigationService = new NavigationService();
+    private readonly INavigationService navigationService;
 
-    private readonly MainPageViewModel mainPage = new MainPageViewModel();
+    private readonly MainPageViewModel mainPage;
 
     public MainPageViewModel MainPage => mainPage;
+
+    public AppShellViewModel(INavigationService navigationService, MainPageViewModel mainPageViewModel)
+    {
+      this.navigationService = navigationService;
+      this.mainPage = mainPageViewModel;
+    }
 
     public void ShowArticle(ArticleHead article)
     {

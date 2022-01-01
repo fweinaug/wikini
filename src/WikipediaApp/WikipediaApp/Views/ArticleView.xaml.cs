@@ -9,6 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
 namespace WikipediaApp
@@ -464,13 +465,11 @@ namespace WikipediaApp
 
     private void ShowArticleFlyout(ScriptNotifyData data)
     {
-      var viewModel = new ArticleFlyoutViewModel
-      {
-        Uri = new Uri(data.Url),
-        Left = data.X,
-        Top = data.Y + data.Height + 5,
-        Title = data.Text
-      };
+      var viewModel = App.Services.GetService<ArticleFlyoutViewModel>();
+      viewModel.Uri = new Uri(data.Url);
+      viewModel.Left = data.X;
+      viewModel.Top = data.Y + data.Height + 5;
+      viewModel.Title = data.Text;
 
       void OnArticleFlyoutPropertyChanged(object sender, PropertyChangedEventArgs e)
       {

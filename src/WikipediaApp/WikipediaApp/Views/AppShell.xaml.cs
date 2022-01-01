@@ -6,12 +6,13 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WikipediaApp
 {
   public sealed partial class AppShell : Page
   {
-    private readonly AppShellViewModel viewModel = new AppShellViewModel();
+    private readonly AppShellViewModel viewModel = App.Services.GetService<AppShellViewModel>();
 
     private ArticleHead initialArticle = null;
 
@@ -30,8 +31,6 @@ namespace WikipediaApp
       InitializeComponent();
 
       SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManagerBackRequested;
-
-      viewModel = new AppShellViewModel();
 
       DataContext = viewModel;
     }

@@ -8,9 +8,10 @@ namespace WikipediaApp
 {
   public class ArticlePageViewModel : ViewModelBase
   {
-    private readonly IWikipediaService wikipediaService = new WikipediaService();
-    private readonly IDialogService dialogService = new DialogService();
-    private readonly INavigationService navigationService = new NavigationService();
+    private readonly IWikipediaService wikipediaService;
+    private readonly IDialogService dialogService;
+    private readonly INavigationService navigationService;
+    private readonly IArticleViewModelFactory articleViewModelFactory;
 
     private readonly ArticleHead initialArticle;
 
@@ -37,7 +38,7 @@ namespace WikipediaApp
         if (SetProperty(ref article, value))
         {
           OnPropertyChanged(nameof(Title));
-          ImageGallery = new ArticleImageGalleryViewModel(article.Article);
+          ImageGallery = new ArticleImageGalleryViewModel(article.Article, wikipediaService);
         };
       }
     }
@@ -102,10 +103,15 @@ namespace WikipediaApp
       get { return ArticleFavorites.All; }
     }
 
-    public ArticlePageViewModel(ArticleHead initialArticle)
+    public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IArticleViewModelFactory articleViewModelFactory)
     {
       this.initialArticle = initialArticle;
-      this.article = new ArticleViewModel(initialArticle);
+      this.article = articleViewModelFactory.GetArticle(initialArticle);
+
+      this.wikipediaService = wikipediaService;
+      this.dialogService = dialogService;
+      this.navigationService = navigationService;
+      this.articleViewModelFactory = articleViewModelFactory;
     }
 
     public override async Task Initialize()
@@ -116,7 +122,7 @@ namespace WikipediaApp
 
       if (article != null)
       {
-        Article = new ArticleViewModel(article);
+        Article = articleViewModelFactory.GetArticle(article);
         Article.AddArticleToHistory();
       }
       else
@@ -136,13 +142,13 @@ namespace WikipediaApp
 
       if (articleHead is Article reopenedArticle)
       {
-        Article = new ArticleViewModel(reopenedArticle);
+        Article = articleViewModelFactory.GetArticle(reopenedArticle);
       }
       else if (articleHead != null)
       {
         var article = await GetArticle(articleHead);
 
-        Article = new ArticleViewModel(article);
+        Article = articleViewModelFactory.GetArticle(article);
         Article.AddArticleToHistory();
       }
       else
@@ -171,7 +177,7 @@ namespace WikipediaApp
 
       if (updated != null)
       {
-        Article = new ArticleViewModel(updated);
+        Article = articleViewModelFactory.GetArticle(updated);
       }
       else
       {
@@ -195,7 +201,7 @@ namespace WikipediaApp
 
         if (article != null)
         {
-          Article = new ArticleViewModel(article);
+          Article = articleViewModelFactory.GetArticle(article);
           Article.AddArticleToHistory();
         }
         else

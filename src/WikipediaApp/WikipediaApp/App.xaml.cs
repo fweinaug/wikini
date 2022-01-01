@@ -8,6 +8,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WikipediaApp
 {
@@ -15,9 +16,16 @@ namespace WikipediaApp
   {
     private readonly Settings settings = new Settings();
 
+    private IServiceProvider serviceProvider;
+
     public new static App Current
     {
       get { return (App)Application.Current; }
+    }
+
+    public static IServiceProvider Services
+    {
+      get { return ((App)Current).serviceProvider; }
     }
 
     public AppShell AppShell { get; private set; }
@@ -85,6 +93,8 @@ namespace WikipediaApp
 
       if (shell == null)
       {
+        serviceProvider = ConfigureServices();
+
         Resources.Add("Settings", settings);
 
         shell = new AppShell();
@@ -115,6 +125,28 @@ namespace WikipediaApp
     private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
     {
       throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+    }
+
+    private static IServiceProvider ConfigureServices()
+    {
+      var provider = new ServiceCollection()
+        .AddTransient<IWikipediaService, WikipediaService>()
+        .AddTransient<IDeviceService, DeviceService>()
+        .AddTransient<IDialogService, DialogService>()
+        .AddTransient<INavigationService, NavigationService>()
+        .AddTransient<IGeolocationService, GeolocationService>()
+        .AddTransient<IShareManager, ShareManager>()
+        .AddSingleton<IArticleViewModelFactory, ArticleViewModelFactory>()
+        .AddSingleton<AppShellViewModel>()
+        .AddSingleton<MainPageViewModel>()
+        .AddTransient<MapPageViewModel>()
+        .AddTransient<ArticlePageViewModel>()
+        .AddTransient<ArticleFlyoutViewModel>()
+        .AddTransient<SearchViewModel>()
+        .AddTransient<PictureOfTheDayViewModel>()
+        .BuildServiceProvider(true);
+
+      return provider;
     }
   }
 }

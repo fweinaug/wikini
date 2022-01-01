@@ -172,6 +172,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Factories\ArticleViewModelFactory.cs" />
+    <Compile Include="Factories\IArticleViewModelFactory.cs" />
     <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />

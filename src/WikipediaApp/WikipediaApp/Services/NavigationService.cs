@@ -1,6 +1,7 @@
 using System;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WikipediaApp
 {
@@ -21,7 +22,7 @@ namespace WikipediaApp
       if (ShowArticleInCurrentArticlePage(article))
         return;
 
-      var viewModel = new ArticlePageViewModel(article);
+      var viewModel = new ArticlePageViewModel(article, App.Services.GetService<IWikipediaService>(), App.Services.GetService<IDialogService>(), App.Services.GetService<INavigationService>(), App.Services.GetService<IArticleViewModelFactory>());
 
       Frame.Navigate(typeof(ArticlePage), viewModel);
     }
@@ -40,7 +41,8 @@ namespace WikipediaApp
 
     public void ShowMap(string language)
     {
-      var viewModel = new MapPageViewModel(language);
+      var viewModel = App.Services.GetService<MapPageViewModel>();
+      viewModel.Language = language;
 
       Frame.Navigate(typeof(MapPage), viewModel);
     }

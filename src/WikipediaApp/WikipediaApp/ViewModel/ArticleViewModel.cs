@@ -7,9 +7,9 @@ namespace WikipediaApp
 {
   public class ArticleViewModel : ViewModelBase
   {
-    private readonly IWikipediaService wikipediaService = new WikipediaService();
-    private readonly INavigationService navigationService = new NavigationService();
-    private readonly IShareManager shareManager = new ShareManager();
+    private readonly IWikipediaService wikipediaService;
+    private readonly INavigationService navigationService;
+    private readonly IShareManager shareManager;
 
     private readonly ArticleHead initialArticle;
     private readonly Article article;
@@ -108,14 +108,20 @@ namespace WikipediaApp
       get { return shareCommand ?? (shareCommand = new RelayCommand(Share)); }
     }
 
-    public ArticleViewModel(ArticleHead initialArticle)
+    public ArticleViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
     {
       this.initialArticle = initialArticle;
+      this.wikipediaService = wikipediaService;
+      this.navigationService = navigationService;
+      this.shareManager = shareManager;
     }
 
-    public ArticleViewModel(Article article)
+    public ArticleViewModel(Article article, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
     {
       this.article = article;
+      this.wikipediaService = wikipediaService;
+      this.navigationService = navigationService;
+      this.shareManager = shareManager;
 
       Languages = article.Languages.Select((language, index) => new ArticleLanguageViewModel(language, index)).ToList();
       Sections = (Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections).ConvertAll(section => new ArticleSectionViewModel(section));
