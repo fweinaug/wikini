@@ -1,6 +1,6 @@
 namespace WikipediaApp
 {
-  public class DialogService
+  public class DialogService : IDialogService
   {
     public async void ShowLoadingError()
     {

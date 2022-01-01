@@ -9,9 +9,9 @@ namespace WikipediaApp
 {
   public class SearchViewModel : ObservableObject
   {
-    private readonly WikipediaService wikipediaService = new WikipediaService();
-    private readonly NavigationService navigationService = new NavigationService();
-    private readonly DeviceService deviceService = new DeviceService();
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly INavigationService navigationService = new NavigationService();
+    private readonly IDeviceService deviceService = new DeviceService();
 
     private LanguageViewModel language = null;
     private string searchTerm = null;

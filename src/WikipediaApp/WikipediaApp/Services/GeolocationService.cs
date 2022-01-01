@@ -4,7 +4,7 @@ using Windows.Devices.Geolocation;
 
 namespace WikipediaApp
 {
-  public class GeolocationService
+  public class GeolocationService : IGeolocationService
   {
     public async Task<Coordinates> GetCurrentLocation()
     {

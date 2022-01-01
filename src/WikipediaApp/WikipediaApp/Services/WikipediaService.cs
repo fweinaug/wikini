@@ -7,7 +7,7 @@ using Microsoft.AppCenter.Crashes;
 
 namespace WikipediaApp
 {
-  public class WikipediaService
+  public class WikipediaService : IWikipediaService
   {
     private static readonly ArticleCache<ArticleHead> articleHeadCache = new ArticleCache<ArticleHead>();
     private static readonly ArticleCache<Article> articleCache = new ArticleCache<Article>();

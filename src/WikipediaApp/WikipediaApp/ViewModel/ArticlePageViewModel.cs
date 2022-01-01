@@ -8,9 +8,9 @@ namespace WikipediaApp
 {
   public class ArticlePageViewModel : ViewModelBase
   {
-    private readonly WikipediaService wikipediaService = new WikipediaService();
-    private readonly DialogService dialogService = new DialogService();
-    private readonly NavigationService navigationService = new NavigationService();
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly IDialogService dialogService = new DialogService();
+    private readonly INavigationService navigationService = new NavigationService();
 
     private readonly ArticleHead initialArticle;
 

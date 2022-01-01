@@ -7,7 +7,8 @@ namespace WikipediaApp
 {
   public class ArticleFlyoutViewModel : ObservableObject
   {
-    private readonly WikipediaService wikipediaService = new WikipediaService();
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly IShareManager shareManager = new ShareManager();
 
     private bool loaded = false;
 
@@ -146,11 +147,11 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        ShareManager.ShareArticle(Title, article.Uri);
+        shareManager.ShareArticle(Title, article.Uri);
       }
       else
       {
-        ShareManager.ShareArticle(Title, uri);
+        shareManager.ShareArticle(Title, uri);
       }
     }
 
@@ -158,11 +159,11 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        ShareManager.CopyToClipboard(article.Uri);
+        shareManager.CopyToClipboard(article.Uri);
       }
       else
       {
-        ShareManager.CopyToClipboard(uri);
+        shareManager.CopyToClipboard(uri);
       }
     }
   }

@@ -22,9 +22,9 @@ namespace WikipediaApp
 
   public class MapPageViewModel : ViewModelBase
   {
-    private readonly WikipediaService wikipediaService = new WikipediaService();
-    private readonly NavigationService navigationService = new NavigationService();
-    private readonly GeolocationService geolocationService = new GeolocationService();
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly INavigationService navigationService = new NavigationService();
+    private readonly IGeolocationService geolocationService = new GeolocationService();
 
     private readonly string language;
 

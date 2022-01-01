@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace WikipediaApp
 {
-  public class NavigationService
+  public class NavigationService : INavigationService
   {
     private Frame Frame
     {

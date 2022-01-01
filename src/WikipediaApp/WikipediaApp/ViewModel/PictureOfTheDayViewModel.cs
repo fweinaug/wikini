@@ -8,7 +8,7 @@ namespace WikipediaApp
 {
   public class PictureOfTheDayViewModel : ObservableObject
   {
-    private readonly WikipediaService wikipediaService;
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
 
     private DateTime date;
     private Uri thumbnailUri;
@@ -17,11 +17,6 @@ namespace WikipediaApp
     private RelayCommand todayCommand = null;
     private RelayCommand randomCommand = null;
     private RelayCommand clearCommand = null;
-
-    public PictureOfTheDayViewModel(WikipediaService wikipediaService)
-    {
-      this.wikipediaService = wikipediaService;
-    }
 
     public DateTime Date
     {

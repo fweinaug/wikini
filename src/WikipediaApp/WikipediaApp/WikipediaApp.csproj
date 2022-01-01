@@ -175,6 +175,12 @@
     <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\NearbyArticle.cs" />
     <Compile Include="Services\GeolocationService.cs" />
+    <Compile Include="Services\IDeviceService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="Services\IGeolocationService.cs" />
+    <Compile Include="Services\INavigationService.cs" />
+    <Compile Include="Services\IShareManager.cs" />
+    <Compile Include="Services\IWikipediaService.cs" />
     <Compile Include="ViewModel\AppShellViewModel.cs" />
     <Compile Include="ViewModel\ArticleImageGalleryViewModel.cs" />
     <Compile Include="ViewModel\ArticleLanguageViewModel.cs" />

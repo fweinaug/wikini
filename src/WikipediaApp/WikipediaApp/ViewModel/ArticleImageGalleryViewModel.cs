@@ -10,7 +10,7 @@ namespace WikipediaApp
 {
   public class ArticleImageGalleryViewModel : ObservableObject
   {
-    private readonly WikipediaService wikipediaService = new WikipediaService();
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
 
     private readonly Article article;
 

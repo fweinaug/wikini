@@ -2,7 +2,7 @@ using Windows.Networking.Connectivity;
 
 namespace WikipediaApp
 {
-  public class DeviceService
+  public class DeviceService : IDeviceService
   {
     public bool IsInternetConnectionUnrestricted()
     {

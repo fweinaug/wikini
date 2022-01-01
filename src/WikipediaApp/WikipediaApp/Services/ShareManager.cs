@@ -3,9 +3,9 @@ using Windows.ApplicationModel.DataTransfer;
 
 namespace WikipediaApp
 {
-  public static class ShareManager
+  public class ShareManager : IShareManager
   {
-    public static void CopyToClipboard(Uri uri)
+    public void CopyToClipboard(Uri uri)
     {
       var dataPackage = new DataPackage();
       dataPackage.SetText(uri.OriginalString);
@@ -13,7 +13,7 @@ namespace WikipediaApp
       Clipboard.SetContent(dataPackage);
     }
 
-    public static void ShareArticle(string title, Uri uri)
+    public void ShareArticle(string title, Uri uri)
     {
       RegisterDataRequestedHandler(title, uri);
 

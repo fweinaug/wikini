@@ -7,8 +7,9 @@ namespace WikipediaApp
 {
   public class ArticleViewModel : ViewModelBase
   {
-    private readonly WikipediaService wikipediaService = new WikipediaService();
-    private readonly NavigationService navigationService = new NavigationService();
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly INavigationService navigationService = new NavigationService();
+    private readonly IShareManager shareManager = new ShareManager();
 
     private readonly ArticleHead initialArticle;
     private readonly Article article;
@@ -202,7 +203,7 @@ namespace WikipediaApp
 
       if (shareArticle.Uri != null)
       {
-        ShareManager.ShareArticle(shareArticle.Title, shareArticle.Uri);
+        shareManager.ShareArticle(shareArticle.Title, shareArticle.Uri);
       }
     }
   }

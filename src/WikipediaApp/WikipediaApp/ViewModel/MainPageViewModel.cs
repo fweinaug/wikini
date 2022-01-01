@@ -8,9 +8,9 @@ namespace WikipediaApp
 {
   public class MainPageViewModel : ViewModelBase
   {
-    private readonly WikipediaService wikipediaService = new WikipediaService();
-    private readonly NavigationService navigationService = new NavigationService();
-    private readonly DialogService dialogService = new DialogService();
+    private readonly IWikipediaService wikipediaService = new WikipediaService();
+    private readonly INavigationService navigationService = new NavigationService();
+    private readonly IDialogService dialogService = new DialogService();
 
     private bool isBusy = false;
 
@@ -96,7 +96,7 @@ namespace WikipediaApp
     public MainPageViewModel()
     {
       Search = new SearchViewModel();
-      PictureOfTheDay = new PictureOfTheDayViewModel(wikipediaService);
+      PictureOfTheDay = new PictureOfTheDayViewModel();
     }
 
     private async void ShowHomePage()
