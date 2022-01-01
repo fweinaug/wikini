@@ -10,7 +10,7 @@
     d:DesignWidth="400">
 
     <UserControl.Resources>
-        <DataTemplate x:Key="LanguageTemplate" x:DataType="local:Language">
+        <DataTemplate x:Key="LanguageTemplate" x:DataType="local:LanguageViewModel">
             <UserControl>
                 <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                       ToolTipService.ToolTip="{x:Bind Name}"
@@ -44,7 +44,7 @@
             </UserControl>
         </DataTemplate>
 
-        <DataTemplate x:Key="ArticleLanguageTemplate" x:DataType="local:ArticleLanguage">
+        <DataTemplate x:Key="ArticleLanguageTemplate" x:DataType="local:ArticleLanguageViewModel">
             <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                   ToolTipService.ToolTip="{x:Bind Name}"
                   local:ListViewExtensions.ItemMenuFlyout="{StaticResource LanguageMenuFlyout}">

@@ -20,7 +20,7 @@
         <ListView Grid.Row="1" ItemsSource="{Binding Article.Sections}" Style="{StaticResource SplitViewPaneListViewStyle}"
                                IsItemClickEnabled="True" ItemClick="ContentsListViewItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:ArticleSection">
+                <DataTemplate x:DataType="local:ArticleSectionViewModel">
                     <UserControl>
                         <Grid x:Name="Root" Style="{StaticResource SplitViewPaneListViewItemStyle}"
                                           BorderBrush="{ThemeResource ListViewHeaderBorderBrush}" BorderThickness="0"

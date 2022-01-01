@@ -14,7 +14,7 @@ namespace WikipediaApp
     public event RoutedEventHandler SelectLanguage;
 
     public static readonly DependencyProperty QueryLanguageProperty = DependencyProperty.Register(
-      nameof(QueryLanguage), typeof(Language), typeof(SearchBox), new PropertyMetadata(null));
+      nameof(QueryLanguage), typeof(LanguageViewModel), typeof(SearchBox), new PropertyMetadata(null));
 
     public static readonly DependencyProperty QueryStringProperty = DependencyProperty.Register(
       nameof(QueryString), typeof(string), typeof(SearchBox), new PropertyMetadata(null));
@@ -31,9 +31,9 @@ namespace WikipediaApp
     public static readonly DependencyProperty LanguageSelectedCommandProperty = DependencyProperty.Register(
       nameof(LanguageSelectedCommand), typeof(ICommand), typeof(SearchBox), new PropertyMetadata(null));
 
-    public Language QueryLanguage
+    public LanguageViewModel QueryLanguage
     {
-      get { return (Language)GetValue(QueryLanguageProperty); }
+      get { return (LanguageViewModel)GetValue(QueryLanguageProperty); }
       set { SetValue(QueryLanguageProperty, value); }
     }
 
@@ -86,7 +86,7 @@ namespace WikipediaApp
       }
     }
 
-    private void ShowLanguagesMenuFlyout(List<Language> favorites)
+    private void ShowLanguagesMenuFlyout(List<LanguageViewModel> favorites)
     {
       var menuFlyout = (MenuFlyout)Resources["LanguagesMenuFlyout"];
 

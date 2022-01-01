@@ -5,9 +5,9 @@ namespace WikipediaApp
 {
   public class ArticleSectionEventArgs : EventArgs
   {
-    public ArticleSection Section { get; }
+    public ArticleSectionViewModel Section { get; }
 
-    public ArticleSectionEventArgs(ArticleSection section)
+    public ArticleSectionEventArgs(ArticleSectionViewModel section)
     {
       Section = section;
     }
@@ -24,7 +24,7 @@ namespace WikipediaApp
 
     private void ContentsListViewItemClick(object sender, ItemClickEventArgs e)
     {
-      if (e.ClickedItem is ArticleSection section)
+      if (e.ClickedItem is ArticleSectionViewModel section)
         ArticleSectionClick?.Invoke(this, new ArticleSectionEventArgs(section));
     }
   }

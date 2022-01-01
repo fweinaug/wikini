@@ -19,9 +19,9 @@ namespace WikipediaApp
     private RelayCommand showMapCommand = null;
     private RelayCommand<ArticleHead> showArticleCommand = null;
 
-    private IList<Language> languages = null;
-    private Language language = null;
-    private RelayCommand<Language> changeLanguageCommand = null;
+    private IList<LanguageViewModel> languages = null;
+    private LanguageViewModel language = null;
+    private RelayCommand<LanguageViewModel> changeLanguageCommand = null;
 
     public SearchViewModel Search { get; }
 
@@ -61,13 +61,13 @@ namespace WikipediaApp
       get { return ArticleFavorites.All; }
     }
 
-    public IList<Language> Languages
+    public IList<LanguageViewModel> Languages
     {
       get { return languages; }
       private set { SetProperty(ref languages, value); }
     }
 
-    public Language Language
+    public LanguageViewModel Language
     {
       get { return language; }
       private set
@@ -88,7 +88,7 @@ namespace WikipediaApp
 
     public ICommand ChangeLanguageCommand
     {
-      get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<Language>(ChangeLanguage)); }
+      get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<LanguageViewModel>(ChangeLanguage)); }
     }
 
     public PictureOfTheDayViewModel PictureOfTheDay { get; }
@@ -137,7 +137,7 @@ namespace WikipediaApp
       navigationService.ShowArticle(article);
     }
 
-    private void ChangeLanguage(Language language)
+    private void ChangeLanguage(LanguageViewModel language)
     {
       if (Language == language)
         return;

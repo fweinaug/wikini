@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.Input;
 
@@ -13,9 +13,9 @@ namespace WikipediaApp
     private readonly ArticleHead initialArticle;
     private readonly Article article;
 
-    private IList<ArticleSection> sections = null;
+    private IList<ArticleSectionViewModel> sections = null;
     private bool hasSections = false;
-    private IList<ArticleLanguage> languages = null;
+    private IList<ArticleLanguageViewModel> languages = null;
     private bool hasLanguages = false;
     private bool hasImages = false;
     private bool isFavorite = false;
@@ -38,7 +38,7 @@ namespace WikipediaApp
       get { return article; }
     }
 
-    public IList<ArticleSection> Sections
+    public IList<ArticleSectionViewModel> Sections
     {
       get { return sections; }
       private set
@@ -54,7 +54,7 @@ namespace WikipediaApp
       private set { SetProperty(ref hasSections, value); }
     }
 
-    public IList<ArticleLanguage> Languages
+    public IList<ArticleLanguageViewModel> Languages
     {
       get { return languages; }
       private set
@@ -116,8 +116,8 @@ namespace WikipediaApp
     {
       this.article = article;
 
-      Languages = article.Languages;
-      Sections = Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections;
+      Languages = article.Languages.Select((language, index) => new ArticleLanguageViewModel(language, index)).ToList();
+      Sections = (Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections).ConvertAll(section => new ArticleSectionViewModel(section));
       HasImages = article.Images?.Count > 0;
       IsFavorite = ArticleFavorites.IsFavorite(article);
     }

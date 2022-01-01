@@ -19,7 +19,7 @@ namespace WikipediaApp
     private ArticleImageGalleryViewModel imageGallery;
     private bool isBusy = false;
 
-    private RelayCommand<ArticleLanguage> changeLanguageCommand;
+    private RelayCommand<ArticleLanguageViewModel> changeLanguageCommand;
     private RelayCommand refreshCommand;
     private RelayCommand<Uri> navigateCommand;
     private RelayCommand<Uri> loadedCommand;
@@ -69,7 +69,7 @@ namespace WikipediaApp
 
     public ICommand ChangeLanguageCommand
     {
-      get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<ArticleLanguage>(ChangeLanguage)); }
+      get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<ArticleLanguageViewModel>(ChangeLanguage)); }
     }
 
     public ICommand RefreshCommand
@@ -153,7 +153,7 @@ namespace WikipediaApp
       }
     }
 
-    private void ChangeLanguage(ArticleLanguage language)
+    private void ChangeLanguage(ArticleLanguageViewModel language)
     {
       Navigate(language.Uri);
     }

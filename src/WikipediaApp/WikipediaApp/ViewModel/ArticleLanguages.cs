@@ -9,11 +9,11 @@ namespace WikipediaApp
 {
   public static class ArticleLanguages
   {
-    public static IList<Language> All { get; } = new ObservableCollection<Language>();
+    public static IList<LanguageViewModel> All { get; } = new ObservableCollection<LanguageViewModel>();
 
     private static readonly List<FavoriteLanguage> Favorites = new List<FavoriteLanguage>();
 
-    public static void AddFavorite(Language language)
+    public static void AddFavorite(LanguageViewModel language)
     {
       var favorite = new FavoriteLanguage
       {
@@ -33,7 +33,7 @@ namespace WikipediaApp
       language.IsFavorite = true;
     }
 
-    public static void RemoveFavorite(Language language)
+    public static void RemoveFavorite(LanguageViewModel language)
     {
       var favorite = Favorites.FirstOrDefault(x => x.Code == language.Code);
       if (favorite == null)
@@ -60,7 +60,11 @@ namespace WikipediaApp
     {
       var allLanguages = await LanguagesReader.GetLanguages();
 
-      allLanguages.ForEach(All.Add);
+      var languages = allLanguages.Select((language, index) => new LanguageViewModel(language, index));
+      foreach (var language in languages)
+      {
+        All.Add(language);
+      }
 
       using (var context = new WikipediaContext())
       {
@@ -70,7 +74,7 @@ namespace WikipediaApp
         {
           Favorites.Add(favorite);
 
-          var language = allLanguages.SingleOrDefault(x => x.Code == favorite.Code);
+          var language = languages.SingleOrDefault(x => x.Code == favorite.Code);
           if (language != null)
           {
             language.IsFavorite = true;

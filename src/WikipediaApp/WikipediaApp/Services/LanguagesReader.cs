@@ -18,9 +18,8 @@ namespace WikipediaApp
 
       var list = new List<Language>();
 
-      for (var i = 0; i < array.Count; i++)
+      foreach (var value in array)
       {
-        var value = array[i];
         var obj = value.GetObject();
 
         var visible = obj.GetNamedBoolean("Visible");
@@ -36,7 +35,6 @@ namespace WikipediaApp
           Name = name,
           Code = code,
           Uri = new Uri(url),
-          Index = i
         };
 
         list.Add(language);

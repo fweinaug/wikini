@@ -376,10 +376,8 @@ namespace WikipediaApp
       var languages = new List<ArticleLanguage>();
       if (parseResult.langlinks != null && parseResult.langlinks.Count > 0)
       {
-        for (var i = 0; i < parseResult.langlinks.Count; i++)
+        foreach (var langlink in parseResult.langlinks)
         {
-          var langlink = parseResult.langlinks[i];
-
           languages.Add(new ArticleLanguage
           {
             Code = langlink.lang,
@@ -387,7 +385,6 @@ namespace WikipediaApp
             LocalizedName = langlink.langname,
             Title = langlink.title,
             Uri = new Uri(langlink.url),
-            Index = i
           });
         }
       }

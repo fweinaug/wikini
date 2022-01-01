@@ -13,7 +13,7 @@ namespace WikipediaApp
     private readonly NavigationService navigationService = new NavigationService();
     private readonly DeviceService deviceService = new DeviceService();
 
-    private Language language = null;
+    private LanguageViewModel language = null;
     private string searchTerm = null;
     private bool searchTermChanged = false;
     private IList<FoundArticle> searchResults = null;
@@ -25,7 +25,7 @@ namespace WikipediaApp
     private CancellationTokenSource liveSearchCancellationTokenSource = null;
     private readonly object liveSearchLock = new object();
 
-    public Language Language
+    public LanguageViewModel Language
     {
       get { return language; }
       set

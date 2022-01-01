@@ -12,11 +12,11 @@ namespace WikipediaApp
     public event EventHandler LanguageClick;
 
     public static readonly DependencyProperty LanguagesProperty = DependencyProperty.Register(
-      nameof(Languages), typeof(IEnumerable<Language>), typeof(LanguagesView), new PropertyMetadata(null, OnLanguagesPropertyChanged));
+      nameof(Languages), typeof(IEnumerable<LanguageViewModel>), typeof(LanguagesView), new PropertyMetadata(null, OnLanguagesPropertyChanged));
 
-    public IEnumerable<Language> Languages
+    public IEnumerable<LanguageViewModel> Languages
     {
-      get { return (IEnumerable<Language>)GetValue(LanguagesProperty); }
+      get { return (IEnumerable<LanguageViewModel>)GetValue(LanguagesProperty); }
       set { SetValue(LanguagesProperty, value); }
     }
 
@@ -38,7 +38,7 @@ namespace WikipediaApp
     private void OnAddFavoriteMenuFlyoutItemClick(object sender, RoutedEventArgs e)
     {
       var item = (MenuFlyoutItem)sender;
-      var language = (Language)item.DataContext;
+      var language = (LanguageViewModel)item.DataContext;
 
       languageCollection.AddFavorite(language);
     }
@@ -46,12 +46,12 @@ namespace WikipediaApp
     private void OnRemoveFavoriteMenuFlyoutItemClick(object sender, RoutedEventArgs e)
     {
       var item = (MenuFlyoutItem)sender;
-      var language = (Language)item.DataContext;
+      var language = (LanguageViewModel)item.DataContext;
 
       languageCollection.RemoveFavorite(language);
     }
 
-    private void UpdateLanguages(IEnumerable<Language> languages)
+    private void UpdateLanguages(IEnumerable<LanguageViewModel> languages)
     {
       languageCollection.UpdateLanguages(languages);
     }
@@ -60,10 +60,10 @@ namespace WikipediaApp
     {
       var control = (LanguagesView)d;
       
-      control.UpdateLanguages(e.NewValue as IEnumerable<Language>);
+      control.UpdateLanguages(e.NewValue as IEnumerable<LanguageViewModel>);
     }
 
-    private class LanguageGroup : Group<string, Language>
+    private class LanguageGroup : Group<string, LanguageViewModel>
     {
     }
 
@@ -80,7 +80,7 @@ namespace WikipediaApp
         Add(otherGroup);
       }
 
-      public void UpdateLanguages(IEnumerable<Language> languages)
+      public void UpdateLanguages(IEnumerable<LanguageViewModel> languages)
       {
         favoritesGroup.Clear();
         otherGroup.Clear();
@@ -102,7 +102,7 @@ namespace WikipediaApp
           favoritesGroup.Add(EmptyFavoritesHint);
       }
 
-      public void AddFavorite(Language language)
+      public void AddFavorite(LanguageViewModel language)
       {
         ArticleLanguages.AddFavorite(language);
 
@@ -111,7 +111,7 @@ namespace WikipediaApp
         favoritesGroup.Remove(EmptyFavoritesHint);
       }
 
-      public void RemoveFavorite(Language language)
+      public void RemoveFavorite(LanguageViewModel language)
       {
         ArticleLanguages.RemoveFavorite(language);
 
@@ -121,7 +121,7 @@ namespace WikipediaApp
           favoritesGroup.Add(EmptyFavoritesHint);
       }
 
-      private static void MoveLanguage(Language language, LanguageGroup from, LanguageGroup to)
+      private static void MoveLanguage(LanguageViewModel language, LanguageGroup from, LanguageGroup to)
       {
         var index = to.TakeWhile(x => language.Index > x.Index).Count();
 
@@ -130,7 +130,7 @@ namespace WikipediaApp
       }
     }
 
-    private class EmptyFavoritesHint : Language, IDisabledListViewItem
+    private class EmptyFavoritesHint : LanguageViewModel, IDisabledListViewItem
     {
     }
 
@@ -152,7 +152,7 @@ namespace WikipediaApp
             var template = (DataTemplate)view.Resources["EmptyFavoritesHintTemplate"];
             return template;
           }
-          case ArticleLanguage _:
+          case ArticleLanguageViewModel _:
           {
             var template = (DataTemplate)view.Resources["ArticleLanguageTemplate"];
             return template;
