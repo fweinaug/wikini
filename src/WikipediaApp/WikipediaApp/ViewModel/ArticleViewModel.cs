@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace WikipediaApp
 {
@@ -126,7 +127,7 @@ namespace WikipediaApp
       Languages = article.Languages.Select((language, index) => new ArticleLanguageViewModel(language, index)).ToList();
       Sections = (Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections).ConvertAll(section => new ArticleSectionViewModel(section));
       HasImages = article.Images?.Count > 0;
-      IsFavorite = ArticleFavorites.IsFavorite(article);
+      IsFavorite = WeakReferenceMessenger.Default.Send(new IsArticleInFavorites(article));
     }
 
     public bool IsSameArticle(ArticleHead articleHead)
@@ -180,9 +181,7 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        ArticleFavorites.AddArticle(article);
-
-        IsFavorite = true;
+        IsFavorite = WeakReferenceMessenger.Default.Send(new AddArticleToFavorites(article));
       }
     }
 
@@ -190,9 +189,7 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        ArticleFavorites.RemoveArticle(article);
-
-        IsFavorite = false;
+        IsFavorite = WeakReferenceMessenger.Default.Send(new RemoveArticleFromFavorites(article));
       }
     }
 

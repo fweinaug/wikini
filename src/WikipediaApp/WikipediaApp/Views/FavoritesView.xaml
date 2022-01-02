@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <MenuFlyout x:Key="ItemMenuFlyout">
-            <MenuFlyoutItem x:Uid="MainFavoritesPaneRemoveMenuFlyoutItem" Click="RemoveArticleClick">
+            <MenuFlyoutItem x:Uid="MainFavoritesPaneRemoveMenuFlyoutItem" Command="{Binding RemoveFromFavoritesCommand}">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xF719;" />
                 </MenuFlyoutItem.Icon>
@@ -27,10 +27,10 @@
 
         <TextBlock x:Uid="MainFavoritesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Favorites}" Style="{StaticResource SplitViewPaneListViewStyle}"
+        <ListView Grid.Row="1" ItemsSource="{Binding All}" Style="{StaticResource SplitViewPaneListViewStyle}"
                   local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="FavoritesListViewItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:ArticleHead">
+                <DataTemplate x:DataType="local:FavoriteArticleViewModel">
                     <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                           local:ListViewExtensions.ItemMenuFlyout="{StaticResource ItemMenuFlyout}">
                         <Grid.ColumnDefinitions>
@@ -57,7 +57,7 @@
         </ListView>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Style="{ThemeResource SplitViewPaneEmptyContainerStyle}"
-                    Visibility="{Binding Favorites.Count, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">
+                    Visibility="{Binding All.Count, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">
             <FontIcon Glyph="&#xE734;" Style="{ThemeResource SplitViewPaneEmptyFontIconStyle}" />
             <TextBlock x:Uid="MainFavoritesPaneEmptyTextBlock" Style="{ThemeResource SplitViewPaneEmptyTextBlockStyle}" />
         </StackPanel>

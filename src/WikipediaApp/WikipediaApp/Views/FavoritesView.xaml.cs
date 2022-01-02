@@ -1,6 +1,6 @@
 ﻿using System;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WikipediaApp
 {
@@ -11,18 +11,13 @@ namespace WikipediaApp
     public FavoritesView()
     {
       InitializeComponent();
+
+      DataContext = App.Services.GetService<FavoritesViewModel>();
     }
 
     private void FavoritesListViewItemClick(object sender, ItemClickEventArgs e)
     {
       ArticleClick?.Invoke(this, EventArgs.Empty);
-    }
-
-    private void RemoveArticleClick(object sender, RoutedEventArgs e)
-    {
-      var article = ((FrameworkElement)e.OriginalSource).DataContext as ArticleHead;
-
-      ArticleFavorites.RemoveArticle(article);
     }
   }
 }

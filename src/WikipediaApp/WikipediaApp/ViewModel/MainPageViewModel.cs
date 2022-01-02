@@ -56,11 +56,6 @@ namespace WikipediaApp
       get { return ArticleHistory.All; }
     }
 
-    public IList<ArticleHead> Favorites
-    {
-      get { return ArticleFavorites.All; }
-    }
-
     public IList<LanguageViewModel> Languages
     {
       get { return languages; }

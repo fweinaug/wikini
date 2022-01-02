@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace WikipediaApp
 {
@@ -67,7 +68,7 @@ namespace WikipediaApp
           if (value != null)
           {
             IsArticle = true;
-            IsFavorite = ArticleFavorites.IsFavorite(value);
+            IsFavorite = WeakReferenceMessenger.Default.Send(new IsArticleInFavorites(article));
           }
           else
           {
@@ -133,9 +134,7 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        ArticleFavorites.AddArticle(article);
-
-        IsFavorite = true;
+        IsFavorite = WeakReferenceMessenger.Default.Send(new AddArticleToFavorites(article));
       }
     }
 
@@ -143,9 +142,7 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        ArticleFavorites.RemoveArticle(article);
-
-        IsFavorite = false;
+        IsFavorite = WeakReferenceMessenger.Default.Send(new RemoveArticleFromFavorites(article));
       }
     }
 

@@ -189,6 +189,8 @@
     <Compile Include="ViewModel\ArticleLanguageViewModel.cs" />
     <Compile Include="ViewModel\ArticlePageViewModel.cs" />
     <Compile Include="ViewModel\ArticleSectionViewModel.cs" />
+    <Compile Include="ViewModel\FavoriteArticleViewModel.cs" />
+    <Compile Include="ViewModel\FavoritesViewModel.cs" />
     <Compile Include="ViewModel\LanguageViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
@@ -267,7 +269,7 @@
       <DependentUpon>SpeechView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\ArticleCache.cs" />
-    <Compile Include="ViewModel\ArticleFavorites.cs" />
+    <Compile Include="Services\ArticleFavorites.cs" />
     <Compile Include="Views\ArticleImagesView.xaml.cs">
       <DependentUpon>ArticleImagesView.xaml</DependentUpon>
     </Compile>
@@ -331,6 +333,7 @@
     <PRIResource Include="Strings\en\ManifestStrings.resw" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />

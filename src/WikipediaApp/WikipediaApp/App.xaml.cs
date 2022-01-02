@@ -138,6 +138,7 @@ namespace WikipediaApp
         .AddTransient<IShareManager, ShareManager>()
         .AddSingleton<IArticleViewModelFactory, ArticleViewModelFactory>()
         .AddSingleton<AppShellViewModel>()
+        .AddSingleton<FavoritesViewModel>()
         .AddSingleton<MainPageViewModel>()
         .AddTransient<MapPageViewModel>()
         .AddTransient<ArticlePageViewModel>()
