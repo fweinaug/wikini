@@ -6,6 +6,7 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using LanguageInfo = Windows.Globalization.Language;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace WikipediaApp
 {
@@ -25,7 +26,7 @@ namespace WikipediaApp
       AppVersionTextBlock.Text = string.Format(version.Build > 0 ? LongVersionFormat : ShortVersionFormat, version.Major, version.Minor, version.Build);
       DevNameTextBlock.Text = package.PublisherDisplayName;
 
-      ClearHistoryButton.IsEnabled = !ArticleHistory.IsEmpty;
+      ClearHistoryButton.IsEnabled = !WeakReferenceMessenger.Default.Send(new IsHistoryEmpty());
 
       var theme = Settings.Current.AppTheme.ToString();
 
@@ -61,9 +62,7 @@ namespace WikipediaApp
 
     private async void ClearHistoryClick(object sender, RoutedEventArgs e)
     {
-      await ArticleHistory.Clear();
-
-      ClearHistoryButton.IsEnabled = false;
+      ClearHistoryButton.IsEnabled = !await WeakReferenceMessenger.Default.Send(new ClearHistory());
     }
 
     private async void ReviewClick(object sender, RoutedEventArgs e)

@@ -93,11 +93,6 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    public IList<ArticleGroup> History
-    {
-      get { return ArticleHistory.All; }
-    }
-
     public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IArticleViewModelFactory articleViewModelFactory)
     {
       this.initialArticle = initialArticle;

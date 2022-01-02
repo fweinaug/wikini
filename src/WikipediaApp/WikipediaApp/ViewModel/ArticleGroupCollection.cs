@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace WikipediaApp
 {
-  public class ArticleGroup : Group<DateTime, ArticleHead>
+  public class ArticleGroup : Group<DateTime, HistoryArticleViewModel>
   {
   }
 
@@ -21,7 +21,7 @@ namespace WikipediaApp
 
         foreach (var article in articleGroup)
         {
-          group.Insert(0, article);
+          group.Insert(0, new HistoryArticleViewModel(article));
         }
       }
     }
@@ -48,7 +48,7 @@ namespace WikipediaApp
 
       if (group != null)
       {
-        var readArticle = group.FirstOrDefault(x => ((ReadArticle)x).Id == article.Id);
+        var readArticle = group.FirstOrDefault(x => x.Article.Id == article.Id);
 
         group.Remove(readArticle);
       }

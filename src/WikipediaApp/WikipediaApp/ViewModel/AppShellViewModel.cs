@@ -8,14 +8,16 @@ namespace WikipediaApp
 
     private readonly MainPageViewModel mainPage;
     private readonly FavoritesViewModel favoritesViewModel;
+    private readonly HistoryViewModel historyViewModel;
 
     public MainPageViewModel MainPage => mainPage;
 
-    public AppShellViewModel(INavigationService navigationService, MainPageViewModel mainPageViewModel, FavoritesViewModel favoritesViewModel)
+    public AppShellViewModel(INavigationService navigationService, MainPageViewModel mainPageViewModel, FavoritesViewModel favoritesViewModel, HistoryViewModel historyViewModel)
     {
       this.navigationService = navigationService;
       this.mainPage = mainPageViewModel;
       this.favoritesViewModel = favoritesViewModel;
+      this.historyViewModel = historyViewModel;
     }
 
     public void ShowArticle(ArticleHead article)
@@ -26,9 +28,9 @@ namespace WikipediaApp
     public override async Task Initialize()
     {
       await ArticleLanguages.Initialize();
-      await ArticleHistory.Initialize();
 
       await favoritesViewModel.Initialize();
+      await historyViewModel.Initialize();
       await mainPage.Initialize();
     }
   }

@@ -139,6 +139,7 @@ namespace WikipediaApp
         .AddSingleton<IArticleViewModelFactory, ArticleViewModelFactory>()
         .AddSingleton<AppShellViewModel>()
         .AddSingleton<FavoritesViewModel>()
+        .AddSingleton<HistoryViewModel>()
         .AddSingleton<MainPageViewModel>()
         .AddTransient<MapPageViewModel>()
         .AddTransient<ArticlePageViewModel>()

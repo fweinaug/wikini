@@ -191,7 +191,9 @@
     <Compile Include="ViewModel\ArticleSectionViewModel.cs" />
     <Compile Include="ViewModel\FavoriteArticleViewModel.cs" />
     <Compile Include="ViewModel\FavoritesViewModel.cs" />
+    <Compile Include="ViewModel\HistoryViewModel.cs" />
     <Compile Include="ViewModel\LanguageViewModel.cs" />
+    <Compile Include="ViewModel\HistoryArticleViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
@@ -282,7 +284,7 @@
     <Compile Include="Services\DeviceService.cs" />
     <Compile Include="Services\WikipediaApi.cs" />
     <Compile Include="Services\WikipediaHtmlBuilder.cs" />
-    <Compile Include="ViewModel\ArticleHistory.cs" />
+    <Compile Include="Services\ArticleHistory.cs" />
     <Compile Include="Views\AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>

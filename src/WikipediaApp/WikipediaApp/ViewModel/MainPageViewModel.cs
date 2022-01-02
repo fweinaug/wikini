@@ -51,11 +51,6 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    public IList<ArticleGroup> History
-    {
-      get { return ArticleHistory.All; }
-    }
-
     public IList<LanguageViewModel> Languages
     {
       get { return languages; }

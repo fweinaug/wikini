@@ -1,6 +1,6 @@
 ﻿using System;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WikipediaApp
 {
@@ -11,23 +11,13 @@ namespace WikipediaApp
     public HistoryView()
     {
       InitializeComponent();
+
+      DataContext = App.Services.GetService<HistoryViewModel>();
     }
 
     private void HistoryListViewItemClick(object sender, ItemClickEventArgs e)
     {
       ArticleClick?.Invoke(this, EventArgs.Empty);
-    }
-
-    private async void ClearHistoryClick(object sender, RoutedEventArgs e)
-    {
-      await ArticleHistory.Clear();
-    }
-
-    private void RemoveArticleClick(object sender, RoutedEventArgs e)
-    {
-      var article = ((FrameworkElement)e.OriginalSource).DataContext as ReadArticle;
-
-      ArticleHistory.RemoveArticle(article);
     }
   }
 }

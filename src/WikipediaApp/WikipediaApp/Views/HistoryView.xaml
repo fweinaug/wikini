@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <MenuFlyout x:Key="ItemMenuFlyout">
-            <MenuFlyoutItem x:Uid="MainHistoryPaneRemoveMenuFlyoutItem" Click="RemoveArticleClick">
+            <MenuFlyoutItem x:Uid="MainHistoryPaneRemoveMenuFlyoutItem" Command="{Binding RemoveFromHistoryCommand}">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xF62D;" />
                 </MenuFlyoutItem.Icon>
@@ -19,14 +19,14 @@
 
             <MenuFlyoutSeparator />
 
-            <MenuFlyoutItem x:Uid="MainHistoryPaneClearMenuFlyoutItem" Click="ClearHistoryClick">
+            <MenuFlyoutItem x:Uid="MainHistoryPaneClearMenuFlyoutItem" Command="{Binding ClearHistoryCommand}">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xF9BB;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
         </MenuFlyout>
 
-        <CollectionViewSource x:Name="HistorySource" Source="{Binding History}" IsSourceGrouped="True" />
+        <CollectionViewSource x:Name="HistorySource" Source="{Binding All}" IsSourceGrouped="True" />
     </UserControl.Resources>
 
     <Grid>
@@ -40,7 +40,7 @@
         <local:GroupedListView Grid.Row="1" ItemsSource="{Binding Source={StaticResource HistorySource}}" Style="{StaticResource SplitViewPaneListViewStyle}"
                   local:ListViewExtensions.Command="{Binding ShowArticleCommand}" ItemClick="HistoryListViewItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:ReadArticle">
+                <DataTemplate x:DataType="local:HistoryArticleViewModel">
                     <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
                           local:ListViewExtensions.ItemMenuFlyout="{StaticResource ItemMenuFlyout}">
                         <Grid.ColumnDefinitions>
@@ -67,7 +67,7 @@
         </local:GroupedListView>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Style="{ThemeResource SplitViewPaneEmptyContainerStyle}"
-                    Visibility="{Binding History.Count, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">
+                    Visibility="{Binding All.Count, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=True}">
             <FontIcon Glyph="&#xE81C;" Style="{ThemeResource SplitViewPaneEmptyFontIconStyle}" />
             <TextBlock x:Uid="MainHistoryPaneEmptyTextBlock" Style="{ThemeResource SplitViewPaneEmptyTextBlockStyle}" />
         </StackPanel>

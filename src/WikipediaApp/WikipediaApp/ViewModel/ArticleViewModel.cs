@@ -140,7 +140,7 @@ namespace WikipediaApp
 
     public async void AddArticleToHistory()
     {
-      ArticleHistory.AddArticle(article);
+      WeakReferenceMessenger.Default.Send(new AddArticleToHistory(article));
 
       if (Settings.Current.HistoryTimeline)
       {
