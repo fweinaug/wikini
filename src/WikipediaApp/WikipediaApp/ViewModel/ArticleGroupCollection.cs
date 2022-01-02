@@ -51,6 +51,9 @@ namespace WikipediaApp
         var readArticle = group.FirstOrDefault(x => x.Article.Id == article.Id);
 
         group.Remove(readArticle);
+
+        if (group.Count == 0)
+          Remove(group);
       }
     }
   }
