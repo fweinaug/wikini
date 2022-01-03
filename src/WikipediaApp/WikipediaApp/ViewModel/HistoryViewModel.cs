@@ -12,7 +12,7 @@ namespace WikipediaApp
 {
   #region Messages
 
-  public class AddArticleToHistory
+  public sealed class AddArticleToHistory
   {
     public ArticleHead Article { get; private set; }
 
@@ -22,7 +22,7 @@ namespace WikipediaApp
     }
   }
 
-  public class RemoveArticleFromHistory
+  public sealed class RemoveArticleFromHistory
   {
     public ReadArticle Article { get; private set; }
 
@@ -32,11 +32,11 @@ namespace WikipediaApp
     }
   }
 
-  public class ClearHistory : AsyncRequestMessage<bool>
+  public sealed class ClearHistory : AsyncRequestMessage<bool>
   {
   }
 
-  public class IsHistoryEmpty : RequestMessage<bool>
+  public sealed class IsHistoryEmpty : RequestMessage<bool>
   {
   }
 
