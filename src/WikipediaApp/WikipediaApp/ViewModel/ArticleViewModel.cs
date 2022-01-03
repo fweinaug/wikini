@@ -110,24 +110,35 @@ namespace WikipediaApp
     }
 
     public ArticleViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
+      : this(wikipediaService, navigationService, shareManager)
     {
       this.initialArticle = initialArticle;
-      this.wikipediaService = wikipediaService;
-      this.navigationService = navigationService;
-      this.shareManager = shareManager;
     }
 
     public ArticleViewModel(Article article, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
+      : this(wikipediaService, navigationService, shareManager)
     {
       this.article = article;
-      this.wikipediaService = wikipediaService;
-      this.navigationService = navigationService;
-      this.shareManager = shareManager;
 
       Languages = article.Languages.Select((language, index) => new ArticleLanguageViewModel(language, index)).ToList();
       Sections = (Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections).ConvertAll(section => new ArticleSectionViewModel(section));
       HasImages = article.Images?.Count > 0;
       IsFavorite = WeakReferenceMessenger.Default.Send(new IsArticleInFavorites(article));
+    }
+
+    private ArticleViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
+    {
+      this.wikipediaService = wikipediaService;
+      this.navigationService = navigationService;
+      this.shareManager = shareManager;
+
+      WeakReferenceMessenger.Default.Register<ArticleViewModel, ArticleIsFavoriteChanged>(this, (_, message) =>
+      {
+        if (message.Article == (initialArticle ?? article))
+        {
+          IsFavorite = message.IsFavorite;
+        }
+      });
     }
 
     public bool IsSameArticle(ArticleHead articleHead)
@@ -181,7 +192,7 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        IsFavorite = WeakReferenceMessenger.Default.Send(new AddArticleToFavorites(article));
+        IsFavorite = WeakReferenceMessenger.Default.Send(new AddArticleToFavorites(article ?? initialArticle));
       }
     }
 
@@ -189,7 +200,7 @@ namespace WikipediaApp
     {
       if (article != null)
       {
-        IsFavorite = WeakReferenceMessenger.Default.Send(new RemoveArticleFromFavorites(article));
+        IsFavorite = WeakReferenceMessenger.Default.Send(new RemoveArticleFromFavorites(article ?? initialArticle));
       }
     }
 

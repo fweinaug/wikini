@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WikipediaApp
 {
-  public class ArticleHead
+  public class ArticleHead : IEquatable<ArticleHead>
   {
     private string url = null;
     private Uri uri = null;
@@ -64,6 +65,32 @@ namespace WikipediaApp
         thumbnailUri = value;
         thumbnailUrl = value?.ToString();
       }
+    }
+
+    public override bool Equals(object obj)
+    {
+      return Equals(obj as ArticleHead);
+    }
+
+    public bool Equals(ArticleHead other)
+    {
+      if (other == null)
+        return false;
+
+      if (PageId.HasValue && other.PageId.HasValue)
+        return PageId == other.PageId && Language == other.Language;
+
+      return Uri == other.Uri;
+    }
+
+    public static bool operator ==(ArticleHead left, ArticleHead right)
+    {
+      return EqualityComparer<ArticleHead>.Default.Equals(left, right);
+    }
+
+    public static bool operator !=(ArticleHead left, ArticleHead right)
+    {
+      return !(left == right);
     }
   }
 }

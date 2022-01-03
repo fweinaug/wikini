@@ -41,6 +41,18 @@ namespace WikipediaApp
     }
   }
 
+  public sealed class ArticleIsFavoriteChanged
+  {
+    public ArticleHead Article { get; private set; }
+    public bool IsFavorite { get; private set; }
+
+    public ArticleIsFavoriteChanged(ArticleHead article, bool isFavorite)
+    {
+      Article = article;
+      IsFavorite = isFavorite;
+    }
+  }
+
   #endregion
 
   public class FavoritesViewModel : ViewModelBase
@@ -95,6 +107,8 @@ namespace WikipediaApp
       var favorite = ArticleFavorites.AddArticle(article);
 
       All.Insert(GetIndexByTitle(favorite), new FavoriteArticleViewModel(favorite));
+
+      WeakReferenceMessenger.Default.Send(new ArticleIsFavoriteChanged(article, true));
     }
 
     private void RemoveArticle(ArticleHead article)
@@ -104,6 +118,8 @@ namespace WikipediaApp
       if (All.FirstOrDefault(x => x.Language == article.Language && x.Article.PageId == article.PageId) is FavoriteArticleViewModel favorite)
       {
         All.Remove(favorite);
+
+        WeakReferenceMessenger.Default.Send(new ArticleIsFavoriteChanged(article, false));
       }
     }
 
