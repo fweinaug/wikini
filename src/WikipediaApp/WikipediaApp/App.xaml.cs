@@ -144,6 +144,7 @@ namespace WikipediaApp
         .AddTransient<MapPageViewModel>()
         .AddTransient<ArticlePageViewModel>()
         .AddTransient<ArticleFlyoutViewModel>()
+        .AddTransient<LanguagesViewModel>()
         .AddTransient<SearchViewModel>()
         .AddTransient<PictureOfTheDayViewModel>()
         .BuildServiceProvider(true);

@@ -35,7 +35,9 @@
             </DataTemplate>
 
             <DataTemplate x:Key="LanguagesTemplate">
-                <local:LanguagesView Languages="{Binding Article.Languages}" LanguageClick="LanguagesViewLanguageClick" />
+                <local:LanguagesView Languages="{Binding Article.Languages.All}"
+                                     ChangeLanguageCommand="{Binding ChangeLanguageCommand}"
+                                     LanguageClick="LanguagesViewLanguageClick" />
             </DataTemplate>
 
             <Storyboard x:Name="ShowSearchBarStoryboard">

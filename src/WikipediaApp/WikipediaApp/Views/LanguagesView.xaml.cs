@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -12,22 +10,28 @@ namespace WikipediaApp
     public event EventHandler LanguageClick;
 
     public static readonly DependencyProperty LanguagesProperty = DependencyProperty.Register(
-      nameof(Languages), typeof(IEnumerable<LanguageViewModel>), typeof(LanguagesView), new PropertyMetadata(null, OnLanguagesPropertyChanged));
+      nameof(Languages), typeof(LanguageCollection), typeof(LanguagesView), new PropertyMetadata(null, OnLanguagesPropertyChanged));
 
-    public IEnumerable<LanguageViewModel> Languages
+    public static readonly DependencyProperty ChangeLanguageCommandProperty = DependencyProperty.Register(
+      nameof(ChangeLanguageCommand), typeof(ICommand), typeof(LanguagesView), new PropertyMetadata(null, OnChangeLanguageCommandPropertyChanged));
+
+    public LanguageCollection Languages
     {
-      get { return (IEnumerable<LanguageViewModel>)GetValue(LanguagesProperty); }
+      get { return (LanguageCollection)GetValue(LanguagesProperty); }
       set { SetValue(LanguagesProperty, value); }
     }
 
-    private readonly LanguageCollection languageCollection = new LanguageCollection();
+    public ICommand ChangeLanguageCommand
+    {
+      get { return (ICommand)GetValue(ChangeLanguageCommandProperty); }
+      set { SetValue(ChangeLanguageCommandProperty, value); }
+    }
 
     public LanguagesView()
     {
       InitializeComponent();
 
       LanguagesListView.ItemTemplateSelector = new LanguagesListViewItemTemplateSelector(this);
-      LanguagesSource.Source = languageCollection;
     }
 
     private void OnLanguagesListViewItemClick(object sender, ItemClickEventArgs e)
@@ -35,103 +39,16 @@ namespace WikipediaApp
       LanguageClick?.Invoke(this, EventArgs.Empty);
     }
 
-    private void OnAddFavoriteMenuFlyoutItemClick(object sender, RoutedEventArgs e)
-    {
-      var item = (MenuFlyoutItem)sender;
-      var language = (LanguageViewModel)item.DataContext;
-
-      languageCollection.AddFavorite(language);
-    }
-
-    private void OnRemoveFavoriteMenuFlyoutItemClick(object sender, RoutedEventArgs e)
-    {
-      var item = (MenuFlyoutItem)sender;
-      var language = (LanguageViewModel)item.DataContext;
-
-      languageCollection.RemoveFavorite(language);
-    }
-
-    private void UpdateLanguages(IEnumerable<LanguageViewModel> languages)
-    {
-      languageCollection.UpdateLanguages(languages);
-    }
-
     private static void OnLanguagesPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       var control = (LanguagesView)d;
-      
-      control.UpdateLanguages(e.NewValue as IEnumerable<LanguageViewModel>);
+      control.LanguagesSource.Source = e.NewValue;
     }
 
-    private class LanguageGroup : Group<string, LanguageViewModel>
+    private static void OnChangeLanguageCommandPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-    }
-
-    private class LanguageCollection : ObservableCollection<LanguageGroup>
-    {
-      private readonly LanguageGroup favoritesGroup = new LanguageGroup { Key = "LanguageGroupFavorites" };
-      private readonly LanguageGroup otherGroup = new LanguageGroup { Key = "LanguageGroupMore" };
-
-      private static readonly EmptyFavoritesHint EmptyFavoritesHint = new EmptyFavoritesHint();
-
-      public LanguageCollection()
-      {
-        Add(favoritesGroup);
-        Add(otherGroup);
-      }
-
-      public void UpdateLanguages(IEnumerable<LanguageViewModel> languages)
-      {
-        favoritesGroup.Clear();
-        otherGroup.Clear();
-
-        if (languages != null)
-        {
-          foreach (var language in languages)
-          {
-            language.IsFavorite = ArticleLanguages.IsFavorite(language.Code);
-
-            if (language.IsFavorite)
-              favoritesGroup.Add(language);
-            else
-              otherGroup.Add(language);
-          }
-        }
-
-        if (favoritesGroup.Count == 0)
-          favoritesGroup.Add(EmptyFavoritesHint);
-      }
-
-      public void AddFavorite(LanguageViewModel language)
-      {
-        ArticleLanguages.AddFavorite(language);
-
-        MoveLanguage(language, otherGroup, favoritesGroup);
-
-        favoritesGroup.Remove(EmptyFavoritesHint);
-      }
-
-      public void RemoveFavorite(LanguageViewModel language)
-      {
-        ArticleLanguages.RemoveFavorite(language);
-
-        MoveLanguage(language, favoritesGroup, otherGroup);
-
-        if (favoritesGroup.Count == 0)
-          favoritesGroup.Add(EmptyFavoritesHint);
-      }
-
-      private static void MoveLanguage(LanguageViewModel language, LanguageGroup from, LanguageGroup to)
-      {
-        var index = to.TakeWhile(x => language.Index > x.Index).Count();
-
-        from.Remove(language);
-        to.Insert(index, language);
-      }
-    }
-
-    private class EmptyFavoritesHint : LanguageViewModel, IDisabledListViewItem
-    {
+      var control = (LanguagesView)d;
+      control.LanguagesListView.SetCommand(e.NewValue as ICommand);
     }
 
     private class LanguagesListViewItemTemplateSelector : DataTemplateSelector

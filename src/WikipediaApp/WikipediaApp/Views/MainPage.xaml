@@ -32,7 +32,9 @@
             </DataTemplate>
 
             <DataTemplate x:Key="LanguagesTemplate">
-                <local:LanguagesView Languages="{Binding Languages}" LanguageClick="LanguagesViewLanguageClick" />
+                <local:LanguagesView Languages="{Binding Languages.All}"
+                                     ChangeLanguageCommand="{Binding ChangeLanguageCommand}"
+                                     LanguageClick="LanguagesViewLanguageClick" />
             </DataTemplate>
 
             <Style x:Key="CommandBarButton" TargetType="Button" BasedOn="{StaticResource TransparentButtonStyle}">
@@ -139,6 +141,7 @@
                                      QueryResults="{Binding Search.SearchResults, Mode=OneWay}"
                                      ItemSelectedCommand="{Binding Search.ShowArticleCommand}"
                                      QueryLanguage="{Binding Search.Language, Mode=OneWay}"
+                                     Languages="{Binding Languages.Favorites, Mode=OneWay}"
                                      SelectLanguage="LanguagesButtonClick"
                                      LanguageSelectedCommand="{Binding ChangeLanguageCommand}" />
 

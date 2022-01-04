@@ -27,8 +27,6 @@ namespace WikipediaApp
 
     public override async Task Initialize()
     {
-      await ArticleLanguages.Initialize();
-
       await favoritesViewModel.Initialize();
       await historyViewModel.Initialize();
       await mainPage.Initialize();

@@ -186,12 +186,15 @@
     <Compile Include="Services\IWikipediaService.cs" />
     <Compile Include="ViewModel\AppShellViewModel.cs" />
     <Compile Include="ViewModel\ArticleImageGalleryViewModel.cs" />
+    <Compile Include="ViewModel\ArticleLanguagesViewModel.cs" />
     <Compile Include="ViewModel\ArticleLanguageViewModel.cs" />
     <Compile Include="ViewModel\ArticlePageViewModel.cs" />
     <Compile Include="ViewModel\ArticleSectionViewModel.cs" />
     <Compile Include="ViewModel\FavoriteArticleViewModel.cs" />
     <Compile Include="ViewModel\FavoritesViewModel.cs" />
     <Compile Include="ViewModel\HistoryViewModel.cs" />
+    <Compile Include="ViewModel\LanguageCollection.cs" />
+    <Compile Include="ViewModel\LanguagesViewModel.cs" />
     <Compile Include="ViewModel\LanguageViewModel.cs" />
     <Compile Include="ViewModel\HistoryArticleViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
@@ -229,7 +232,7 @@
     <Compile Include="Migrations\20191125191544_LanguagesMigration.Designer.cs">
       <DependentUpon>20191125191544_LanguagesMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ArticleLanguages.cs" />
+    <Compile Include="Services\ArticleLanguages.cs" />
     <Compile Include="Views\Controls\GroupedListView.cs" />
     <Compile Include="ViewModel\PictureOfTheDayViewModel.cs" />
     <Compile Include="Views\Controls\Background.xaml.cs">

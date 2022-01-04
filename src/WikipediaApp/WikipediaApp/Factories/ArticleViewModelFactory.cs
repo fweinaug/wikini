@@ -22,7 +22,10 @@
 
     public ArticleViewModel GetArticle(Article article)
     {
-      return new ArticleViewModel(article, wikipediaService, navigationService, shareManager);
+      var languagesViewModel = new ArticleLanguagesViewModel();
+      languagesViewModel.UpdateLanguages(article.Languages, ArticleLanguages.Favorites);
+
+      return new ArticleViewModel(article, wikipediaService, navigationService, shareManager, languagesViewModel);
     }
   }
 }

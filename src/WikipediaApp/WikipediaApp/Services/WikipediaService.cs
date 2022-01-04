@@ -317,7 +317,7 @@ namespace WikipediaApp
 
         var image = await queryApi.GetPictureOfTheDay(date);
 
-        pictureOfTheDayCache.Add(date, image);
+        pictureOfTheDayCache[date] = image;
 
         return image;
       }

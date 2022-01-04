@@ -75,13 +75,13 @@
         </DataTemplate>
 
         <MenuFlyout x:Key="LanguageMenuFlyout">
-            <MenuFlyoutItem x:Uid="MainLanguagesPaneAddFavoriteMenuFlyoutItem" Click="OnAddFavoriteMenuFlyoutItemClick"
+            <MenuFlyoutItem x:Uid="MainLanguagesPaneAddFavoriteMenuFlyoutItem" Command="{Binding AddToFavoritesCommand}"
                             Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=True}">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xF108;" />
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
-            <MenuFlyoutItem x:Uid="MainLanguagesPaneRemoveFavoriteMenuFlyoutItem" Click="OnRemoveFavoriteMenuFlyoutItemClick"
+            <MenuFlyoutItem x:Uid="MainLanguagesPaneRemoveFavoriteMenuFlyoutItem" Command="{Binding RemoveFromFavoritesCommand}"
                             Visibility="{Binding IsFavorite, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <MenuFlyoutItem.Icon>
                     <FontIcon Glyph="&#xFC73;" />
@@ -103,7 +103,7 @@
         <local:GroupedListView Grid.Row="1" x:Name="LanguagesListView"
                                ItemsSource="{Binding Source={StaticResource LanguagesSource}}"
                                Style="{StaticResource SplitViewPaneListViewStyle}"
-                               local:ListViewExtensions.Command="{Binding ChangeLanguageCommand}" ItemClick="OnLanguagesListViewItemClick">
+                               ItemClick="OnLanguagesListViewItemClick">
         </local:GroupedListView>
     </Grid>
 </UserControl>

@@ -17,7 +17,6 @@ namespace WikipediaApp
 
     private IList<ArticleSectionViewModel> sections = null;
     private bool hasSections = false;
-    private IList<ArticleLanguageViewModel> languages = null;
     private bool hasLanguages = false;
     private bool hasImages = false;
     private bool isFavorite = false;
@@ -56,15 +55,7 @@ namespace WikipediaApp
       private set { SetProperty(ref hasSections, value); }
     }
 
-    public IList<ArticleLanguageViewModel> Languages
-    {
-      get { return languages; }
-      private set
-      {
-        if (SetProperty(ref languages, value))
-          HasLanguages = languages?.Count > 0;
-      }
-    }
+    public ArticleLanguagesViewModel Languages { get; }
 
     public bool HasLanguages
     {
@@ -115,12 +106,14 @@ namespace WikipediaApp
       this.initialArticle = initialArticle;
     }
 
-    public ArticleViewModel(Article article, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
+    public ArticleViewModel(Article article, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager, ArticleLanguagesViewModel articleLanguagesViewModel)
       : this(wikipediaService, navigationService, shareManager)
     {
       this.article = article;
 
-      Languages = article.Languages.Select((language, index) => new ArticleLanguageViewModel(language, index)).ToList();
+      Languages = articleLanguagesViewModel;
+      HasLanguages = article.Languages.Count > 0;
+
       Sections = (Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections).ConvertAll(section => new ArticleSectionViewModel(section));
       HasImages = article.Images?.Count > 0;
       IsFavorite = WeakReferenceMessenger.Default.Send(new IsArticleInFavorites(article));

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Input;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -30,6 +29,9 @@ namespace WikipediaApp
 
     public static readonly DependencyProperty LanguageSelectedCommandProperty = DependencyProperty.Register(
       nameof(LanguageSelectedCommand), typeof(ICommand), typeof(SearchBox), new PropertyMetadata(null));
+
+    public static readonly DependencyProperty LanguagesProperty = DependencyProperty.Register(
+      nameof(Languages), typeof(IList<LanguageViewModel>), typeof(SearchBox), new PropertyMetadata(null));
 
     public LanguageViewModel QueryLanguage
     {
@@ -67,6 +69,12 @@ namespace WikipediaApp
       set { SetValue(LanguageSelectedCommandProperty, value); }
     }
 
+    public IList<LanguageViewModel> Languages
+    {
+      get { return (IList<LanguageViewModel>)GetValue(LanguagesProperty); }
+      set { SetValue(LanguagesProperty, value); }
+    }
+
     public SearchBox()
     {
       InitializeComponent();
@@ -74,11 +82,14 @@ namespace WikipediaApp
 
     private void OnLanguageButtonClick(object sender, RoutedEventArgs e)
     {
-      var favorites = ArticleLanguages.All.Where(x => x.IsFavorite || x == QueryLanguage).Reverse().ToList();
+      var languages = new List<LanguageViewModel>(Languages);
+      if (!languages.Contains(QueryLanguage))
+        languages.Add(QueryLanguage);
+      languages.Sort((x, y) => -x.Index.CompareTo(y.Index));
 
-      if (favorites.Count > 1)
+      if (languages.Count > 1)
       {
-        ShowLanguagesMenuFlyout(favorites);
+        ShowLanguagesMenuFlyout(languages);
       }
       else
       {
@@ -117,7 +128,7 @@ namespace WikipediaApp
     private void OnLanguageMenuFlyoutItemClick(object sender, RoutedEventArgs e)
     {
       var item = (MenuFlyoutItem)sender;
-      var language = item.DataContext as Language;
+      var language = item.DataContext as LanguageViewModel;
       
       LanguageSelectedCommand?.Execute(language);
     }

@@ -19,7 +19,7 @@ namespace WikipediaApp
       return (ICommand)obj.GetValue(CommandProperty);
     }
 
-    public static void SetCommand(DependencyObject obj, ICommand value)
+    public static void SetCommand(this DependencyObject obj, ICommand value)
     {
       obj.SetValue(CommandProperty, value);
     }

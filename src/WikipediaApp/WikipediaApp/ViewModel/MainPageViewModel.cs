@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.Input;
 
@@ -19,11 +17,8 @@ namespace WikipediaApp
     private RelayCommand showMapCommand = null;
     private RelayCommand<ArticleHead> showArticleCommand = null;
 
-    private IList<LanguageViewModel> languages = null;
     private LanguageViewModel language = null;
     private RelayCommand<LanguageViewModel> changeLanguageCommand = null;
-
-    public SearchViewModel Search { get; }
 
     public bool IsBusy
     {
@@ -51,11 +46,7 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    public IList<LanguageViewModel> Languages
-    {
-      get { return languages; }
-      private set { SetProperty(ref languages, value); }
-    }
+    public LanguagesViewModel Languages { get; }
 
     public LanguageViewModel Language
     {
@@ -81,14 +72,17 @@ namespace WikipediaApp
       get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<LanguageViewModel>(ChangeLanguage)); }
     }
 
+    public SearchViewModel Search { get; }
+
     public PictureOfTheDayViewModel PictureOfTheDay { get; }
 
-    public MainPageViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDialogService dialogService, SearchViewModel searchViewModel, PictureOfTheDayViewModel pictureOfTheDayViewModel)
+    public MainPageViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDialogService dialogService, SearchViewModel searchViewModel, PictureOfTheDayViewModel pictureOfTheDayViewModel, LanguagesViewModel languagesViewModel)
     {
       this.wikipediaService = wikipediaService;
       this.navigationService = navigationService;
       this.dialogService = dialogService;
 
+      Languages = languagesViewModel;
       Search = searchViewModel;
       PictureOfTheDay = pictureOfTheDayViewModel;
     }
@@ -143,13 +137,14 @@ namespace WikipediaApp
 
     public override async Task Initialize()
     {
-      if (ArticleLanguages.All.Count == 0 || Languages?.Count > 0)
-        return;
+      if (Language == null)
+      {
+        var languages = await ArticleLanguages.GetAll();
+        var favorites = await ArticleLanguages.GetFavorites();
 
-      var language = Settings.Current.SearchLanguage;
-
-      Languages = ArticleLanguages.All;
-      Language = Languages.FirstOrDefault(x => x.Code == language) ?? Languages.First(x => x.Code == Settings.DefaultSearchLanguage);
+        Languages.UpdateLanguages(languages, favorites);
+        Language = Languages.GetLanguage(Settings.Current.SearchLanguage) ?? Languages.GetLanguage(Settings.DefaultSearchLanguage);
+      }
 
       if (Settings.Current.StartPictureOfTheDay)
         PictureOfTheDay.Today();

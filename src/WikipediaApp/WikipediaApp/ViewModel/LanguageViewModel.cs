@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace WikipediaApp
 {
@@ -8,10 +11,13 @@ namespace WikipediaApp
     private bool isFavorite = false;
     private bool isActive = false;
 
-    public string Name { get; private set; }
-    public string Code { get; private set; }
-    public Uri Uri { get; private set; }
-    public int Index { get; private set; }
+    private RelayCommand addToFavoritesCommand;
+    private RelayCommand removeFromFavoritesCommand;
+
+    public string Name { get; }
+    public string Code { get; }
+    public Uri Uri { get; }
+    public int Index { get; }
 
     public bool IsFavorite
     {
@@ -25,6 +31,16 @@ namespace WikipediaApp
       set { SetProperty(ref isActive, value); }
     }
 
+    public ICommand AddToFavoritesCommand
+    {
+      get { return addToFavoritesCommand ?? (addToFavoritesCommand = new RelayCommand(AddToFavorites)); }
+    }
+
+    public ICommand RemoveFromFavoritesCommand
+    {
+      get { return removeFromFavoritesCommand ?? (removeFromFavoritesCommand = new RelayCommand(RemoveFromFavorites)); }
+    }
+
     public LanguageViewModel()
     {
     }
@@ -35,6 +51,24 @@ namespace WikipediaApp
       Code = language.Code;
       Uri = language.Uri;
       Index = index;
+
+      WeakReferenceMessenger.Default.Register<LanguageViewModel, LanguageIsFavoriteChanged>(this, (_, message) =>
+      {
+        if (message.Code == Code)
+        {
+          IsFavorite = message.IsFavorite;
+        }
+      });
+    }
+
+    private void AddToFavorites()
+    {
+      WeakReferenceMessenger.Default.Send(new AddLanguageToFavorites(Code));
+    }
+
+    private void RemoveFromFavorites()
+    {
+      WeakReferenceMessenger.Default.Send(new RemoveLanguageFromFavorites(Code));
     }
   }
 }
