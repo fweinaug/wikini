@@ -6,16 +6,16 @@ namespace WikipediaApp
   {
     private readonly INavigationService navigationService;
 
-    private readonly MainPageViewModel mainPage;
+    private readonly MainPageViewModel mainPageViewModel;
     private readonly FavoritesViewModel favoritesViewModel;
     private readonly HistoryViewModel historyViewModel;
 
-    public MainPageViewModel MainPage => mainPage;
+    public MainPageViewModel MainPage => mainPageViewModel;
 
     public AppShellViewModel(INavigationService navigationService, MainPageViewModel mainPageViewModel, FavoritesViewModel favoritesViewModel, HistoryViewModel historyViewModel)
     {
       this.navigationService = navigationService;
-      this.mainPage = mainPageViewModel;
+      this.mainPageViewModel = mainPageViewModel;
       this.favoritesViewModel = favoritesViewModel;
       this.historyViewModel = historyViewModel;
     }
@@ -29,7 +29,7 @@ namespace WikipediaApp
     {
       await favoritesViewModel.Initialize();
       await historyViewModel.Initialize();
-      await mainPage.Initialize();
+      await mainPageViewModel.Initialize();
     }
   }
 }
