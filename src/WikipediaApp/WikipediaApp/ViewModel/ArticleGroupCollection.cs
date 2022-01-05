@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Microsoft.Toolkit.Collections;
 
 namespace WikipediaApp
 {
-  public class ArticleGroup : Group<DateTime, HistoryArticleViewModel>
-  {
-  }
-
-  public class ArticleGroupCollection : ObservableCollection<ArticleGroup>
+  public class ArticleGroupCollection : ObservableCollection<ArticleGroupCollection.Group>
   {
     public void AddArticles(IEnumerable<ReadArticle> articles)
     {
@@ -26,13 +23,13 @@ namespace WikipediaApp
       }
     }
 
-    private ArticleGroup GetGroup(DateTime date)
+    private Group GetGroup(DateTime date)
     {
       var group = this.FirstOrDefault(x => x.Key == date);
 
       if (group == null)
       {
-        group = new ArticleGroup { Key = date };
+        group = new Group(date);
 
         var index = this.TakeWhile(x => x.Key > date).Count();
 
@@ -54,6 +51,13 @@ namespace WikipediaApp
 
         if (group.Count == 0)
           Remove(group);
+      }
+    }
+
+    public class Group : ObservableGroup<DateTime, HistoryArticleViewModel>
+    {
+      public Group(DateTime key) : base(key)
+      {
       }
     }
   }

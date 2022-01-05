@@ -49,7 +49,7 @@ namespace WikipediaApp
       get { return languages; }
     }
 
-    public LanguageGroup Favorites
+    public LanguageCollection.Group Favorites
     {
       get { return languages.Favorites; }
     }

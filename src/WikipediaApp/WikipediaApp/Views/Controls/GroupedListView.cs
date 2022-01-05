@@ -32,11 +32,6 @@ namespace WikipediaApp
   {
   }
 
-  public class Group<TKey, T> : ObservableCollection<T>
-  {
-    public TKey Key { get; set; }
-  }
-
   public class GroupKeyToTitleConverter : IValueConverter
   {
     public object Convert(object value, Type targetType, object parameter, string language)

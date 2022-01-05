@@ -1,25 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Microsoft.Toolkit.Collections;
 
 namespace WikipediaApp
 {
-  public class LanguageGroup : Group<string, LanguageViewModel>
-  {
-  }
-
   public class EmptyFavoritesHint : LanguageViewModel, IDisabledListViewItem
   {
   }
 
-  public class LanguageCollection : ObservableCollection<LanguageGroup>
+  public class LanguageCollection : ObservableCollection<LanguageCollection.Group>
   {
-    private readonly LanguageGroup favoritesGroup = new LanguageGroup { Key = "LanguageGroupFavorites" };
-    private readonly LanguageGroup otherGroup = new LanguageGroup { Key = "LanguageGroupMore" };
+    private readonly Group favoritesGroup = new("LanguageGroupFavorites");
+    private readonly Group otherGroup = new("LanguageGroupMore");
 
     private static readonly EmptyFavoritesHint EmptyFavoritesHint = new EmptyFavoritesHint();
 
-    public LanguageGroup Favorites => favoritesGroup;
+    public Group Favorites => favoritesGroup;
 
     public LanguageCollection()
     {
@@ -85,12 +82,19 @@ namespace WikipediaApp
         favoritesGroup.Add(EmptyFavoritesHint);
     }
 
-    private static void MoveLanguage(LanguageViewModel language, LanguageGroup from, LanguageGroup to)
+    private static void MoveLanguage(LanguageViewModel language, Group from, Group to)
     {
       var index = to.TakeWhile(x => language.Index > x.Index).Count();
 
       from.Remove(language);
       to.Insert(index, language);
+    }
+
+    public class Group : ObservableGroup<string, LanguageViewModel>
+    {
+      public Group(string key) : base(key)
+      {
+      }
     }
   }
 }
