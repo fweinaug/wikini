@@ -261,7 +261,7 @@
     <Compile Include="Services\TileManager.cs" />
     <Compile Include="Services\TimelineManager.cs" />
     <Compile Include="Services\WikipediaUriParser.cs" />
-    <Compile Include="ViewModel\ArticleGroupCollection.cs" />
+    <Compile Include="ViewModel\HistoryArticleCollection.cs" />
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>

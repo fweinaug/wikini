@@ -6,7 +6,7 @@ using Microsoft.Toolkit.Collections;
 
 namespace WikipediaApp
 {
-  public class ArticleGroupCollection : ObservableCollection<ArticleGroupCollection.Group>
+  public class HistoryArticleCollection : ObservableCollection<HistoryArticleCollection.Group>
   {
     public void AddArticles(IEnumerable<ReadArticle> articles)
     {

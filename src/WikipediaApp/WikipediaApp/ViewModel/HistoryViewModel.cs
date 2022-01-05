@@ -46,13 +46,13 @@ namespace WikipediaApp
   {
     private readonly INavigationService navigationService;
 
-    private readonly ArticleGroupCollection groupedArticles = new();
+    private readonly HistoryArticleCollection groupedArticles = new();
     private readonly ObservableCollection<ReadArticle> session = new();
     private readonly ObservableCollection<ReadArticle> database = new();
 
     private RelayCommand<HistoryArticleViewModel> showArticleCommand;
 
-    public ArticleGroupCollection All
+    public HistoryArticleCollection All
     {
       get { return groupedArticles; }
     }
