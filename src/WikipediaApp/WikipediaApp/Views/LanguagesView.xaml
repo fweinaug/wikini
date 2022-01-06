@@ -100,10 +100,9 @@
 
         <TextBlock x:Uid="MainLanguagesPaneHeaderTextBlock" Grid.Row="0" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-        <local:GroupedListView Grid.Row="1" x:Name="LanguagesListView"
-                               ItemsSource="{Binding Source={StaticResource LanguagesSource}}"
-                               Style="{StaticResource SplitViewPaneListViewStyle}"
-                               ItemClick="OnLanguagesListViewItemClick">
-        </local:GroupedListView>
+        <local:LanguagesListView Grid.Row="1" x:Name="LanguagesListView"
+                                 ItemsSource="{Binding Source={StaticResource LanguagesSource}}"
+                                 Style="{StaticResource SplitViewPaneListViewStyle}"
+                                 ItemClick="OnLanguagesListViewItemClick" />
     </Grid>
 </UserControl>

@@ -65,21 +65,35 @@ namespace WikipediaApp
         switch (item)
         {
           case EmptyFavoritesHint _:
-          {
-            var template = (DataTemplate)view.Resources["EmptyFavoritesHintTemplate"];
-            return template;
-          }
+            {
+              var template = (DataTemplate)view.Resources["EmptyFavoritesHintTemplate"];
+              return template;
+            }
           case ArticleLanguageViewModel _:
-          {
-            var template = (DataTemplate)view.Resources["ArticleLanguageTemplate"];
-            return template;
-          }
+            {
+              var template = (DataTemplate)view.Resources["ArticleLanguageTemplate"];
+              return template;
+            }
           default:
-          {
-            var template = (DataTemplate)view.Resources["LanguageTemplate"];
-            return template;
-          }
+            {
+              var template = (DataTemplate)view.Resources["LanguageTemplate"];
+              return template;
+            }
         }
+      }
+    }
+  }
+
+  public class LanguagesListView : GroupedListView
+  {
+    protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
+    {
+      base.PrepareContainerForItemOverride(element, item);
+
+      if (item is EmptyFavoritesHint && element is ListViewItem listViewItem)
+      {
+        listViewItem.IsEnabled = false;
+        listViewItem.IsHitTestVisible = false;
       }
     }
   }

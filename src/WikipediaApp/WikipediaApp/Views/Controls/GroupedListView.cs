@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -15,21 +14,6 @@ namespace WikipediaApp
     {
       GroupStyle.Add(groupStyle);
     }
-
-    protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
-    {
-      base.PrepareContainerForItemOverride(element, item);
-
-      if (item is IDisabledListViewItem && element is ListViewItem listViewItem)
-      {
-        listViewItem.IsEnabled = false;
-        listViewItem.IsHitTestVisible = false;
-      }
-    }
-  }
-
-  public interface IDisabledListViewItem
-  {
   }
 
   public class GroupKeyToTitleConverter : IValueConverter

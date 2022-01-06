@@ -5,7 +5,7 @@ using Microsoft.Toolkit.Collections;
 
 namespace WikipediaApp
 {
-  public class EmptyFavoritesHint : LanguageViewModel, IDisabledListViewItem
+  public class EmptyFavoritesHint : LanguageViewModel
   {
   }
 
@@ -14,7 +14,7 @@ namespace WikipediaApp
     private readonly Group favoritesGroup = new("LanguageGroupFavorites");
     private readonly Group otherGroup = new("LanguageGroupMore");
 
-    private static readonly EmptyFavoritesHint EmptyFavoritesHint = new EmptyFavoritesHint();
+    private static readonly EmptyFavoritesHint EmptyFavoritesHint = new();
 
     public Group Favorites => favoritesGroup;
 
