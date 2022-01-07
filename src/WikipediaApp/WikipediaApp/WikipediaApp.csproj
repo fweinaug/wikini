@@ -184,20 +184,20 @@
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\IShareManager.cs" />
     <Compile Include="Services\IWikipediaService.cs" />
-    <Compile Include="ViewModel\AppShellViewModel.cs" />
-    <Compile Include="ViewModel\ArticleImageGalleryViewModel.cs" />
-    <Compile Include="ViewModel\ArticleLanguagesViewModel.cs" />
-    <Compile Include="ViewModel\ArticleLanguageViewModel.cs" />
-    <Compile Include="ViewModel\ArticlePageViewModel.cs" />
-    <Compile Include="ViewModel\ArticleSectionViewModel.cs" />
-    <Compile Include="ViewModel\FavoriteArticleViewModel.cs" />
-    <Compile Include="ViewModel\FavoritesViewModel.cs" />
-    <Compile Include="ViewModel\HistoryViewModel.cs" />
-    <Compile Include="ViewModel\LanguageCollection.cs" />
-    <Compile Include="ViewModel\LanguagesViewModel.cs" />
-    <Compile Include="ViewModel\LanguageViewModel.cs" />
-    <Compile Include="ViewModel\HistoryArticleViewModel.cs" />
-    <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModels\AppShellViewModel.cs" />
+    <Compile Include="ViewModels\ArticleImageGalleryViewModel.cs" />
+    <Compile Include="ViewModels\ArticleLanguagesViewModel.cs" />
+    <Compile Include="ViewModels\ArticleLanguageViewModel.cs" />
+    <Compile Include="ViewModels\ArticlePageViewModel.cs" />
+    <Compile Include="ViewModels\ArticleSectionViewModel.cs" />
+    <Compile Include="ViewModels\FavoriteArticleViewModel.cs" />
+    <Compile Include="ViewModels\FavoritesViewModel.cs" />
+    <Compile Include="ViewModels\HistoryViewModel.cs" />
+    <Compile Include="ViewModels\LanguageCollection.cs" />
+    <Compile Include="ViewModels\LanguagesViewModel.cs" />
+    <Compile Include="ViewModels\LanguageViewModel.cs" />
+    <Compile Include="ViewModels\HistoryArticleViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
     </Compile>
@@ -209,7 +209,7 @@
     <Compile Include="Views\MapView.xaml.cs">
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\MapPageViewModel.cs" />
+    <Compile Include="ViewModels\MapPageViewModel.cs" />
     <Compile Include="Views\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
@@ -234,7 +234,7 @@
     </Compile>
     <Compile Include="Services\ArticleLanguages.cs" />
     <Compile Include="Views\Controls\GroupedListView.cs" />
-    <Compile Include="ViewModel\PictureOfTheDayViewModel.cs" />
+    <Compile Include="ViewModels\PictureOfTheDayViewModel.cs" />
     <Compile Include="Views\Controls\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
@@ -261,13 +261,13 @@
     <Compile Include="Services\TileManager.cs" />
     <Compile Include="Services\TimelineManager.cs" />
     <Compile Include="Services\WikipediaUriParser.cs" />
-    <Compile Include="ViewModel\HistoryArticleCollection.cs" />
+    <Compile Include="ViewModels\HistoryArticleCollection.cs" />
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ArticleChapterViewModel.cs" />
-    <Compile Include="ViewModel\ArticleChapterCollection.cs" />
-    <Compile Include="ViewModel\ArticleFlyoutViewModel.cs" />
+    <Compile Include="ViewModels\ArticleChapterViewModel.cs" />
+    <Compile Include="ViewModels\ArticleChapterCollection.cs" />
+    <Compile Include="ViewModels\ArticleFlyoutViewModel.cs" />
     <Compile Include="Views\Helpers\DisplayHelper.cs" />
     <Compile Include="Views\Helpers\DownloadHelper.cs" />
     <Compile Include="Views\SpeechView.xaml.cs">
@@ -295,14 +295,14 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DialogService.cs" />
-    <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\ArticleLanguage.cs" />
     <Compile Include="Views\ArticlePage.xaml.cs">
       <DependentUpon>ArticlePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleSection.cs" />
-    <Compile Include="ViewModel\ArticleViewModel.cs" />
+    <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="Views\Controls\ImageControl.xaml.cs">
       <DependentUpon>ImageControl.xaml</DependentUpon>
     </Compile>
@@ -316,7 +316,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Extensions\WebViewExtensions.cs" />
     <Compile Include="Services\WikipediaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
