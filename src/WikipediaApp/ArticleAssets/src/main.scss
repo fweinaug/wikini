@@ -1,0 +1,33 @@
+﻿@use "search";
+@use "theme";
+
+body {
+    font-size: var(--font-size);
+
+    &.serif {
+        font-family: Georgia, Calisto MT, Cambria, Times New Roman, serif;
+    }
+
+    &.sans-serif {
+        font-family: Segoe UI, Roboto, Lato, Helvetica, Arial, sans-serif;
+    }
+}
+
+body {
+    -ms-overflow-style: none;
+    margin-right: 10px;
+}
+
+a, a:visited {
+    color: var(--color) !important;
+}
+
+.content {
+    .in-block {
+        display: block;
+    }
+
+    table.infobox > caption {
+        display: inline;
+    }
+}

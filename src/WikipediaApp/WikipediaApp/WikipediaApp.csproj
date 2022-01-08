@@ -97,15 +97,12 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="Assets\Article\contextmenu.js" />
-    <None Include="Assets\Article\events.js" />
-    <None Include="Assets\Article\mark.es6.min.js" />
-    <None Include="Assets\Article\scroll.js" />
-    <None Include="Assets\Article\search.js" />
-    <None Include="Assets\Article\wikini.scss" />
-    <Content Include="Assets\Article\theme.js" />
-    <Content Include="Assets\Article\wikini.min.css" />
-    <Content Include="Assets\Article\wikini.min.js" />
+    <Content Include="..\ArticleAssets\article.min.css">
+      <Link>Assets\Article\article.min.css</Link>
+    </Content>
+    <Content Include="..\ArticleAssets\article.min.js">
+      <Link>Assets\Article\article.min.js</Link>
+    </Content>
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-125.png" />
     <Content Include="Assets\BadgeLogo.scale-150.png" />

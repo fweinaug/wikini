@@ -1,0 +1,14 @@
+{
+  "name": "article-assets",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:css": "sass --style=compressed --no-source-map src/main.scss:article.min.css",
+    "build:js": "terser --compress --mangle --output article.min.js -- src/theme.js src/events.js src/scroll.js src/contextmenu.js lib/mark.es6.min.js src/search.js"
+  },
+  "dependencies": {
+    "sass": "1.46.0",
+    "terser": "5.10.0"
+  }
+, "-vs-binding":{"AfterBuild":["build"]}
+}

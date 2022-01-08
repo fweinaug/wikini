@@ -35,9 +35,9 @@ namespace WikipediaApp
         }});}});</script>
 
         <link rel=""stylesheet"" href=""/w/load.php?lang={language}&amp;modules=ext.cite.styles%7Cext.graph.styles%7Cext.kartographer.style%7Cmediawiki.hlist%7Cmediawiki.ui.button%2Cicon%7Cmobile.init.styles%7Cskins.minerva.base.styles%7Cskins.minerva.content.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons.images%2Cwikimedia&amp;only=styles&amp;skin=minerva""/>
-        <link rel=""stylesheet"" href=""ms-appx-web:///Assets/Article/wikini.min.css""/>
+        <link rel=""stylesheet"" href=""ms-appx-web:///Assets/Article/article.min.css""/>
         <script async="""" src=""/w/load.php?lang={language}&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva&amp;target=mobile""></script>
-        <script src=""ms-appx-web:///Assets/Article/wikini.min.js"" type=""text/javascript""></script>
+        <script src=""ms-appx-web:///Assets/Article/article.min.js"" type=""text/javascript""></script>
         <meta name=""ResourceLoaderDynamicStyles"" content=""""/>
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
