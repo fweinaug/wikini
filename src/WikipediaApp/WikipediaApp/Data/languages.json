@@ -1,1706 +1,1577 @@
 [
   {
-    "Name": "Аҧсшәа",
+    "Name": "Аҧсуа",
     "Code": "ab",
-    "Url": "https://ab.wikipedia.org",
-    "Visible": true
+    "Url": "https://ab.wikipedia.org"
   },
   {
-    "Name": "Acèh",
+    "Name": "Bahsa Acèh",
     "Code": "ace",
-    "Url": "https://ace.wikipedia.org",
-    "Visible": true
+    "Url": "https://ace.wikipedia.org"
   },
   {
     "Name": "адыгабзэ",
     "Code": "ady",
-    "Url": "https://ady.wikipedia.org",
-    "Visible": true
+    "Url": "https://ady.wikipedia.org"
   },
   {
     "Name": "Afrikaans",
     "Code": "af",
-    "Url": "https://af.wikipedia.org",
-    "Visible": true
+    "Url": "https://af.wikipedia.org"
   },
   {
-    "Name": "Akan",
+    "Name": "Akana",
     "Code": "ak",
-    "Url": "https://ak.wikipedia.org",
-    "Visible": true
+    "Url": "https://ak.wikipedia.org"
   },
   {
     "Name": "Alemannisch",
     "Code": "als",
-    "Url": "https://als.wikipedia.org",
-    "Visible": true
+    "Url": "https://als.wikipedia.org"
+  },
+  {
+    "Name": "алтай тил",
+    "Code": "alt",
+    "Url": "https://alt.wikipedia.org"
   },
   {
     "Name": "አማርኛ",
     "Code": "am",
-    "Url": "https://am.wikipedia.org",
-    "Visible": true
+    "Url": "https://am.wikipedia.org"
   },
   {
-    "Name": "aragonés",
+    "Name": "Pangcah / 'Amis",
+    "Code": "ami",
+    "Url": "https://ami.wikipedia.org"
+  },
+  {
+    "Name": "Aragonés",
     "Code": "an",
-    "Url": "https://an.wikipedia.org",
-    "Visible": true
+    "Url": "https://an.wikipedia.org"
   },
   {
-    "Name": "Ænglisc",
+    "Name": "Englisc",
     "Code": "ang",
-    "Url": "https://ang.wikipedia.org",
-    "Visible": true
+    "Url": "https://ang.wikipedia.org"
   },
   {
     "Name": "العربية",
     "Code": "ar",
-    "Url": "https://ar.wikipedia.org",
-    "Visible": true
+    "Url": "https://ar.wikipedia.org"
   },
   {
     "Name": "ܐܪܡܝܐ",
     "Code": "arc",
-    "Url": "https://arc.wikipedia.org",
-    "Visible": true
+    "Url": "https://arc.wikipedia.org"
   },
   {
-    "Name": "مصرى",
+    "Name": "اللهجة المغربية",
+    "Code": "ary",
+    "Url": "https://ary.wikipedia.org"
+  },
+  {
+    "Name": "مصرى (Maṣrī)",
     "Code": "arz",
-    "Url": "https://arz.wikipedia.org",
-    "Visible": true
+    "Url": "https://arz.wikipedia.org"
   },
   {
-    "Name": "অসমীয়া",
+    "Name": "অসমীয়া",
     "Code": "as",
-    "Url": "https://as.wikipedia.org",
-    "Visible": true
+    "Url": "https://as.wikipedia.org"
   },
   {
-    "Name": "asturianu",
+    "Name": "Asturianu",
     "Code": "ast",
-    "Url": "https://ast.wikipedia.org",
-    "Visible": true
+    "Url": "https://ast.wikipedia.org"
   },
   {
-    "Name": "авар",
+    "Name": "Atikamekw Nehiromowin",
+    "Code": "atj",
+    "Url": "https://atj.wikipedia.org"
+  },
+  {
+    "Name": "Авар",
     "Code": "av",
-    "Url": "https://av.wikipedia.org",
-    "Visible": true
+    "Url": "https://av.wikipedia.org"
   },
   {
-    "Name": "Aymar aru",
+    "Name": "Kotava",
+    "Code": "avk",
+    "Url": "https://avk.wikipedia.org"
+  },
+  {
+    "Name": "ქართული",
+    "Code": "awa",
+    "Url": "https://awa.wikipedia.org"
+  },
+  {
+    "Name": "Aymar",
     "Code": "ay",
-    "Url": "https://ay.wikipedia.org",
-    "Visible": true
+    "Url": "https://ay.wikipedia.org"
   },
   {
-    "Name": "azərbaycanca",
+    "Name": "Azərbaycanca",
     "Code": "az",
-    "Url": "https://az.wikipedia.org",
-    "Visible": true
+    "Url": "https://az.wikipedia.org"
   },
   {
     "Name": "تۆرکجه",
     "Code": "azb",
-    "Url": "https://azb.wikipedia.org",
-    "Visible": true
+    "Url": "https://azb.wikipedia.org"
   },
   {
-    "Name": "башҡортса",
+    "Name": "Башҡорт",
     "Code": "ba",
-    "Url": "https://ba.wikipedia.org",
-    "Visible": true
+    "Url": "https://ba.wikipedia.org"
+  },
+  {
+    "Name": "Bali",
+    "Code": "ban",
+    "Url": "https://ban.wikipedia.org"
   },
   {
     "Name": "Boarisch",
     "Code": "bar",
-    "Url": "https://bar.wikipedia.org",
-    "Visible": true
+    "Url": "https://bar.wikipedia.org"
   },
   {
-    "Name": "žemaitėška",
+    "Name": "Žemaitėška",
     "Code": "bat-smg",
-    "Url": "https://bat-smg.wikipedia.org",
-    "Visible": true
+    "Url": "https://bat-smg.wikipedia.org"
   },
   {
-    "Name": "Bikol Central",
+    "Name": "Bikol",
     "Code": "bcl",
-    "Url": "https://bcl.wikipedia.org",
-    "Visible": true
+    "Url": "https://bcl.wikipedia.org"
   },
   {
-    "Name": "беларуская",
+    "Name": "Беларуская",
     "Code": "be",
-    "Url": "https://be.wikipedia.org",
-    "Visible": true
+    "Url": "https://be.wikipedia.org"
   },
   {
-    "Name": "беларуская (тарашкевіца)‎",
-    "Code": "be-x-old",
-    "Url": "https://be-tarask.wikipedia.org",
-    "Visible": true
+    "Name": "Беларуская (тарашкевіца)",
+    "Code": "be-tarask",
+    "Url": "https://be-tarask.wikipedia.org"
   },
   {
-    "Name": "български",
+    "Name": "Български",
     "Code": "bg",
-    "Url": "https://bg.wikipedia.org",
-    "Visible": true
+    "Url": "https://bg.wikipedia.org"
   },
   {
     "Name": "भोजपुरी",
     "Code": "bh",
-    "Url": "https://bh.wikipedia.org",
-    "Visible": true
+    "Url": "https://bh.wikipedia.org"
   },
   {
     "Name": "Bislama",
     "Code": "bi",
-    "Url": "https://bi.wikipedia.org",
-    "Visible": true
+    "Url": "https://bi.wikipedia.org"
   },
   {
     "Name": "Bahasa Banjar",
     "Code": "bjn",
-    "Url": "https://bjn.wikipedia.org",
-    "Visible": true
+    "Url": "https://bjn.wikipedia.org"
   },
   {
-    "Name": "bamanankan",
+    "Name": "Bamanankan",
     "Code": "bm",
-    "Url": "https://bm.wikipedia.org",
-    "Visible": true
+    "Url": "https://bm.wikipedia.org"
   },
   {
     "Name": "বাংলা",
     "Code": "bn",
-    "Url": "https://bn.wikipedia.org",
-    "Visible": true
+    "Url": "https://bn.wikipedia.org"
   },
   {
-    "Name": "བོད་ཡིག",
+    "Name": "བོད་སྐད",
     "Code": "bo",
-    "Url": "https://bo.wikipedia.org",
-    "Visible": true
+    "Url": "https://bo.wikipedia.org"
   },
   {
-    "Name": "বিষ্ণুপ্রিয়া মণিপুরী",
+    "Name": "ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী",
     "Code": "bpy",
-    "Url": "https://bpy.wikipedia.org",
-    "Visible": true
+    "Url": "https://bpy.wikipedia.org"
   },
   {
-    "Name": "brezhoneg",
+    "Name": "Brezhoneg",
     "Code": "br",
-    "Url": "https://br.wikipedia.org",
-    "Visible": true
+    "Url": "https://br.wikipedia.org"
   },
   {
-    "Name": "bosanski",
+    "Name": "Bosanski",
     "Code": "bs",
-    "Url": "https://bs.wikipedia.org",
-    "Visible": true
+    "Url": "https://bs.wikipedia.org"
   },
   {
-    "Name": "ᨅᨔ ᨕᨘᨁᨗ",
+    "Name": "Basa Ugi",
     "Code": "bug",
-    "Url": "https://bug.wikipedia.org",
-    "Visible": true
+    "Url": "https://bug.wikipedia.org"
   },
   {
-    "Name": "буряад",
+    "Name": "Буряад",
     "Code": "bxr",
-    "Url": "https://bxr.wikipedia.org",
-    "Visible": true
+    "Url": "https://bxr.wikipedia.org"
   },
   {
-    "Name": "català",
+    "Name": "Català",
     "Code": "ca",
-    "Url": "https://ca.wikipedia.org",
-    "Visible": true
+    "Url": "https://ca.wikipedia.org"
   },
   {
     "Name": "Chavacano de Zamboanga",
     "Code": "cbk-zam",
-    "Url": "https://cbk-zam.wikipedia.org",
-    "Visible": true
+    "Url": "https://cbk-zam.wikipedia.org"
   },
   {
     "Name": "Mìng-dĕ̤ng-ngṳ̄",
     "Code": "cdo",
-    "Url": "https://cdo.wikipedia.org",
-    "Visible": true
+    "Url": "https://cdo.wikipedia.org"
   },
   {
-    "Name": "нохчийн",
+    "Name": "Нохчийн",
     "Code": "ce",
-    "Url": "https://ce.wikipedia.org",
-    "Visible": true
+    "Url": "https://ce.wikipedia.org"
   },
   {
-    "Name": "Cebuano",
+    "Name": "Sinugboanong Binisaya",
     "Code": "ceb",
-    "Url": "https://ceb.wikipedia.org",
-    "Visible": true
+    "Url": "https://ceb.wikipedia.org"
   },
   {
     "Name": "Chamoru",
     "Code": "ch",
-    "Url": "https://ch.wikipedia.org",
-    "Visible": true
+    "Url": "https://ch.wikipedia.org"
   },
   {
     "Name": "ᏣᎳᎩ",
     "Code": "chr",
-    "Url": "https://chr.wikipedia.org",
-    "Visible": true
+    "Url": "https://chr.wikipedia.org"
   },
   {
     "Name": "Tsetsêhestâhese",
     "Code": "chy",
-    "Url": "https://chy.wikipedia.org",
-    "Visible": true
+    "Url": "https://chy.wikipedia.org"
   },
   {
-    "Name": "کوردیی ناوەندی",
+    "Name": "Soranî / کوردی",
     "Code": "ckb",
-    "Url": "https://ckb.wikipedia.org",
-    "Visible": true
+    "Url": "https://ckb.wikipedia.org"
   },
   {
-    "Name": "corsu",
+    "Name": "Corsu",
     "Code": "co",
-    "Url": "https://co.wikipedia.org",
-    "Visible": true
+    "Url": "https://co.wikipedia.org"
   },
   {
-    "Name": "Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ",
+    "Name": "Nehiyaw",
     "Code": "cr",
-    "Url": "https://cr.wikipedia.org",
-    "Visible": true
+    "Url": "https://cr.wikipedia.org"
   },
   {
-    "Name": "qırımtatarca",
+    "Name": "Qırımtatarca",
     "Code": "crh",
-    "Url": "https://crh.wikipedia.org",
-    "Visible": true
+    "Url": "https://crh.wikipedia.org"
   },
   {
-    "Name": "čeština",
+    "Name": "Čeština",
     "Code": "cs",
-    "Url": "https://cs.wikipedia.org",
-    "Visible": true
+    "Url": "https://cs.wikipedia.org"
   },
   {
-    "Name": "kaszëbsczi",
+    "Name": "Kaszëbsczi",
     "Code": "csb",
-    "Url": "https://csb.wikipedia.org",
-    "Visible": true
+    "Url": "https://csb.wikipedia.org"
   },
   {
-    "Name": "словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ",
+    "Name": "Словѣньскъ",
     "Code": "cu",
-    "Url": "https://cu.wikipedia.org",
-    "Visible": true
+    "Url": "https://cu.wikipedia.org"
   },
   {
-    "Name": "Чӑвашла",
+    "Name": "Чăваш",
     "Code": "cv",
-    "Url": "https://cv.wikipedia.org",
-    "Visible": true
+    "Url": "https://cv.wikipedia.org"
   },
   {
     "Name": "Cymraeg",
     "Code": "cy",
-    "Url": "https://cy.wikipedia.org",
-    "Visible": true
+    "Url": "https://cy.wikipedia.org"
   },
   {
-    "Name": "dansk",
+    "Name": "Dansk",
     "Code": "da",
-    "Url": "https://da.wikipedia.org",
-    "Visible": true
+    "Url": "https://da.wikipedia.org"
+  },
+  {
+    "Name": "Dagbanli",
+    "Code": "dag",
+    "Url": "https://dag.wikipedia.org"
   },
   {
     "Name": "Deutsch",
     "Code": "de",
-    "Url": "https://de.wikipedia.org",
-    "Visible": true
+    "Url": "https://de.wikipedia.org"
+  },
+  {
+    "Name": "Thuɔŋjäŋ",
+    "Code": "din",
+    "Url": "https://din.wikipedia.org"
   },
   {
     "Name": "Zazaki",
     "Code": "diq",
-    "Url": "https://diq.wikipedia.org",
-    "Visible": true
+    "Url": "https://diq.wikipedia.org"
   },
   {
-    "Name": "dolnoserbski",
+    "Name": "Dolnoserbski",
     "Code": "dsb",
-    "Url": "https://dsb.wikipedia.org",
-    "Visible": true
+    "Url": "https://dsb.wikipedia.org"
+  },
+  {
+    "Name": "डोटेली",
+    "Code": "dty",
+    "Url": "https://dty.wikipedia.org"
   },
   {
     "Name": "ދިވެހިބަސް",
     "Code": "dv",
-    "Url": "https://dv.wikipedia.org",
-    "Visible": true
+    "Url": "https://dv.wikipedia.org"
   },
   {
     "Name": "ཇོང་ཁ",
     "Code": "dz",
-    "Url": "https://dz.wikipedia.org",
-    "Visible": true
+    "Url": "https://dz.wikipedia.org"
   },
   {
-    "Name": "eʋegbe",
+    "Name": "Eʋegbe",
     "Code": "ee",
-    "Url": "https://ee.wikipedia.org",
-    "Visible": true
+    "Url": "https://ee.wikipedia.org"
   },
   {
     "Name": "Ελληνικά",
     "Code": "el",
-    "Url": "https://el.wikipedia.org",
-    "Visible": true
+    "Url": "https://el.wikipedia.org"
   },
   {
-    "Name": "emiliàn e rumagnòl",
+    "Name": "Emiliàn e rumagnòl",
     "Code": "eml",
-    "Url": "https://eml.wikipedia.org",
-    "Visible": true
+    "Url": "https://eml.wikipedia.org"
   },
   {
     "Name": "English",
     "Code": "en",
-    "Url": "https://en.wikipedia.org",
-    "Visible": true
+    "Url": "https://en.wikipedia.org"
   },
   {
     "Name": "Esperanto",
     "Code": "eo",
-    "Url": "https://eo.wikipedia.org",
-    "Visible": true
+    "Url": "https://eo.wikipedia.org"
   },
   {
-    "Name": "español",
+    "Name": "Español",
     "Code": "es",
-    "Url": "https://es.wikipedia.org",
-    "Visible": true
+    "Url": "https://es.wikipedia.org"
   },
   {
-    "Name": "eesti",
+    "Name": "Eesti",
     "Code": "et",
-    "Url": "https://et.wikipedia.org",
-    "Visible": true
+    "Url": "https://et.wikipedia.org"
   },
   {
-    "Name": "euskara",
+    "Name": "Euskara",
     "Code": "eu",
-    "Url": "https://eu.wikipedia.org",
-    "Visible": true
+    "Url": "https://eu.wikipedia.org"
   },
   {
-    "Name": "estremeñu",
+    "Name": "Estremeñu",
     "Code": "ext",
-    "Url": "https://ext.wikipedia.org",
-    "Visible": true
+    "Url": "https://ext.wikipedia.org"
   },
   {
     "Name": "فارسی",
     "Code": "fa",
-    "Url": "https://fa.wikipedia.org",
-    "Visible": true
+    "Url": "https://fa.wikipedia.org"
   },
   {
     "Name": "Fulfulde",
     "Code": "ff",
-    "Url": "https://ff.wikipedia.org",
-    "Visible": true
+    "Url": "https://ff.wikipedia.org"
   },
   {
-    "Name": "suomi",
+    "Name": "Suomi",
     "Code": "fi",
-    "Url": "https://fi.wikipedia.org",
-    "Visible": true
+    "Url": "https://fi.wikipedia.org"
   },
   {
     "Name": "Võro",
     "Code": "fiu-vro",
-    "Url": "https://fiu-vro.wikipedia.org",
-    "Visible": true
+    "Url": "https://fiu-vro.wikipedia.org"
   },
   {
     "Name": "Na Vosa Vakaviti",
     "Code": "fj",
-    "Url": "https://fj.wikipedia.org",
-    "Visible": true
+    "Url": "https://fj.wikipedia.org"
   },
   {
-    "Name": "føroyskt",
+    "Name": "Føroyskt",
     "Code": "fo",
-    "Url": "https://fo.wikipedia.org",
-    "Visible": true
+    "Url": "https://fo.wikipedia.org"
   },
   {
-    "Name": "français",
+    "Name": "Français",
     "Code": "fr",
-    "Url": "https://fr.wikipedia.org",
-    "Visible": true
+    "Url": "https://fr.wikipedia.org"
   },
   {
-    "Name": "arpetan",
+    "Name": "Arpitan",
     "Code": "frp",
-    "Url": "https://frp.wikipedia.org",
-    "Visible": true
+    "Url": "https://frp.wikipedia.org"
   },
   {
     "Name": "Nordfriisk",
     "Code": "frr",
-    "Url": "https://frr.wikipedia.org",
-    "Visible": true
+    "Url": "https://frr.wikipedia.org"
   },
   {
-    "Name": "furlan",
+    "Name": "Furlan",
     "Code": "fur",
-    "Url": "https://fur.wikipedia.org",
-    "Visible": true
+    "Url": "https://fur.wikipedia.org"
   },
   {
     "Name": "Frysk",
     "Code": "fy",
-    "Url": "https://fy.wikipedia.org",
-    "Visible": true
+    "Url": "https://fy.wikipedia.org"
   },
   {
     "Name": "Gaeilge",
     "Code": "ga",
-    "Url": "https://ga.wikipedia.org",
-    "Visible": true
+    "Url": "https://ga.wikipedia.org"
   },
   {
     "Name": "Gagauz",
     "Code": "gag",
-    "Url": "https://gag.wikipedia.org",
-    "Visible": true
+    "Url": "https://gag.wikipedia.org"
   },
   {
     "Name": "贛語",
     "Code": "gan",
-    "Url": "https://gan.wikipedia.org",
-    "Visible": true
+    "Url": "https://gan.wikipedia.org"
+  },
+  {
+    "Name": "Kriyòl Gwiyannen",
+    "Code": "gcr",
+    "Url": "https://gcr.wikipedia.org"
   },
   {
     "Name": "Gàidhlig",
     "Code": "gd",
-    "Url": "https://gd.wikipedia.org",
-    "Visible": true
+    "Url": "https://gd.wikipedia.org"
   },
   {
-    "Name": "galego",
+    "Name": "Galego",
     "Code": "gl",
-    "Url": "https://gl.wikipedia.org",
-    "Visible": true
+    "Url": "https://gl.wikipedia.org"
   },
   {
     "Name": "گیلکی",
     "Code": "glk",
-    "Url": "https://glk.wikipedia.org",
-    "Visible": true
+    "Url": "https://glk.wikipedia.org"
   },
   {
     "Name": "Avañe'ẽ",
     "Code": "gn",
-    "Url": "https://gn.wikipedia.org",
-    "Visible": true
+    "Url": "https://gn.wikipedia.org"
   },
   {
     "Name": "गोंयची कोंकणी / Gõychi Konknni",
     "Code": "gom",
-    "Url": "https://gom.wikipedia.org",
-    "Visible": true
+    "Url": "https://gom.wikipedia.org"
+  },
+  {
+    "Name": "Hulontalo",
+    "Code": "gor",
+    "Url": "https://gor.wikipedia.org"
   },
   {
     "Name": "𐌲𐌿𐍄𐌹𐍃𐌺",
     "Code": "got",
-    "Url": "https://got.wikipedia.org",
-    "Visible": true
+    "Url": "https://got.wikipedia.org"
   },
   {
     "Name": "ગુજરાતી",
     "Code": "gu",
-    "Url": "https://gu.wikipedia.org",
-    "Visible": true
+    "Url": "https://gu.wikipedia.org"
   },
   {
     "Name": "Gaelg",
     "Code": "gv",
-    "Url": "https://gv.wikipedia.org",
-    "Visible": true
+    "Url": "https://gv.wikipedia.org"
   },
   {
-    "Name": "Hausa",
+    "Name": "هَوُسَ",
     "Code": "ha",
-    "Url": "https://ha.wikipedia.org",
-    "Visible": true
+    "Url": "https://ha.wikipedia.org"
   },
   {
-    "Name": "客家語/Hak-kâ-ngî",
+    "Name": "Hak-kâ-fa / 客家話",
     "Code": "hak",
-    "Url": "https://hak.wikipedia.org",
-    "Visible": true
+    "Url": "https://hak.wikipedia.org"
   },
   {
-    "Name": "Hawaiʻi",
+    "Name": "Hawai`i",
     "Code": "haw",
-    "Url": "https://haw.wikipedia.org",
-    "Visible": true
+    "Url": "https://haw.wikipedia.org"
   },
   {
     "Name": "עברית",
     "Code": "he",
-    "Url": "https://he.wikipedia.org",
-    "Visible": true
+    "Url": "https://he.wikipedia.org"
   },
   {
     "Name": "हिन्दी",
     "Code": "hi",
-    "Url": "https://hi.wikipedia.org",
-    "Visible": true
+    "Url": "https://hi.wikipedia.org"
   },
   {
     "Name": "Fiji Hindi",
     "Code": "hif",
-    "Url": "https://hif.wikipedia.org",
-    "Visible": true
+    "Url": "https://hif.wikipedia.org"
   },
   {
-    "Name": "hrvatski",
+    "Name": "Hrvatski",
     "Code": "hr",
-    "Url": "https://hr.wikipedia.org",
-    "Visible": true
+    "Url": "https://hr.wikipedia.org"
   },
   {
-    "Name": "hornjoserbsce",
+    "Name": "Hornjoserbsce",
     "Code": "hsb",
-    "Url": "https://hsb.wikipedia.org",
-    "Visible": true
+    "Url": "https://hsb.wikipedia.org"
   },
   {
-    "Name": "Kreyòl ayisyen",
+    "Name": "Krèyol ayisyen",
     "Code": "ht",
-    "Url": "https://ht.wikipedia.org",
-    "Visible": true
+    "Url": "https://ht.wikipedia.org"
   },
   {
-    "Name": "magyar",
+    "Name": "Magyar",
     "Code": "hu",
-    "Url": "https://hu.wikipedia.org",
-    "Visible": true
+    "Url": "https://hu.wikipedia.org"
   },
   {
     "Name": "Հայերեն",
     "Code": "hy",
-    "Url": "https://hy.wikipedia.org",
-    "Visible": true
+    "Url": "https://hy.wikipedia.org"
   },
   {
-    "Name": "interlingua",
+    "Name": "Արեւմտահայերէն",
+    "Code": "hyw",
+    "Url": "https://hyw.wikipedia.org"
+  },
+  {
+    "Name": "Interlingua",
     "Code": "ia",
-    "Url": "https://ia.wikipedia.org",
-    "Visible": true
+    "Url": "https://ia.wikipedia.org"
   },
   {
     "Name": "Bahasa Indonesia",
     "Code": "id",
-    "Url": "https://id.wikipedia.org",
-    "Visible": true
+    "Url": "https://id.wikipedia.org"
   },
   {
     "Name": "Interlingue",
     "Code": "ie",
-    "Url": "https://ie.wikipedia.org",
-    "Visible": true
+    "Url": "https://ie.wikipedia.org"
   },
   {
     "Name": "Igbo",
     "Code": "ig",
-    "Url": "https://ig.wikipedia.org",
-    "Visible": true
+    "Url": "https://ig.wikipedia.org"
   },
   {
     "Name": "Iñupiak",
     "Code": "ik",
-    "Url": "https://ik.wikipedia.org",
-    "Visible": true
+    "Url": "https://ik.wikipedia.org"
   },
   {
     "Name": "Ilokano",
     "Code": "ilo",
-    "Url": "https://ilo.wikipedia.org",
-    "Visible": true
+    "Url": "https://ilo.wikipedia.org"
+  },
+  {
+    "Name": "ГӀалгӀай",
+    "Code": "inh",
+    "Url": "https://inh.wikipedia.org"
   },
   {
     "Name": "Ido",
     "Code": "io",
-    "Url": "https://io.wikipedia.org",
-    "Visible": true
+    "Url": "https://io.wikipedia.org"
   },
   {
-    "Name": "íslenska",
+    "Name": "Íslenska",
     "Code": "is",
-    "Url": "https://is.wikipedia.org",
-    "Visible": true
+    "Url": "https://is.wikipedia.org"
   },
   {
-    "Name": "italiano",
+    "Name": "Italiano",
     "Code": "it",
-    "Url": "https://it.wikipedia.org",
-    "Visible": true
+    "Url": "https://it.wikipedia.org"
   },
   {
-    "Name": "ᐃᓄᒃᑎᑐᑦ/inuktitut",
+    "Name": "ᐃᓄᒃᑎᑐᑦ",
     "Code": "iu",
-    "Url": "https://iu.wikipedia.org",
-    "Visible": true
+    "Url": "https://iu.wikipedia.org"
   },
   {
     "Name": "日本語",
     "Code": "ja",
-    "Url": "https://ja.wikipedia.org",
-    "Visible": true
+    "Url": "https://ja.wikipedia.org"
   },
   {
     "Name": "Patois",
     "Code": "jam",
-    "Url": "https://jam.wikipedia.org",
-    "Visible": true
+    "Url": "https://jam.wikipedia.org"
   },
   {
-    "Name": "la .lojban.",
+    "Name": "Lojban",
     "Code": "jbo",
-    "Url": "https://jbo.wikipedia.org",
-    "Visible": true
+    "Url": "https://jbo.wikipedia.org"
   },
   {
     "Name": "Basa Jawa",
     "Code": "jv",
-    "Url": "https://jv.wikipedia.org",
-    "Visible": true
+    "Url": "https://jv.wikipedia.org"
   },
   {
     "Name": "ქართული",
     "Code": "ka",
-    "Url": "https://ka.wikipedia.org",
-    "Visible": true
+    "Url": "https://ka.wikipedia.org"
   },
   {
     "Name": "Qaraqalpaqsha",
     "Code": "kaa",
-    "Url": "https://kaa.wikipedia.org",
-    "Visible": true
+    "Url": "https://kaa.wikipedia.org"
   },
   {
     "Name": "Taqbaylit",
     "Code": "kab",
-    "Url": "https://kab.wikipedia.org",
-    "Visible": true
+    "Url": "https://kab.wikipedia.org"
   },
   {
-    "Name": "Адыгэбзэ",
+    "Name": "Адыгэбзэ (Adighabze)",
     "Code": "kbd",
-    "Url": "https://kbd.wikipedia.org",
-    "Visible": true
+    "Url": "https://kbd.wikipedia.org"
   },
   {
-    "Name": "Kongo",
+    "Name": "Kabɩyɛ",
+    "Code": "kbp",
+    "Url": "https://kbp.wikipedia.org"
+  },
+  {
+    "Name": "KiKongo",
     "Code": "kg",
-    "Url": "https://kg.wikipedia.org",
-    "Visible": true
+    "Url": "https://kg.wikipedia.org"
   },
   {
     "Name": "Gĩkũyũ",
     "Code": "ki",
-    "Url": "https://ki.wikipedia.org",
-    "Visible": true
+    "Url": "https://ki.wikipedia.org"
   },
   {
-    "Name": "қазақша",
+    "Name": "Қазақша",
     "Code": "kk",
-    "Url": "https://kk.wikipedia.org",
-    "Visible": true
+    "Url": "https://kk.wikipedia.org"
   },
   {
-    "Name": "kalaallisut",
+    "Name": "Kalaallisut",
     "Code": "kl",
-    "Url": "https://kl.wikipedia.org",
-    "Visible": true
+    "Url": "https://kl.wikipedia.org"
   },
   {
     "Name": "ភាសាខ្មែរ",
     "Code": "km",
-    "Url": "https://km.wikipedia.org",
-    "Visible": true
+    "Url": "https://km.wikipedia.org"
   },
   {
     "Name": "ಕನ್ನಡ",
     "Code": "kn",
-    "Url": "https://kn.wikipedia.org",
-    "Visible": true
+    "Url": "https://kn.wikipedia.org"
   },
   {
     "Name": "한국어",
     "Code": "ko",
-    "Url": "https://ko.wikipedia.org",
-    "Visible": true
+    "Url": "https://ko.wikipedia.org"
   },
   {
-    "Name": "Перем Коми",
+    "Name": "Перем Коми (Perem Komi)",
     "Code": "koi",
-    "Url": "https://koi.wikipedia.org",
-    "Visible": true
+    "Url": "https://koi.wikipedia.org"
   },
   {
-    "Name": "къарачай-малкъар",
+    "Name": "Къарачай-Малкъар (Qarachay-Malqar)",
     "Code": "krc",
-    "Url": "https://krc.wikipedia.org",
-    "Visible": true
+    "Url": "https://krc.wikipedia.org"
   },
   {
-    "Name": "कॉशुर / کٲشُر",
+    "Name": "कश्मीरी / كشميري",
     "Code": "ks",
-    "Url": "https://ks.wikipedia.org",
-    "Visible": true
+    "Url": "https://ks.wikipedia.org"
   },
   {
     "Name": "Ripoarisch",
     "Code": "ksh",
-    "Url": "https://ksh.wikipedia.org",
-    "Visible": true
+    "Url": "https://ksh.wikipedia.org"
   },
   {
-    "Name": "Kurdî",
+    "Name": "Kurdî / كوردی",
     "Code": "ku",
-    "Url": "https://ku.wikipedia.org",
-    "Visible": true
+    "Url": "https://ku.wikipedia.org"
   },
   {
-    "Name": "коми",
+    "Name": "Коми",
     "Code": "kv",
-    "Url": "https://kv.wikipedia.org",
-    "Visible": true
+    "Url": "https://kv.wikipedia.org"
   },
   {
-    "Name": "kernowek",
+    "Name": "Kernewek/Karnuack",
     "Code": "kw",
-    "Url": "https://kw.wikipedia.org",
-    "Visible": true
+    "Url": "https://kw.wikipedia.org"
   },
   {
     "Name": "Кыргызча",
     "Code": "ky",
-    "Url": "https://ky.wikipedia.org",
-    "Visible": true
+    "Url": "https://ky.wikipedia.org"
   },
   {
     "Name": "Latina",
     "Code": "la",
-    "Url": "https://la.wikipedia.org",
-    "Visible": true
+    "Url": "https://la.wikipedia.org"
   },
   {
-    "Name": "Ladino",
+    "Name": "Dzhudezmo",
     "Code": "lad",
-    "Url": "https://lad.wikipedia.org",
-    "Visible": true
+    "Url": "https://lad.wikipedia.org"
   },
   {
     "Name": "Lëtzebuergesch",
     "Code": "lb",
-    "Url": "https://lb.wikipedia.org",
-    "Visible": true
+    "Url": "https://lb.wikipedia.org"
   },
   {
-    "Name": "лакку",
+    "Name": "Лакку",
     "Code": "lbe",
-    "Url": "https://lbe.wikipedia.org",
-    "Visible": true
+    "Url": "https://lbe.wikipedia.org"
   },
   {
-    "Name": "лезги",
+    "Name": "Ð›ÐµÐ·Ð³Ð¸ Ñ‡Ð†Ð°Ð»",
     "Code": "lez",
-    "Url": "https://lez.wikipedia.org",
-    "Visible": true
+    "Url": "https://lez.wikipedia.org"
+  },
+  {
+    "Name": "Lingua Franca Nova 2",
+    "Code": "lfn",
+    "Url": "https://lfn.wikipedia.org"
   },
   {
     "Name": "Luganda",
     "Code": "lg",
-    "Url": "https://lg.wikipedia.org",
-    "Visible": true
+    "Url": "https://lg.wikipedia.org"
   },
   {
     "Name": "Limburgs",
     "Code": "li",
-    "Url": "https://li.wikipedia.org",
-    "Visible": true
+    "Url": "https://li.wikipedia.org"
   },
   {
-    "Name": "Ligure",
+    "Name": "Líguru",
     "Code": "lij",
-    "Url": "https://lij.wikipedia.org",
-    "Visible": true
+    "Url": "https://lij.wikipedia.org"
   },
   {
-    "Name": "lumbaart",
+    "Name": "Ladin",
+    "Code": "lld",
+    "Url": "https://lld.wikipedia.org"
+  },
+  {
+    "Name": "Lumbaart",
     "Code": "lmo",
-    "Url": "https://lmo.wikipedia.org",
-    "Visible": true
+    "Url": "https://lmo.wikipedia.org"
   },
   {
-    "Name": "lingála",
+    "Name": "Lingala",
     "Code": "ln",
-    "Url": "https://ln.wikipedia.org",
-    "Visible": true
+    "Url": "https://ln.wikipedia.org"
   },
   {
     "Name": "ລາວ",
     "Code": "lo",
-    "Url": "https://lo.wikipedia.org",
-    "Visible": true
+    "Url": "https://lo.wikipedia.org"
   },
   {
     "Name": "لۊری شومالی",
     "Code": "lrc",
-    "Url": "https://lrc.wikipedia.org",
-    "Visible": true
+    "Url": "https://lrc.wikipedia.org"
   },
   {
-    "Name": "lietuvių",
+    "Name": "Lietuvių",
     "Code": "lt",
-    "Url": "https://lt.wikipedia.org",
-    "Visible": true
+    "Url": "https://lt.wikipedia.org"
   },
   {
-    "Name": "latgaļu",
+    "Name": "Latgaļu",
     "Code": "ltg",
-    "Url": "https://ltg.wikipedia.org",
-    "Visible": true
+    "Url": "https://ltg.wikipedia.org"
   },
   {
-    "Name": "latviešu",
+    "Name": "Latviešu",
     "Code": "lv",
-    "Url": "https://lv.wikipedia.org",
-    "Visible": true
+    "Url": "https://lv.wikipedia.org"
+  },
+  {
+    "Name": "Madhurâ",
+    "Code": "mad",
+    "Url": "https://mad.wikipedia.org"
   },
   {
     "Name": "मैथिली",
     "Code": "mai",
-    "Url": "https://mai.wikipedia.org",
-    "Visible": true
+    "Url": "https://mai.wikipedia.org"
   },
   {
     "Name": "Basa Banyumasan",
     "Code": "map-bms",
-    "Url": "https://map-bms.wikipedia.org",
-    "Visible": true
+    "Url": "https://map-bms.wikipedia.org"
   },
   {
-    "Name": "мокшень",
+    "Name": "Мокшень (Mokshanj Kälj)",
     "Code": "mdf",
-    "Url": "https://mdf.wikipedia.org",
-    "Visible": true
+    "Url": "https://mdf.wikipedia.org"
   },
   {
     "Name": "Malagasy",
     "Code": "mg",
-    "Url": "https://mg.wikipedia.org",
-    "Visible": true
+    "Url": "https://mg.wikipedia.org"
   },
   {
-    "Name": "олык марий",
+    "Name": "Олык Марий (Olyk Marij)",
     "Code": "mhr",
-    "Url": "https://mhr.wikipedia.org",
-    "Visible": true
+    "Url": "https://mhr.wikipedia.org"
   },
   {
     "Name": "Māori",
     "Code": "mi",
-    "Url": "https://mi.wikipedia.org",
-    "Visible": true
+    "Url": "https://mi.wikipedia.org"
   },
   {
     "Name": "Baso Minangkabau",
     "Code": "min",
-    "Url": "https://min.wikipedia.org",
-    "Visible": true
+    "Url": "https://min.wikipedia.org"
   },
   {
-    "Name": "македонски",
+    "Name": "Македонски",
     "Code": "mk",
-    "Url": "https://mk.wikipedia.org",
-    "Visible": true
+    "Url": "https://mk.wikipedia.org"
   },
   {
     "Name": "മലയാളം",
     "Code": "ml",
-    "Url": "https://ml.wikipedia.org",
-    "Visible": true
+    "Url": "https://ml.wikipedia.org"
   },
   {
-    "Name": "монгол",
+    "Name": "Монгол",
     "Code": "mn",
-    "Url": "https://mn.wikipedia.org",
-    "Visible": true
+    "Url": "https://mn.wikipedia.org"
+  },
+  {
+    "Name": "ꯃꯤꯇꯩꯂꯣꯟ",
+    "Code": "mni",
+    "Url": "https://mni.wikipedia.org"
+  },
+  {
+    "Name": "ဘာသာ မန်",
+    "Code": "mnw",
+    "Url": "https://mnw.wikipedia.org"
   },
   {
     "Name": "मराठी",
     "Code": "mr",
-    "Url": "https://mr.wikipedia.org",
-    "Visible": true
+    "Url": "https://mr.wikipedia.org"
   },
   {
-    "Name": "кырык мары",
+    "Name": "Кырык Мары (Kyryk Mary) ",
     "Code": "mrj",
-    "Url": "https://mrj.wikipedia.org",
-    "Visible": true
+    "Url": "https://mrj.wikipedia.org"
   },
   {
     "Name": "Bahasa Melayu",
     "Code": "ms",
-    "Url": "https://ms.wikipedia.org",
-    "Visible": true
+    "Url": "https://ms.wikipedia.org"
   },
   {
     "Name": "Malti",
     "Code": "mt",
-    "Url": "https://mt.wikipedia.org",
-    "Visible": true
+    "Url": "https://mt.wikipedia.org"
   },
   {
     "Name": "Mirandés",
     "Code": "mwl",
-    "Url": "https://mwl.wikipedia.org",
-    "Visible": true
+    "Url": "https://mwl.wikipedia.org"
   },
   {
     "Name": "မြန်မာဘာသာ",
     "Code": "my",
-    "Url": "https://my.wikipedia.org",
-    "Visible": true
+    "Url": "https://my.wikipedia.org"
   },
   {
-    "Name": "эрзянь",
+    "Name": "Эрзянь (Erzjanj Kelj)",
     "Code": "myv",
-    "Url": "https://myv.wikipedia.org",
-    "Visible": true
+    "Url": "https://myv.wikipedia.org"
   },
   {
-    "Name": "مازِرونی",
+    "Name": "مَزِروني",
     "Code": "mzn",
-    "Url": "https://mzn.wikipedia.org",
-    "Visible": true
+    "Url": "https://mzn.wikipedia.org"
   },
   {
-    "Name": "Dorerin Naoero",
+    "Name": "dorerin Naoero",
     "Code": "na",
-    "Url": "https://na.wikipedia.org",
-    "Visible": true
+    "Url": "https://na.wikipedia.org"
   },
   {
     "Name": "Nāhuatl",
     "Code": "nah",
-    "Url": "https://nah.wikipedia.org",
-    "Visible": true
+    "Url": "https://nah.wikipedia.org"
   },
   {
-    "Name": "Napulitano",
+    "Name": "Nnapulitano",
     "Code": "nap",
-    "Url": "https://nap.wikipedia.org",
-    "Visible": true
+    "Url": "https://nap.wikipedia.org"
   },
   {
     "Name": "Plattdüütsch",
     "Code": "nds",
-    "Url": "https://nds.wikipedia.org",
-    "Visible": true
+    "Url": "https://nds.wikipedia.org"
   },
   {
-    "Name": "Nedersaksies",
+    "Name": "Nedersaksisch",
     "Code": "nds-nl",
-    "Url": "https://nds-nl.wikipedia.org",
-    "Visible": true
+    "Url": "https://nds-nl.wikipedia.org"
   },
   {
     "Name": "नेपाली",
     "Code": "ne",
-    "Url": "https://ne.wikipedia.org",
-    "Visible": true
+    "Url": "https://ne.wikipedia.org"
   },
   {
     "Name": "नेपाल भाषा",
     "Code": "new",
-    "Url": "https://new.wikipedia.org",
-    "Visible": true
+    "Url": "https://new.wikipedia.org"
+  },
+  {
+    "Name": "Li Niha",
+    "Code": "nia",
+    "Url": "https://nia.wikipedia.org"
   },
   {
     "Name": "Nederlands",
     "Code": "nl",
-    "Url": "https://nl.wikipedia.org",
-    "Visible": true
+    "Url": "https://nl.wikipedia.org"
   },
   {
-    "Name": "norsk nynorsk",
+    "Name": "Nynorsk",
     "Code": "nn",
-    "Url": "https://nn.wikipedia.org",
-    "Visible": true
+    "Url": "https://nn.wikipedia.org"
   },
   {
-    "Name": "norsk bokmål",
+    "Name": "Norsk (Bokmål)",
     "Code": "no",
-    "Url": "https://no.wikipedia.org",
-    "Visible": true
+    "Url": "https://no.wikipedia.org"
   },
   {
     "Name": "Novial",
     "Code": "nov",
-    "Url": "https://nov.wikipedia.org",
-    "Visible": true
+    "Url": "https://nov.wikipedia.org"
   },
   {
-    "Name": "Nouormand",
+    "Name": "ߒߞߏ",
+    "Code": "nqo",
+    "Url": "https://nqo.wikipedia.org"
+  },
+  {
+    "Name": "Nouormand/Normaund",
     "Code": "nrm",
-    "Url": "https://nrm.wikipedia.org",
-    "Visible": true
+    "Url": "https://nrm.wikipedia.org"
   },
   {
     "Name": "Sesotho sa Leboa",
     "Code": "nso",
-    "Url": "https://nso.wikipedia.org",
-    "Visible": true
+    "Url": "https://nso.wikipedia.org"
   },
   {
     "Name": "Diné bizaad",
     "Code": "nv",
-    "Url": "https://nv.wikipedia.org",
-    "Visible": true
+    "Url": "https://nv.wikipedia.org"
   },
   {
     "Name": "Chi-Chewa",
     "Code": "ny",
-    "Url": "https://ny.wikipedia.org",
-    "Visible": true
+    "Url": "https://ny.wikipedia.org"
   },
   {
-    "Name": "occitan",
+    "Name": "Occitan",
     "Code": "oc",
-    "Url": "https://oc.wikipedia.org",
-    "Visible": true
+    "Url": "https://oc.wikipedia.org"
   },
   {
-    "Name": "Livvinkarjala",
+    "Name": "livvin kieli",
     "Code": "olo",
-    "Url": "https://olo.wikipedia.org",
-    "Visible": true
+    "Url": "https://olo.wikipedia.org"
   },
   {
     "Name": "Oromoo",
     "Code": "om",
-    "Url": "https://om.wikipedia.org",
-    "Visible": true
+    "Url": "https://om.wikipedia.org"
   },
   {
-    "Name": "ଓଡ଼ିଆ",
+    "Name": "ଓଡ଼ିଆ",
     "Code": "or",
-    "Url": "https://or.wikipedia.org",
-    "Visible": true
+    "Url": "https://or.wikipedia.org"
   },
   {
-    "Name": "Ирон",
+    "Name": "Иронау",
     "Code": "os",
-    "Url": "https://os.wikipedia.org",
-    "Visible": true
+    "Url": "https://os.wikipedia.org"
   },
   {
     "Name": "ਪੰਜਾਬੀ",
     "Code": "pa",
-    "Url": "https://pa.wikipedia.org",
-    "Visible": true
+    "Url": "https://pa.wikipedia.org"
   },
   {
     "Name": "Pangasinan",
     "Code": "pag",
-    "Url": "https://pag.wikipedia.org",
-    "Visible": true
+    "Url": "https://pag.wikipedia.org"
   },
   {
     "Name": "Kapampangan",
     "Code": "pam",
-    "Url": "https://pam.wikipedia.org",
-    "Visible": true
+    "Url": "https://pam.wikipedia.org"
   },
   {
     "Name": "Papiamentu",
     "Code": "pap",
-    "Url": "https://pap.wikipedia.org",
-    "Visible": true
+    "Url": "https://pap.wikipedia.org"
   },
   {
     "Name": "Picard",
     "Code": "pcd",
-    "Url": "https://pcd.wikipedia.org",
-    "Visible": true
+    "Url": "https://pcd.wikipedia.org"
   },
   {
     "Name": "Deitsch",
     "Code": "pdc",
-    "Url": "https://pdc.wikipedia.org",
-    "Visible": true
+    "Url": "https://pdc.wikipedia.org"
   },
   {
-    "Name": "Pälzisch",
+    "Name": "Pfälzisch",
     "Code": "pfl",
-    "Url": "https://pfl.wikipedia.org",
-    "Visible": true
+    "Url": "https://pfl.wikipedia.org"
   },
   {
-    "Name": "पालि",
+    "Name": "पाऴि",
     "Code": "pi",
-    "Url": "https://pi.wikipedia.org",
-    "Visible": true
+    "Url": "https://pi.wikipedia.org"
   },
   {
-    "Name": "Norfuk / Pitkern",
+    "Name": "Norfuk",
     "Code": "pih",
-    "Url": "https://pih.wikipedia.org",
-    "Visible": true
+    "Url": "https://pih.wikipedia.org"
   },
   {
-    "Name": "polski",
+    "Name": "Polski",
     "Code": "pl",
-    "Url": "https://pl.wikipedia.org",
-    "Visible": true
+    "Url": "https://pl.wikipedia.org"
   },
   {
     "Name": "Piemontèis",
     "Code": "pms",
-    "Url": "https://pms.wikipedia.org",
-    "Visible": true
+    "Url": "https://pms.wikipedia.org"
   },
   {
-    "Name": "پنجابی",
+    "Name": "شاہ مکھی پنجابی (Shāhmukhī Pañjābī)",
     "Code": "pnb",
-    "Url": "https://pnb.wikipedia.org",
-    "Visible": true
+    "Url": "https://pnb.wikipedia.org"
   },
   {
     "Name": "Ποντιακά",
     "Code": "pnt",
-    "Url": "https://pnt.wikipedia.org",
-    "Visible": true
+    "Url": "https://pnt.wikipedia.org"
   },
   {
     "Name": "پښتو",
     "Code": "ps",
-    "Url": "https://ps.wikipedia.org",
-    "Visible": true
+    "Url": "https://ps.wikipedia.org"
   },
   {
-    "Name": "português",
+    "Name": "Português",
     "Code": "pt",
-    "Url": "https://pt.wikipedia.org",
-    "Visible": true
+    "Url": "https://pt.wikipedia.org"
+  },
+  {
+    "Name": "Pinayuanan",
+    "Code": "pwn",
+    "Url": "https://pwn.wikipedia.org"
   },
   {
     "Name": "Runa Simi",
     "Code": "qu",
-    "Url": "https://qu.wikipedia.org",
-    "Visible": true
+    "Url": "https://qu.wikipedia.org"
   },
   {
-    "Name": "rumantsch",
+    "Name": "Rumantsch",
     "Code": "rm",
-    "Url": "https://rm.wikipedia.org",
-    "Visible": true
+    "Url": "https://rm.wikipedia.org"
   },
   {
-    "Name": "Romani",
+    "Name": "romani - रोमानी",
     "Code": "rmy",
-    "Url": "https://rmy.wikipedia.org",
-    "Visible": true
+    "Url": "https://rmy.wikipedia.org"
   },
   {
     "Name": "Kirundi",
     "Code": "rn",
-    "Url": "https://rn.wikipedia.org",
-    "Visible": true
+    "Url": "https://rn.wikipedia.org"
   },
   {
-    "Name": "română",
+    "Name": "Română",
     "Code": "ro",
-    "Url": "https://ro.wikipedia.org",
-    "Visible": true
+    "Url": "https://ro.wikipedia.org"
   },
   {
-    "Name": "armãneashti",
+    "Name": "Armãneashce",
     "Code": "roa-rup",
-    "Url": "https://roa-rup.wikipedia.org",
-    "Visible": true
+    "Url": "https://roa-rup.wikipedia.org"
   },
   {
-    "Name": "tarandíne",
+    "Name": "Tarandíne",
     "Code": "roa-tara",
-    "Url": "https://roa-tara.wikipedia.org",
-    "Visible": true
+    "Url": "https://roa-tara.wikipedia.org"
   },
   {
-    "Name": "русский",
+    "Name": "Русский",
     "Code": "ru",
-    "Url": "https://ru.wikipedia.org",
-    "Visible": true
+    "Url": "https://ru.wikipedia.org"
   },
   {
-    "Name": "русиньскый",
+    "Name": "русиньскый язык",
     "Code": "rue",
-    "Url": "https://rue.wikipedia.org",
-    "Visible": true
+    "Url": "https://rue.wikipedia.org"
   },
   {
-    "Name": "Kinyarwanda",
+    "Name": "Ikinyarwanda",
     "Code": "rw",
-    "Url": "https://rw.wikipedia.org",
-    "Visible": true
+    "Url": "https://rw.wikipedia.org"
   },
   {
     "Name": "संस्कृतम्",
     "Code": "sa",
-    "Url": "https://sa.wikipedia.org",
-    "Visible": true
+    "Url": "https://sa.wikipedia.org"
   },
   {
-    "Name": "саха тыла",
+    "Name": "Саха тыла (Saxa Tyla)",
     "Code": "sah",
-    "Url": "https://sah.wikipedia.org",
-    "Visible": true
+    "Url": "https://sah.wikipedia.org"
   },
   {
-    "Name": "sardu",
+    "Name": "ᱥᱟᱱᱛᱟᱲᱤ",
+    "Code": "sat",
+    "Url": "https://sat.wikipedia.org"
+  },
+  {
+    "Name": "Sardu",
     "Code": "sc",
-    "Url": "https://sc.wikipedia.org",
-    "Visible": true
+    "Url": "https://sc.wikipedia.org"
   },
   {
-    "Name": "sicilianu",
+    "Name": "Sicilianu",
     "Code": "scn",
-    "Url": "https://scn.wikipedia.org",
-    "Visible": true
+    "Url": "https://scn.wikipedia.org"
   },
   {
     "Name": "Scots",
     "Code": "sco",
-    "Url": "https://sco.wikipedia.org",
-    "Visible": true
+    "Url": "https://sco.wikipedia.org"
   },
   {
-    "Name": "سنڌي",
+    "Name": "سنڌي، سندھی ، सिन्ध",
     "Code": "sd",
-    "Url": "https://sd.wikipedia.org",
-    "Visible": true
+    "Url": "https://sd.wikipedia.org"
   },
   {
-    "Name": "sámegiella",
+    "Name": "Sámegiella",
     "Code": "se",
-    "Url": "https://se.wikipedia.org",
-    "Visible": true
+    "Url": "https://se.wikipedia.org"
   },
   {
     "Name": "Sängö",
     "Code": "sg",
-    "Url": "https://sg.wikipedia.org",
-    "Visible": true
+    "Url": "https://sg.wikipedia.org"
   },
   {
-    "Name": "srpskohrvatski / српскохрватски",
+    "Name": "Srpskohrvatski / Српскохрватски",
     "Code": "sh",
-    "Url": "https://sh.wikipedia.org",
-    "Visible": true
+    "Url": "https://sh.wikipedia.org"
+  },
+  {
+    "Name": "Taclhit",
+    "Code": "shi",
+    "Url": "https://shi.wikipedia.org"
+  },
+  {
+    "Name": "ၵႂၢမ်းတႆးလူင်",
+    "Code": "shn",
+    "Url": "https://shn.wikipedia.org"
   },
   {
     "Name": "සිංහල",
     "Code": "si",
-    "Url": "https://si.wikipedia.org",
-    "Visible": true
+    "Url": "https://si.wikipedia.org"
   },
   {
     "Name": "Simple English",
     "Code": "simple",
-    "Url": "https://simple.wikipedia.org",
-    "Visible": true
+    "Url": "https://simple.wikipedia.org"
   },
   {
-    "Name": "slovenčina",
+    "Name": "Slovenčina",
     "Code": "sk",
-    "Url": "https://sk.wikipedia.org",
-    "Visible": true
+    "Url": "https://sk.wikipedia.org"
   },
   {
-    "Name": "slovenščina",
+    "Name": "سرائیکی",
+    "Code": "skr",
+    "Url": "https://skr.wikipedia.org"
+  },
+  {
+    "Name": "Slovenščina",
     "Code": "sl",
-    "Url": "https://sl.wikipedia.org",
-    "Visible": true
+    "Url": "https://sl.wikipedia.org"
   },
   {
     "Name": "Gagana Samoa",
     "Code": "sm",
-    "Url": "https://sm.wikipedia.org",
-    "Visible": true
+    "Url": "https://sm.wikipedia.org"
+  },
+  {
+    "Name": "Anarâškielâ",
+    "Code": "smn",
+    "Url": "https://smn.wikipedia.org"
   },
   {
     "Name": "chiShona",
     "Code": "sn",
-    "Url": "https://sn.wikipedia.org",
-    "Visible": true
+    "Url": "https://sn.wikipedia.org"
   },
   {
     "Name": "Soomaaliga",
     "Code": "so",
-    "Url": "https://so.wikipedia.org",
-    "Visible": true
+    "Url": "https://so.wikipedia.org"
   },
   {
-    "Name": "shqip",
+    "Name": "Shqip",
     "Code": "sq",
-    "Url": "https://sq.wikipedia.org",
-    "Visible": true
+    "Url": "https://sq.wikipedia.org"
   },
   {
-    "Name": "српски / srpski",
+    "Name": "Српски / Srpski",
     "Code": "sr",
-    "Url": "https://sr.wikipedia.org",
-    "Visible": true
+    "Url": "https://sr.wikipedia.org"
   },
   {
     "Name": "Sranantongo",
     "Code": "srn",
-    "Url": "https://srn.wikipedia.org",
-    "Visible": true
+    "Url": "https://srn.wikipedia.org"
   },
   {
     "Name": "SiSwati",
     "Code": "ss",
-    "Url": "https://ss.wikipedia.org",
-    "Visible": true
+    "Url": "https://ss.wikipedia.org"
   },
   {
     "Name": "Sesotho",
     "Code": "st",
-    "Url": "https://st.wikipedia.org",
-    "Visible": true
+    "Url": "https://st.wikipedia.org"
   },
   {
     "Name": "Seeltersk",
     "Code": "stq",
-    "Url": "https://stq.wikipedia.org",
-    "Visible": true
+    "Url": "https://stq.wikipedia.org"
   },
   {
     "Name": "Basa Sunda",
     "Code": "su",
-    "Url": "https://su.wikipedia.org",
-    "Visible": true
+    "Url": "https://su.wikipedia.org"
   },
   {
-    "Name": "svenska",
+    "Name": "Svenska",
     "Code": "sv",
-    "Url": "https://sv.wikipedia.org",
-    "Visible": true
+    "Url": "https://sv.wikipedia.org"
   },
   {
     "Name": "Kiswahili",
     "Code": "sw",
-    "Url": "https://sw.wikipedia.org",
-    "Visible": true
+    "Url": "https://sw.wikipedia.org"
   },
   {
-    "Name": "ślůnski",
+    "Name": "Ślůnski",
     "Code": "szl",
-    "Url": "https://szl.wikipedia.org",
-    "Visible": true
+    "Url": "https://szl.wikipedia.org"
+  },
+  {
+    "Name": "Sakizaya",
+    "Code": "szy",
+    "Url": "https://szy.wikipedia.org"
   },
   {
     "Name": "தமிழ்",
     "Code": "ta",
-    "Url": "https://ta.wikipedia.org",
-    "Visible": true
+    "Url": "https://ta.wikipedia.org"
   },
   {
-    "Name": "ತುಳು",
+    "Name": "Tayal",
+    "Code": "tay",
+    "Url": "https://tay.wikipedia.org"
+  },
+  {
+    "Name": "ತುಳು ಭಾಷೆ",
     "Code": "tcy",
-    "Url": "https://tcy.wikipedia.org",
-    "Visible": true
+    "Url": "https://tcy.wikipedia.org"
   },
   {
     "Name": "తెలుగు",
     "Code": "te",
-    "Url": "https://te.wikipedia.org",
-    "Visible": true
+    "Url": "https://te.wikipedia.org"
   },
   {
-    "Name": "tetun",
+    "Name": "Tetun",
     "Code": "tet",
-    "Url": "https://tet.wikipedia.org",
-    "Visible": true
+    "Url": "https://tet.wikipedia.org"
   },
   {
-    "Name": "тоҷикӣ",
+    "Name": "Тоҷикӣ",
     "Code": "tg",
-    "Url": "https://tg.wikipedia.org",
-    "Visible": true
+    "Url": "https://tg.wikipedia.org"
   },
   {
     "Name": "ไทย",
     "Code": "th",
-    "Url": "https://th.wikipedia.org",
-    "Visible": true
+    "Url": "https://th.wikipedia.org"
   },
   {
     "Name": "ትግርኛ",
     "Code": "ti",
-    "Url": "https://ti.wikipedia.org",
-    "Visible": true
+    "Url": "https://ti.wikipedia.org"
   },
   {
-    "Name": "Türkmençe",
+    "Name": "تركمن / Туркмен",
     "Code": "tk",
-    "Url": "https://tk.wikipedia.org",
-    "Visible": true
+    "Url": "https://tk.wikipedia.org"
   },
   {
     "Name": "Tagalog",
     "Code": "tl",
-    "Url": "https://tl.wikipedia.org",
-    "Visible": true
+    "Url": "https://tl.wikipedia.org"
   },
   {
     "Name": "Setswana",
     "Code": "tn",
-    "Url": "https://tn.wikipedia.org",
-    "Visible": true
+    "Url": "https://tn.wikipedia.org"
   },
   {
-    "Name": "lea faka-Tonga",
+    "Name": "faka Tonga",
     "Code": "to",
-    "Url": "https://to.wikipedia.org",
-    "Visible": true
+    "Url": "https://to.wikipedia.org"
   },
   {
     "Name": "Tok Pisin",
     "Code": "tpi",
-    "Url": "https://tpi.wikipedia.org",
-    "Visible": true
+    "Url": "https://tpi.wikipedia.org"
   },
   {
     "Name": "Türkçe",
     "Code": "tr",
-    "Url": "https://tr.wikipedia.org",
-    "Visible": true
+    "Url": "https://tr.wikipedia.org"
+  },
+  {
+    "Name": "Kari Seediq",
+    "Code": "trv",
+    "Url": "https://trv.wikipedia.org"
   },
   {
     "Name": "Xitsonga",
     "Code": "ts",
-    "Url": "https://ts.wikipedia.org",
-    "Visible": true
+    "Url": "https://ts.wikipedia.org"
   },
   {
-    "Name": "татарча/tatarça",
+    "Name": "Tatarça / Татарча",
     "Code": "tt",
-    "Url": "https://tt.wikipedia.org",
-    "Visible": true
+    "Url": "https://tt.wikipedia.org"
   },
   {
     "Name": "chiTumbuka",
     "Code": "tum",
-    "Url": "https://tum.wikipedia.org",
-    "Visible": true
+    "Url": "https://tum.wikipedia.org"
   },
   {
     "Name": "Twi",
     "Code": "tw",
-    "Url": "https://tw.wikipedia.org",
-    "Visible": true
+    "Url": "https://tw.wikipedia.org"
   },
   {
-    "Name": "reo tahiti",
+    "Name": "Reo Mā`ohi",
     "Code": "ty",
-    "Url": "https://ty.wikipedia.org",
-    "Visible": true
+    "Url": "https://ty.wikipedia.org"
   },
   {
     "Name": "тыва дыл",
     "Code": "tyv",
-    "Url": "https://tyv.wikipedia.org",
-    "Visible": true
+    "Url": "https://tyv.wikipedia.org"
   },
   {
-    "Name": "удмурт",
+    "Name": "Удмурт кыл",
     "Code": "udm",
-    "Url": "https://udm.wikipedia.org",
-    "Visible": true
+    "Url": "https://udm.wikipedia.org"
   },
   {
-    "Name": "ئۇيغۇرچە / Uyghurche",
+    "Name": "ئۇيغۇر تىلى",
     "Code": "ug",
-    "Url": "https://ug.wikipedia.org",
-    "Visible": true
+    "Url": "https://ug.wikipedia.org"
   },
   {
-    "Name": "українська",
+    "Name": "Українська",
     "Code": "uk",
-    "Url": "https://uk.wikipedia.org",
-    "Visible": true
+    "Url": "https://uk.wikipedia.org"
   },
   {
     "Name": "اردو",
     "Code": "ur",
-    "Url": "https://ur.wikipedia.org",
-    "Visible": true
+    "Url": "https://ur.wikipedia.org"
   },
   {
-    "Name": "oʻzbekcha/ўзбекча",
+    "Name": "O‘zbek",
     "Code": "uz",
-    "Url": "https://uz.wikipedia.org",
-    "Visible": true
+    "Url": "https://uz.wikipedia.org"
   },
   {
     "Name": "Tshivenda",
     "Code": "ve",
-    "Url": "https://ve.wikipedia.org",
-    "Visible": true
+    "Url": "https://ve.wikipedia.org"
   },
   {
-    "Name": "vèneto",
+    "Name": "Vèneto",
     "Code": "vec",
-    "Url": "https://vec.wikipedia.org",
-    "Visible": true
+    "Url": "https://vec.wikipedia.org"
   },
   {
-    "Name": "vepsän kel’",
+    "Name": "VepsÃ¤n",
     "Code": "vep",
-    "Url": "https://vep.wikipedia.org",
-    "Visible": true
+    "Url": "https://vep.wikipedia.org"
   },
   {
     "Name": "Tiếng Việt",
     "Code": "vi",
-    "Url": "https://vi.wikipedia.org",
-    "Visible": true
+    "Url": "https://vi.wikipedia.org"
   },
   {
     "Name": "West-Vlams",
     "Code": "vls",
-    "Url": "https://vls.wikipedia.org",
-    "Visible": true
+    "Url": "https://vls.wikipedia.org"
   },
   {
     "Name": "Volapük",
     "Code": "vo",
-    "Url": "https://vo.wikipedia.org",
-    "Visible": true
+    "Url": "https://vo.wikipedia.org"
   },
   {
-    "Name": "walon",
+    "Name": "Walon",
     "Code": "wa",
-    "Url": "https://wa.wikipedia.org",
-    "Visible": true
+    "Url": "https://wa.wikipedia.org"
   },
   {
     "Name": "Winaray",
     "Code": "war",
-    "Url": "https://war.wikipedia.org",
-    "Visible": true
+    "Url": "https://war.wikipedia.org"
   },
   {
     "Name": "Wolof",
     "Code": "wo",
-    "Url": "https://wo.wikipedia.org",
-    "Visible": true
+    "Url": "https://wo.wikipedia.org"
   },
   {
     "Name": "吴语",
     "Code": "wuu",
-    "Url": "https://wuu.wikipedia.org",
-    "Visible": true
+    "Url": "https://wuu.wikipedia.org"
   },
   {
-    "Name": "хальмг",
+    "Name": "Хальмг",
     "Code": "xal",
-    "Url": "https://xal.wikipedia.org",
-    "Visible": true
+    "Url": "https://xal.wikipedia.org"
   },
   {
     "Name": "isiXhosa",
     "Code": "xh",
-    "Url": "https://xh.wikipedia.org",
-    "Visible": true
+    "Url": "https://xh.wikipedia.org"
   },
   {
-    "Name": "მარგალური",
+    "Name": "მარგალური (Margaluri)",
     "Code": "xmf",
-    "Url": "https://xmf.wikipedia.org",
-    "Visible": true
+    "Url": "https://xmf.wikipedia.org"
   },
   {
     "Name": "ייִדיש",
     "Code": "yi",
-    "Url": "https://yi.wikipedia.org",
-    "Visible": true
+    "Url": "https://yi.wikipedia.org"
   },
   {
     "Name": "Yorùbá",
     "Code": "yo",
-    "Url": "https://yo.wikipedia.org",
-    "Visible": true
+    "Url": "https://yo.wikipedia.org"
   },
   {
-    "Name": "Vahcuengh",
+    "Name": "Cuengh",
     "Code": "za",
-    "Url": "https://za.wikipedia.org",
-    "Visible": true
+    "Url": "https://za.wikipedia.org"
   },
   {
     "Name": "Zeêuws",
     "Code": "zea",
-    "Url": "https://zea.wikipedia.org",
-    "Visible": true
+    "Url": "https://zea.wikipedia.org"
   },
   {
     "Name": "中文",
     "Code": "zh",
-    "Url": "https://zh.wikipedia.org",
-    "Visible": true
+    "Url": "https://zh.wikipedia.org"
   },
   {
-    "Name": "文言",
+    "Name": "古文 / 文言文",
     "Code": "zh-classical",
-    "Url": "https://zh-classical.wikipedia.org",
-    "Visible": true
+    "Url": "https://zh-classical.wikipedia.org"
   },
   {
     "Name": "Bân-lâm-gú",
     "Code": "zh-min-nan",
-    "Url": "https://zh-min-nan.wikipedia.org",
-    "Visible": true
+    "Url": "https://zh-min-nan.wikipedia.org"
   },
   {
     "Name": "粵語",
     "Code": "zh-yue",
-    "Url": "https://zh-yue.wikipedia.org",
-    "Visible": true
+    "Url": "https://zh-yue.wikipedia.org"
   },
   {
     "Name": "isiZulu",
     "Code": "zu",
-    "Url": "https://zu.wikipedia.org",
-    "Visible": true
+    "Url": "https://zu.wikipedia.org"
   }
 ]

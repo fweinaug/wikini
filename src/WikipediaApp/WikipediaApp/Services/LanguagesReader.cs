@@ -22,10 +22,6 @@ namespace WikipediaApp
       {
         var obj = value.GetObject();
 
-        var visible = obj.GetNamedBoolean("Visible");
-        if (!visible)
-          continue;
-
         var name = obj.GetNamedString("Name");
         var code = obj.GetNamedString("Code");
         var url = obj.GetNamedString("Url");
