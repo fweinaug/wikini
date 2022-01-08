@@ -46,8 +46,15 @@
 
         <DataTemplate x:Key="ArticleLanguageTemplate" x:DataType="local:ArticleLanguageViewModel">
             <Grid Style="{StaticResource SplitViewPaneListViewItemStyle}"
-                  ToolTipService.ToolTip="{x:Bind Name}"
                   local:ListViewExtensions.ItemMenuFlyout="{StaticResource LanguageMenuFlyout}">
+
+                <ToolTipService.ToolTip>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{x:Bind Name}" />
+                        <TextBlock Text="{x:Bind LocalizedName}"
+                                   Style="{StaticResource SplitViewPaneLightTextBlockStyle}" />
+                    </StackPanel>
+                </ToolTipService.ToolTip>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
