@@ -9,6 +9,7 @@ namespace WikipediaApp
     private readonly IWikipediaService wikipediaService;
     private readonly INavigationService navigationService;
     private readonly IDialogService dialogService;
+    private readonly IUserSettings userSettings;
 
     private bool isBusy = false;
 
@@ -76,11 +77,12 @@ namespace WikipediaApp
 
     public PictureOfTheDayViewModel PictureOfTheDay { get; }
 
-    public MainPageViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDialogService dialogService, SearchViewModel searchViewModel, PictureOfTheDayViewModel pictureOfTheDayViewModel, LanguagesViewModel languagesViewModel)
+    public MainPageViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDialogService dialogService, IUserSettings userSettings, SearchViewModel searchViewModel, PictureOfTheDayViewModel pictureOfTheDayViewModel, LanguagesViewModel languagesViewModel)
     {
       this.wikipediaService = wikipediaService;
       this.navigationService = navigationService;
       this.dialogService = dialogService;
+      this.userSettings = userSettings;
 
       Languages = languagesViewModel;
       Search = searchViewModel;
@@ -130,7 +132,7 @@ namespace WikipediaApp
       if (Language == language)
         return;
 
-      Settings.Current.SearchLanguage = language.Code;
+      userSettings.Set(UserSettingsKey.SearchLanguage, language.Code);
 
       Language = language;
     }
@@ -143,10 +145,12 @@ namespace WikipediaApp
         var favorites = await ArticleLanguages.GetFavorites();
 
         Languages.UpdateLanguages(languages, favorites);
-        Language = Languages.GetLanguage(Settings.Current.SearchLanguage) ?? Languages.GetLanguage(Settings.DefaultSearchLanguage);
+
+        Language = Languages.GetLanguage(userSettings.Get<string>(UserSettingsKey.SearchLanguage))
+          ?? Languages.GetLanguage(UserSettingsKey.Default<string>(UserSettingsKey.SearchLanguage));
       }
 
-      if (Settings.Current.StartPictureOfTheDay)
+      if (userSettings.Get<bool>(UserSettingsKey.StartPictureOfTheDay))
         PictureOfTheDay.Today();
     }
   }

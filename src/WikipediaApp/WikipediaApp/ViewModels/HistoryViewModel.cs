@@ -45,6 +45,7 @@ namespace WikipediaApp
   public class HistoryViewModel : ViewModelBase
   {
     private readonly INavigationService navigationService;
+    private readonly IUserSettings userSettings;
 
     private readonly HistoryArticleCollection groupedArticles = new();
     private readonly ObservableCollection<ReadArticle> session = new();
@@ -67,9 +68,10 @@ namespace WikipediaApp
       get { return !(session.Count > 0 || database.Count > 0); }
     }
 
-    public HistoryViewModel(INavigationService navigationService)
+    public HistoryViewModel(INavigationService navigationService, IUserSettings userSettings)
     {
       this.navigationService = navigationService;
+      this.userSettings = userSettings;
 
       WeakReferenceMessenger.Default.Register<HistoryViewModel, AddArticleToHistory>(this, (_, message) =>
       {
@@ -144,7 +146,7 @@ namespace WikipediaApp
 
       void UpdateSource()
       {
-        var articles = Settings.Current.HistorySession ? session : database;
+        var articles = userSettings.Get<bool>(UserSettingsKey.HistorySession) ? session : database;
 
         groupedArticles.Clear();
         groupedArticles.AddArticles(articles);
@@ -152,9 +154,9 @@ namespace WikipediaApp
 
       UpdateSource();
 
-      Settings.Current.PropertyChanged += (sender, e) =>
+      userSettings.SettingSet += (sender, settingKey) =>
       {
-        if (e.PropertyName == nameof(Settings.HistorySession))
+        if (settingKey == UserSettingsKey.HistorySession)
           UpdateSource();
       };
     }

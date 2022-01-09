@@ -11,6 +11,7 @@ namespace WikipediaApp
     private readonly IWikipediaService wikipediaService;
     private readonly IDialogService dialogService;
     private readonly INavigationService navigationService;
+    private readonly IUserSettings userSettings;
     private readonly IArticleViewModelFactory articleViewModelFactory;
 
     private readonly ArticleHead initialArticle;
@@ -93,7 +94,7 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IArticleViewModelFactory articleViewModelFactory)
+    public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IUserSettings userSettings, IArticleViewModelFactory articleViewModelFactory)
     {
       this.initialArticle = initialArticle;
       this.article = articleViewModelFactory.GetArticle(initialArticle);
@@ -101,6 +102,7 @@ namespace WikipediaApp
       this.wikipediaService = wikipediaService;
       this.dialogService = dialogService;
       this.navigationService = navigationService;
+      this.userSettings = userSettings;
       this.articleViewModelFactory = articleViewModelFactory;
     }
 
@@ -229,17 +231,17 @@ namespace WikipediaApp
 
     private async Task<Article> GetArticle(Uri uri)
     {
-      return await wikipediaService.GetArticle(uri, Settings.Current.ImagesDisabled);
+      return await wikipediaService.GetArticle(uri, userSettings.Get<bool>(UserSettingsKey.ImagesDisabled));
     }
 
     private async Task<Article> GetArticle(ArticleHead articleHead)
     {
-      return await wikipediaService.GetArticle(articleHead, Settings.Current.ImagesDisabled);
+      return await wikipediaService.GetArticle(articleHead, userSettings.Get<bool>(UserSettingsKey.ImagesDisabled));
     }
 
     private async Task<Article> RefreshArticle(ArticleViewModel article)
     {
-      return await wikipediaService.RefreshArticle(article.Article, Settings.Current.ImagesDisabled);
+      return await wikipediaService.RefreshArticle(article.Article, userSettings.Get<bool>(UserSettingsKey.ImagesDisabled));
     }
   }
 }

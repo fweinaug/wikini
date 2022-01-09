@@ -12,6 +12,7 @@ namespace WikipediaApp
     private readonly IWikipediaService wikipediaService;
     private readonly INavigationService navigationService;
     private readonly IDeviceService deviceService;
+    private readonly IUserSettings userSettings;
 
     private LanguageViewModel language = null;
     private string searchTerm = null;
@@ -47,7 +48,7 @@ namespace WikipediaApp
           searchTermChanged = true;
           searchCommand?.NotifyCanExecuteChanged();
 
-          if (Settings.Current.SearchRestricted || deviceService.IsInternetConnectionUnrestricted())
+          if (userSettings.Get<bool>(UserSettingsKey.SearchRestricted) || deviceService.IsInternetConnectionUnrestricted())
             LiveSearch();
         }
       }
@@ -79,11 +80,12 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    public SearchViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDeviceService deviceService)
+    public SearchViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDeviceService deviceService, IUserSettings userSettings)
     {
       this.wikipediaService = wikipediaService;
       this.navigationService = navigationService;
       this.deviceService = deviceService;
+      this.userSettings = userSettings;
     }
 
     public void ShowArticle(ArticleHead article)

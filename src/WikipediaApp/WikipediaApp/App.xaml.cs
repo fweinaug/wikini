@@ -64,7 +64,7 @@ namespace WikipediaApp
         article = TimelineManager.ParseArticle(args.Uri);
       }
 
-      InitApp(article);
+      InitApp(article, false);
     }
 
     protected override void OnLaunched(LaunchActivatedEventArgs e)
@@ -75,15 +75,11 @@ namespace WikipediaApp
       {
         article = TileManager.ParseArguments(e.Arguments);
       }
-      else if (!settings.StartHome)
-      {
-        article = Settings.ReadLastArticle();
-      }
 
-      InitApp(article, e.PrelaunchActivated);
+      InitApp(article, true, e.PrelaunchActivated);
     }
 
-    private void InitApp(ArticleHead article, bool prelaunchActivated = false)
+    private void InitApp(ArticleHead article, bool launched, bool prelaunchActivated = false)
     {
       var applicationView = ApplicationView.GetForCurrentView();
 
@@ -108,7 +104,15 @@ namespace WikipediaApp
       }
 
       if (article != null)
+      {
         shell.ShowArticle(article);
+      }
+      else if (launched && !settings.StartHome)
+      {
+        article = Settings.ReadLastArticle();
+        if (article != null)
+          shell.ShowArticle(article);
+      }
 
       if (!prelaunchActivated)
       {
@@ -136,6 +140,7 @@ namespace WikipediaApp
         .AddTransient<INavigationService, NavigationService>()
         .AddTransient<IGeolocationService, GeolocationService>()
         .AddTransient<IShareManager, ShareManager>()
+        .AddSingleton<IUserSettings, RoamingUserSettings>()
         .AddSingleton<IArticleViewModelFactory, ArticleViewModelFactory>()
         .AddSingleton<AppShellViewModel>()
         .AddSingleton<FavoritesViewModel>()

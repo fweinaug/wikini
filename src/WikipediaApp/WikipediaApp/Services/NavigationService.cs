@@ -22,7 +22,7 @@ namespace WikipediaApp
       if (ShowArticleInCurrentArticlePage(article))
         return;
 
-      var viewModel = new ArticlePageViewModel(article, App.Services.GetService<IWikipediaService>(), App.Services.GetService<IDialogService>(), App.Services.GetService<INavigationService>(), App.Services.GetService<IArticleViewModelFactory>());
+      var viewModel = new ArticlePageViewModel(article, App.Services.GetService<IWikipediaService>(), App.Services.GetService<IDialogService>(), App.Services.GetService<INavigationService>(), App.Services.GetService<IUserSettings>(), App.Services.GetService<IArticleViewModelFactory>());
 
       Frame.Navigate(typeof(ArticlePage), viewModel);
     }

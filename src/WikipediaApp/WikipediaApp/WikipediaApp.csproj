@@ -180,7 +180,9 @@
     <Compile Include="Services\IGeolocationService.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\IShareManager.cs" />
+    <Compile Include="Services\IUserSettings.cs" />
     <Compile Include="Services\IWikipediaService.cs" />
+    <Compile Include="Services\RoamingUserSettings.cs" />
     <Compile Include="ViewModels\AppShellViewModel.cs" />
     <Compile Include="ViewModels\ArticleImageGalleryViewModel.cs" />
     <Compile Include="ViewModels\ArticleLanguagesViewModel.cs" />

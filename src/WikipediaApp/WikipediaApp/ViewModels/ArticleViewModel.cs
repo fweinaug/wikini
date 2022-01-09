@@ -10,6 +10,7 @@ namespace WikipediaApp
   {
     private readonly IWikipediaService wikipediaService;
     private readonly INavigationService navigationService;
+    private readonly IUserSettings userSettings;
     private readonly IShareManager shareManager;
 
     private readonly ArticleHead initialArticle;
@@ -100,29 +101,30 @@ namespace WikipediaApp
       get { return shareCommand ?? (shareCommand = new RelayCommand(Share)); }
     }
 
-    public ArticleViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
-      : this(wikipediaService, navigationService, shareManager)
+    public ArticleViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, INavigationService navigationService, IUserSettings userSettings, IShareManager shareManager)
+      : this(wikipediaService, navigationService, userSettings, shareManager)
     {
       this.initialArticle = initialArticle;
     }
 
-    public ArticleViewModel(Article article, IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager, ArticleLanguagesViewModel articleLanguagesViewModel)
-      : this(wikipediaService, navigationService, shareManager)
+    public ArticleViewModel(Article article, IWikipediaService wikipediaService, INavigationService navigationService, IUserSettings userSettings, IShareManager shareManager, ArticleLanguagesViewModel articleLanguagesViewModel)
+      : this(wikipediaService, navigationService, userSettings, shareManager)
     {
       this.article = article;
 
       Languages = articleLanguagesViewModel;
       HasLanguages = article.Languages.Count > 0;
 
-      Sections = (Settings.Current.SectionsCollapsed ? article.GetRootSections() : article.Sections).ConvertAll(section => new ArticleSectionViewModel(section));
+      Sections = (userSettings.Get<bool>(UserSettingsKey.SectionsCollapsed) ? article.GetRootSections() : article.Sections).ConvertAll(section => new ArticleSectionViewModel(section));
       HasImages = article.Images?.Count > 0;
       IsFavorite = WeakReferenceMessenger.Default.Send(new IsArticleInFavorites(article));
     }
 
-    private ArticleViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IShareManager shareManager)
+    private ArticleViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IUserSettings userSettings, IShareManager shareManager)
     {
       this.wikipediaService = wikipediaService;
       this.navigationService = navigationService;
+      this.userSettings = userSettings;
       this.shareManager = shareManager;
 
       WeakReferenceMessenger.Default.Register<ArticleViewModel, ArticleIsFavoriteChanged>(this, (_, message) =>
@@ -146,7 +148,7 @@ namespace WikipediaApp
     {
       WeakReferenceMessenger.Default.Send(new AddArticleToHistory(article));
 
-      if (Settings.Current.HistoryTimeline)
+      if (userSettings.Get<bool>(UserSettingsKey.HistoryTimeline))
       {
         await wikipediaService.AddArticleToTimeline(article);
       }
