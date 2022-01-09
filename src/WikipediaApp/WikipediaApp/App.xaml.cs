@@ -14,9 +14,8 @@ namespace WikipediaApp
 {
   sealed partial class App : Application
   {
-    private readonly Settings settings = new Settings();
-
     private IServiceProvider serviceProvider;
+    private Settings settings;
 
     public new static App Current
     {
@@ -90,6 +89,7 @@ namespace WikipediaApp
       if (shell == null)
       {
         serviceProvider = ConfigureServices();
+        settings = new Settings(serviceProvider.GetService<IUserSettings>());
 
         Resources.Add("Settings", settings);
 
@@ -151,6 +151,7 @@ namespace WikipediaApp
         .AddTransient<ArticleFlyoutViewModel>()
         .AddTransient<LanguagesViewModel>()
         .AddTransient<SearchViewModel>()
+        .AddTransient<SettingsViewModel>()
         .AddTransient<PictureOfTheDayViewModel>()
         .BuildServiceProvider(true);
 

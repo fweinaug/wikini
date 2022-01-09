@@ -40,6 +40,10 @@ namespace WikipediaApp
   {
   }
 
+  public sealed class HistoryChanged
+  {
+  }
+
   #endregion
 
   public class HistoryViewModel : ViewModelBase
@@ -109,6 +113,8 @@ namespace WikipediaApp
 
       database.Insert(0, read);
       session.Insert(0, read);
+
+      WeakReferenceMessenger.Default.Send<HistoryChanged>();
     }
 
     private void RemoveArticle(ReadArticle article)
@@ -123,6 +129,8 @@ namespace WikipediaApp
       session.Remove(article);
 
       groupedArticles.RemoveArticle(article);
+
+      WeakReferenceMessenger.Default.Send<HistoryChanged>();
     }
 
     private async Task<bool> ClearHistory()
@@ -131,6 +139,8 @@ namespace WikipediaApp
 
       database.Clear();
       session.Clear();
+
+      WeakReferenceMessenger.Default.Send<HistoryChanged>();
 
       return true;
     }

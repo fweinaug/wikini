@@ -6,7 +6,7 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using LanguageInfo = Windows.Globalization.Language;
-using Microsoft.Toolkit.Mvvm.Messaging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WikipediaApp
 {
@@ -19,23 +19,14 @@ namespace WikipediaApp
     {
       InitializeComponent();
 
+      DataContext = App.Services.GetService<SettingsViewModel>();
+
       var package = Package.Current;
       var version = package.Id.Version;
 
       AppNameTextBlock.Text = package.DisplayName;
       AppVersionTextBlock.Text = string.Format(version.Build > 0 ? LongVersionFormat : ShortVersionFormat, version.Major, version.Minor, version.Build);
       DevNameTextBlock.Text = package.PublisherDisplayName;
-
-      ClearHistoryButton.IsEnabled = !WeakReferenceMessenger.Default.Send(new IsHistoryEmpty());
-
-      var theme = Settings.Current.AppTheme.ToString();
-
-      foreach (var uiElement in ThemePanel.Children)
-      {
-        var radioButton = uiElement as RadioButton;
-        if (radioButton != null)
-          radioButton.IsChecked = Equals(radioButton.Tag, theme);
-      }
 
       LanguagesComboBox.ItemsSource = ApplicationLanguages.ManifestLanguages.Select(x => new LanguageInfo(x));
       LanguagesComboBox.SelectedValue = ApplicationLanguages.PrimaryLanguageOverride;
@@ -51,18 +42,6 @@ namespace WikipediaApp
     {
       if (LanguagesComboBox.SelectedValue is string language)
         ApplicationLanguages.PrimaryLanguageOverride = language;
-    }
-
-    private void RadioButtonThemeChecked(object sender, RoutedEventArgs e)
-    {
-      var radioButton = (RadioButton)sender;
-
-      Settings.Current.AppTheme = Convert.ToInt32(radioButton.Tag);
-    }
-
-    private async void ClearHistoryClick(object sender, RoutedEventArgs e)
-    {
-      ClearHistoryButton.IsEnabled = !await WeakReferenceMessenger.Default.Send(new ClearHistory());
     }
 
     private async void ReviewClick(object sender, RoutedEventArgs e)

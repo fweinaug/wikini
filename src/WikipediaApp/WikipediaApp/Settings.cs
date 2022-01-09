@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Windows.Storage;
 
 namespace WikipediaApp
@@ -11,141 +11,64 @@ namespace WikipediaApp
     Serif
   }
 
-  public class Settings : INotifyPropertyChanged
+  public class Settings : ObservableObject
   {
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    public const int DefaultAppTheme = 0;
-    public const string DefaultSearchLanguage = "en";
-    public const bool DefaultSearchRestricted = false;
-    public const bool DefaultSectionsCollapsed = false;
-    public const bool DefaultImagesDisabled = false;
-    public const bool DefaultHistorySession = false;
-    public const bool DefaultHistoryTimeline = true;
-    public const Typeface DefaultTypeface = Typeface.SansSerif;
-    public const int DefaultFontSize = 16;
+    private readonly IUserSettings userSettings;
 
     public static Settings Current { get; private set; }
 
-    private readonly ApplicationDataContainer container;
-
     public int AppTheme
     {
-      get { return GetValue(DefaultAppTheme); }
-      set { SetValue(value); }
-    }
-
-    public string SearchLanguage
-    {
-      get { return GetValue(DefaultSearchLanguage); }
-      set { SetValue(value); }
-    }
-
-    public bool SearchRestricted
-    {
-      get { return GetValue(DefaultSearchRestricted); }
-      set { SetValue(value); }
+      get => userSettings.Get<int>(UserSettingsKey.AppTheme);
+      set => userSettings.Set(UserSettingsKey.AppTheme, value);
     }
 
     public bool SectionsCollapsed
     {
-      get { return GetValue(DefaultSectionsCollapsed); }
-      set { SetValue(value); }
-    }
-
-    public bool ImagesDisabled
-    {
-      get { return GetValue(DefaultImagesDisabled); }
-      set { SetValue(value); }
+      get => userSettings.Get<bool>(UserSettingsKey.SectionsCollapsed);
     }
 
     public bool SplitViewInline
     {
-      get { return GetValue(false); }
-      set { SetValue(value); }
-    }
-
-    public bool HistorySession
-    {
-      get { return GetValue(DefaultHistorySession); }
-      set { SetValue(value); }
-    }
-
-    public bool HistoryTimeline
-    {
-      get { return GetValue(DefaultHistoryTimeline); }
-      set { SetValue(value); }
+      get => userSettings.Get<bool>(UserSettingsKey.SplitViewInline);
     }
 
     public Typeface Typeface
     {
-      get { return GetValue(DefaultTypeface); }
-      set { SetValue(value); }
+      get => userSettings.Get<Typeface>(UserSettingsKey.ArticleTypeface);
     }
 
     public int FontSize
     {
-      get { return GetValue(DefaultFontSize); }
-      set { SetValue(value); }
+      get => userSettings.Get<int>(UserSettingsKey.ArticleFontSize);
     }
 
     public bool StartHome
     {
-      get { return GetValue(false); }
-      set { SetValue(value); }
-    }
-
-    public bool StartPictureOfTheDay
-    {
-      get { return GetValue(true); }
-      set { SetValue(value); }
+      get => userSettings.Get<bool>(UserSettingsKey.StartHome);
     }
 
     public bool DisplayActive
     {
-      get { return GetValue(false); }
-      set { SetValue(value); }
+      get => userSettings.Get<bool>(UserSettingsKey.DisplayActive);
     }
 
-    public Settings()
+    public Settings(IUserSettings userSettings)
     {
       Current = this;
 
-      container = ApplicationData.Current.RoamingSettings;
-    }
-
-    private T GetValue<T>(T defaultValue, [CallerMemberName]string name = null)
-    {
-      var value = container.Values[name];
-      if (value == null)
-        return defaultValue;
-
-      return typeof(T).IsEnum
-        ? (T)Enum.Parse(typeof(T), value.ToString())
-        : (T)value;
-    }
-
-    private void SetValue<T>(T value, [CallerMemberName]string name = null)
-    {
-      if (container.Values[name]?.Equals(value) == true)
-        return;
-
-      if (typeof(T).IsEnum)
-        container.Values[name] = value.ToString();
-      else  
-        container.Values[name] = value;
-
-      RaisePropertyChanged(name);
-    }
-
-    private void RaisePropertyChanged(string name)
-    {
-      var handler = PropertyChanged;
-      if (handler != null)
+      this.userSettings = userSettings;
+      this.userSettings.SettingSet += (sender, settingKey) =>
       {
-        var args = new PropertyChangedEventArgs(name);
-        handler(this, args);
-      }
+        if (settingKey == UserSettingsKey.AppTheme)
+          OnPropertyChanged(nameof(AppTheme));
+        else if (settingKey == UserSettingsKey.SplitViewInline)
+          OnPropertyChanged(nameof(SplitViewInline));
+        else if (settingKey == UserSettingsKey.ArticleTypeface)
+          OnPropertyChanged(nameof(Typeface));
+        else if (settingKey == UserSettingsKey.ArticleFontSize)
+          OnPropertyChanged(nameof(FontSize));
+      };
     }
 
     public static void WriteLastArticle(ArticleHead value)

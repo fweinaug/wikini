@@ -197,6 +197,7 @@
     <Compile Include="ViewModels\LanguageViewModel.cs" />
     <Compile Include="ViewModels\HistoryArticleViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\Controls\ImageLoader.xaml.cs">
       <DependentUpon>ImageLoader.xaml</DependentUpon>
     </Compile>

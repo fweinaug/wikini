@@ -39,8 +39,6 @@
                 <Setter Property="Margin" Value="0,0,0,5" />
                 <Setter Property="FontWeight" Value="Normal" />
             </Style>
-
-            <local:EnumToBooleanConverter x:Key="TypefaceToBooleanConverter" EnumType="{local:Type TypeName=WikipediaApp.Typeface}" />
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -52,7 +50,7 @@
 
         <TextBlock Grid.Row="0" x:Uid="SettingsHeaderTextBlock" Style="{StaticResource SplitViewPaneHeaderTextBlockStyle}" />
 
-        <ScrollViewer Grid.Row="1" DataContext="{StaticResource Settings}">
+        <ScrollViewer Grid.Row="1">
             <StackPanel>
                 <StackPanel Padding="15,0">
                     <StackPanel Margin="0,10">
@@ -106,11 +104,11 @@
                         <TextBlock x:Uid="SettingsTypefaceHeaderTextBlock" TextWrapping="WrapWholeWords" />
                         <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
                             <RadioButton GroupName="Typeface"
-                                         IsChecked="{Binding Typeface, Mode=TwoWay, Converter={StaticResource TypefaceToBooleanConverter}, ConverterParameter=SansSerif}">
+                                         IsChecked="{Binding TypefaceSansSerif, Mode=TwoWay}">
                                 sans-serif
                             </RadioButton>
                             <RadioButton GroupName="Typeface"
-                                         IsChecked="{Binding Typeface, Mode=TwoWay, Converter={StaticResource TypefaceToBooleanConverter}, ConverterParameter=Serif}">
+                                         IsChecked="{Binding TypefaceSerif, Mode=TwoWay}">
                                 serif
                             </RadioButton>
                         </StackPanel>
@@ -133,7 +131,7 @@
                     <StackPanel Margin="0,10">
                         <TextBlock x:Uid="SettingsHistoryTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                         <ToggleSwitch x:Uid="SettingsHistorySessionToggleSwitch" IsOn="{Binding HistorySession, Mode=TwoWay}" />
-                        <Button x:Uid="SettingsHistoryClearButton" x:Name="ClearHistoryButton" Click="ClearHistoryClick" Margin="0,5,0,5" />
+                        <Button x:Uid="SettingsHistoryClearButton" Command="{Binding ClearHistoryCommand}" Margin="0,5,0,5" />
                     </StackPanel>
 
                     <StackPanel Margin="0,10">
@@ -146,11 +144,11 @@
                         <ToggleSwitch x:Uid="SettingsHistoryTimelineToggleSwitch" IsOn="{Binding HistoryTimeline, Mode=TwoWay}" />
                     </StackPanel>
 
-                    <StackPanel x:Name="ThemePanel" Margin="0,10">
+                    <StackPanel Margin="0,10">
                         <TextBlock x:Uid="SettingsDesignTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                        <RadioButton x:Uid="SettingsDesignLightRadioButton" GroupName="Design" Tag="1" Checked="RadioButtonThemeChecked" />
-                        <RadioButton x:Uid="SettingsDesignDarkRadioButton" GroupName="Design" Tag="2" Checked="RadioButtonThemeChecked" />
-                        <RadioButton x:Uid="SettingsDesignSystemRadioButton" GroupName="Design" Tag="0" Checked="RadioButtonThemeChecked" />
+                        <RadioButton x:Uid="SettingsDesignLightRadioButton" GroupName="Design" IsChecked="{Binding AppThemeLight, Mode=TwoWay}" />
+                        <RadioButton x:Uid="SettingsDesignDarkRadioButton" GroupName="Design" IsChecked="{Binding AppThemeDark, Mode=TwoWay}" />
+                        <RadioButton x:Uid="SettingsDesignSystemRadioButton" GroupName="Design" IsChecked="{Binding AppThemeSystem, Mode=TwoWay}" />
                     </StackPanel>
                 </StackPanel>
 
