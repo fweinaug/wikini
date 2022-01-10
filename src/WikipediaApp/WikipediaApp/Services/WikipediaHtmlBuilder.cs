@@ -9,12 +9,10 @@ namespace WikipediaApp
 
     public static string BuildArticle(string title, string description, string content, string language, string direction, int header)
     {
-      var app = App.Current;
       var settings = Settings.Current;
 
-      var darkMode = app.InDarkMode();
       var fontSize = settings.FontSize;
-      var styles = GetArticleStyles(darkMode, fontSize);
+      var styles = GetRootStyle(fontSize);
 
       var themeClass = GetThemeClass();
       var bodyClasses = themeClass + " " + GetTypefaceClass();
@@ -74,15 +72,13 @@ namespace WikipediaApp
       return $"document.documentElement.style.setProperty('--font-size', '{fontSize}px');";
     }
 
-    private static string GetArticleStyles(bool darkMode, int fontSize)
+    private static string GetRootStyle(int fontSize)
     {
       var scaledFontSize = GetScaledFontSize(fontSize);
-      var color = darkMode ? "#61B7B9" : "#3D918E";
 
       var styles = $@"
         :root {{
           --font-size: {scaledFontSize}px;
-          --color: {color};
         }}
       ";
 

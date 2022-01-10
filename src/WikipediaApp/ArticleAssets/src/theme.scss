@@ -7,12 +7,20 @@
         background: #FFFFFF !important;
         color: #000000 !important;
     }
+
+    a, a:visited {
+        color: #3D918E !important;
+    }
 }
 
 .theme-dark {
     & {
         background: #121212 !important;
         color: #E0E0E0 !important;
+    }
+
+    a, a:visited {
+        color: #61B7B9 !important;
     }
 
     .feature-footer-v2, .feature-footer-v2 #mw-mf-page-center {
