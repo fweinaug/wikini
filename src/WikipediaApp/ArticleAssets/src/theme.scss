@@ -2,6 +2,18 @@
     background-color: inherit !important;
 }
 
+body {
+    font-size: var(--font-size);
+
+    &.serif {
+        font-family: Georgia, Calisto MT, Cambria, Times New Roman, serif;
+    }
+
+    &.sans-serif {
+        font-family: Segoe UI, Roboto, Lato, Helvetica, Arial, sans-serif;
+    }
+}
+
 .theme-light {
     & {
         background: #FFFFFF !important;
