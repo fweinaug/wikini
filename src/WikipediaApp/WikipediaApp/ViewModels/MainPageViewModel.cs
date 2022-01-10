@@ -27,6 +27,12 @@ namespace WikipediaApp
       private set { SetProperty(ref isBusy, value); }
     }
 
+    public bool SidebarInline
+    {
+      get { return userSettings.Get<bool>(UserSettingsKey.SplitViewInline); }
+      set { userSettings.Set(UserSettingsKey.SplitViewInline, value); }
+    }
+
     public ICommand ShowHomePageCommand
     {
       get { return showHomePageCommand ?? (showHomePageCommand = new RelayCommand(ShowHomePage)); }
@@ -152,6 +158,12 @@ namespace WikipediaApp
 
       if (userSettings.Get<bool>(UserSettingsKey.StartPictureOfTheDay))
         PictureOfTheDay.Today();
+
+      userSettings.SettingSet += (sender, settingKey) =>
+      {
+        if (settingKey == UserSettingsKey.SplitViewInline)
+          OnPropertyChanged(nameof(SidebarInline));
+      };
     }
   }
 }

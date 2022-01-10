@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Windows.Storage;
 
@@ -26,11 +25,6 @@ namespace WikipediaApp
     public bool SectionsCollapsed
     {
       get => userSettings.Get<bool>(UserSettingsKey.SectionsCollapsed);
-    }
-
-    public bool SplitViewInline
-    {
-      get => userSettings.Get<bool>(UserSettingsKey.SplitViewInline);
     }
 
     public Typeface Typeface
@@ -62,8 +56,6 @@ namespace WikipediaApp
       {
         if (settingKey == UserSettingsKey.AppTheme)
           OnPropertyChanged(nameof(AppTheme));
-        else if (settingKey == UserSettingsKey.SplitViewInline)
-          OnPropertyChanged(nameof(SplitViewInline));
         else if (settingKey == UserSettingsKey.ArticleTypeface)
           OnPropertyChanged(nameof(Typeface));
         else if (settingKey == UserSettingsKey.ArticleFontSize)

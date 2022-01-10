@@ -69,6 +69,12 @@ namespace WikipediaApp
       private set { SetProperty(ref isBusy, value); }
     }
 
+    public bool SidebarInline
+    {
+      get { return userSettings.Get<bool>(UserSettingsKey.SplitViewInline); }
+      set { userSettings.Set(UserSettingsKey.SplitViewInline, value); }
+    }
+
     public ICommand ChangeLanguageCommand
     {
       get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<ArticleLanguageViewModel>(ChangeLanguage)); }
@@ -123,6 +129,12 @@ namespace WikipediaApp
 
         dialogService.ShowLoadingError();
       }
+
+      userSettings.SettingSet += (sender, settingKey) =>
+      {
+        if (settingKey == UserSettingsKey.SplitViewInline)
+          OnPropertyChanged(nameof(SidebarInline));
+      };
     }
 
     public async void ShowArticle(ArticleHead articleHead)

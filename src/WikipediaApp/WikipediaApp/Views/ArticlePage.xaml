@@ -71,7 +71,7 @@
             <VisualStateGroup x:Name="SplitViewStates">
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <StateTrigger IsActive="{Binding Source={StaticResource Settings}, Path=SplitViewInline}" />
+                        <StateTrigger IsActive="{Binding SidebarInline}" />
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
