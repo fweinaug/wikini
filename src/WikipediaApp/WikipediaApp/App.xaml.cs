@@ -135,6 +135,7 @@ namespace WikipediaApp
     {
       var provider = new ServiceCollection()
         .AddTransient<IWikipediaService, WikipediaService>()
+        .AddTransient<IWikipediaContentBuilder, WikipediaHtmlBuilder>()
         .AddTransient<IDeviceService, DeviceService>()
         .AddTransient<IDialogService, DialogService>()
         .AddTransient<INavigationService, NavigationService>()

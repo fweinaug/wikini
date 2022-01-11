@@ -22,11 +22,6 @@ namespace WikipediaApp
       set => userSettings.Set(UserSettingsKey.AppTheme, value);
     }
 
-    public bool SectionsCollapsed
-    {
-      get => userSettings.Get<bool>(UserSettingsKey.SectionsCollapsed);
-    }
-
     public Typeface Typeface
     {
       get => userSettings.Get<Typeface>(UserSettingsKey.ArticleTypeface);
