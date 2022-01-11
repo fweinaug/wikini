@@ -1,4 +1,3 @@
-using System;
 using Windows.UI.ViewManagement;
 
 namespace WikipediaApp
@@ -58,42 +57,17 @@ namespace WikipediaApp
       return html;
     }
 
-    public static string BuildTypefaceUpdateJS()
-    {
-      var classNames = GetThemeClass() + " " + GetTypefaceClass();
-
-      return $"document.body.className='{classNames}';";
-    }
-
-    public static string BuildFontSizeUpdateJS()
-    {
-      var fontSize = GetScaledFontSize(Settings.Current.FontSize);
-
-      return $"document.documentElement.style.setProperty('--font-size', '{fontSize}px');";
-    }
-
     private static string GetRootStyle(int fontSize)
     {
-      var scaledFontSize = GetScaledFontSize(fontSize);
-
       var styles = $@"
         :root {{
-          --font-size: {scaledFontSize}px;
+          --font-size: {fontSize}px;
+          --base-font-size: 14;
+          --text-scale-factor: {UiSettings.TextScaleFactor};
         }}
       ";
 
       return styles;
-    }
-
-    private static int GetScaledFontSize(int fontSize)
-    {
-      const int baseFontSize = 14;
-
-      var scaleFactor = UiSettings.TextScaleFactor * 100;
-      var fontFactor = fontSize * 100 / baseFontSize;
-
-      var scaledFontSize = Math.Round(baseFontSize * (fontFactor / scaleFactor));
-      return Convert.ToInt32(scaledFontSize);
     }
 
     private static string GetThemeClass()

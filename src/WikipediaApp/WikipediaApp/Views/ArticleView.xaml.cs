@@ -148,13 +148,14 @@ namespace WikipediaApp
       {
         if (e.PropertyName == nameof(Settings.Typeface))
         {
-          var js = WikipediaHtmlBuilder.BuildTypefaceUpdateJS();
+          var typeface = Settings.Current.Typeface == Typeface.SansSerif ? "sans-serif" : "serif";
+          var js = $"changeTypeface('{typeface}')";
 
           await WebView.InvokeScriptAsync("eval", new[] { js });
         }
         else if (e.PropertyName == nameof(Settings.FontSize))
         {
-          var js = WikipediaHtmlBuilder.BuildFontSizeUpdateJS();
+          var js = $"changeFontSize({Settings.Current.FontSize})";
 
           await WebView.InvokeScriptAsync("eval", new[] { js });
         }

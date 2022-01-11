@@ -3,7 +3,7 @@
 }
 
 body {
-    font-size: var(--font-size);
+    font-size: calc(var(--base-font-size) * (var(--font-size) * 100 / var(--base-font-size)) / (var(--text-scale-factor) * 100));
 
     &.serif {
         font-family: Georgia, Calisto MT, Cambria, Times New Roman, serif;
