@@ -156,7 +156,7 @@ namespace WikipediaApp
           ?? Languages.GetLanguage(UserSettingsKey.Default<string>(UserSettingsKey.SearchLanguage));
       }
 
-      if (userSettings.Get<bool>(UserSettingsKey.StartPictureOfTheDay))
+      if (userSettings.Get<bool>(UserSettingsKey.StartPictureOfTheDay) && PictureOfTheDay.ThumbnailUri == null)
         PictureOfTheDay.Today();
 
       userSettings.SettingSet += (sender, settingKey) =>
