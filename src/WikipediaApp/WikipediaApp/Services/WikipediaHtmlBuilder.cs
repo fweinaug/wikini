@@ -1,16 +1,14 @@
-using Windows.UI.ViewManagement;
-
 namespace WikipediaApp
 {
   public class WikipediaHtmlBuilder : IWikipediaContentBuilder
   {
-    private static readonly UISettings UiSettings = new UISettings();
-
     private readonly IUserSettings userSettings;
+    private readonly ISystemSettingProvider systemSettingProvider;
 
-    public WikipediaHtmlBuilder(IUserSettings userSettings)
+    public WikipediaHtmlBuilder(IUserSettings userSettings, ISystemSettingProvider systemSettingProvider)
     {
       this.userSettings = userSettings;
+      this.systemSettingProvider = systemSettingProvider;
     }
 
     public string GetContent(Article article, int header)
@@ -19,7 +17,7 @@ namespace WikipediaApp
       var typeface = userSettings.Get<Typeface>(UserSettingsKey.ArticleTypeface);
       var sectionsCollapsed = userSettings.Get<bool>(UserSettingsKey.SectionsCollapsed);
 
-      var styles = GetRootStyle(fontSize);
+      var styles = GetRootStyle(fontSize, systemSettingProvider.TextScaleFactor);
 
       var themeClass = GetThemeClass();
       var bodyClasses = themeClass + " " + GetTypefaceClass(typeface);
@@ -65,13 +63,13 @@ namespace WikipediaApp
       return html;
     }
 
-    private static string GetRootStyle(int fontSize)
+    private static string GetRootStyle(int fontSize, double textScaleFactor)
     {
       var styles = $@"
         :root {{
           --font-size: {fontSize}px;
           --base-font-size: 14;
-          --text-scale-factor: {UiSettings.TextScaleFactor};
+          --text-scale-factor: {textScaleFactor};
         }}
       ";
 
