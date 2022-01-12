@@ -2,11 +2,13 @@ namespace WikipediaApp
 {
   public class WikipediaHtmlBuilder : IWikipediaContentBuilder
   {
+    private readonly IAppSettings appSettings;
     private readonly IUserSettings userSettings;
     private readonly ISystemSettingProvider systemSettingProvider;
 
-    public WikipediaHtmlBuilder(IUserSettings userSettings, ISystemSettingProvider systemSettingProvider)
+    public WikipediaHtmlBuilder(IAppSettings appSettings, IUserSettings userSettings, ISystemSettingProvider systemSettingProvider)
     {
+      this.appSettings = appSettings;
       this.userSettings = userSettings;
       this.systemSettingProvider = systemSettingProvider;
     }
@@ -19,7 +21,7 @@ namespace WikipediaApp
 
       var styles = GetRootStyle(fontSize, systemSettingProvider.TextScaleFactor);
 
-      var themeClass = GetThemeClass();
+      var themeClass = GetThemeClass(appSettings.DarkMode);
       var bodyClasses = themeClass + " " + GetTypefaceClass(typeface);
       var sectionsCollapsedString = sectionsCollapsed ? "true" : "false";
 
@@ -76,10 +78,8 @@ namespace WikipediaApp
       return styles;
     }
 
-    private static string GetThemeClass()
+    private static string GetThemeClass(bool darkMode)
     {
-      var darkMode = App.Current.InDarkMode();
-
       return darkMode ? "theme-dark" : "theme-light";
     }
 

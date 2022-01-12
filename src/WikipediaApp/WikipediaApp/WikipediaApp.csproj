@@ -174,7 +174,9 @@
     <Compile Include="Factories\IArticleViewModelFactory.cs" />
     <Compile Include="Models\Coordinates.cs" />
     <Compile Include="Models\NearbyArticle.cs" />
+    <Compile Include="Services\AppSettings.cs" />
     <Compile Include="Services\GeolocationService.cs" />
+    <Compile Include="Services\IAppSettings.cs" />
     <Compile Include="Services\IDeviceService.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IGeolocationService.cs" />

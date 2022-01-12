@@ -142,6 +142,7 @@ namespace WikipediaApp
         .AddTransient<IGeolocationService, GeolocationService>()
         .AddTransient<IShareManager, ShareManager>()
         .AddSingleton<ISystemSettingProvider, SystemSettingProvider>()
+        .AddSingleton<IAppSettings, AppSettings>()
         .AddSingleton<IUserSettings, RoamingUserSettings>()
         .AddSingleton<IArticleViewModelFactory, ArticleViewModelFactory>()
         .AddSingleton<AppShellViewModel>()
