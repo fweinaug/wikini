@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Mvvm.Messaging.Messages;
@@ -55,7 +56,7 @@ namespace WikipediaApp
 
   #endregion
 
-  public class FavoritesViewModel : ViewModelBase
+  public class FavoritesViewModel : ObservableObject
   {
     private readonly INavigationService navigationService;
 
@@ -92,7 +93,7 @@ namespace WikipediaApp
       });
     }
 
-    public override async Task Initialize()
+    public async Task Initialize()
     {
       var favorites = await ArticleFavorites.GetFavorites();
 

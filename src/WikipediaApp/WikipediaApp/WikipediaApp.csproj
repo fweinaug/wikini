@@ -321,7 +321,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Extensions\WebViewExtensions.cs" />
     <Compile Include="Services\WikipediaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -447,7 +446,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.37</Version>
+      <Version>1.11.39</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter">
       <Version>4.4.0</Version>
@@ -473,7 +472,10 @@
       <Version>7.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
-      <Version>7.1.1</Version>
+      <Version>7.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Behaviors">
+      <Version>7.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.7.0</Version>

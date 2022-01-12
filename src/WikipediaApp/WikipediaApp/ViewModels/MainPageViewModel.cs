@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public class MainPageViewModel : ViewModelBase
+  public class MainPageViewModel : ObservableObject
   {
     private readonly IWikipediaService wikipediaService;
     private readonly INavigationService navigationService;
@@ -13,6 +14,7 @@ namespace WikipediaApp
 
     private bool isBusy = false;
 
+    private AsyncRelayCommand loadCommand = null;
     private RelayCommand showHomePageCommand = null;
     private RelayCommand showRandomArticleCommand = null;
     private RelayCommand showMapCommand = null;
@@ -31,6 +33,11 @@ namespace WikipediaApp
     {
       get { return userSettings.Get<bool>(UserSettingsKey.SplitViewInline); }
       set { userSettings.Set(UserSettingsKey.SplitViewInline, value); }
+    }
+
+    public AsyncRelayCommand LoadCommand
+    {
+      get { return loadCommand ?? (loadCommand = new AsyncRelayCommand(Initialize)); }
     }
 
     public ICommand ShowHomePageCommand
@@ -143,7 +150,7 @@ namespace WikipediaApp
       Language = language;
     }
 
-    public override async Task Initialize()
+    private async Task Initialize()
     {
       if (Language == null)
       {

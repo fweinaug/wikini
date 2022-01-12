@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace WikipediaApp
 {
-  public class ArticleViewModel : ViewModelBase
+  public class ArticleViewModel : ObservableObject
   {
     private readonly IWikipediaService wikipediaService;
     private readonly INavigationService navigationService;

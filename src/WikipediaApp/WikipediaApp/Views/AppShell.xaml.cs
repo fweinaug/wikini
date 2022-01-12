@@ -66,9 +66,6 @@ namespace WikipediaApp
       SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Frame.CanGoBack
         ? AppViewBackButtonVisibility.Visible
         : AppViewBackButtonVisibility.Collapsed;
-
-      if (e.Parameter is ViewModelBase frameViewModel)
-        await frameViewModel.Initialize();
     }
 
     private async void PageLoaded(object sender, RoutedEventArgs e)

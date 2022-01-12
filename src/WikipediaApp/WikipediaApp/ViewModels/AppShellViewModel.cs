@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace WikipediaApp
 {
-  public class AppShellViewModel : ViewModelBase
+  public class AppShellViewModel : ObservableObject
   {
     private readonly INavigationService navigationService;
 
@@ -25,11 +26,10 @@ namespace WikipediaApp
       navigationService.ShowArticle(article);
     }
 
-    public override async Task Initialize()
+    public async Task Initialize()
     {
       await favoritesViewModel.Initialize();
       await historyViewModel.Initialize();
-      await mainPageViewModel.Initialize();
     }
   }
 }

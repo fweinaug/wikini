@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Mvvm.Messaging.Messages;
@@ -46,7 +47,7 @@ namespace WikipediaApp
 
   #endregion
 
-  public class HistoryViewModel : ViewModelBase
+  public class HistoryViewModel : ObservableObject
   {
     private readonly INavigationService navigationService;
     private readonly IUserSettings userSettings;
@@ -95,7 +96,7 @@ namespace WikipediaApp
       });
     }
 
-    public override async Task Initialize()
+    public async Task Initialize()
     {
       var history = await ArticleHistory.GetHistory();
 

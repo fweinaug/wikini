@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
@@ -20,7 +21,7 @@ namespace WikipediaApp
     }
   }
 
-  public class MapPageViewModel : ViewModelBase
+  public class MapPageViewModel : ObservableObject
   {
     private readonly IWikipediaService wikipediaService;
     private readonly INavigationService navigationService;
@@ -28,9 +29,11 @@ namespace WikipediaApp
 
     private string language;
     private MapPosition position = null;
-    private RelayCommand<MapPosition> movePositionCommand = null;
     private IList<NearbyArticle> articles = null;
     private NearbyArticle selectedArticle = null;
+
+    private AsyncRelayCommand loadCommand = null;
+    private RelayCommand<MapPosition> movePositionCommand = null;
     private RelayCommand<NearbyArticle> selectArticleCommand = null;
     private RelayCommand<NearbyArticle> showArticleCommand = null;
     private AsyncRelayCommand updateLocationCommand = null;
@@ -47,11 +50,6 @@ namespace WikipediaApp
       private set { SetProperty(ref position, value); }
     }
 
-    public ICommand MovePositionCommand
-    {
-      get { return movePositionCommand ?? (movePositionCommand = new RelayCommand<MapPosition>(MovePosition)); }
-    }
-
     public IList<NearbyArticle> Articles
     {
       get { return articles; }
@@ -62,6 +60,16 @@ namespace WikipediaApp
     {
       get { return selectedArticle; }
       private set { SetProperty(ref selectedArticle, value); }
+    }
+
+    public AsyncRelayCommand LoadCommand
+    {
+      get { return loadCommand ?? (loadCommand = new AsyncRelayCommand(Initialize)); }
+    }
+
+    public ICommand MovePositionCommand
+    {
+      get { return movePositionCommand ?? (movePositionCommand = new RelayCommand<MapPosition>(MovePosition)); }
     }
 
     public ICommand SelectArticleCommand
@@ -86,7 +94,7 @@ namespace WikipediaApp
       this.geolocationService = geolocationService;
     }
 
-    public override async Task Initialize()
+    private async Task Initialize()
     {
       if (Position == null)
         await UpdateLocation();

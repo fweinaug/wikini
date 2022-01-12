@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace WikipediaApp
 {
-  public class ArticlePageViewModel : ViewModelBase
+  public class ArticlePageViewModel : ObservableObject
   {
     private readonly IWikipediaService wikipediaService;
     private readonly IDialogService dialogService;
@@ -21,6 +21,7 @@ namespace WikipediaApp
     private ArticleImageGalleryViewModel imageGallery;
     private bool isBusy = false;
 
+    private AsyncRelayCommand loadCommand;
     private RelayCommand<ArticleLanguageViewModel> changeLanguageCommand;
     private RelayCommand refreshCommand;
     private RelayCommand<Uri> navigateCommand;
@@ -75,6 +76,11 @@ namespace WikipediaApp
       set { userSettings.Set(UserSettingsKey.SplitViewInline, value); }
     }
 
+    public AsyncRelayCommand LoadCommand
+    {
+      get { return loadCommand ?? (loadCommand = new AsyncRelayCommand(Initialize)); }
+    }
+
     public ICommand ChangeLanguageCommand
     {
       get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<ArticleLanguageViewModel>(ChangeLanguage)); }
@@ -112,7 +118,7 @@ namespace WikipediaApp
       this.articleViewModelFactory = articleViewModelFactory;
     }
 
-    public override async Task Initialize()
+    private async Task Initialize()
     {
       IsBusy = true;
 

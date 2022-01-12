@@ -1,10 +1,11 @@
 ﻿using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace WikipediaApp
 {
-  public class HistoryArticleViewModel : ViewModelBase
+  public class HistoryArticleViewModel : ObservableObject
   {
     private RelayCommand removeFromHistoryCommand;
     private RelayCommand clearHistoryCommand;
