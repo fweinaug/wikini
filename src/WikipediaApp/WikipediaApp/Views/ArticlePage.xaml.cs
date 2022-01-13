@@ -61,8 +61,6 @@ namespace WikipediaApp
     {
       DisplayHelper.ReleaseDisplay();
 
-      Settings.WriteLastArticle(null);
-
       var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
       coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
       coreTitleBar.IsVisibleChanged -= TitleBarIsVisibleChanged;
@@ -92,10 +90,6 @@ namespace WikipediaApp
 
     private void ArticleViewArticleChanged(object sender, EventArgs e)
     {
-      var article = ArticleView.Article;
-
-      Settings.WriteLastArticle(article.Article);
-
       HideSearchBar(resetSearch: false);
     }
 

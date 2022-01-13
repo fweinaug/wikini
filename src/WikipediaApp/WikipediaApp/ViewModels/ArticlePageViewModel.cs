@@ -11,6 +11,7 @@ namespace WikipediaApp
     private readonly IWikipediaService wikipediaService;
     private readonly IDialogService dialogService;
     private readonly INavigationService navigationService;
+    private readonly IAppSettings appSettings;
     private readonly IUserSettings userSettings;
     private readonly IArticleViewModelFactory articleViewModelFactory;
 
@@ -22,6 +23,7 @@ namespace WikipediaApp
     private bool isBusy = false;
 
     private AsyncRelayCommand loadCommand;
+    private RelayCommand unloadCommand;
     private RelayCommand<ArticleLanguageViewModel> changeLanguageCommand;
     private RelayCommand refreshCommand;
     private RelayCommand<Uri> navigateCommand;
@@ -41,6 +43,8 @@ namespace WikipediaApp
         {
           OnPropertyChanged(nameof(Title));
           ImageGallery = new ArticleImageGalleryViewModel(article.Article, wikipediaService);
+
+          appSettings.WriteLastArticle(article.Article);
         };
       }
     }
@@ -81,6 +85,11 @@ namespace WikipediaApp
       get { return loadCommand ?? (loadCommand = new AsyncRelayCommand(Initialize)); }
     }
 
+    public RelayCommand UnloadCommand
+    {
+      get { return unloadCommand ?? (unloadCommand = new RelayCommand(Dispose)); }
+    }
+
     public ICommand ChangeLanguageCommand
     {
       get { return changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand<ArticleLanguageViewModel>(ChangeLanguage)); }
@@ -106,7 +115,7 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IUserSettings userSettings, IArticleViewModelFactory articleViewModelFactory)
+    public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IAppSettings appSettings, IUserSettings userSettings, IArticleViewModelFactory articleViewModelFactory)
     {
       this.initialArticle = initialArticle;
       this.article = articleViewModelFactory.GetArticle(initialArticle);
@@ -114,6 +123,7 @@ namespace WikipediaApp
       this.wikipediaService = wikipediaService;
       this.dialogService = dialogService;
       this.navigationService = navigationService;
+      this.appSettings = appSettings;
       this.userSettings = userSettings;
       this.articleViewModelFactory = articleViewModelFactory;
     }
@@ -141,6 +151,11 @@ namespace WikipediaApp
         if (settingKey == UserSettingsKey.SplitViewInline)
           OnPropertyChanged(nameof(SidebarInline));
       };
+    }
+
+    private void Dispose()
+    {
+      appSettings.WriteLastArticle(null);
     }
 
     public async void ShowArticle(ArticleHead articleHead)

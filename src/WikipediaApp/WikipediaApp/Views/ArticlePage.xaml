@@ -14,6 +14,9 @@
         <core:EventTriggerBehavior EventName="Loaded">
             <core:InvokeCommandAction Command="{Binding LoadCommand}" />
         </core:EventTriggerBehavior>
+        <core:EventTriggerBehavior EventName="Unloaded">
+            <core:InvokeCommandAction Command="{Binding UnloadCommand}" />
+        </core:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
     <Page.Resources>

@@ -15,6 +15,7 @@ namespace WikipediaApp
   sealed partial class App : Application
   {
     private IServiceProvider serviceProvider;
+    private IAppSettings appSettings;
     private Settings settings;
 
     public new static App Current
@@ -89,6 +90,7 @@ namespace WikipediaApp
       if (shell == null)
       {
         serviceProvider = ConfigureServices();
+        appSettings = serviceProvider.GetService<IAppSettings>();
         settings = new Settings(serviceProvider.GetService<IUserSettings>());
 
         Resources.Add("Settings", settings);
@@ -109,7 +111,7 @@ namespace WikipediaApp
       }
       else if (launched && !settings.StartHome)
       {
-        article = Settings.ReadLastArticle();
+        article = appSettings.ReadLastArticle();
         if (article != null)
           shell.ShowArticle(article);
       }
