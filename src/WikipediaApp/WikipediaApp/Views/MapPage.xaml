@@ -59,6 +59,10 @@
             </local:MapView.ArticleTemplate>
         </local:MapView>
 
+        <ProgressRing Width="50" Height="50" Foreground="White"
+                      IsActive="{Binding LoadCommand.IsRunning, Mode=OneWay}"
+                      Visibility="{Binding LoadCommand.IsRunning, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
         <Rectangle x:Name="AppTitleBarBackground" VerticalAlignment="Top" Fill="{ThemeResource SystemControlAcrylicElementBrush}" />
     </Grid>
 </Page>
