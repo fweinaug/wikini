@@ -51,16 +51,11 @@ namespace WikipediaApp
       coreTitleBar.LayoutMetricsChanged += TitleBarLayoutMetricsChanged;
       coreTitleBar.IsVisibleChanged += TitleBarIsVisibleChanged;
 
-      if (Settings.Current.DisplayActive)
-        DisplayHelper.ActivateDisplay();
-
       DataContext = e.Parameter;
     }
 
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
-      DisplayHelper.ReleaseDisplay();
-
       var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
       coreTitleBar.LayoutMetricsChanged -= TitleBarLayoutMetricsChanged;
       coreTitleBar.IsVisibleChanged -= TitleBarIsVisibleChanged;

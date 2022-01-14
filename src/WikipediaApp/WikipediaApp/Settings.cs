@@ -37,11 +37,6 @@ namespace WikipediaApp
       get => userSettings.Get<bool>(UserSettingsKey.StartHome);
     }
 
-    public bool DisplayActive
-    {
-      get => userSettings.Get<bool>(UserSettingsKey.DisplayActive);
-    }
-
     public Settings(IUserSettings userSettings)
     {
       Current = this;

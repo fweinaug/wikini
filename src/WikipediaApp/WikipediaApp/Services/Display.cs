@@ -2,11 +2,11 @@
 
 namespace WikipediaApp
 {
-  public static class DisplayHelper
+  public class Display : IDisplay
   {
-    private static DisplayRequest displayRequest = null;
+    private DisplayRequest displayRequest = null;
 
-    public static void ActivateDisplay()
+    public void Activate()
     {
       if (displayRequest == null)
         displayRequest = new DisplayRequest();
@@ -14,7 +14,7 @@ namespace WikipediaApp
       displayRequest.RequestActive();
     }
 
-    public static void ReleaseDisplay()
+    public void Release()
     {
       displayRequest?.RequestRelease();
     }

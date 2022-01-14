@@ -11,6 +11,7 @@ namespace WikipediaApp
     private readonly IWikipediaService wikipediaService;
     private readonly IDialogService dialogService;
     private readonly INavigationService navigationService;
+    private readonly IDisplay display;
     private readonly IAppSettings appSettings;
     private readonly IUserSettings userSettings;
     private readonly IArticleViewModelFactory articleViewModelFactory;
@@ -115,7 +116,7 @@ namespace WikipediaApp
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
     }
 
-    public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IAppSettings appSettings, IUserSettings userSettings, IArticleViewModelFactory articleViewModelFactory)
+    public ArticlePageViewModel(ArticleHead initialArticle, IWikipediaService wikipediaService, IDialogService dialogService, INavigationService navigationService, IDisplay display, IAppSettings appSettings, IUserSettings userSettings, IArticleViewModelFactory articleViewModelFactory)
     {
       this.initialArticle = initialArticle;
       this.article = articleViewModelFactory.GetArticle(initialArticle);
@@ -123,6 +124,7 @@ namespace WikipediaApp
       this.wikipediaService = wikipediaService;
       this.dialogService = dialogService;
       this.navigationService = navigationService;
+      this.display = display;
       this.appSettings = appSettings;
       this.userSettings = userSettings;
       this.articleViewModelFactory = articleViewModelFactory;
@@ -151,10 +153,15 @@ namespace WikipediaApp
         if (settingKey == UserSettingsKey.SplitViewInline)
           OnPropertyChanged(nameof(SidebarInline));
       };
+
+      if (userSettings.Get<bool>(UserSettingsKey.DisplayActive))
+        display.Activate();
     }
 
     private void Dispose()
     {
+      display.Release();
+
       appSettings.WriteLastArticle(null);
     }
 
