@@ -16,6 +16,7 @@ namespace WikipediaApp
   {
     private IServiceProvider serviceProvider;
     private IAppSettings appSettings;
+    private IUserSettings userSettings;
     private Settings settings;
 
     public new static App Current
@@ -91,7 +92,9 @@ namespace WikipediaApp
       {
         serviceProvider = ConfigureServices();
         appSettings = serviceProvider.GetService<IAppSettings>();
-        settings = new Settings(serviceProvider.GetService<IUserSettings>());
+        userSettings = serviceProvider.GetService<IUserSettings>();
+
+        settings = new Settings(userSettings);
 
         Resources.Add("Settings", settings);
 
@@ -109,7 +112,7 @@ namespace WikipediaApp
       {
         shell.ShowArticle(article);
       }
-      else if (launched && !settings.StartHome)
+      else if (launched && !userSettings.Get<bool>(UserSettingsKey.StartHome))
       {
         article = appSettings.ReadLastArticle();
         if (article != null)

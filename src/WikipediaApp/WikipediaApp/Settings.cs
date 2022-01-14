@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Windows.Storage;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace WikipediaApp
 {
@@ -30,11 +28,6 @@ namespace WikipediaApp
     public int FontSize
     {
       get => userSettings.Get<int>(UserSettingsKey.ArticleFontSize);
-    }
-
-    public bool StartHome
-    {
-      get => userSettings.Get<bool>(UserSettingsKey.StartHome);
     }
 
     public Settings(IUserSettings userSettings)
