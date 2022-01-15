@@ -215,6 +215,12 @@
                                 Margin="0,40" Padding="5" CornerRadius="10"
                                 Background="{ThemeResource SystemControlAcrylicElementBrush}" Opacity="0.85">
 
+                        <StackPanel.ChildrenTransitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition IsStaggeringEnabled="True" />
+                            </TransitionCollection>
+                        </StackPanel.ChildrenTransitions>
+
                         <Button x:Uid="MainHomepageButton" Style="{StaticResource CommandBarButton}" Command="{Binding ShowHomePageCommand}">
                             <FontIcon Glyph="&#xF481;" />
                         </Button>
