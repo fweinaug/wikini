@@ -321,7 +321,6 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="Views\Extensions\WebViewExtensions.cs" />
     <Compile Include="Services\WikipediaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

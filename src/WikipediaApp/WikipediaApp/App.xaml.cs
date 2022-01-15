@@ -93,10 +93,6 @@ namespace WikipediaApp
         appSettings = serviceProvider.GetService<IAppSettings>();
         userSettings = serviceProvider.GetService<IUserSettings>();
 
-        var settings = new Settings(userSettings);
-
-        Resources.Add("Settings", settings);
-
         shell = new AppShell();
         shell.AppFrame.NavigationFailed += OnNavigationFailed;
 

@@ -53,4 +53,10 @@ namespace WikipediaApp
       return (T)Defaults[settingKey];
     }
   }
+
+  public enum Typeface
+  {
+    SansSerif,
+    Serif
+  }
 }

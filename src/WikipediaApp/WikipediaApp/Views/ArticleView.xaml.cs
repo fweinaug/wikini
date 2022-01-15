@@ -108,12 +108,15 @@ namespace WikipediaApp
       private set { SetValue(SearchResultsProperty, value); }
     }
 
+    private readonly IUserSettings userSettings;
     private readonly List<ArticleStackEntry> backStack = new List<ArticleStackEntry>();
     private readonly List<ArticleStackEntry> forwardStack = new List<ArticleStackEntry>();
 
     public ArticleView()
     {
       InitializeComponent();
+
+      userSettings = App.Services.GetService<IUserSettings>();
     }
 
     private async void OnActualThemeChanged(FrameworkElement sender, object args)
@@ -134,28 +137,29 @@ namespace WikipediaApp
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-      Settings.Current.PropertyChanged += OnSettingsPropertyChanged;
+      userSettings.SettingSet += OnUserSettingSet;
     }
 
     private void OnUnloaded(object sender, RoutedEventArgs e)
     {
-      Settings.Current.PropertyChanged -= OnSettingsPropertyChanged;
+      userSettings.SettingSet -= OnUserSettingSet;
     }
 
-    private async void OnSettingsPropertyChanged(object sender, PropertyChangedEventArgs e)
+    private async void OnUserSettingSet(object sender, string settingKey)
     {
       try
       {
-        if (e.PropertyName == nameof(Settings.Typeface))
+        if (settingKey == UserSettingsKey.ArticleTypeface)
         {
-          var typeface = Settings.Current.Typeface == Typeface.SansSerif ? "sans-serif" : "serif";
+          var typeface = userSettings.Get<Typeface>(UserSettingsKey.ArticleTypeface) == Typeface.SansSerif ? "sans-serif" : "serif";
           var js = $"changeTypeface('{typeface}')";
 
           await WebView.InvokeScriptAsync("eval", new[] { js });
         }
-        else if (e.PropertyName == nameof(Settings.FontSize))
+        else if (settingKey == UserSettingsKey.ArticleFontSize)
         {
-          var js = $"changeFontSize({Settings.Current.FontSize})";
+          var fontSize = userSettings.Get<int>(UserSettingsKey.ArticleFontSize);
+          var js = $"changeFontSize({fontSize})";
 
           await WebView.InvokeScriptAsync("eval", new[] { js });
         }
