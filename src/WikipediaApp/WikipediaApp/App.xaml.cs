@@ -17,7 +17,6 @@ namespace WikipediaApp
     private IServiceProvider serviceProvider;
     private IAppSettings appSettings;
     private IUserSettings userSettings;
-    private Settings settings;
 
     public new static App Current
     {
@@ -47,7 +46,7 @@ namespace WikipediaApp
 
     public bool InDarkMode()
     {
-      var appTheme = settings.AppTheme;
+      var appTheme = userSettings.Get<int>(UserSettingsKey.AppTheme);
       var darkMode = appTheme == 2 ||
                      appTheme == 0 && RequestedTheme == ApplicationTheme.Dark;
 
@@ -94,7 +93,7 @@ namespace WikipediaApp
         appSettings = serviceProvider.GetService<IAppSettings>();
         userSettings = serviceProvider.GetService<IUserSettings>();
 
-        settings = new Settings(userSettings);
+        var settings = new Settings(userSettings);
 
         Resources.Add("Settings", settings);
 

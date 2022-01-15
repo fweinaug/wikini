@@ -6,6 +6,7 @@ namespace WikipediaApp
   public class AppShellViewModel : ObservableObject
   {
     private readonly INavigationService navigationService;
+    private readonly IUserSettings userSettings;
 
     private readonly MainPageViewModel mainPageViewModel;
     private readonly FavoritesViewModel favoritesViewModel;
@@ -13,9 +14,16 @@ namespace WikipediaApp
 
     public MainPageViewModel MainPage => mainPageViewModel;
 
-    public AppShellViewModel(INavigationService navigationService, MainPageViewModel mainPageViewModel, FavoritesViewModel favoritesViewModel, HistoryViewModel historyViewModel)
+    public int AppTheme
+    {
+      get => userSettings.Get<int>(UserSettingsKey.AppTheme);
+      set => userSettings.Set(UserSettingsKey.AppTheme, value);
+    }
+
+    public AppShellViewModel(INavigationService navigationService, IUserSettings userSettings, MainPageViewModel mainPageViewModel, FavoritesViewModel favoritesViewModel, HistoryViewModel historyViewModel)
     {
       this.navigationService = navigationService;
+      this.userSettings = userSettings;
       this.mainPageViewModel = mainPageViewModel;
       this.favoritesViewModel = favoritesViewModel;
       this.historyViewModel = historyViewModel;
@@ -30,6 +38,12 @@ namespace WikipediaApp
     {
       await favoritesViewModel.Initialize();
       await historyViewModel.Initialize();
+
+      userSettings.SettingSet += (sender, settingKey) =>
+      {
+        if (settingKey == UserSettingsKey.AppTheme)
+          OnPropertyChanged(nameof(AppTheme));
+      };
     }
   }
 }

@@ -14,12 +14,6 @@ namespace WikipediaApp
 
     public static Settings Current { get; private set; }
 
-    public int AppTheme
-    {
-      get => userSettings.Get<int>(UserSettingsKey.AppTheme);
-      set => userSettings.Set(UserSettingsKey.AppTheme, value);
-    }
-
     public Typeface Typeface
     {
       get => userSettings.Get<Typeface>(UserSettingsKey.ArticleTypeface);
@@ -37,9 +31,7 @@ namespace WikipediaApp
       this.userSettings = userSettings;
       this.userSettings.SettingSet += (sender, settingKey) =>
       {
-        if (settingKey == UserSettingsKey.AppTheme)
-          OnPropertyChanged(nameof(AppTheme));
-        else if (settingKey == UserSettingsKey.ArticleTypeface)
+        if (settingKey == UserSettingsKey.ArticleTypeface)
           OnPropertyChanged(nameof(Typeface));
         else if (settingKey == UserSettingsKey.ArticleFontSize)
           OnPropertyChanged(nameof(FontSize));
