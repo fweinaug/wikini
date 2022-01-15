@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
@@ -22,7 +21,7 @@ namespace WikipediaApp
     public async Task<Article> GetArticle(Uri uri, bool disableImages)
     {
       string title, language, anchor;
-      if (!WikipediaUriParser.Parse(uri, out title, out language, out anchor))
+      if (!WikipediaUriParser.TryParseArticleUri(uri, out title, out language, out anchor))
         return null;
 
       if (string.IsNullOrEmpty(title))
@@ -102,7 +101,7 @@ namespace WikipediaApp
     {
       try
       {
-        if (!WikipediaUriParser.Parse(uri, out var title, out var language, out _))
+        if (!WikipediaUriParser.TryParseArticleUri(uri, out var title, out var language, out _))
           return null;
 
         var article = await GetArticleInfo(language, null, title);
@@ -129,41 +128,6 @@ namespace WikipediaApp
 
         return null;
       }
-    }
-
-    public bool IsWikipediaUri(Uri uri)
-    {
-      return WikipediaUriParser.IsWikipediaUri(uri);
-    }
-
-    public bool IsLinkToWikipediaImage(Uri uri, out string filename)
-    {
-      if (uri.Scheme == "about" && uri.AbsolutePath == "blank")
-      {
-        var fragment = Uri.UnescapeDataString(uri.Fragment).Trim('#');
-        if (fragment.StartsWith("/media/"))
-        {
-          var index = fragment.IndexOf(':');
-          if (index > 0)
-          {
-            filename = fragment.Substring(index + 1);
-            return true;
-          }
-        }
-      }
-
-      if (uri.Host.EndsWith(".wikipedia.org") && uri.AbsolutePath.StartsWith("/wiki/"))
-      {
-        var index = uri.AbsolutePath.IndexOf(':', 6);
-        if (index > 0)
-        {
-          filename = WebUtility.UrlDecode(uri.AbsolutePath.Substring(index + 1));
-          return true;
-        }
-      }
-
-      filename = null;
-      return false;
     }
 
     public async Task<ArticleHead> GetMainPage(string language)

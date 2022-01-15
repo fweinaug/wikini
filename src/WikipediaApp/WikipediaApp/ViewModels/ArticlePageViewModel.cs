@@ -227,7 +227,7 @@ namespace WikipediaApp
 
       IsBusy = true;
 
-      if (wikipediaService.IsWikipediaUri(uri))
+      if (WikipediaUriParser.IsWikipediaUri(uri))
       {
         var article = await GetArticle(uri);
 

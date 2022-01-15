@@ -57,7 +57,7 @@ namespace WikipediaApp
 
     public async Task<bool> NavigateToImage(Uri uri)
     {
-      if (article?.Images != null && wikipediaService.IsLinkToWikipediaImage(uri, out var filename)
+      if (article?.Images != null && WikipediaUriParser.TryParseImageUri(uri, out var filename)
         && article.Images.Contains(filename))
       {
         await LoadAndShowImages(filename);

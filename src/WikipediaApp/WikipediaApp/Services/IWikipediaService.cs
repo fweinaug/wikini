@@ -20,9 +20,6 @@ namespace WikipediaApp
     Task<ArticleHead> GetRandomArticle(string language);
     Task<ArticleImage> GetPictureOfTheDay(DateTime date);
 
-    bool IsWikipediaUri(Uri uri);
-    bool IsLinkToWikipediaImage(Uri uri, out string filename);
-
     Task<bool> PinArticle(ArticleHead article);
     Task<bool> PinArticle(string language, int? pageId, string title);
 
