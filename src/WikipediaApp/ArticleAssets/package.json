@@ -10,5 +10,5 @@
     "sass": "1.46.0",
     "terser": "5.10.0"
   }
-, "-vs-binding":{"AfterBuild":["build"]}
+, "-vs-binding":{"BeforeBuild":["build"]}
 }
