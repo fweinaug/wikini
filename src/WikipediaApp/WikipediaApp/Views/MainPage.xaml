@@ -35,20 +35,6 @@
             <contract8Present:ThemeShadow x:Name="SharedShadow" />
             <contract8Present:ThemeShadow x:Name="SearchShadow" />
 
-            <DataTemplate x:Key="HistoryTemplate">
-                <local:HistoryView ArticleClick="HistoryViewArticleClick" />
-            </DataTemplate>
-
-            <DataTemplate x:Key="FavoritesTemplate">
-                <local:FavoritesView ArticleClick="FavoritesViewArticleClick" />
-            </DataTemplate>
-
-            <DataTemplate x:Key="LanguagesTemplate">
-                <local:LanguagesView Languages="{Binding Languages.All}"
-                                     ChangeLanguageCommand="{Binding ChangeLanguageCommand}"
-                                     LanguageClick="LanguagesViewLanguageClick" />
-            </DataTemplate>
-
             <Style x:Key="CommandBarButton" TargetType="Button" BasedOn="{StaticResource TransparentButtonStyle}">
                 <Setter Property="Padding" Value="12" />
                 <Setter Property="CornerRadius" Value="7" />
@@ -120,10 +106,15 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <ContentPresenter Grid.Row="0" x:Name="PaneContentPresenter"
-                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-                    <local:SettingsView Grid.Row="0" x:Name="PaneSettingsView"
-                                        x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                    <local:FavoritesView Grid.Row="0" x:Name="PaneFavoritesView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                         ArticleClick="FavoritesViewArticleClick" />
+                    <local:HistoryView Grid.Row="0" x:Name="PaneHistoryView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                       ArticleClick="HistoryViewArticleClick" />
+                    <local:LanguagesView Grid.Row="0" x:Name="PaneLanguagesView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                         Languages="{Binding Languages.All}"
+                                         ChangeLanguageCommand="{Binding ChangeLanguageCommand}"
+                                         LanguageClick="LanguagesViewLanguageClick" />
+                    <local:SettingsView Grid.Row="0" x:Name="PaneSettingsView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
 
                     <Button Grid.Row="0" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">

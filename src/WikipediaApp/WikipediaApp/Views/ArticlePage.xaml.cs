@@ -15,11 +15,6 @@ namespace WikipediaApp
 {
   public sealed partial class ArticlePage : Page
   {
-    private readonly DataTemplate paneHistoryTemplate;
-    private readonly DataTemplate paneFavoritesTemplate;
-    private readonly DataTemplate paneContentsTemplate;
-    private readonly DataTemplate paneLanguagesTemplate;
-
     private readonly DispatcherQueueTimer keyDebounceTimer = DispatcherQueue.GetForCurrentThread().CreateTimer();
 
     public ArticlePage()
@@ -33,11 +28,6 @@ namespace WikipediaApp
         SplitViewPaneGrid.Translation += new Vector3(0, 0, 16);
         SearchBar.Translation += new Vector3(0, 0, 16);
       }
-
-      paneHistoryTemplate = (DataTemplate)Resources["HistoryTemplate"];
-      paneFavoritesTemplate = (DataTemplate)Resources["FavoritesTemplate"];
-      paneContentsTemplate = (DataTemplate)Resources["ContentsTemplate"];
-      paneLanguagesTemplate = (DataTemplate)Resources["LanguagesTemplate"];
 
       var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
       UpdateTitleBar(coreTitleBar);
@@ -106,7 +96,7 @@ namespace WikipediaApp
 
     private void HistoryButtonClick(object sender, RoutedEventArgs e)
     {
-      OpenOrCloseSplitView(paneHistoryTemplate);
+      OpenOrCloseSplitView(nameof(PaneHistoryView));
 
       SplitViewPaneTabs.SelectedIndex = 4;
     }
@@ -119,8 +109,8 @@ namespace WikipediaApp
 
     private void FavoritesButtonClick(object sender, RoutedEventArgs e)
     {
-      OpenOrCloseSplitView(paneFavoritesTemplate);
-      
+      OpenOrCloseSplitView(nameof(PaneFavoritesView));
+
       SplitViewPaneTabs.SelectedIndex = 3;
     }
 
@@ -132,7 +122,7 @@ namespace WikipediaApp
 
     private void ContentsButtonClick(object sender, RoutedEventArgs e)
     {
-      OpenOrCloseSplitView(paneContentsTemplate);
+      OpenOrCloseSplitView(nameof(PaneContentsView));
 
       SplitViewPaneTabs.SelectedIndex = 0;
     }
@@ -150,7 +140,7 @@ namespace WikipediaApp
 
     private void LanguagesButtonClick(object sender, RoutedEventArgs e)
     {
-      OpenOrCloseSplitView(paneLanguagesTemplate);
+      OpenOrCloseSplitView(nameof(PaneLanguagesView));
 
       SplitViewPaneTabs.SelectedIndex = 1;
     }
@@ -163,20 +153,32 @@ namespace WikipediaApp
 
     private void SplitViewPaneClosed(SplitView sender, object e)
     {
-      if (PaneContentPresenter != null)
+      static void Hide(UIElement element)
       {
-        PaneContentPresenter.ContentTemplate = null;
-        PaneContentPresenter.Visibility = Visibility.Visible;
+        FadeInOutAnimation.Disable(element);
+        element.Visibility = Visibility.Collapsed;
       }
 
+      if (PaneContentsView != null)
+        Hide(PaneContentsView);
+
+      if (PaneLanguagesView != null)
+        Hide(PaneLanguagesView);
+
+      if (PaneFavoritesView != null)
+        Hide(PaneFavoritesView);
+
+      if (PaneHistoryView != null)
+        Hide(PaneHistoryView);
+
       if (PaneSpeechView != null)
-        PaneSpeechView.Visibility = Visibility.Collapsed;
+        Hide(PaneSpeechView);
 
       if (PaneSettingsView != null)
       {
         PaneSettingsView.CloseDialogs();
 
-        PaneSettingsView.Visibility = Visibility.Collapsed;
+        Hide(PaneSettingsView);
       }
     }
 
@@ -340,43 +342,26 @@ namespace WikipediaApp
 
       if (!SplitView.IsPaneOpen || control.Visibility == Visibility.Collapsed)
       {
-        if (PaneSettingsView != null)
-          PaneSettingsView.Visibility = Visibility.Collapsed;
+        if (PaneContentsView != null)
+          PaneContentsView.Visibility = Visibility.Collapsed;
+
+        if (PaneLanguagesView != null)
+          PaneLanguagesView.Visibility = Visibility.Collapsed;
+
+        if (PaneFavoritesView != null)
+          PaneFavoritesView.Visibility = Visibility.Collapsed;
+
+        if (PaneHistoryView != null)
+          PaneHistoryView.Visibility = Visibility.Collapsed;
 
         if (PaneSpeechView != null)
           PaneSpeechView.Visibility = Visibility.Collapsed;
 
-        if (PaneContentPresenter != null)
-        {
-          PaneContentPresenter.Visibility = Visibility.Collapsed;
-          PaneContentPresenter.ContentTemplate = null;
-        }
+        if (PaneSettingsView != null)
+          PaneSettingsView.Visibility = Visibility.Collapsed;
 
+        FadeInOutAnimation.Enable(control);
         control.Visibility = Visibility.Visible;
-
-        SplitView.IsPaneOpen = true;
-      }
-      else
-      {
-        SplitView.IsPaneOpen = false;
-      }
-    }
-
-    private void OpenOrCloseSplitView(DataTemplate template)
-    {
-      var paneContentPresenter = (ContentPresenter)FindName("PaneContentPresenter");
-
-      if (!SplitView.IsPaneOpen || paneContentPresenter.Visibility == Visibility.Collapsed ||
-          paneContentPresenter.ContentTemplate != template)
-      {
-        if (PaneSettingsView != null)
-          PaneSettingsView.Visibility = Visibility.Collapsed;
-
-        if (PaneSpeechView != null)
-          PaneSpeechView.Visibility = Visibility.Collapsed;
-
-        paneContentPresenter.Visibility = Visibility.Visible;
-        paneContentPresenter.ContentTemplate = template;
 
         SplitView.IsPaneOpen = true;
       }

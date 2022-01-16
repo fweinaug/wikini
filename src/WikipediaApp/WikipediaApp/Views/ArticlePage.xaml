@@ -33,24 +33,6 @@
 
             <contract8Present:ThemeShadow x:Name="SharedShadow" />
 
-            <DataTemplate x:Key="HistoryTemplate">
-                <local:HistoryView ArticleClick="HistoryViewArticleClick" />
-            </DataTemplate>
-
-            <DataTemplate x:Key="FavoritesTemplate">
-                <local:FavoritesView ArticleClick="FavoritesViewArticleClick" />
-            </DataTemplate>
-
-            <DataTemplate x:Key="ContentsTemplate">
-                <local:ContentsView ArticleSectionClick="ContentsViewArticleSectionClick" />
-            </DataTemplate>
-
-            <DataTemplate x:Key="LanguagesTemplate">
-                <local:LanguagesView Languages="{Binding Article.Languages.All}"
-                                     ChangeLanguageCommand="{Binding ChangeLanguageCommand}"
-                                     LanguageClick="LanguagesViewLanguageClick" />
-            </DataTemplate>
-
             <Storyboard x:Name="ShowSearchBarStoryboard">
                 <DoubleAnimation From="50" To="0" Duration="00:00:0.2" Storyboard.TargetName="SearchBarTranslate" Storyboard.TargetProperty="Y" />
                 <DoubleAnimation From="0" To="1" Duration="00:00:0.3" Storyboard.TargetName="SearchBar" Storyboard.TargetProperty="Opacity" />
@@ -103,12 +85,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <ContentPresenter Grid.Row="0" x:Name="PaneContentPresenter"
-                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-                    <local:SpeechView Grid.Row="0" x:Name="PaneSpeechView" Article="{Binding Article.Article}" ChapterClick="SpeechViewChapterClick"
-                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
-                    <local:SettingsView Grid.Row="0" x:Name="PaneSettingsView"
-                                      x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
+                    <local:ContentsView Grid.Row="0" x:Name="PaneContentsView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                        ArticleSectionClick="ContentsViewArticleSectionClick" />
+                    <local:LanguagesView Grid.Row="0" x:Name="PaneLanguagesView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                         Languages="{Binding Article.Languages.All}"
+                                         ChangeLanguageCommand="{Binding ChangeLanguageCommand}"
+                                         LanguageClick="LanguagesViewLanguageClick" />
+                    <local:SpeechView Grid.Row="0" x:Name="PaneSpeechView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                      Article="{Binding Article.Article}" ChapterClick="SpeechViewChapterClick" />
+                    <local:FavoritesView Grid.Row="0" x:Name="PaneFavoritesView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                         ArticleClick="FavoritesViewArticleClick" />
+                    <local:HistoryView Grid.Row="0" x:Name="PaneHistoryView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed"
+                                       ArticleClick="HistoryViewArticleClick" />
+                    <local:SettingsView Grid.Row="0" x:Name="PaneSettingsView" x:DeferLoadStrategy="Lazy" Visibility="Collapsed" />
 
                     <Button Grid.Row="0" x:Uid="AppPaneCloseButton" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,10"
                             Style="{ThemeResource SplitViewPaneHeaderButtonStyle}" Click="ClosePaneButtonClick">
