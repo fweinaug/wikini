@@ -42,6 +42,7 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
+            <StaticResource x:Key="ButtonForegroundPointerOver" ResourceKey="SystemControlForegroundBaseHighBrush" />
             <StaticResource x:Key="TextControlBackgroundPointerOver" ResourceKey="SystemControlTransparentBrush" />
             <StaticResource x:Key="TextControlBackgroundFocused" ResourceKey="SystemControlTransparentBrush" />
             <Thickness x:Key="TextControlBorderThemeThicknessFocused">0</Thickness>
