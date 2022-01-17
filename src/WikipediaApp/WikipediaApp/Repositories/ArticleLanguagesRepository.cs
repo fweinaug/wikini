@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WikipediaApp
 {
-  public static class ArticleLanguages
+  public class ArticleLanguagesRepository : IArticleLanguagesRepository
   {
-    public static List<FavoriteLanguage> Favorites { get; } = new();
+    public List<FavoriteLanguage> Favorites { get; } = new();
 
-    public static void AddFavorite(string code)
+    public void AddFavorite(string code)
     {
       var favorite = new FavoriteLanguage
       {
@@ -28,7 +28,7 @@ namespace WikipediaApp
       Favorites.Add(favorite);
     }
 
-    public static void RemoveFavorite(string code)
+    public void RemoveFavorite(string code)
     {
       using (var context = new WikipediaContext())
       {
@@ -45,14 +45,14 @@ namespace WikipediaApp
         Favorites.Remove(language);
     }
 
-    public static async Task<List<Language>> GetAll()
+    public async Task<List<Language>> GetAll()
     {
       var languages = await LanguagesReader.GetLanguages();
 
       return languages;
     }
 
-    public static async Task<List<FavoriteLanguage>> GetFavorites()
+    public async Task<List<FavoriteLanguage>> GetFavorites()
     {
       using (var context = new WikipediaContext())
       {

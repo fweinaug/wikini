@@ -177,6 +177,9 @@
     <Compile Include="Services\AppSettings.cs" />
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="Services\IAppSettings.cs" />
+    <Compile Include="Repositories\IArticleFavoritesRepository.cs" />
+    <Compile Include="Repositories\IArticleHistoryRepository.cs" />
+    <Compile Include="Repositories\IArticleLanguagesRepository.cs" />
     <Compile Include="Services\IDeviceService.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IDisplay.cs" />
@@ -225,7 +228,7 @@
       <DependentUpon>20210116115409_ThumbnailUrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\FavoriteLanguage.cs" />
-    <Compile Include="Services\LanguagesReader.cs" />
+    <Compile Include="Repositories\LanguagesReader.cs" />
     <Compile Include="Views\ContentsView.xaml.cs">
       <DependentUpon>ContentsView.xaml</DependentUpon>
     </Compile>
@@ -239,7 +242,7 @@
     <Compile Include="Migrations\20191125191544_LanguagesMigration.Designer.cs">
       <DependentUpon>20191125191544_LanguagesMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\ArticleLanguages.cs" />
+    <Compile Include="Repositories\ArticleLanguagesRepository.cs" />
     <Compile Include="Views\Controls\GroupedListView.cs" />
     <Compile Include="ViewModels\PictureOfTheDayViewModel.cs" />
     <Compile Include="Views\Controls\Background.xaml.cs">
@@ -281,7 +284,7 @@
       <DependentUpon>SpeechView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\ArticleCache.cs" />
-    <Compile Include="Services\ArticleFavorites.cs" />
+    <Compile Include="Repositories\ArticleFavoritesRepository.cs" />
     <Compile Include="Views\ArticleImagesView.xaml.cs">
       <DependentUpon>ArticleImagesView.xaml</DependentUpon>
     </Compile>
@@ -294,7 +297,7 @@
     <Compile Include="Services\DeviceService.cs" />
     <Compile Include="Services\WikipediaApi.cs" />
     <Compile Include="Services\WikipediaHtmlBuilder.cs" />
-    <Compile Include="Services\ArticleHistory.cs" />
+    <Compile Include="Repositories\ArticleHistoryRepository.cs" />
     <Compile Include="Views\AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>

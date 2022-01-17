@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WikipediaApp
 {
-  public static class ArticleFavorites
+  public class ArticleFavoritesRepository : IArticleFavoritesRepository
   {
-    public static FavoriteArticle AddArticle(ArticleHead article)
+    public FavoriteArticle AddArticle(ArticleHead article)
     {
       var favorite = new FavoriteArticle
       {
@@ -31,7 +31,7 @@ namespace WikipediaApp
       return favorite;
     }
 
-    public static void RemoveArticle(ArticleHead article)
+    public void RemoveArticle(ArticleHead article)
     {
       using (var context = new WikipediaContext())
       {
@@ -44,7 +44,7 @@ namespace WikipediaApp
       }
     }
 
-    public static async Task<List<FavoriteArticle>> GetFavorites()
+    public async Task<List<FavoriteArticle>> GetFavorites()
     {
       using (var context = new WikipediaContext())
       {

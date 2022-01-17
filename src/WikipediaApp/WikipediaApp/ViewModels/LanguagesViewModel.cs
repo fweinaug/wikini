@@ -42,6 +42,8 @@ namespace WikipediaApp
 
   public class LanguagesViewModel
   {
+    private readonly IArticleLanguagesRepository articleLanguagesRepository;
+
     private readonly LanguageCollection languages = new LanguageCollection();
 
     public LanguageCollection All
@@ -54,8 +56,10 @@ namespace WikipediaApp
       get { return languages.Favorites; }
     }
 
-    public LanguagesViewModel()
+    public LanguagesViewModel(IArticleLanguagesRepository articleLanguagesRepository)
     {
+      this.articleLanguagesRepository = articleLanguagesRepository;
+
       WeakReferenceMessenger.Default.Register<LanguagesViewModel, AddLanguageToFavorites>(this, (_, message) =>
       {
         AddFavorite(message.Code);
@@ -87,7 +91,7 @@ namespace WikipediaApp
       if (language == null)
         return;
 
-      ArticleLanguages.AddFavorite(code);
+      articleLanguagesRepository.AddFavorite(code);
 
       languages.AddFavorite(language);
 
@@ -100,7 +104,7 @@ namespace WikipediaApp
       if (language == null)
         return;
 
-      ArticleLanguages.RemoveFavorite(code);
+      articleLanguagesRepository.RemoveFavorite(code);
 
       languages.RemoveFavorite(language);
 

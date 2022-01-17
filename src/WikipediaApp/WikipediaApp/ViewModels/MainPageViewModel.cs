@@ -10,6 +10,7 @@ namespace WikipediaApp
     private readonly IWikipediaService wikipediaService;
     private readonly INavigationService navigationService;
     private readonly IDialogService dialogService;
+    private readonly IArticleLanguagesRepository articleLanguagesRepository;
     private readonly IUserSettings userSettings;
 
     private bool isBusy = false;
@@ -90,11 +91,12 @@ namespace WikipediaApp
 
     public PictureOfTheDayViewModel PictureOfTheDay { get; }
 
-    public MainPageViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDialogService dialogService, IUserSettings userSettings, SearchViewModel searchViewModel, PictureOfTheDayViewModel pictureOfTheDayViewModel, LanguagesViewModel languagesViewModel)
+    public MainPageViewModel(IWikipediaService wikipediaService, INavigationService navigationService, IDialogService dialogService, IArticleLanguagesRepository articleLanguagesRepository, IUserSettings userSettings, SearchViewModel searchViewModel, PictureOfTheDayViewModel pictureOfTheDayViewModel, LanguagesViewModel languagesViewModel)
     {
       this.wikipediaService = wikipediaService;
       this.navigationService = navigationService;
       this.dialogService = dialogService;
+      this.articleLanguagesRepository = articleLanguagesRepository;
       this.userSettings = userSettings;
 
       Languages = languagesViewModel;
@@ -154,8 +156,8 @@ namespace WikipediaApp
     {
       if (Language == null)
       {
-        var languages = await ArticleLanguages.GetAll();
-        var favorites = await ArticleLanguages.GetFavorites();
+        var languages = await articleLanguagesRepository.GetAll();
+        var favorites = await articleLanguagesRepository.GetFavorites();
 
         Languages.UpdateLanguages(languages, favorites);
 

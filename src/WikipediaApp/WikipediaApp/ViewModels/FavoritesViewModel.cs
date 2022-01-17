@@ -59,6 +59,7 @@ namespace WikipediaApp
   public class FavoritesViewModel : ObservableObject
   {
     private readonly INavigationService navigationService;
+    private readonly IArticleFavoritesRepository articleFavoritesRepository;
 
     private RelayCommand<FavoriteArticleViewModel> showArticleCommand;
 
@@ -69,9 +70,10 @@ namespace WikipediaApp
       get { return showArticleCommand ??= new RelayCommand<FavoriteArticleViewModel>(ShowArticle); }
     }
 
-    public FavoritesViewModel(INavigationService navigationService)
+    public FavoritesViewModel(INavigationService navigationService, IArticleFavoritesRepository articleFavoritesRepository)
     {
       this.navigationService = navigationService;
+      this.articleFavoritesRepository = articleFavoritesRepository;
 
       WeakReferenceMessenger.Default.Register<FavoritesViewModel, AddArticleToFavorites>(this, (_, message) =>
       {
@@ -95,7 +97,7 @@ namespace WikipediaApp
 
     public async Task Initialize()
     {
-      var favorites = await ArticleFavorites.GetFavorites();
+      var favorites = await articleFavoritesRepository.GetFavorites();
 
       favorites.ForEach(article =>
       {
@@ -105,7 +107,7 @@ namespace WikipediaApp
 
     private void AddArticle(ArticleHead article)
     {
-      var favorite = ArticleFavorites.AddArticle(article);
+      var favorite = articleFavoritesRepository.AddArticle(article);
 
       All.Insert(GetIndexByTitle(favorite), new FavoriteArticleViewModel(favorite));
 
@@ -114,7 +116,7 @@ namespace WikipediaApp
 
     private void RemoveArticle(ArticleHead article)
     {
-      ArticleFavorites.RemoveArticle(article);
+      articleFavoritesRepository.RemoveArticle(article);
 
       if (All.FirstOrDefault(x => x.Language == article.Language && x.Article.PageId == article.PageId) is FavoriteArticleViewModel favorite)
       {

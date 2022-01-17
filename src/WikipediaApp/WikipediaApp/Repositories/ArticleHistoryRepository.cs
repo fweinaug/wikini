@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WikipediaApp
 {
-  public static class ArticleHistory
+  public class ArticleHistoryRepository : IArticleHistoryRepository
   {
-    public static ReadArticle AddArticle(ArticleHead article)
+    public ReadArticle AddArticle(ArticleHead article)
     {
       var read = new ReadArticle
       {
@@ -31,7 +31,7 @@ namespace WikipediaApp
       return read;
     }
 
-    public static void RemoveArticle(ReadArticle article)
+    public void RemoveArticle(ReadArticle article)
     {
       using (var context = new WikipediaContext())
       {
@@ -44,7 +44,7 @@ namespace WikipediaApp
       }
     }
 
-    public static async Task<List<ReadArticle>> GetHistory()
+    public async Task<List<ReadArticle>> GetHistory()
     {
       using (var context = new WikipediaContext())
       {
@@ -54,7 +54,7 @@ namespace WikipediaApp
       }
     }
 
-    public static async Task Clear()
+    public async Task Clear()
     {
       using (var context = new WikipediaContext())
       {

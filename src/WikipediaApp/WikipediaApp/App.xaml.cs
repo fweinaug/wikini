@@ -134,6 +134,9 @@ namespace WikipediaApp
     private static IServiceProvider ConfigureServices()
     {
       var provider = new ServiceCollection()
+        .AddSingleton<IArticleFavoritesRepository, ArticleFavoritesRepository>()
+        .AddSingleton<IArticleHistoryRepository, ArticleHistoryRepository>()
+        .AddSingleton<IArticleLanguagesRepository, ArticleLanguagesRepository>()
         .AddTransient<IWikipediaService, WikipediaService>()
         .AddTransient<IWikipediaContentBuilder, WikipediaHtmlBuilder>()
         .AddTransient<IDeviceService, DeviceService>()

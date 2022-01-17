@@ -50,6 +50,7 @@ namespace WikipediaApp
   public class HistoryViewModel : ObservableObject
   {
     private readonly INavigationService navigationService;
+    private readonly IArticleHistoryRepository articleHistoryRepository;
     private readonly IUserSettings userSettings;
 
     private readonly HistoryArticleCollection groupedArticles = new();
@@ -73,9 +74,10 @@ namespace WikipediaApp
       get { return !(session.Count > 0 || database.Count > 0); }
     }
 
-    public HistoryViewModel(INavigationService navigationService, IUserSettings userSettings)
+    public HistoryViewModel(INavigationService navigationService, IArticleHistoryRepository articleHistoryRepository, IUserSettings userSettings)
     {
       this.navigationService = navigationService;
+      this.articleHistoryRepository = articleHistoryRepository;
       this.userSettings = userSettings;
 
       WeakReferenceMessenger.Default.Register<HistoryViewModel, AddArticleToHistory>(this, (_, message) =>
@@ -98,7 +100,7 @@ namespace WikipediaApp
 
     public async Task Initialize()
     {
-      var history = await ArticleHistory.GetHistory();
+      var history = await articleHistoryRepository.GetHistory();
 
       history.ForEach(database.Add);
 
@@ -110,7 +112,7 @@ namespace WikipediaApp
       if (session.Any(x => x.Language == article.Language && x.PageId == article.PageId))
         return;
 
-      var read = ArticleHistory.AddArticle(article);
+      var read = articleHistoryRepository.AddArticle(article);
 
       database.Insert(0, read);
       session.Insert(0, read);
@@ -122,7 +124,7 @@ namespace WikipediaApp
     {
       if (database.FirstOrDefault(x => x.Id == article.Id) is ReadArticle readArticle)
       {
-        ArticleHistory.RemoveArticle(article);
+        articleHistoryRepository.RemoveArticle(article);
 
         database.Remove(readArticle);
       }
@@ -136,7 +138,7 @@ namespace WikipediaApp
 
     private async Task<bool> ClearHistory()
     {
-      await ArticleHistory.Clear();
+      await articleHistoryRepository.Clear();
 
       database.Clear();
       session.Clear();
