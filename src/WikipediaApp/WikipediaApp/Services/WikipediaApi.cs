@@ -78,7 +78,7 @@ namespace WikipediaApp
 
     public async Task<ArticleImage> GetPictureOfTheDay(DateTime date)
     {
-      var query = $"https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&generator=images&titles=Template:Potd/{date:yyyy-MM-dd}&prop=imageinfo&iiprop=url&iiurlwidth=1000";
+      var query = $"https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&generator=images&titles=Template:Potd/{date:yyyy-MM-dd}&prop=imageinfo|revisions&iiprop=url&iiurlwidth=1000&rvprop=content&rvslots=main";
 
       var result = await QueryAndParse<ImagesGeneratorRoot>(query);
 
@@ -90,11 +90,47 @@ namespace WikipediaApp
       if (page.imageinfo == null || page.imageinfo.Count == 0)
         return null;
 
+      var descriptions = ParseDescriptions(page);
+
       return new ArticleImage
       {
         ImageUri = new Uri(page.imageinfo[0].url),
-        ThumbnailUri = new Uri(page.imageinfo[0].thumburl)
+        ThumbnailUri = new Uri(page.imageinfo[0].thumburl),
+        Description = descriptions.GetValueOrDefault("en")
       };
+    }
+
+    private static Dictionary<string, string> ParseDescriptions(ImagesGeneratorPage page)
+    {
+      var descriptions = new Dictionary<string, string>();
+
+      var content = page.revisions[0].slots["main"].content;
+
+      var descriptionRegex = new Regex(@"\|[Dd]escription\s*=\s*(?<value>[\s\S]+?)\s+\|\S", RegexOptions.Singleline);
+      var descriptionMatch = descriptionRegex.Match(content);
+      if (!descriptionMatch.Success)
+        return descriptions;
+
+      var descriptionValue = descriptionMatch.Groups["value"].Value;
+      var descriptionGroups = descriptionValue.Replace(@"\n", "\n").Replace("}}{{", "}}\n{{").Split("\n");
+      
+      foreach (var group in descriptionGroups)
+      {
+        var groupValue = group.Trim('{', '}');
+        var descriptionOffset = groupValue.IndexOf('|');
+        if (descriptionOffset != 2)
+          continue;
+
+        var language = groupValue.Substring(0, descriptionOffset);
+
+        var description = groupValue.Substring(descriptionOffset + 1).TrimEnd();
+        if (description.StartsWith("1="))
+          description = description.Substring(2);
+
+        descriptions.Add(language, description);
+      }
+
+      return descriptions;
     }
 
     public async Task<List<ArticleImage>> GetArticleImages(Article article)
@@ -330,6 +366,7 @@ namespace WikipediaApp
     private class ImagesGeneratorPage
     {
       public List<ImagesGeneratorImageInfo> imageinfo { get; set; }
+      public List<Revision> revisions { get; set; }
     }
 
     private class ImagesGeneratorImageInfo
@@ -337,6 +374,16 @@ namespace WikipediaApp
       public string thumburl { get; set; }
       public string url { get; set; }
       public string descriptionurl { get; set; }
+    }
+
+    private class Revision
+    {
+      public Dictionary<string, RevisionSlot> slots { get; set; }
+    }
+
+    private class RevisionSlot
+    {
+      public string content { get; set; }
     }
   }
 
