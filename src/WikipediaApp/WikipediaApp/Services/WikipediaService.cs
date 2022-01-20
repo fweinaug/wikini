@@ -11,7 +11,7 @@ namespace WikipediaApp
     private static readonly ArticleCache<ArticleHead> articleHeadCache = new ArticleCache<ArticleHead>();
     private static readonly ArticleCache<Article> articleCache = new ArticleCache<Article>();
     private static readonly ArticleCache<NearbyArticle> articleLocationCache = new ArticleCache<NearbyArticle>();
-    private static readonly Dictionary<DateTime, ArticleImage> pictureOfTheDayCache = new Dictionary<DateTime, ArticleImage>();
+    private static readonly Dictionary<DateTime, PictureOfTheDay> pictureOfTheDayCache = new Dictionary<DateTime, PictureOfTheDay>();
 
     private readonly WikipediaSearchApi searchApi = new WikipediaSearchApi();
     private readonly WikipediaGeosearchApi geosearchApi = new WikipediaGeosearchApi();
@@ -270,7 +270,7 @@ namespace WikipediaApp
       }
     }
 
-    public async Task<ArticleImage> GetPictureOfTheDay(DateTime date)
+    public async Task<PictureOfTheDay> GetPictureOfTheDay(DateTime date)
     {
       try
       {

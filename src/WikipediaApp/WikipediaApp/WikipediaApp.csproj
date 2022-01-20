@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="Factories\ArticleViewModelFactory.cs" />
     <Compile Include="Factories\IArticleViewModelFactory.cs" />
+    <Compile Include="Models\PictureOfTheDay.cs" />
     <Compile Include="Models\Coordinates.cs" />
     <Compile Include="Models\NearbyArticle.cs" />
     <Compile Include="Services\AppSettings.cs" />

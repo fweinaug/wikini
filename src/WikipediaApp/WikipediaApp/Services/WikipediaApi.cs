@@ -76,7 +76,7 @@ namespace WikipediaApp
       };
     }
 
-    public async Task<ArticleImage> GetPictureOfTheDay(DateTime date)
+    public async Task<PictureOfTheDay> GetPictureOfTheDay(DateTime date)
     {
       var query = $"https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&generator=images&titles=Template:Potd/{date:yyyy-MM-dd}&prop=imageinfo|revisions&iiprop=url&iiurlwidth=1000&rvprop=content&rvslots=main";
 
@@ -92,11 +92,11 @@ namespace WikipediaApp
 
       var descriptions = ParseDescriptions(page);
 
-      return new ArticleImage
+      return new PictureOfTheDay
       {
         ImageUri = new Uri(page.imageinfo[0].url),
         ThumbnailUri = new Uri(page.imageinfo[0].thumburl),
-        Description = descriptions.GetValueOrDefault("en")
+        Descriptions = descriptions,
       };
     }
 

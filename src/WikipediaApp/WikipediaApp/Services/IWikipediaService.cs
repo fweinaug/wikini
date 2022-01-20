@@ -18,7 +18,7 @@ namespace WikipediaApp
 
     Task<ArticleHead> GetMainPage(string language);
     Task<ArticleHead> GetRandomArticle(string language);
-    Task<ArticleImage> GetPictureOfTheDay(DateTime date);
+    Task<PictureOfTheDay> GetPictureOfTheDay(DateTime date);
 
     Task<bool> PinArticle(ArticleHead article);
     Task<bool> PinArticle(string language, int? pageId, string title);
