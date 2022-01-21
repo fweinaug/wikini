@@ -116,7 +116,7 @@ namespace WikipediaApp
       
       foreach (var group in descriptionGroups)
       {
-        var groupValue = group.Trim('{', '}');
+        var groupValue = group.Substring(2, group.Length - 4); // remove curly brackets
         var descriptionOffset = groupValue.IndexOf('|');
         if (descriptionOffset != 2)
           continue;
@@ -127,7 +127,7 @@ namespace WikipediaApp
         if (description.StartsWith("1="))
           description = description.Substring(2);
 
-        descriptions.Add(language, description);
+        descriptions.Add(language, RemoveHtml(description));
       }
 
       return descriptions;
