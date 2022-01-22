@@ -9,9 +9,11 @@ namespace WikipediaApp
   public class PictureOfTheDayViewModel : ObservableObject
   {
     private readonly IWikipediaService wikipediaService;
+    private readonly IAppSettings appSettings;
 
     private DateTime date;
     private Uri thumbnailUri;
+    private Description description;
 
     private RelayCommand backCommand = null;
     private RelayCommand todayCommand = null;
@@ -34,6 +36,18 @@ namespace WikipediaApp
       }
     }
 
+    public Description Description
+    {
+      get { return description; }
+      private set
+      {
+        if (SetProperty(ref description, value))
+          OnPropertyChanged(nameof(HasDescription));
+      }
+    }
+
+    public bool HasDescription => Description != null;
+
     public ICommand BackCommand
     {
       get { return backCommand ?? (backCommand = new RelayCommand(Back)); }
@@ -54,9 +68,10 @@ namespace WikipediaApp
       get { return clearCommand ?? (clearCommand = new RelayCommand(Clear, () => thumbnailUri != null)); }
     }
 
-    public PictureOfTheDayViewModel(IWikipediaService wikipediaService)
+    public PictureOfTheDayViewModel(IWikipediaService wikipediaService, IAppSettings appSettings)
     {
       this.wikipediaService = wikipediaService;
+      this.appSettings = appSettings;
     }
 
     public async void Back()
@@ -93,6 +108,7 @@ namespace WikipediaApp
     public void Clear()
     {
       ThumbnailUri = null;
+      Description = null;
     }
 
     private async Task ChangeDate(DateTime date)
@@ -100,6 +116,7 @@ namespace WikipediaApp
       var picture = await wikipediaService.GetPictureOfTheDay(date);
 
       ThumbnailUri = picture?.ThumbnailUri;
+      Description = picture?.GetDescription(appSettings.Language);
       Date = date;
     }
   }
