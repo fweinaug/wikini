@@ -29,7 +29,7 @@ namespace WikipediaApp
       DevNameTextBlock.Text = package.PublisherDisplayName;
 
       LanguagesComboBox.ItemsSource = ApplicationLanguages.ManifestLanguages.Select(x => new LanguageInfo(x));
-      LanguagesComboBox.SelectedValue = ApplicationLanguages.PrimaryLanguageOverride;
+      LanguagesComboBox.SelectedValue = App.Services.GetService<IAppSettings>().Language;
     }
 
     public void CloseDialogs()

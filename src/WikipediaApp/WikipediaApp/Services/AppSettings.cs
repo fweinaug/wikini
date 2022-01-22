@@ -1,10 +1,27 @@
 ﻿using System;
+using Windows.Globalization;
 using Windows.Storage;
 
 namespace WikipediaApp
 {
   public class AppSettings : IAppSettings
   {
+    public string Language
+    {
+      get
+      {
+        var language = ApplicationLanguages.PrimaryLanguageOverride;
+        if (!string.IsNullOrEmpty(language))
+          return language;
+
+
+        if (ApplicationLanguages.Languages.Count > 0)
+          return ApplicationLanguages.Languages[0].Split('-')[0];
+
+        return "en";
+      }
+    }
+
     public bool DarkMode => App.Current.InDarkMode();
 
     public void WriteLastArticle(ArticleHead value)
