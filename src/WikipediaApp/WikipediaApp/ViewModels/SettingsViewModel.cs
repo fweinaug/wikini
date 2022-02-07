@@ -10,7 +10,7 @@ namespace WikipediaApp
   {
     private readonly IUserSettings userSettings;
 
-    private AsyncRelayCommand clearHistoryCommand = null;
+    private RelayCommand clearHistoryCommand = null;
 
     public bool AppThemeSystem
     {
@@ -132,7 +132,7 @@ namespace WikipediaApp
       set => userSettings.Set(UserSettingsKey.DisplayActive, value);
     }
 
-    public ICommand ClearHistoryCommand => clearHistoryCommand ??= new AsyncRelayCommand(ClearHistory, CanClearHistory);
+    public ICommand ClearHistoryCommand => clearHistoryCommand ??= new RelayCommand(ClearHistory, CanClearHistory);
 
     public SettingsViewModel(IUserSettings userSettings)
     {
@@ -144,11 +144,9 @@ namespace WikipediaApp
       });
     }
 
-    private async Task ClearHistory()
+    private void ClearHistory()
     {
-      await WeakReferenceMessenger.Default.Send(new ClearHistory());
-
-      clearHistoryCommand?.NotifyCanExecuteChanged();
+      WeakReferenceMessenger.Default.Send(new ClearHistory());
     }
 
     private bool CanClearHistory()

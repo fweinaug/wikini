@@ -33,7 +33,7 @@ namespace WikipediaApp
     }
   }
 
-  public sealed class ClearHistory : AsyncRequestMessage<bool>
+  public sealed class ClearHistory
   {
   }
 
@@ -88,9 +88,9 @@ namespace WikipediaApp
       {
         RemoveArticle(message.Article);
       });
-      WeakReferenceMessenger.Default.Register<HistoryViewModel, ClearHistory>(this, (_, message) =>
+      WeakReferenceMessenger.Default.Register<HistoryViewModel, ClearHistory>(this, async (_, message) =>
       {
-        message.Reply(ClearHistory());
+        await ClearHistory();
       });
       WeakReferenceMessenger.Default.Register<HistoryViewModel, IsHistoryEmpty>(this, (_, message) =>
       {
@@ -136,7 +136,7 @@ namespace WikipediaApp
       WeakReferenceMessenger.Default.Send<HistoryChanged>();
     }
 
-    private async Task<bool> ClearHistory()
+    private async Task ClearHistory()
     {
       await articleHistoryRepository.Clear();
 
@@ -144,8 +144,6 @@ namespace WikipediaApp
       session.Clear();
 
       WeakReferenceMessenger.Default.Send<HistoryChanged>();
-
-      return true;
     }
 
     private void ShowArticle(HistoryArticleViewModel article)

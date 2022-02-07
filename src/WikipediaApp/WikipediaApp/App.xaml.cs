@@ -25,7 +25,7 @@ namespace WikipediaApp
 
     public static IServiceProvider Services
     {
-      get { return ((App)Current).serviceProvider; }
+      get { return Current.serviceProvider; }
     }
 
     public AppShell AppShell { get; private set; }
