@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
@@ -20,6 +21,7 @@ namespace WikipediaApp
     private RelayCommand showRandomArticleCommand = null;
     private RelayCommand showMapCommand = null;
     private RelayCommand<ArticleHead> showArticleCommand = null;
+    private RelayCommand<Uri> navigateCommand;
 
     private LanguageViewModel language = null;
     private RelayCommand<LanguageViewModel> changeLanguageCommand = null;
@@ -59,6 +61,11 @@ namespace WikipediaApp
     public ICommand ShowArticleCommand
     {
       get { return showArticleCommand ?? (showArticleCommand = new RelayCommand<ArticleHead>(ShowArticle)); }
+    }
+
+    public ICommand NavigateCommand
+    {
+      get { return navigateCommand ?? (navigateCommand = new RelayCommand<Uri>(Navigate)); }
     }
 
     public LanguagesViewModel Languages { get; }
@@ -140,6 +147,14 @@ namespace WikipediaApp
     public void ShowArticle(ArticleHead article)
     {
       navigationService.ShowArticle(article);
+    }
+
+    private async void Navigate(Uri uri)
+    {
+      var article = await wikipediaService.GetArticleInfo(uri);
+
+      if (article != null)
+        navigationService.ShowArticle(article);
     }
 
     private void ChangeLanguage(LanguageViewModel language)

@@ -329,6 +329,9 @@
     <Compile Include="Services\WikipediaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ArticleHead.cs" />
+    <Compile Include="Views\Controls\PhotoDescription.xaml.cs">
+      <DependentUpon>PhotoDescription.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -444,6 +447,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\PhotoDescription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

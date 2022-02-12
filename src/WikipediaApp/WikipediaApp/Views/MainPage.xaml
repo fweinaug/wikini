@@ -9,8 +9,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,8)"
     mc:Ignorable="d">
 
@@ -224,6 +224,24 @@
                             </Button.Flyout>
                         </Button>
                     </StackPanel>
+
+                    <Grid Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top"
+                          Margin="20,45" MaxWidth="500" MaxHeight="140" ui:VisualExtensions.Translation="0,-200"
+                          Visibility="{Binding PictureOfTheDay.HasDescription, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                        <animations:Implicit.ShowAnimations>
+                            <animations:TranslationAnimation Duration="0:0:0.3" To="0,0,0" />
+                            <animations:OpacityAnimation Duration="0:0:0.5" To="1.0" />
+                        </animations:Implicit.ShowAnimations>
+
+                        <animations:Implicit.HideAnimations>
+                            <animations:OpacityAnimation Duration="0:0:0.7" To="0.0" />
+                            <animations:ScalarAnimation Target="Translation.Y" Duration="0:0:0.8" To="-200" />
+                        </animations:Implicit.HideAnimations>
+
+                        <local:PhotoDescription Description="{Binding PictureOfTheDay.Description}"
+                                                ArticleClickedCommand="{Binding NavigateCommand}" />
+                    </Grid>
 
                     <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                 Orientation="Horizontal" Spacing="5"
