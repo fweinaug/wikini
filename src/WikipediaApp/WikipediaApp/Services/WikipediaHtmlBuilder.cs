@@ -19,7 +19,7 @@ namespace WikipediaApp
       var typeface = userSettings.Get<Typeface>(UserSettingsKey.ArticleTypeface);
       var sectionsCollapsed = userSettings.Get<bool>(UserSettingsKey.SectionsCollapsed);
 
-      var styles = GetRootStyle(fontSize, systemSettingProvider.TextScaleFactor);
+      var styles = GetRootStyle(fontSize, systemSettingProvider.TextScaleFactor, header);
 
       var themeClass = GetThemeClass(appSettings.DarkMode);
       var bodyClasses = themeClass + " " + GetTypefaceClass(typeface);
@@ -47,7 +47,7 @@ namespace WikipediaApp
         <meta name=""viewport"" content=""initial-scale=1.0, user-scalable=no, width=device-width""/>
         <style>{styles}</style>
         </head>
-        <body class=""{bodyClasses} mediawiki {article.TextDirection} sitedir-{article.TextDirection} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"" style=""margin-top: {header}px"">
+        <body class=""{bodyClasses} mediawiki {article.TextDirection} sitedir-{article.TextDirection} mw-hide-empty-elt ns-0 ns-subject stable skin-minerva action-view feature-footer-v2"" onload=""registerEventListeners();"">
         <div id=""mw-mf-viewport"">
 	        <div id=""mw-mf-page-center"">
 		        <div id=""content"" class=""mw-body"">
@@ -65,13 +65,14 @@ namespace WikipediaApp
       return html;
     }
 
-    private static string GetRootStyle(int fontSize, double textScaleFactor)
+    private static string GetRootStyle(int fontSize, double textScaleFactor, int header)
     {
       var styles = $@"
         :root {{
           --font-size: {fontSize}px;
           --base-font-size: 14;
           --text-scale-factor: {textScaleFactor};
+          --header-top: {header}px;
         }}
       ";
 

@@ -194,13 +194,12 @@ namespace WikipediaApp
 
       try
       {
-        var js = $"document.body.style.marginTop = '{header + 10}px';";
+        var js = $"changeHeader({header + 10})";
 
         await WebView.InvokeScriptAsync("eval", new[] { js });
       }
-      catch (Exception ex)
+      catch (Exception)
       {
-        Crashes.TrackError(ex);
       }
     }
 

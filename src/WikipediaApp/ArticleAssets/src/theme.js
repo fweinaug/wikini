@@ -8,6 +8,10 @@
   }
 }
 
+function changeHeader(top) {
+    document.documentElement.style.setProperty('--header-top', `${top}px`);
+}
+
 function changeFontSize(size) {
     document.documentElement.style.setProperty('--font-size', `${size}px`);
 }
