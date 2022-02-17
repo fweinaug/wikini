@@ -1,228 +1,237 @@
 [
-    [
-        "Article view with serif or sans-serif typeface",
-        "Improved article view background",
-        "Improved in-article search bar",
-        "Updated design and various improvements"
-    ],
-    [
-        "Surroundings map",
-        "Article view with image gallery",
-        "Scroll and zoom images with cursor"
-    ],
-    [
-        "Automatically change design in article view",
-        "Automatically update font size in article view",
-        "Read aloud with context menu to jump to section",
-        "Performance and layout improvements"
-    ],
-    [
-        "Context menu for articles and selection in article view",
-        "Read aloud with media controls and playback in background",
-        "Display description in article view",
-        "Remove article from history",
-        "Improved context menu for links in article view",
-        "More design improvements"
-    ],
-    [
-        "Command bar in article view at top",
-        "Revamped home page design",
-        "Switch to Fluent Icons",
-        "Random picture of the day; hide picture",
-        "Additional tooltips"
-    ],
-    [
-        "Improved article view for languages written from right to left"
-    ],
-    [
-        "Search with speech recognition",
-        "Highlight the selected language in sidebar",
-        "Display the article in the title bar"
-    ],
-    [
-        "Tabs in the sidebar",
-        "Highlight the active entry in the table of contents",
-        "Better scroll bar in the article view, especially in Dark Mode",
-        "Performance and layout improvements",
-        "Separator between main chapters in the table of contents"
-    ],
-    [
-        "Improved article view in Dark Mode"
-    ],
-    [
-        "Display can now be turned off by the power management while reading an article",
-        "Setting to keep the display on while reading an article"
-    ],
-    [
-        "Select your favorite languages",
-        "Display all Wikipedia languages in the language selection on the start page"
-    ],
-    [
-        "New background on start page",
-        "Setting whether the picture of the day is displayed on the start page at startup",
-        "Fixed failing requests for Windows versions before 1903"
-    ],
-    [
-        "New logo and accent color",
-        "Bugfixes"
-    ],
-    [
-        "Improved design",
-        "Migrated to WinUI and App Center"
-    ],
-    [
-        "Read aloud function with voice settings",
-        "Search field in dark design improved",
-        "Article languages with localized title",
-        "Improved design of history"
-    ],
-    [
-        "Home page with picture of the day",
-        "Alphabetical sorting of favorites",
-        "History pane with context menu"
-    ],
-    [
-        "Search results with image",
-        "Favorites pane with context menu",
-        "Setting whether the last opened article is displayed at startup",
-        "Bugfixes"
-    ],
-    [
-        "Improved search on the home page",
-        "Note if history and favorites do not contain any entries",
-        "Show favorites in article view"
-    ],
-    [
-        "Display settings as a sidebar",
-        "Grouping of the history by date",
-        "Setting to select the app language",
-        "Setting whether the sidebar is displayed next to the content",
-        "Explicit close button for the sidebar"
-    ],
-    [
-        "Dutch and Polish translation"
-    ],
-    [
-        "Context menu for links in article view",
-        "Display language abbreviations",
-        "Article sharing improved",
-        "Article view improved",
-        "Some icons replaced",
-        "Bugfixes",
-        "Minimum version of Windows 10 raised to 1809 (October 2018)"
-    ],
-    [
-        "Fluent Design improved",
-        "Italian translation improved (Thanks Matteo!)",
-        "Portuguese translation",
-        "Bugfixes"
-    ],
-    [
-        "Search in article completed",
-        "Download images"
-    ],
-    [
-        "Show articles in full screen",
-        "Spanish and Italian translation",
-        "Bugfixes"
-    ],
-    [
-        "Search in article (highlights hits, more to follow soon)"
-    ],
-    [
-        "Show last opened article again at startup",
-        "Do not lock device when reading an article"
-    ],
-    [
-        "Display opened articles in Windows Timeline",
-        "Read aloud function for articles",
-        "Improved text scaling (desktop only, for mobile there is unfortunately no solution for the gigantic font)",
-        "Setting whether called articles are displayed in Windows Timeline",
-        "Bug fixes and optimizations"
-    ],
-    [
-        "Setting whether only articles from the current session are displayed in the history",
-        "Clear history"
-    ],
-    [
-        "Improved article view in Dark Mode",
-        "Add article to history only once",
-        "Fixed color of the title bar in Dark Mode"
-    ],
-    [
-        "List of favorite articles",
-        "History will now be saved",
-        "Improved article view",
-        "Additional icons for command bars"
-    ],
-    [
-        "Fluent Design",
-        "Show article description in search results",
-        "Show additional buttons in article view",
-        "Close the image view with escape",
-        "Show additional captions in image view"
-    ],
-    [
-        "Zoom pictures of articles"
-    ],
-    [
-        "Show and click through pictures of articles"
-    ],
-    [
-        "Improved display of transparent images in Dark Mode"
-    ],
-    [
-        "Show mathematical formulas in Dark Mode",
-        "Bugfixes"
-    ],
-    [
-        "Pin articles to Start",
-        "Setting whether images are loaded"
-    ],
-    [
-        "Display footnotes as a popup",
-        "Anchors in the article view work now",
-        "Use anchor of links to other articles"
-    ],
-    [
-        "Wikini is now also available on the desktop!",
-        "History, table of contents and language selection with light transparency",
-        "Disable table of contents and language selection if there are no entries"
-    ],
-    [
-        "Setting for font size in article view"
-    ],
-    [
-        "Back/forward in article view to switch between recently opened articles (After the article finished loading the app will restore the previous scroll position.)",
-        "Share articles, e.g. per e-mail or messenger apps",
-        "Resolve redirects to a different article",
-        "Open settings from the article view",
-        "Overview of all released updates and their respective changelog",
-        "French translation (Thanks to Rémi!)"
-    ],
-    [
-        "Improved live search",
-        "Changing the language triggers search",
-        "Enter triggers the search",
-        "Notice 'no articles found'"
-    ],
-    [
-        "Dark Mode"
-    ],
-    [
-        "Tooltips for listview items",
-        "Bugfixes"
-    ],
-    [
-        "Search for articles in selected language",
-        "Live search",
-        "Table of contents of the article",
-        "Change language of the article",
-        "Open article in browser",
-        "History of viewed articles",
-        "Open a random article",
-        "Open homepage of Wikipedia",
-        "Setting whether live search should be executed when connected to a metered network",
-        "Setting whether all sections should be collapsed when opening articles"
-    ]
+  [
+    "Support for all Wikipedia languages",
+    "Home page with description for picture of the day",
+    "More animations on home page and sidebar",
+    "Read aloud shows progress with slider",
+    "Article view shows localized language in tooltip",
+    "Surroundings map with loading indicator",
+    "Bugfixes"
+  ],
+  [
+    "Article view with serif or sans-serif typeface",
+    "Improved article view background",
+    "Improved in-article search bar",
+    "Updated design and various improvements"
+  ],
+  [
+    "Surroundings map",
+    "Article view with image gallery",
+    "Scroll and zoom images with cursor"
+  ],
+  [
+    "Automatically change design in article view",
+    "Automatically update font size in article view",
+    "Read aloud with context menu to jump to section",
+    "Performance and layout improvements"
+  ],
+  [
+    "Context menu for articles and selection in article view",
+    "Read aloud with media controls and playback in background",
+    "Display description in article view",
+    "Remove article from history",
+    "Improved context menu for links in article view",
+    "More design improvements"
+  ],
+  [
+    "Command bar in article view at top",
+    "Revamped home page design",
+    "Switch to Fluent Icons",
+    "Random picture of the day; hide picture",
+    "Additional tooltips"
+  ],
+  [
+    "Improved article view for languages written from right to left"
+  ],
+  [
+    "Search with speech recognition",
+    "Highlight the selected language in sidebar",
+    "Display the article in the title bar"
+  ],
+  [
+    "Tabs in the sidebar",
+    "Highlight the active entry in the table of contents",
+    "Better scroll bar in the article view, especially in Dark Mode",
+    "Performance and layout improvements",
+    "Separator between main chapters in the table of contents"
+  ],
+  [
+    "Improved article view in Dark Mode"
+  ],
+  [
+    "Display can now be turned off by the power management while reading an article",
+    "Setting to keep the display on while reading an article"
+  ],
+  [
+    "Select your favorite languages",
+    "Display all Wikipedia languages in the language selection on the start page"
+  ],
+  [
+    "New background on start page",
+    "Setting whether the picture of the day is displayed on the start page at startup",
+    "Fixed failing requests for Windows versions before 1903"
+  ],
+  [
+    "New logo and accent color",
+    "Bugfixes"
+  ],
+  [
+    "Improved design",
+    "Migrated to WinUI and App Center"
+  ],
+  [
+    "Read aloud function with voice settings",
+    "Search field in dark design improved",
+    "Article languages with localized title",
+    "Improved design of history"
+  ],
+  [
+    "Home page with picture of the day",
+    "Alphabetical sorting of favorites",
+    "History pane with context menu"
+  ],
+  [
+    "Search results with image",
+    "Favorites pane with context menu",
+    "Setting whether the last opened article is displayed at startup",
+    "Bugfixes"
+  ],
+  [
+    "Improved search on the home page",
+    "Note if history and favorites do not contain any entries",
+    "Show favorites in article view"
+  ],
+  [
+    "Display settings as a sidebar",
+    "Grouping of the history by date",
+    "Setting to select the app language",
+    "Setting whether the sidebar is displayed next to the content",
+    "Explicit close button for the sidebar"
+  ],
+  [
+    "Dutch and Polish translation"
+  ],
+  [
+    "Context menu for links in article view",
+    "Display language abbreviations",
+    "Article sharing improved",
+    "Article view improved",
+    "Some icons replaced",
+    "Bugfixes",
+    "Minimum version of Windows 10 raised to 1809 (October 2018)"
+  ],
+  [
+    "Fluent Design improved",
+    "Italian translation improved (Thanks Matteo!)",
+    "Portuguese translation",
+    "Bugfixes"
+  ],
+  [
+    "Search in article completed",
+    "Download images"
+  ],
+  [
+    "Show articles in full screen",
+    "Spanish and Italian translation",
+    "Bugfixes"
+  ],
+  [
+    "Search in article (highlights hits, more to follow soon)"
+  ],
+  [
+    "Show last opened article again at startup",
+    "Do not lock device when reading an article"
+  ],
+  [
+    "Display opened articles in Windows Timeline",
+    "Read aloud function for articles",
+    "Improved text scaling (desktop only, for mobile there is unfortunately no solution for the gigantic font)",
+    "Setting whether called articles are displayed in Windows Timeline",
+    "Bug fixes and optimizations"
+  ],
+  [
+    "Setting whether only articles from the current session are displayed in the history",
+    "Clear history"
+  ],
+  [
+    "Improved article view in Dark Mode",
+    "Add article to history only once",
+    "Fixed color of the title bar in Dark Mode"
+  ],
+  [
+    "List of favorite articles",
+    "History will now be saved",
+    "Improved article view",
+    "Additional icons for command bars"
+  ],
+  [
+    "Fluent Design",
+    "Show article description in search results",
+    "Show additional buttons in article view",
+    "Close the image view with escape",
+    "Show additional captions in image view"
+  ],
+  [
+    "Zoom pictures of articles"
+  ],
+  [
+    "Show and click through pictures of articles"
+  ],
+  [
+    "Improved display of transparent images in Dark Mode"
+  ],
+  [
+    "Show mathematical formulas in Dark Mode",
+    "Bugfixes"
+  ],
+  [
+    "Pin articles to Start",
+    "Setting whether images are loaded"
+  ],
+  [
+    "Display footnotes as a popup",
+    "Anchors in the article view work now",
+    "Use anchor of links to other articles"
+  ],
+  [
+    "Wikini is now also available on the desktop!",
+    "History, table of contents and language selection with light transparency",
+    "Disable table of contents and language selection if there are no entries"
+  ],
+  [
+    "Setting for font size in article view"
+  ],
+  [
+    "Back/forward in article view to switch between recently opened articles (After the article finished loading the app will restore the previous scroll position.)",
+    "Share articles, e.g. per e-mail or messenger apps",
+    "Resolve redirects to a different article",
+    "Open settings from the article view",
+    "Overview of all released updates and their respective changelog",
+    "French translation (Thanks to Rémi!)"
+  ],
+  [
+    "Improved live search",
+    "Changing the language triggers search",
+    "Enter triggers the search",
+    "Notice 'no articles found'"
+  ],
+  [
+    "Dark Mode"
+  ],
+  [
+    "Tooltips for listview items",
+    "Bugfixes"
+  ],
+  [
+    "Search for articles in selected language",
+    "Live search",
+    "Table of contents of the article",
+    "Change language of the article",
+    "Open article in browser",
+    "History of viewed articles",
+    "Open a random article",
+    "Open homepage of Wikipedia",
+    "Setting whether live search should be executed when connected to a metered network",
+    "Setting whether all sections should be collapsed when opening articles"
+  ]
 ]

@@ -1,228 +1,237 @@
 [
-    [
-        "Artikelansicht in Schrift mit oder ohne Serifen",
-        "Verbesserter Hintergrund in Artikelansicht",
-        "Verbesserte Suchleiste in Artikelansicht",
-        "Aktualisiertes Design und verschiedene Verbesserungen"
-    ],
-    [
-        "Umgebungskarte",
-        "Artikelansicht mit Bildergalerie",
-        "Bilder mit dem Cursor scrollen und zoomen"
-    ],
-    [
-        "Design in Artikelansicht automatisch wechseln",
-        "Schriftgröße in Artikelansicht automatisch aktualisieren",
-        "Artikel vorlesen mit Kontextmenü um zu Abschnitt zu springen",
-        "Performance- und Layout-Verbesserungen"
-    ],
-    [
-        "Kontextmenü für Artikel und Auswahl in Artikelansicht",
-        "Artikel vorlesen mit Media Controls und Wiedergabe im Hintergrund",
-        "Anzeige der Beschreibung in Artikelansicht",
-        "Artikel aus Verlauf entfernen",
-        "Verbessertes Kontextmenü für Links in Artikelansicht",
-        "Weitere Design-Verbesserungen"
-    ],
-    [
-        "Befehlsleiste in Artikelansicht oben",
-        "Überarbeitetes Startseiten-Design",
-        "Umstellung auf Fluent Icons",
-        "Zufälliges Bild des Tages; Bild ausblenden",
-        "Zusätzliche Tooltips"
-    ],
-    [
-        "Verbesserte Artikelansicht für von rechts nach links geschriebene Sprachen"
-    ],
-    [
-        "Suche mit Spracherkennung",
-        "Hervorheben der ausgewählten Sprache in Seitenleiste",
-        "Anzeige des Artikels in der Titelleiste"
-    ],
-    [
-        "Tabs in der Seitenleiste",
-        "Hervorheben des aktiven Eintrags im Inhaltsverzeichnis",
-        "Bessere Bildlaufleiste in der Artikelansicht, insbesondere im Dunklen Design",
-        "Performance- und Layout-Verbesserungen",
-        "Trennlinie zwischen Hauptkapiteln im Inhaltsverzeichnis"
-    ],
-    [
-        "Verbesserte Artikelansicht im Dunklen Design"
-    ],
-    [
-        "Bildschirm kann jetzt beim Lesen eines Artikels vom Energiesparmodus ausgeschaltet werden",
-        "Einstellung ob der Bildschirm beim Lesen eines Artikels nie ausgeschaltet wird"
-    ],
-    [
-        "Auswahl der favorisierten Sprachen",
-        "Anzeige sämtlicher Wikipedia-Sprachen in der Sprachauswahl auf der Startseite"
-    ],
-    [
-        "Startseite mit neuem Hintergrund",
-        "Einstellung ob beim Start das Bild des Tages auf der Startseite angezeigt wird",
-        "Fehlschlagende Requests für Windows-Versionen vor 1903 behoben"
-    ],
-    [
-        "Neues Logo und Akzentfarbe",
-        "Fehlerbehebungen"
-    ],
-    [
-        "Design verbessert",
-        "Umstellung auf WinUI und App Center"
-    ],
-    [
-        "Vorlesefunktion mit Stimmeinstellungen",
-        "Suche im Dunklen Design verbessert",
-        "Artikel-Sprachen mit lokalisiertem Titel",
-        "Design von Verlauf verbessert"
-    ],
-    [
-        "Startseite mit Bild des Tages",
-        "Alphabetische Sortierung der Favoriten",
-        "Verlauf-Leiste mit Kontextmenü"
-    ],
-    [
-        "Suchergebnisse mit Bild",
-        "Favoriten-Leiste mit Kontextmenü",
-        "Einstellung ob beim Start der zuletzt geöffnete Artikel angezeigt wird",
-        "Fehlerbehebungen"
-    ],
-    [
-        "Suche auf der Startseite überarbeitet",
-        "Hinweis wenn Historie und Favoriten keine Einträge enthalten",
-        "Favoriten in Artikelansicht anzeigen"
-    ],
-    [
-        "Anzeige der Einstellungen als Seitenleiste",
-        "Gruppierung des Verlaufs nach Datum",
-        "Einstellung zur Auswahl der App-Sprache",
-        "Einstellung ob Seitenleiste neben dem Inhalt angezeigt wird",
-        "Explizieter Schließen-Button für die Seitenleiste"
-    ],
-    [
-        "Niederländische und Polnische Übersetzung"
-    ],
-    [
-        "Kontextmenü für Links in Artikelansicht",
-        "Sprachkürzel anzeigen",
-        "Teilen von Artikeln verbessert",
-        "Artikelansicht verbessert",
-        "Einige Icons ausgetauscht",
-        "Fehlerbehebungen",
-        "Mindestversion von Windows 10 auf 1809 (Oktober 2018) angehoben"
-    ],
-    [
-        "Fluent Design verbessert",
-        "Italienische Übersetzung verbessert (Danke Matteo!)",
-        "Portugiesische Übersetzung",
-        "Fehlerbehebungen"
-    ],
-    [
-        "Suchfunktion im Artikel fertiggestellt",
-        "Bilder herunterladen"
-    ],
-    [
-        "Artikel im Vollbild anzeigen",
-        "Spanische und Italienische Übersetzung",
-        "Fehlerbehebungen"
-    ],
-    [
-        "Suchfunktion im Artikel (hebt Treffer hervor, mehr folgt bald)"
-    ],
-    [
-        "Zuletzt geöffneten Artikel beim Start erneut anzeigen",
-        "Gerät beim Lesen eines Artikels nicht sperren"
-    ],
-    [
-        "Anzeige der aufgerufenen Artikel in Windows Timeline",
-        "Vorlesefunktion für Artikel",
-        "Verbesserte Textskalierung (nur Desktop, für Mobil gibt es leider keine Lösung für die riesige Schrift)",
-        "Einstellung ob aufgerufene Artikel in Windows Timeline angezeigt werden",
-        "Fehlerbehebungen und Optimierungen"
-    ],
-    [
-        "Einstellung ob nur Artikel aus der aktuellen Sitzung im Verlauf angezeigt werden",
-        "Verlauf leeren"
-    ],
-    [
-        "Verbesserte Artikelansicht im Dunklen Design",
-        "Artikel nur einmal zur Historie hinzufügen",
-        "Farbe der Titelleiste im Dunklen Design korrigiert"
-    ],
-    [
-        "Favoritenliste für Artikel",
-        "Historie wird nun gespeichert",
-        "Verbesserte Artikelansicht",
-        "Zusätzliche Icons für Befehlsleisten"
-    ],
-    [
-        "Fluent Design",
-        "Anzeige der Artikelbeschreibung in Suchergebnissen",
-        "Anzeige weiterer Buttons in Artikelansicht",
-        "Schließen der Bildansicht mit Escape",
-        "Anzeige weiterer Bildunterschriften"
-    ],
-    [
-        "Bilder von Artikeln vergrößern"
-    ],
-    [
-        "Bilder von Artikeln anzeigen und durchklicken"
-    ],
-    [
-        "Darstellung von transparenten Bildern im Dunklen Design verbessert"
-    ],
-    [
-        "Mathematische Formeln im Dunklen Design anzeigen",
-        "Fehlerbehebungen"
-    ],
-    [
-        "Artikel an Start anheften",
-        "Einstellung ob Bilder geladen werden"
-    ],
-    [
-        "Anzeige von Fußnoten als Popup",
-        "Sprungmarken in Artikelansicht funktionieren",
-        "Sprungmarke von Artikel-Verlinkungen beachten"
-    ],
-    [
-        "Wikini ist jetzt auch auf dem Desktop verfügbar!",
-        "Verlauf, Inhaltsverzeichnis und Sprachauswahl mit leichter Transparenz",
-        "Inhaltsverzeichnis und Sprachauswahl deaktivieren wenn keine Einträge vorhanden sind"
-    ],
-    [
-        "Einstellung für Schriftgröße in Artikelansicht"
-    ],
-    [
-        "Zurück/Vorwärts in Artikelansicht, um zwischen zuletzt aufgerufenen Artikeln zu wechseln (Nach dem Laden wird die vorherige Scroll-Position innerhalb des Artikels wiederhergestellt.)",
-        "Artikel teilen, z. B. per E-Mail oder Messenger-Apps",
-        "Weiterleitungen auf einen anderen Artikel auflösen",
-        "Einstellungen aus Artikelansicht aufrufen",
-        "Übersicht der bisher veröffentlichten Versionen und die darin enthaltenen Neuerungen",
-        "Französische Übersetzung (Danke an Rémi!)"
-    ],
-    [
-        "Verbesserte Live-Suche",
-        "Sprache wechseln löst Suche aus",
-        "Enter löst Suche aus",
-        "Hinweis \"Keine Artikel gefunden\""
-    ],
-    [
-        "Dunkles Design"
-    ],
-    [
-        "Tooltips für Listeneinträge",
-        "Fehlerbehebungen"
-    ],
-    [
-        "Suche nach Artikeln in gewünschter Sprache",
-        "Live-Suche",
-        "Inhaltsverzeichnis des Artikels anzeigen und zu Abschnitt springen",
-        "Sprache des Artikels wechseln",
-        "Artikel im Browser öffnen",
-        "Verlauf der aufgerufenen Artikel",
-        "Zufälligen Artikel anzeigen",
-        "Wikipedia-Startseite anzeigen",
-        "Einstellung ob Live-Suche bei getakteten Verbindungen ausgeführt werden soll",
-        "Einstellung ob beim Aufruf eines Artikels alle Abschnitte eingeklappt sein sollen"
-    ]
+  [
+    "Unterstützung für sämtliche Wikipedia Sprachen",
+    "Startseite mit Beschreibung für Bild des Tages",
+    "Mehr Animationen auf der Startseite und in der Seitenleiste",
+    "Artikel vorlesen zeigt Fortschritt mit Slider",
+    "Artikelansicht zeigt lokalisierte Sprache im Tooltip",
+    "Umgebungskarte mit Ladestatus",
+    "Fehlerbehungen"
+  ],
+  [
+    "Artikelansicht in Schrift mit oder ohne Serifen",
+    "Verbesserter Hintergrund in Artikelansicht",
+    "Verbesserte Suchleiste in Artikelansicht",
+    "Aktualisiertes Design und verschiedene Verbesserungen"
+  ],
+  [
+    "Umgebungskarte",
+    "Artikelansicht mit Bildergalerie",
+    "Bilder mit dem Cursor scrollen und zoomen"
+  ],
+  [
+    "Design in Artikelansicht automatisch wechseln",
+    "Schriftgröße in Artikelansicht automatisch aktualisieren",
+    "Artikel vorlesen mit Kontextmenü um zu Abschnitt zu springen",
+    "Performance- und Layout-Verbesserungen"
+  ],
+  [
+    "Kontextmenü für Artikel und Auswahl in Artikelansicht",
+    "Artikel vorlesen mit Media Controls und Wiedergabe im Hintergrund",
+    "Anzeige der Beschreibung in Artikelansicht",
+    "Artikel aus Verlauf entfernen",
+    "Verbessertes Kontextmenü für Links in Artikelansicht",
+    "Weitere Design-Verbesserungen"
+  ],
+  [
+    "Befehlsleiste in Artikelansicht oben",
+    "Überarbeitetes Startseiten-Design",
+    "Umstellung auf Fluent Icons",
+    "Zufälliges Bild des Tages; Bild ausblenden",
+    "Zusätzliche Tooltips"
+  ],
+  [
+    "Verbesserte Artikelansicht für von rechts nach links geschriebene Sprachen"
+  ],
+  [
+    "Suche mit Spracherkennung",
+    "Hervorheben der ausgewählten Sprache in Seitenleiste",
+    "Anzeige des Artikels in der Titelleiste"
+  ],
+  [
+    "Tabs in der Seitenleiste",
+    "Hervorheben des aktiven Eintrags im Inhaltsverzeichnis",
+    "Bessere Bildlaufleiste in der Artikelansicht, insbesondere im Dunklen Design",
+    "Performance- und Layout-Verbesserungen",
+    "Trennlinie zwischen Hauptkapiteln im Inhaltsverzeichnis"
+  ],
+  [
+    "Verbesserte Artikelansicht im Dunklen Design"
+  ],
+  [
+    "Bildschirm kann jetzt beim Lesen eines Artikels vom Energiesparmodus ausgeschaltet werden",
+    "Einstellung ob der Bildschirm beim Lesen eines Artikels nie ausgeschaltet wird"
+  ],
+  [
+    "Auswahl der favorisierten Sprachen",
+    "Anzeige sämtlicher Wikipedia-Sprachen in der Sprachauswahl auf der Startseite"
+  ],
+  [
+    "Startseite mit neuem Hintergrund",
+    "Einstellung ob beim Start das Bild des Tages auf der Startseite angezeigt wird",
+    "Fehlschlagende Requests für Windows-Versionen vor 1903 behoben"
+  ],
+  [
+    "Neues Logo und Akzentfarbe",
+    "Fehlerbehebungen"
+  ],
+  [
+    "Design verbessert",
+    "Umstellung auf WinUI und App Center"
+  ],
+  [
+    "Vorlesefunktion mit Stimmeinstellungen",
+    "Suche im Dunklen Design verbessert",
+    "Artikel-Sprachen mit lokalisiertem Titel",
+    "Design von Verlauf verbessert"
+  ],
+  [
+    "Startseite mit Bild des Tages",
+    "Alphabetische Sortierung der Favoriten",
+    "Verlauf-Leiste mit Kontextmenü"
+  ],
+  [
+    "Suchergebnisse mit Bild",
+    "Favoriten-Leiste mit Kontextmenü",
+    "Einstellung ob beim Start der zuletzt geöffnete Artikel angezeigt wird",
+    "Fehlerbehebungen"
+  ],
+  [
+    "Suche auf der Startseite überarbeitet",
+    "Hinweis wenn Historie und Favoriten keine Einträge enthalten",
+    "Favoriten in Artikelansicht anzeigen"
+  ],
+  [
+    "Anzeige der Einstellungen als Seitenleiste",
+    "Gruppierung des Verlaufs nach Datum",
+    "Einstellung zur Auswahl der App-Sprache",
+    "Einstellung ob Seitenleiste neben dem Inhalt angezeigt wird",
+    "Explizieter Schließen-Button für die Seitenleiste"
+  ],
+  [
+    "Niederländische und Polnische Übersetzung"
+  ],
+  [
+    "Kontextmenü für Links in Artikelansicht",
+    "Sprachkürzel anzeigen",
+    "Teilen von Artikeln verbessert",
+    "Artikelansicht verbessert",
+    "Einige Icons ausgetauscht",
+    "Fehlerbehebungen",
+    "Mindestversion von Windows 10 auf 1809 (Oktober 2018) angehoben"
+  ],
+  [
+    "Fluent Design verbessert",
+    "Italienische Übersetzung verbessert (Danke Matteo!)",
+    "Portugiesische Übersetzung",
+    "Fehlerbehebungen"
+  ],
+  [
+    "Suchfunktion im Artikel fertiggestellt",
+    "Bilder herunterladen"
+  ],
+  [
+    "Artikel im Vollbild anzeigen",
+    "Spanische und Italienische Übersetzung",
+    "Fehlerbehebungen"
+  ],
+  [
+    "Suchfunktion im Artikel (hebt Treffer hervor, mehr folgt bald)"
+  ],
+  [
+    "Zuletzt geöffneten Artikel beim Start erneut anzeigen",
+    "Gerät beim Lesen eines Artikels nicht sperren"
+  ],
+  [
+    "Anzeige der aufgerufenen Artikel in Windows Timeline",
+    "Vorlesefunktion für Artikel",
+    "Verbesserte Textskalierung (nur Desktop, für Mobil gibt es leider keine Lösung für die riesige Schrift)",
+    "Einstellung ob aufgerufene Artikel in Windows Timeline angezeigt werden",
+    "Fehlerbehebungen und Optimierungen"
+  ],
+  [
+    "Einstellung ob nur Artikel aus der aktuellen Sitzung im Verlauf angezeigt werden",
+    "Verlauf leeren"
+  ],
+  [
+    "Verbesserte Artikelansicht im Dunklen Design",
+    "Artikel nur einmal zur Historie hinzufügen",
+    "Farbe der Titelleiste im Dunklen Design korrigiert"
+  ],
+  [
+    "Favoritenliste für Artikel",
+    "Historie wird nun gespeichert",
+    "Verbesserte Artikelansicht",
+    "Zusätzliche Icons für Befehlsleisten"
+  ],
+  [
+    "Fluent Design",
+    "Anzeige der Artikelbeschreibung in Suchergebnissen",
+    "Anzeige weiterer Buttons in Artikelansicht",
+    "Schließen der Bildansicht mit Escape",
+    "Anzeige weiterer Bildunterschriften"
+  ],
+  [
+    "Bilder von Artikeln vergrößern"
+  ],
+  [
+    "Bilder von Artikeln anzeigen und durchklicken"
+  ],
+  [
+    "Darstellung von transparenten Bildern im Dunklen Design verbessert"
+  ],
+  [
+    "Mathematische Formeln im Dunklen Design anzeigen",
+    "Fehlerbehebungen"
+  ],
+  [
+    "Artikel an Start anheften",
+    "Einstellung ob Bilder geladen werden"
+  ],
+  [
+    "Anzeige von Fußnoten als Popup",
+    "Sprungmarken in Artikelansicht funktionieren",
+    "Sprungmarke von Artikel-Verlinkungen beachten"
+  ],
+  [
+    "Wikini ist jetzt auch auf dem Desktop verfügbar!",
+    "Verlauf, Inhaltsverzeichnis und Sprachauswahl mit leichter Transparenz",
+    "Inhaltsverzeichnis und Sprachauswahl deaktivieren wenn keine Einträge vorhanden sind"
+  ],
+  [
+    "Einstellung für Schriftgröße in Artikelansicht"
+  ],
+  [
+    "Zurück/Vorwärts in Artikelansicht, um zwischen zuletzt aufgerufenen Artikeln zu wechseln (Nach dem Laden wird die vorherige Scroll-Position innerhalb des Artikels wiederhergestellt.)",
+    "Artikel teilen, z. B. per E-Mail oder Messenger-Apps",
+    "Weiterleitungen auf einen anderen Artikel auflösen",
+    "Einstellungen aus Artikelansicht aufrufen",
+    "Übersicht der bisher veröffentlichten Versionen und die darin enthaltenen Neuerungen",
+    "Französische Übersetzung (Danke an Rémi!)"
+  ],
+  [
+    "Verbesserte Live-Suche",
+    "Sprache wechseln löst Suche aus",
+    "Enter löst Suche aus",
+    "Hinweis \"Keine Artikel gefunden\""
+  ],
+  [
+    "Dunkles Design"
+  ],
+  [
+    "Tooltips für Listeneinträge",
+    "Fehlerbehebungen"
+  ],
+  [
+    "Suche nach Artikeln in gewünschter Sprache",
+    "Live-Suche",
+    "Inhaltsverzeichnis des Artikels anzeigen und zu Abschnitt springen",
+    "Sprache des Artikels wechseln",
+    "Artikel im Browser öffnen",
+    "Verlauf der aufgerufenen Artikel",
+    "Zufälligen Artikel anzeigen",
+    "Wikipedia-Startseite anzeigen",
+    "Einstellung ob Live-Suche bei getakteten Verbindungen ausgeführt werden soll",
+    "Einstellung ob beim Aufruf eines Artikels alle Abschnitte eingeklappt sein sollen"
+  ]
 ]

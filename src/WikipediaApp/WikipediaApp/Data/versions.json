@@ -1,178 +1,182 @@
 [
-    {
-        "VersionNumber": "1.43",
-        "ReleaseDate": "2021-09-19"
-    },
-    {
-        "VersionNumber": "1.42",
-        "ReleaseDate": "2021-02-07"
-    },
-    {
-        "VersionNumber": "1.41",
-        "ReleaseDate": "2021-01-31"
-    },
-    {
-        "VersionNumber": "1.40",
-        "ReleaseDate": "2021-01-24"
-    },
-    {
-        "VersionNumber": "1.39",
-        "ReleaseDate": "2021-01-17"
-    },
-    {
-        "VersionNumber": "1.38",
-        "ReleaseDate": "2020-06-21"
-    },
-    {
-        "VersionNumber": "1.37",
-        "ReleaseDate": "2020-05-23"
-    },
-    {
-        "VersionNumber": "1.36",
-        "ReleaseDate": "2020-05-20"
-    },
-    {
-        "VersionNumber": "1.35",
-        "ReleaseDate": "2020-03-27"
-    },
-    {
-        "VersionNumber": "1.34",
-        "ReleaseDate": "2020-02-14"
-    },
-    {
-        "VersionNumber": "1.33",
-        "ReleaseDate": "2019-12-01"
-    },
-    {
-        "VersionNumber": "1.32",
-        "ReleaseDate": "2019-11-24"
-    },
-    {
-        "VersionNumber": "1.31",
-        "ReleaseDate": "2019-11-06"
-    },
-    {
-        "VersionNumber": "1.30",
-        "ReleaseDate": "2019-10-26"
-    },
-    {
-        "VersionNumber": "1.29",
-        "ReleaseDate": "2019-10-24"
-    },
-    {
-        "VersionNumber": "1.28",
-        "ReleaseDate": "2019-10-18"
-    },
-    {
-        "VersionNumber": "1.27",
-        "ReleaseDate": "2019-10-12"
-    },
-    {
-        "VersionNumber": "1.26",
-        "ReleaseDate": "2019-10-06"
-    },
-    {
-        "VersionNumber": "1.25",
-        "ReleaseDate": "2019-09-21"
-    },
-    {
-        "VersionNumber": "1.24",
-        "ReleaseDate": "2019-09-18"
-    },
-    {
-        "VersionNumber": "1.23",
-        "ReleaseDate": "2019-07-12"
-    },
-    {
-        "VersionNumber": "1.22",
-        "ReleaseDate": "2019-06-08"
-    },
-    {
-        "VersionNumber": "1.21",
-        "ReleaseDate": "2019-02-14"
-    },
-    {
-        "VersionNumber": "1.20",
-        "ReleaseDate": "2019-02-02"
-    },
-    {
-        "VersionNumber": "1.19",
-        "ReleaseDate": "2019-01-27"
-    },
-    {
-        "VersionNumber": "1.18",
-        "ReleaseDate": "2018-12-27"
-    },
-    {
-        "VersionNumber": "1.17",
-        "ReleaseDate": "2018-10-20"
-    },
-    {
-        "VersionNumber": "1.16",
-        "ReleaseDate": "2018-09-16"
-    },
-    {
-        "VersionNumber": "1.15",
-        "ReleaseDate": "2018-09-02"
-    },
-    {
-        "VersionNumber": "1.14",
-        "ReleaseDate": "2018-08-03"
-    },
-    {
-        "VersionNumber": "1.13",
-        "ReleaseDate": "2018-07-19"
-    },
-    {
-        "VersionNumber": "1.12",
-        "ReleaseDate": "2017-11-26"
-    },
-    {
-        "VersionNumber": "1.11",
-        "ReleaseDate": "2017-10-25"
-    },
-    {
-        "VersionNumber": "1.10",
-        "ReleaseDate": "2017-10-22"
-    },
-    {
-        "VersionNumber": "1.9",
-        "ReleaseDate": "2017-10-20"
-    },
-    {
-        "VersionNumber": "1.8",
-        "ReleaseDate": "2017-06-11"
-    },
-    {
-        "VersionNumber": "1.7",
-        "ReleaseDate": "2017-05-18"
-    },
-    {
-        "VersionNumber": "1.6",
-        "ReleaseDate": "2017-05-10"
-    },
-    {
-        "VersionNumber": "1.5",
-        "ReleaseDate": "2017-04-21"
-    },
-    {
-        "VersionNumber": "1.4",
-        "ReleaseDate": "2017-02-26"
-    },
-    {
-        "VersionNumber": "1.3",
-        "ReleaseDate": "2017-02-08"
-    },
-    {
-        "VersionNumber": "1.2",
-        "ReleaseDate": "2017-02-04"
-    },
-    {
-        "VersionNumber": "1.1",
-        "ReleaseDate": "2017-01-24"
-    },
-    {
-        "VersionNumber": "1.0",
-        "ReleaseDate": "2017-01-16"
-    }
+  {
+    "VersionNumber": "1.44",
+    "ReleaseDate": "2022-02-17"
+  },
+  {
+    "VersionNumber": "1.43",
+    "ReleaseDate": "2021-09-19"
+  },
+  {
+    "VersionNumber": "1.42",
+    "ReleaseDate": "2021-02-07"
+  },
+  {
+    "VersionNumber": "1.41",
+    "ReleaseDate": "2021-01-31"
+  },
+  {
+    "VersionNumber": "1.40",
+    "ReleaseDate": "2021-01-24"
+  },
+  {
+    "VersionNumber": "1.39",
+    "ReleaseDate": "2021-01-17"
+  },
+  {
+    "VersionNumber": "1.38",
+    "ReleaseDate": "2020-06-21"
+  },
+  {
+    "VersionNumber": "1.37",
+    "ReleaseDate": "2020-05-23"
+  },
+  {
+    "VersionNumber": "1.36",
+    "ReleaseDate": "2020-05-20"
+  },
+  {
+    "VersionNumber": "1.35",
+    "ReleaseDate": "2020-03-27"
+  },
+  {
+    "VersionNumber": "1.34",
+    "ReleaseDate": "2020-02-14"
+  },
+  {
+    "VersionNumber": "1.33",
+    "ReleaseDate": "2019-12-01"
+  },
+  {
+    "VersionNumber": "1.32",
+    "ReleaseDate": "2019-11-24"
+  },
+  {
+    "VersionNumber": "1.31",
+    "ReleaseDate": "2019-11-06"
+  },
+  {
+    "VersionNumber": "1.30",
+    "ReleaseDate": "2019-10-26"
+  },
+  {
+    "VersionNumber": "1.29",
+    "ReleaseDate": "2019-10-24"
+  },
+  {
+    "VersionNumber": "1.28",
+    "ReleaseDate": "2019-10-18"
+  },
+  {
+    "VersionNumber": "1.27",
+    "ReleaseDate": "2019-10-12"
+  },
+  {
+    "VersionNumber": "1.26",
+    "ReleaseDate": "2019-10-06"
+  },
+  {
+    "VersionNumber": "1.25",
+    "ReleaseDate": "2019-09-21"
+  },
+  {
+    "VersionNumber": "1.24",
+    "ReleaseDate": "2019-09-18"
+  },
+  {
+    "VersionNumber": "1.23",
+    "ReleaseDate": "2019-07-12"
+  },
+  {
+    "VersionNumber": "1.22",
+    "ReleaseDate": "2019-06-08"
+  },
+  {
+    "VersionNumber": "1.21",
+    "ReleaseDate": "2019-02-14"
+  },
+  {
+    "VersionNumber": "1.20",
+    "ReleaseDate": "2019-02-02"
+  },
+  {
+    "VersionNumber": "1.19",
+    "ReleaseDate": "2019-01-27"
+  },
+  {
+    "VersionNumber": "1.18",
+    "ReleaseDate": "2018-12-27"
+  },
+  {
+    "VersionNumber": "1.17",
+    "ReleaseDate": "2018-10-20"
+  },
+  {
+    "VersionNumber": "1.16",
+    "ReleaseDate": "2018-09-16"
+  },
+  {
+    "VersionNumber": "1.15",
+    "ReleaseDate": "2018-09-02"
+  },
+  {
+    "VersionNumber": "1.14",
+    "ReleaseDate": "2018-08-03"
+  },
+  {
+    "VersionNumber": "1.13",
+    "ReleaseDate": "2018-07-19"
+  },
+  {
+    "VersionNumber": "1.12",
+    "ReleaseDate": "2017-11-26"
+  },
+  {
+    "VersionNumber": "1.11",
+    "ReleaseDate": "2017-10-25"
+  },
+  {
+    "VersionNumber": "1.10",
+    "ReleaseDate": "2017-10-22"
+  },
+  {
+    "VersionNumber": "1.9",
+    "ReleaseDate": "2017-10-20"
+  },
+  {
+    "VersionNumber": "1.8",
+    "ReleaseDate": "2017-06-11"
+  },
+  {
+    "VersionNumber": "1.7",
+    "ReleaseDate": "2017-05-18"
+  },
+  {
+    "VersionNumber": "1.6",
+    "ReleaseDate": "2017-05-10"
+  },
+  {
+    "VersionNumber": "1.5",
+    "ReleaseDate": "2017-04-21"
+  },
+  {
+    "VersionNumber": "1.4",
+    "ReleaseDate": "2017-02-26"
+  },
+  {
+    "VersionNumber": "1.3",
+    "ReleaseDate": "2017-02-08"
+  },
+  {
+    "VersionNumber": "1.2",
+    "ReleaseDate": "2017-02-04"
+  },
+  {
+    "VersionNumber": "1.1",
+    "ReleaseDate": "2017-01-24"
+  },
+  {
+    "VersionNumber": "1.0",
+    "ReleaseDate": "2017-01-16"
+  }
 ]
