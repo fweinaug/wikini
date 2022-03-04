@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -82,7 +83,7 @@ namespace WikipediaApp
 
     private void OnLanguageButtonClick(object sender, RoutedEventArgs e)
     {
-      var languages = new List<LanguageViewModel>(Languages);
+      var languages = Languages.Where(language => language is not EmptyFavoritesHint).ToList();
       if (!languages.Contains(QueryLanguage))
         languages.Add(QueryLanguage);
       languages.Sort((x, y) => -x.Index.CompareTo(y.Index));
