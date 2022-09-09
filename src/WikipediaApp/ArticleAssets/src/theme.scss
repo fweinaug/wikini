@@ -87,12 +87,12 @@ body {
             color: #A0A0A0 !important;
         }
 
-        table.infobox {
+        table.infobox, table.sidebar {
             color: #E0E0E0 !important;
             background-color: #1a1a1a !important;
         }
 
-        table.infobox th[colspan="2"] {
+        table.infobox th[colspan="2"], table.infobox .infobox-subheader {
             background-color: #333 !important;
         }
 
