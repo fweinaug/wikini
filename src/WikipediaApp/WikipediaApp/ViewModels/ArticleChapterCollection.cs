@@ -67,11 +67,11 @@ namespace WikipediaApp
     {
       var sections = new Dictionary<HtmlNode, List<HtmlNode>>();
 
-      if (string.IsNullOrEmpty(article?.Content))
+      if (string.IsNullOrEmpty(article?.Html))
         return sections;
 
       var document = new HtmlDocument();
-      document.LoadHtml(article.Content);
+      document.LoadHtml(article.Html);
 
       RemoveUnwantedNodes(document);
 

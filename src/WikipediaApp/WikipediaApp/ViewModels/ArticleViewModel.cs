@@ -31,8 +31,7 @@ namespace WikipediaApp
     public string Language => article?.Language;
     public string Title => (article ?? initialArticle).Title;
     public string Description => (article ?? initialArticle).Description;
-    public string Content => article?.Content;
-    public string TextDirection => article?.TextDirection;
+    public string Html => article?.Html;
     public string Anchor => article?.Anchor;
 
     public Article Article

@@ -181,7 +181,7 @@ namespace WikipediaApp
     private static void OnArticlePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       var article = e.NewValue as ArticleViewModel;
-      if (string.IsNullOrEmpty(article?.Content))
+      if (string.IsNullOrEmpty(article?.Html))
         return;
 
       var view = (ArticleView)d;

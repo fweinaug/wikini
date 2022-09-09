@@ -100,7 +100,7 @@
                         <ToggleSwitch x:Uid="SettingsImagesDisabledToggleSwitch" IsOn="{Binding ImagesDisabled, Mode=TwoWay}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,10">
+                    <StackPanel Margin="0,10" Visibility="Collapsed">
                         <TextBlock x:Uid="SettingsSectionsCollapsedTextBlock" Style="{ThemeResource SubtitleTextBlockStyle}" />
                         <ToggleSwitch x:Uid="SettingsSectionsCollapsedToggleSwitch" IsOn="{Binding SectionsCollapsed, Mode=TwoWay}" />
                     </StackPanel>

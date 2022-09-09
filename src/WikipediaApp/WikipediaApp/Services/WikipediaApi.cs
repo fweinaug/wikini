@@ -198,7 +198,7 @@ namespace WikipediaApp
       var list = new List<ArticleImage>();
 
       var document = new HtmlDocument();
-      document.LoadHtml(article.Content);
+      document.LoadHtml(article.Html);
 
       var linkNodes = document.DocumentNode.Descendants("a")
         .Where(node => node.GetAttributeValue("class", null) == "image")
@@ -391,7 +391,7 @@ namespace WikipediaApp
   {
     public async Task<Article> FetchArticle(string language, int? pageId, string title, bool disableImages, string anchor = null, ArticleHead head = null, Article article = null)
     {
-      var query = "action=parse&prop=text|sections|langlinks|images|headhtml&disableeditsection=&disabletoc=&mobileformat=";
+      var query = "action=parse&prop=text|sections|langlinks|images|headhtml&disableeditsection=&disabletoc=&disablelimitreport=&useskin=minerva";
       if (pageId != null)
         query += "&pageid=" + pageId;
       else
@@ -445,15 +445,73 @@ namespace WikipediaApp
       if (article == null)
         article = new Article(head);
 
-      article.TextDirection = ParseDirection(parseResult.headhtml);
+      article.Html = BuildHtml(language, parseResult.title, head != null ? head.Description : article.Description, parseResult.text, parseResult.headhtml);
       article.Title = parseResult.title;
-      article.Content = parseResult.text;
       article.Sections = sections;
       article.Languages = languages;
       article.Images = images;
       article.Anchor = anchor;
 
       return article;
+    }
+
+    private static string BuildHtml(string language, string title, string description, string content, string headHtml)
+    {
+      var textDirection = ParseDirection(headHtml);
+
+      var html = $@"
+        {headHtml}
+        <div id=""mw-mf-viewport"">
+	        <div id=""mw-mf-page-center"">
+		        <div id=""content"" class=""mw-body"">
+              <div class=""pre-content heading-holder"">
+                <h1 id=""section_0"">{title}</h1>
+                <span style=""font-size:0.8125em;line-height:1.5;color:gray"">{description}</span>
+                <hr style=""margin-bottom:20px;width:100px;height:1px;text-align:left;border:none;background:gray"">
+              </div><div id=""bodyContent"" class=""content""><div id=""mw-content-text"" lang=""{language}"" dir=""{textDirection}"" class=""mw-content-{textDirection}""><script>function mfTempOpenSection(id){{var block=document.getElementById(""mf-section-""+id);block.className+="" open-block"";block.previousSibling.className+="" open-block"";}}</script>
+        {content}
+        </div></div></div></div></div></div>
+        </body>
+        </html>
+      ";
+
+      var document = new HtmlDocument();
+      document.LoadHtml(html);
+
+      var baseNode = document.CreateElement("base");
+      baseNode.SetAttributeValue("href", $"https://{language}.m.wikipedia.org");
+      document.DocumentNode.Descendants("head").Single().PrependChild(baseNode);
+
+      var rootNode = document.DocumentNode.Descendants("div").Single(x => x.HasClass("mw-parser-output"));
+
+      var nodes = rootNode.ChildNodes.Where(x => x.HasClass("authority-control") || x.HasClass("portal-bar") || x.HasClass("sister-bar")).ToList();
+      nodes.ForEach(x => x.Remove());
+
+      var rootChildren = rootNode.ChildNodes.ToArray();
+
+      var sectionNode = document.CreateElement("section");
+      sectionNode.AddClass("mf-section-0");
+      var sectionCount = 0;
+
+      foreach (var child in rootChildren)
+      {
+        if (child.OriginalName == "h2")
+        {
+          rootNode.InsertBefore(sectionNode, child);
+
+          sectionNode = document.CreateElement("section");
+          sectionNode.AddClass($"mf-section-{++sectionCount}");
+        }
+        else
+        {
+          sectionNode.MoveChild(child);
+        }
+      }
+
+      rootNode.AppendChild(sectionNode);
+
+
+      return document.DocumentNode.OuterHtml;
     }
 
     private static string ParseDirection(string html)

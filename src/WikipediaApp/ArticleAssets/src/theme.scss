@@ -41,6 +41,10 @@ body {
     }
 
     .mw-parser-output {
+        h2 {
+            border-bottom-color: #333 !important;
+        }
+
         .main-box {
             background-color: #121212 !important;
         }
@@ -52,13 +56,33 @@ body {
         .main-top-left {
             background-image: linear-gradient(to right,#333 0%,#333 70%,rgba(248,249,250,0)100%) !important;
         }
+
+        .navbox, .navbox-subgroup {
+            background-color: #121212 !important;
+        }
+
+        .navbox, .navbox-list {
+            border-color: #333 !important;
+        }
+
+        tr + tr > .navbox-abovebelow, tr + tr > .navbox-group, tr + tr > .navbox-image, tr + tr > .navbox-list {
+            border-top-color: #333 !important;
+        }
+
+        .navbox-title {
+            background-color: #000 !important;
+        }
+
+        .navbox-abovebelow, .navbox-group, .navbox-subgroup .navbox-title {
+            background-color: #1a1a1a !important;
+        }
+
+        .navbox-even {
+            background-color: #1a1a1a !important;
+        }
     }
 
     .content {
-        .section-heading {
-            border-bottom-color: #333 !important;
-        }
-
         figcaption, .thumbcaption {
             color: #A0A0A0 !important;
         }
