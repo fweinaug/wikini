@@ -80,6 +80,14 @@ body {
         .navbox-even {
             background-color: #1a1a1a !important;
         }
+
+        .portalborder {
+            border-color: #333 !important;
+
+            & > ul {
+                background-color: #1a1a1a !important;
+            }
+        }
     }
 
     .content {
@@ -90,6 +98,7 @@ body {
         table.infobox, table.sidebar {
             color: #E0E0E0 !important;
             background-color: #1a1a1a !important;
+            border-color: #333 !important;
         }
 
         table.infobox th[colspan="2"], table.infobox .infobox-subheader {
@@ -99,18 +108,18 @@ body {
         table.infobox th, table.infobox td {
             border-color: #333 !important;
         }
+    }
 
-        table.wikitable {
-            border-color: #333 !important;
-        }
+    .wikitable {
+        border-color: #333 !important;
+    }
 
-        table.wikitable > tr > th, table.wikitable > * > tr > th {
-            background-color: #333 !important;
-        }
+    .wikitable > tr > th, .wikitable > * > tr > th {
+        background-color: #333 !important;
+    }
 
-        table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th, table.wikitable > * > tr > td {
-            border-color: #333 !important;
-        }
+    .wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wikitable > * > tr > td {
+        border-color: #333 !important;
     }
 
     li.gallerybox div.thumb, .mbox-small {

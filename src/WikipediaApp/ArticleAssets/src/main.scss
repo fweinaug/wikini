@@ -6,6 +6,17 @@ body {
     margin-right: 10px;
 }
 
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.mw-parser-output {
+    .sidebar, .ib-settlement {
+        border-collapse: inherit !important;
+    }
+}
+
 .content {
     .in-block {
         display: block;
