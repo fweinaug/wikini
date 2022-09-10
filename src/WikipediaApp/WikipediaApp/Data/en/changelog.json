@@ -1,5 +1,9 @@
 [
   [
+    "Use desktop version of articles to avoid display problems",
+    "Improved article view, especially in Dark Mode"
+  ],
+  [
     "Support for all Wikipedia languages",
     "Home page with description for picture of the day",
     "More animations on home page and sidebar",
